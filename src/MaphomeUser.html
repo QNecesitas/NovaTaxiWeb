@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>MapHome</title>
+  <meta name="description" content="Mapa principal de NovaTaxi">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel="stylesheet" href="css/maphoneUser.css">
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
+
+  <meta name="theme-color" content="#fafafa">
+</head>
+<body>
+
+    <main>
+        <div id="map"></div>
+        <div class="select-map">
+            <button class="ubication"><img src="./img/add_location_FILL1_wght400_GRAD0_opsz48.svg" alt=""> Ubicación</button>
+            <button class="destino"><img src="./img/location_on_FILL1_wght400_GRAD0_opsz48.svg" alt=""> Destino</button>
+        </div>
+        <div class=" button-circle">
+            <button class="setting"><img src="./img/settings_FILL1_wght400_GRAD0_opsz48.svg" alt=""></button>
+            <button class="gps"><img src="./img/my_location_FILL1_wght400_GRAD0_opsz48.svg" alt=""></button>
+        </div>
+    </main>
+
+    <!-- Alert Dialog Ubication desactived-->
+    <!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <p class="modal-title fs-5" id="staticBackdropLabel">Ubicación desactivada</p>
+        </div>
+        <div class="modal-body">
+            <p>Vaya a los ajustes y encienda la ubicación</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Aceptar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Alert Dialog Car Details-->
+    <!-- Modal -->
+<div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <p class="modal-title fs-5" id="staticBackdropLabel">Detalles</p>
+        </div>
+        <div class="modal-body">
+            <p>Detalles en dependencia del carro</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Aceptar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Alert Dialog Confirm Car-->
+    <!-- Modal -->
+<div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <p class="modal-title fs-5" id="staticBackdropLabel">Confirmar</p>
+        </div>
+        <div class="modal-body">
+            <p>¿Está seguro de pedir este taxi?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary">Aceptar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+    <script src="js/MaphomeUser.js"></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
+   <script src="js/bootstrap.js"></script>
+</body>
+</html>

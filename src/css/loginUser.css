@@ -1,0 +1,405 @@
+/*! HTML5 Boilerplate v8.0.0 | MIT License | https://html5boilerplate.com/ */
+
+/* main.css 2.1.0 | MIT License | https://github.com/h5bp/main.css#readme */
+/*
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+
+/* ==========================================================================
+   Colors and dimens from theme (for use it for example: background-color: var(--bs-light);)
+   ========================================================================== */
+:root {
+  --bs-primary-rgb: 86, 83, 211 !important;
+  --md_theme_light_primary: #B72301 !important;
+  --md_theme_light_onPrimary: #FFFFFF !important;
+  --md_theme_light_primaryContainer: #FFDAD3 !important;
+  --md_theme_light_onPrimaryContainer: #3D0600 !important;
+  --md_theme_light_secondary: #BE0036 !important;
+  --md_theme_light_onSecondary: #FFFFFF !important;
+  --md_theme_light_secondaryContainer: #FFDADA !important;
+  --md_theme_light_onSecondaryContainer: #40000C !important;
+  --md_theme_light_tertiary: #AE2954 !important;
+  --md_theme_light_onTertiary: #FFFFFF !important;
+  --md_theme_light_tertiaryContainer: #FFD9DF !important;
+  --md_theme_light_onTertiaryContainer: #3F0017 !important;
+  --md_theme_light_error: #BA1A1A !important;
+  --md_theme_light_errorContainer: #FFDAD6 !important;
+  --md_theme_light_onError: #FFFFFF !important;
+  --md_theme_light_onErrorContainer: #410002 !important;
+  --md_theme_light_background: #FFFBFF !important;
+  --md_theme_light_onBackground: #201A19 !important;
+  --md_theme_light_surface: #FFFBFF !important;
+  --md_theme_light_onSurface: #201A19 !important;
+  --md_theme_light_surfaceVariant: #F5DDD8 !important;
+  --md_theme_light_onSurfaceVariant: #534340 !important;
+  --md_theme_light_outline: #85736F !important;
+  --md_theme_light_inverseOnSurface: #FBEEEB !important;
+  --md_theme_light_inverseSurface: #362F2D !important;
+  --md_theme_light_inversePrimary: #FFB4A4 !important;
+  --text_s: 14px !important;
+  --text_m: 16px !important;
+  --text_h: 18px !important;
+  --md_theme_dark_primary: #FF6747 !important;
+  --md_theme_dark_onPrimary: #630E00 !important;
+  --md_theme_dark_primaryContainer: #8C1800 !important;
+  --md_theme_dark_onPrimaryContainer: #FFDAD3 !important;
+  --md_theme_dark_secondary: #FFB3B6 !important;
+  --md_theme_dark_onSecondary: #680019 !important;
+  --md_theme_dark_secondaryContainer: #920027 !important;
+  --md_theme_dark_onSecondaryContainer: #FFDADA !important;
+  --md_theme_dark_tertiary: #FD6A86 !important;
+  --md_theme_dark_onTertiary: #660029 !important;
+  --md_theme_dark_tertiaryContainer: #8E093D !important;
+  --md_theme_dark_onTertiaryContainer: #FFD9DF !important;
+  --md_theme_dark_error: #FF8E80 !important;
+  --md_theme_dark_errorContainer: #93000A !important;
+  --md_theme_dark_onError: #690005 !important;
+  --md_theme_dark_onErrorContainer: #FFDAD6 !important;
+  --md_theme_dark_background: #201A19 !important;
+  --md_theme_dark_onBackground: #EDE0DD !important;
+  --md_theme_dark_surface: #201A19 !important;
+  --md_theme_dark_onSurface: #EDE0DD !important;
+  --md_theme_dark_surfaceVariant: #534340 !important;
+  --md_theme_dark_onSurfaceVariant: #D8C2BD !important;
+  --md_theme_dark_outline: #A08C88 !important;
+  --md_theme_dark_inverseOnSurface: #201A19 !important;
+  --md_theme_dark_inverseSurface: #EDE0DD !important;
+  --md_theme_dark_inversePrimary: #B72301 !important;
+}
+
+/* ==========================================================================
+   Your code for devices with over than 600px (PC)
+   ========================================================================== */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+}
+
+body {
+  background-color: var(--md_theme_dark_background) !important;
+}
+
+main {
+  position: relative;
+  height: 100vh;
+}
+
+.contenedor-img {
+  position: relative;
+  min-height: 60vh;
+}
+
+.imagen {
+  width: 100%;
+  height: 60vh;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  content: url("../img/taxi_back_pc.png");
+}
+
+.contenedor-about {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-bottom: 10px;
+}
+
+.contenedor-about a {
+  color: var(--md_theme_dark_primary);
+  margin-right: 10px;
+  text-decoration: none;
+  font-size: var(--text_s);
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-left: 12px;
+}
+
+.contenedor-about p {
+  color: var(--md_theme_dark_primary);
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: var(--text_s);
+  margin: 0;
+}
+
+.contenedor-login {
+  background-color: var(--md_theme_dark_background);
+  width: 40%;
+  height: 50vh;
+  position: absolute;
+  top: 40%;
+  left: 30%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  border: 0.5px solid #ffffff;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.title {
+  color: var(--md_theme_dark_onBackground);
+  font-family: Arial, Helvetica, sans-serif;
+  margin-left: 10px;
+  font-size: var(--text_h);
+}
+
+form {
+  margin-top: 20px;
+}
+
+form label {
+  display: block;
+  margin-bottom: 5px;
+
+}
+
+form input[type="email"], form input[type="password"], form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: var(--md_theme_dark_background);
+  border: 1px solid var(--md_theme_dark_onBackground);
+  color: var(--md_theme_dark_onBackground);
+  border-radius: 3px;
+  height: 25%;
+  font-size: var(--text_m);
+}
+
+form input[type="email"]::placeholder, form input[type="password"]::placeholder, form textarea::placeholder {
+  color: var(--md_theme_dark_onBackground);
+}
+
+form input[type="email"]:focus, form input[type="password"]:focus, form textarea:focus {
+  outline: none;
+  color: var(--md_theme_dark_onBackground);
+  border-color: var(--md_theme_dark_primary);
+  border-radius: 3px;
+}
+
+.modal-body input[type="email"],.modal-body textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: var(--md_theme_dark_surfaceVariant);
+  border: 1px solid var(--md_theme_dark_onBackground);
+  border-radius: 3px;
+  height: 25%;
+  font-size: var(--text_m);
+}
+
+form button {
+  width: 100%;
+  height: 30px;
+  background-color: var(--md_theme_dark_primary) !important;
+  color: var(--md_theme_dark_onPrimary) !important;
+  justify-content: center;
+  border-radius: 20px;
+  border: none;
+  font-size: var(--text_m);
+}
+
+.crear_cuenta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  color: var(--md_theme_dark_onBackground) !important;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: var(--text_s);
+}
+
+.crear_cuenta a {
+  margin-left: 5px;
+  text-decoration: none;
+  color: var(--md_theme_dark_primary);
+  font-weight: bold;
+  font-size: var(--text_s);
+}
+
+.crear_cuenta a:hover {
+  margin-left: 5px;
+  color: var(--md_theme_dark_secondary);
+  font-weight: bold;
+  text-decoration: underline;
+  font-size: var(--text_s);
+}
+
+.recuperar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  color: var(--md_theme_dark_onBackground) !important;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: var(--text_s);
+}
+
+.recuperar a {
+  margin-left: 5px;
+  text-decoration: none;
+  color: var(--md_theme_dark_primary);
+  font-weight: bold;
+  font-size: var(--text_s);
+}
+
+.recuperar a:hover {
+  margin-left: 5px;
+  text-decoration: underline;
+  color: var(--md_theme_dark_secondary);
+  font-weight: bold;
+  font-size: var(--text_s);
+}
+
+#liRecover {
+  width: 40%;
+  top: 40%;
+  left: 30%;
+  padding: 10px;
+}
+
+#liRecover p {
+  color: var(--md_theme_dark_onBackground);
+  font-size: var(--text_s);
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.modal-body {
+  display: flex;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: var(--md_theme_dark_surfaceVariant) !important;
+  width: 100%;
+}
+
+.modal-body figure {
+  display: flex;
+  align-items: center;
+  margin: 0!important;
+  filter: brightness(0) invert(1);
+}
+
+.modal-body form{
+  width: 100%;
+}
+
+.modal-body label {
+  width: 80%;
+}
+
+.modal-body input[type="email"], .modal-body textarea {
+  margin-left: 12px;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: var(--md_theme_dark_surfaceVariant);
+  border: 1px solid var(--md_theme_dark_onBackground);
+  color: var(--md_theme_dark_onBackground);
+  border-radius: 3px;
+  height: 25%;
+  font-size: var(--text_m);
+}
+
+.modal-body input[type="email"]::placeholder, .modal-body textarea::placeholder {
+  color: var(--md_theme_dark_onBackground);
+}
+
+.modal-body input[type="email"]:focus, .modal-body textarea:focus {
+  outline: none;
+  color: var(--md_theme_dark_onBackground);
+  border-color: var(--md_theme_dark_primary);
+  border-radius: 3px;
+}
+
+.modal-footer {
+  display: flex;
+  align-items: end;
+  justify-content: end;
+}
+
+.modal-footer button{
+  background-color: var(--md_theme_dark_surfaceVariant);
+  margin-right: 30px;
+  border: none;
+  color: var(--md_theme_dark_onBackground);
+  font-size: var(--text_s);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.modal-footer button:hover{
+  background-color: var(--md_theme_dark_onBackground);
+  margin-right: 30px;
+  border: none;
+  color: var(--md_theme_dark_onBackground);
+  font-size: var(--text_s);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.contenedor-login_title{
+  display: flex;
+}
+
+.contenedor-login_title div{
+  visibility: hidden;
+  margin-left: 20px;
+  width: 25px;
+  height: 25px;
+  align-items: center;
+}
+/* ==========================================================================
+   End of your code for devices with over than 600px (PC)
+   ========================================================================== */
+
+/* ==========================================================================
+   Your code for devices with less than 600px (Mobile)
+   ========================================================================== */
+@media only screen and (max-width: 600px) {
+
+  .contenedor-login {
+    background-color: var(--md_theme_dark_background);
+    width: 90%;
+    height: 50vh;
+    position: absolute;
+    top: 40%;
+    left: 5%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border: 0.5px solid #0000;
+    padding: 10px;
+
+  }
+
+  #liRecover {
+    width: 70%;
+    position: absolute;
+    top: 40%;
+    left: 15%;
+    padding: 10px;
+  }
+
+  .imagen {
+    width: 100%;
+    height: 60vh;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    content: url("../img/taxi_backg.png");
+  }
+
+}
+
+/* ==========================================================================
+   End of your code for devices with less than 600px (Mobile)
+   ========================================================================== */

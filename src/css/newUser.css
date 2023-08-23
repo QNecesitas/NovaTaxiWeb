@@ -1,0 +1,305 @@
+/*! HTML5 Boilerplate v8.0.0 | MIT License | https://html5boilerplate.com/ */
+
+/* main.css 2.1.0 | MIT License | https://github.com/h5bp/main.css#readme */
+/*
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+
+
+
+/* ==========================================================================
+   Colors and dimens from theme (for use it for example: background-color: var(--bs-light);)
+   ========================================================================== */
+   :root{
+    --bs-primary-rgb: 86, 83, 211 !important;
+    --md_theme_light_primary:#B72301 !important;
+    --md_theme_light_onPrimary:#FFFFFF !important;
+    --md_theme_light_primaryContainer:#FFDAD3 !important;
+    --md_theme_light_onPrimaryContainer:#3D0600 !important;
+    --md_theme_light_secondary:#BE0036 !important;
+    --md_theme_light_onSecondary:#FFFFFF !important;
+    --md_theme_light_secondaryContainer:#FFDADA !important;
+    --md_theme_light_onSecondaryContainer:#40000C !important;
+    --md_theme_light_tertiary:#AE2954 !important;
+    --md_theme_light_onTertiary:#FFFFFF !important;
+    --md_theme_light_tertiaryContainer:#FFD9DF !important;
+    --md_theme_light_onTertiaryContainer:#3F0017 !important;
+    --md_theme_light_error:#BA1A1A !important;
+    --md_theme_light_errorContainer:#FFDAD6 !important;
+    --md_theme_light_onError:#FFFFFF !important;
+    --md_theme_light_onErrorContainer:#410002 !important;
+    --md_theme_light_background:#FFFBFF !important;
+    --md_theme_light_onBackground:#201A19 !important;
+    --md_theme_light_surface:#FFFBFF !important;
+    --md_theme_light_onSurface:#201A19 !important;
+    --md_theme_light_surfaceVariant:#F5DDD8 !important;
+    --md_theme_light_onSurfaceVariant:#534340 !important;
+    --md_theme_light_outline:#85736F !important;
+    --md_theme_light_inverseOnSurface:#FBEEEB !important;
+    --md_theme_light_inverseSurface:#362F2D !important;
+    --md_theme_light_inversePrimary:#FFB4A4 !important;
+    --text_s:14px !important;
+    --text_m:16px !important;
+    --text_h:18px !important;
+    --md_theme_dark_primary:#FF6747 !important;
+    --md_theme_dark_onPrimary:#630E00 !important;
+    --md_theme_dark_primaryContainer:#8C1800 !important;
+    --md_theme_dark_onPrimaryContainer:#FFDAD3 !important; 
+    --md_theme_dark_secondary:#FFB3B6 !important;
+    --md_theme_dark_onSecondary:#680019 !important;
+    --md_theme_dark_secondaryContainer:#920027 !important;
+    --md_theme_dark_onSecondaryContainer:#FFDADA !important;
+    --md_theme_dark_tertiary:#FD6A86 !important;
+    --md_theme_dark_onTertiary:#660029 !important;
+    --md_theme_dark_tertiaryContainer:#8E093D !important;
+    --md_theme_dark_onTertiaryContainer:#FFD9DF !important;
+    --md_theme_dark_error:#FF8E80 !important;
+    --md_theme_dark_errorContainer:#93000A !important;
+    --md_theme_dark_onError:#690005 !important;
+    --md_theme_dark_onErrorContainer:#FFDAD6 !important;
+    --md_theme_dark_background:#201A19 !important;
+    --md_theme_dark_onBackground:#EDE0DD !important;
+    --md_theme_dark_surface:#201A19 !important;
+    --md_theme_dark_onSurface:#EDE0DD !important;
+    --md_theme_dark_surfaceVariant:#534340 !important;
+    --md_theme_dark_onSurfaceVariant:#D8C2BD !important;
+    --md_theme_dark_outline:#A08C88 !important;
+    --md_theme_dark_inverseOnSurface:#201A19 !important;
+    --md_theme_dark_inverseSurface:#EDE0DD !important;
+    --md_theme_dark_inversePrimary:#B72301 !important;
+  }
+  
+  
+  
+  
+  
+  /* ==========================================================================
+     Your code for devices with over than 600px (PC)
+     ========================================================================== */
+  *{
+     box-sizing: border-box;
+     padding: 0;
+     margin: 0;
+  }   
+  
+  html {
+     font-size: 62,5%;
+  
+  }
+  
+  body{
+     background-color: var(--md_theme_dark_background);
+     height: 100vh;
+       }
+  header{
+    background-color: var(--md_theme_dark_primary);
+    color: var(--md_theme_dark_onPrimary);
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    height: 10%;
+    
+  }
+  header figure{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 10%;
+  }
+  header img{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+  }
+  header h2{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 85%;
+    margin-left: 8px;
+  }
+  main{
+    padding: 20px;
+    height: 90%;
+    background-image:url('buildings.png');
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: 100% 60%;
+  }
+  form label{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    margin-bottom: 1%;
+    width: 100%;
+    height: 15%;
+  }
+  form figure{
+    width: 48px;
+    height: 48px;
+    background-color: var(--md_theme_dark_onBackground);
+    border-radius: 23px;
+
+  }
+  input{
+    border: none;
+    border-bottom: 1px solid var(--md_theme_dark_onBackground);
+    background-color:transparent;
+    width: 100%;
+    color: var(--md_theme_dark_onBackground);
+    font-size: var(--text_h);
+    padding: 10px;
+  }
+  form label p{
+    color: var(--md_theme_dark_onBackground);
+    font-size: var(--text_h);
+  }
+  input:focus{
+    border: none;
+    border-bottom: 1px solid var(--md_theme_dark_primary);
+    outline: none;
+  }
+  main div{
+    position: absolute;
+    bottom: 10px;
+    width: 95%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 5%;
+}
+  .cancel{
+   margin-right: 50%;
+   margin-left: 5%;
+   background-color: var(--md_theme_dark_surface);
+   color: var(--md_theme_dark_onSurface);
+   border-radius: 10px;
+   border: 1px solid var(--md_theme_dark_onSurface);
+   width: 25%;
+   height: 80%;
+   font-family: Arial, Helvetica, sans-serif;
+   font-weight: bold;
+   font-size: var(--text_s);
+  }
+  .accept{
+    margin-right: 5%;
+    background-color: var(--md_theme_dark_primary);
+   color: var(--md_theme_dark_onPrimary);
+   border-radius: 10px;
+   border: 1px solid var(--md_theme_dark_onSurface);
+   width: 25%;
+   height: 80%;
+   font-family: Arial, Helvetica, sans-serif;
+   font-weight: bold;
+   font-size: var(--text_s);
+  }
+  /*Alert Dialog Cancel Account*/
+
+  #staticBackdrop{
+    background-color: var(--md_theme_dark_surfaceVariant);
+    width: 40%;
+    position: absolute;
+    top: 40%;
+    left: 30%;
+    padding: 10px;
+ }
+ .modal-header p{
+    color: var(--md_theme_dark_onBackground);
+    font-size: var(--text_m);
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+ }
+ .modal-body p{
+    color: var(--md_theme_dark_onBackground);
+    font-size: var(--text_s);
+    margin-bottom: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+ }
+ .modal-footer{
+    display: flex;
+    align-items: end;
+    justify-content: end;
+    }
+    .modal-footer button{
+       background-color: var(--md_theme_dark_surfaceVariant);
+       margin-right: 10px;
+       border: none;
+       color: var(--md_theme_dark_primary);
+       font-size: var(--text_s);
+       font-family: Arial, Helvetica, sans-serif;
+       font-weight: bold;
+    }
+  /*Alert Dialog Cancel Account*/
+
+  #staticBackdrop1{
+    background-color: var(--md_theme_dark_surfaceVariant);
+    width: 40%;
+    position: absolute;
+    top: 40%;
+    left: 30%;
+    padding: 10px;
+ }
+ /*Alert Dialog Confirm Account*/
+ #staticBackdrop2{
+    background-color: var(--md_theme_dark_surfaceVariant);
+    width: 40%;
+    position: absolute;
+    top: 40%;
+    left: 30%;
+    padding: 10px;
+    visibility: hidden;
+ }
+
+ /*Alert Dialog Exist Account*/
+ #staticBackdrop3{
+    background-color: var(--md_theme_dark_surfaceVariant);
+    width: 40%;
+    position: absolute;
+    top: 40%;
+    left: 30%;
+    padding: 10px;
+    visibility: hidden;
+ }
+
+ @media only screen and (max-width: 600px){
+
+    #staticBackdrop{
+        background-color: var(--md_theme_dark_surfaceVariant);
+        width: 70%;
+        position: absolute;
+        top: 40%;
+        left: 15%;
+        padding: 10px;
+     }
+     #staticBackdrop1{
+        background-color: var(--md_theme_dark_surfaceVariant);
+        width: 70%;
+        position: absolute;
+        top: 40%;
+        left: 15%;
+        padding: 10px;
+     }
+     #staticBackdrop2{
+        background-color: var(--md_theme_dark_surfaceVariant);
+        width: 70%;
+        position: absolute;
+        top: 40%;
+        left: 15%;
+        padding: 10px;
+     }
+     #staticBackdrop3{
+        background-color: var(--md_theme_dark_surfaceVariant);
+        width: 70%;
+        position: absolute;
+        top: 40%;
+        left: 15%;
+        padding: 10px;
+     }
+}
+  
+  
+    

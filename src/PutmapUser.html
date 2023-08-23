@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Mapa</title>
+  <meta name="description" content="Mapa para seleccionar ubicación para NovaTaxi">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel="stylesheet" href="css/putMap.css">
+
+  <meta name="theme-color" content="#fafafa">
+</head>
+<body>
+    <header>
+            <figure>
+                <img src="./img/arrow_back_FILL1_wght400_GRAD0_opsz48.svg" alt="">
+            </figure>
+            <h4>Mantenga presionado en el mapa para seleccionar una ubicación</h4>
+    </header>
+    <main>
+        <div class="option">
+            <button class="gps"><img src="./img/my_location_FILL1_wght400_GRAD0_opsz48.svg" alt=""></button>
+            <button class="select-ubic"><img src="./img/location_on_FILL1_wght400_GRAD0_opsz48.svg" alt="">Seleccionar localización</button>
+        </div>
+    </main>
+
+    <!-- Alert Dialog Ubication desactived-->
+    <!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <p class="modal-title fs-5" id="staticBackdropLabel">Ubicación desactivada</p>
+        </div>
+        <div class="modal-body">
+            <p>Vaya a los ajustes y encienda la ubicación</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Aceptar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Alert Dialog OwmLocation-->
+    <!-- Modal -->
+<div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <p class="modal-title fs-5" id="staticBackdropLabel">Escoger ubicación</p>
+        </div>
+        <div class="modal-body">
+            <p>¿Desea escoger su ubicación actual?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">NO</button>
+          <button type="button" class="btn btn-primary">SI</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+    <script src="js/main.js"></script>
+    <script src="js/bootstrap.js"></script>
+ </body>
+ </html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Crear Cuenta</title>
+  <meta name="description" content="Crear cuenta para NovaTaxi">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel="stylesheet" href="css/newUser.css">
+
+  <meta name="theme-color" content="#fafafa">
+</head>
+<body>
+    <header>
+            <figure>
+                <img src="./img/arrow_back_FILL1_wght400_GRAD0_opsz48.svg" alt="">
+            </figure>
+            <h2>Crear Cuenta</h2>
+    </header>
+    <main>
+        <form action="">
+            <label class="name-photo" for="name">
+                <figure>
+                    <img src="./img/account_circle_FILL1_wght400_GRAD0_opsz48.svg" alt="">
+                </figure>
+                <input type="text" id="name" placeholder="Nombre de Usuario" required autocomplete="name">
+            </label>
+            <label for="email">
+                <input type="email" id="email" placeholder="Correo electrónico" autocomplete="email" required>
+            </label>
+            <label for="number">
+                <p>+53</p>
+                <input type="number" id="number" placeholder="Número de teléfono" required>
+            </label>
+            <label for="password">
+                <input type="password" id="password" placeholder="Contraseña" required>
+            </label>
+            <label for="confirm-password">
+                <input type="password" id="confirm-password" placeholder="Confirme su contraseña" required>
+            </label>
+        </form>
+
+        <div>
+            <button class="cancel" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">CANCELAR</button>
+            <button class="accept" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">ACEPTAR</button>
+        </div>
+
+    </main>
+
+    <!-- Alert Dialog Cancel Account-->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <p class="modal-title fs-5" id="staticBackdropLabel">Cancelar Cuenta</p>
+            </div>
+            <div class="modal-body">
+                <p>¿Está seguro de cancelar estos datos?</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCELAR</button>
+              <button type="button" class="btn btn-primary">ACEPTAR</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Alert Dialog Accept Account-->
+    <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <p class="modal-title fs-5" id="staticBackdropLabel">Crear Cuenta</p>
+            </div>
+            <div class="modal-body">
+                <p>¿Está seguro de guardar estos datos?</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCELAR</button>
+              <button type="button" class="btn btn-primary">ACEPTAR</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Alert Dialog Accept Account-->
+    <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <p class="modal-title fs-5" id="staticBackdropLabel">Confirmar cuenta</p>
+            </div>
+            <div class="modal-body">
+                <p>Le hemos enviado un correo a %s . Por favor confirme su cuenta </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ACEPTAR</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Alert Dialog Exist Email-->
+    <div class="modal fade" id="staticBackdrop3" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <p class="modal-title fs-5" id="staticBackdropLabel">El correo ya existe</p>
+            </div>
+            <div class="modal-body">
+                <p>Ya existe una cuenta creada con ese correo </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ACEPTAR</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    <script src="js/main.js"></script>
+   <script src="js/bootstrap.js"></script>
+</body>
+</html>
