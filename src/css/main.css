@@ -266,3 +266,135 @@ textarea {
   }
 }
 
+/* ==========================================================================
+   Colors and dimens from theme (for use it for example: background-color: var(--bs-light);)
+   ========================================================================== */
+   :root {
+    --bs-primary-rgb: 86, 83, 211 !important;
+    --md_theme_light_primary: #B72301 !important;
+    --md_theme_light_onPrimary: #FFFFFF !important;
+    --md_theme_light_primaryContainer: #FFDAD3 !important;
+    --md_theme_light_onPrimaryContainer: #3D0600 !important;
+    --md_theme_light_secondary: #BE0036 !important;
+    --md_theme_light_onSecondary: #FFFFFF !important;
+    --md_theme_light_secondaryContainer: #FFDADA !important;
+    --md_theme_light_onSecondaryContainer: #40000C !important;
+    --md_theme_light_tertiary: #AE2954 !important;
+    --md_theme_light_onTertiary: #FFFFFF !important;
+    --md_theme_light_tertiaryContainer: #FFD9DF !important;
+    --md_theme_light_onTertiaryContainer: #3F0017 !important;
+    --md_theme_light_error: #BA1A1A !important;
+    --md_theme_light_errorContainer: #FFDAD6 !important;
+    --md_theme_light_onError: #FFFFFF !important;
+    --md_theme_light_onErrorContainer: #410002 !important;
+    --md_theme_light_background: #FFFBFF !important;
+    --md_theme_light_onBackground: #201A19 !important;
+    --md_theme_light_surface: #FFFBFF !important;
+    --md_theme_light_onSurface: #201A19 !important;
+    --md_theme_light_surfaceVariant: #F5DDD8 !important;
+    --md_theme_light_onSurfaceVariant: #534340 !important;
+    --md_theme_light_outline: #85736F !important;
+    --md_theme_light_inverseOnSurface: #FBEEEB !important;
+    --md_theme_light_inverseSurface: #362F2D !important;
+    --md_theme_light_inversePrimary: #FFB4A4 !important;
+    --text_s: 14px !important;
+    --text_m: 16px !important;
+    --text_h: 18px !important;
+    --md_theme_dark_primary: #FF6747 !important;
+    --md_theme_dark_onPrimary: #630E00 !important;
+    --md_theme_dark_primaryContainer: #8C1800 !important;
+    --md_theme_dark_onPrimaryContainer: #FFDAD3 !important;
+    --md_theme_dark_secondary: #FFB3B6 !important;
+    --md_theme_dark_onSecondary: #680019 !important;
+    --md_theme_dark_secondaryContainer: #920027 !important;
+    --md_theme_dark_onSecondaryContainer: #FFDADA !important;
+    --md_theme_dark_tertiary: #FD6A86 !important;
+    --md_theme_dark_onTertiary: #660029 !important;
+    --md_theme_dark_tertiaryContainer: #8E093D !important;
+    --md_theme_dark_onTertiaryContainer: #FFD9DF !important;
+    --md_theme_dark_error: #FF8E80 !important;
+    --md_theme_dark_errorContainer: #93000A !important;
+    --md_theme_dark_onError: #690005 !important;
+    --md_theme_dark_onErrorContainer: #FFDAD6 !important;
+    --md_theme_dark_background: #201A19 !important;
+    --md_theme_dark_onBackground: #EDE0DD !important;
+    --md_theme_dark_surface: #201A19 !important;
+    --md_theme_dark_onSurface: #EDE0DD !important;
+    --md_theme_dark_surfaceVariant: #534340 !important;
+    --md_theme_dark_onSurfaceVariant: #D8C2BD !important;
+    --md_theme_dark_outline: #A08C88 !important;
+    --md_theme_dark_inverseOnSurface: #201A19 !important;
+    --md_theme_dark_inverseSurface: #EDE0DD !important;
+    --md_theme_dark_inversePrimary: #B72301 !important;
+  }
+  
+  /* ==========================================================================
+     Your code for devices with over than 600px (PC)
+     ========================================================================== */
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+  
+  /*to use the unit of measure rem*/
+  html {
+    font-size: 62.5%; 
+  }
+  
+  body {
+    background-color: var(--md_theme_light_primary) !important;
+  }
+  
+  .main {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .icon{
+    margin-bottom: 5rem;
+  }
+  .icon img{
+    max-width: 100%;
+    height: auto;
+  }
+  .btn-entrar{
+    display:flex;
+    flex-direction: column;
+    margin-bottom: 5rem;
+  }
+  .btn-entrar a{
+    text-decoration: none;
+    font-size: var(--text_h);
+    color: var(--md_theme_light_onPrimary);
+    border: 1px solid var(--md_theme_light_onPrimary);
+    border-radius: 2rem;
+    padding: 0.5rem 6.8rem;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 1rem;
+  }
+  .btn-entrar a:hover{
+    color: var(--md_theme_dark_primary);
+    border: 1px solid var(--md_theme_dark_primary);
+  }
+  /* ==========================================================================
+     End of your code for devices with over than 600px (PC)
+     ========================================================================== */
+  
+  /* ==========================================================================
+     Your code for devices with less than 600px (Mobile)
+     ========================================================================== */
+  @media only screen and (max-width: 600px) {
+    .icon{
+      width: 80%;
+    }
+  }
+  
+  /* ==========================================================================
+     End of your code for devices with less than 600px (Mobile)
+     ========================================================================== */
+  
