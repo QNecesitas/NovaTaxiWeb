@@ -90,9 +90,10 @@
   }
   
   body{
-     background-color: var(--md_theme_dark_background) !important;
+     background-color: var(--md_theme_light_onSurface) !important;
      height: 100vh;
-       }
+    }
+
   header{
     background-color: var(--md_theme_dark_primary);
     color: var(--md_theme_dark_onPrimary);
@@ -121,14 +122,25 @@
     width: 85%;
     margin-left: 8px;
   }
+
   main{
+    position: relative;
     padding: 1rem;
-    height: 90%;
-    background-image:url('buildings.png');
+    background-image:url('buildings.png') !important;
     background-repeat: no-repeat;
     background-position: bottom;
-    background-size: 260% 38%;
+    background-size: 240% 38%;
   }
+ /* main::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0,0,0.1);
+    z-index: -1;
+  }*/
   form label{
     display: flex;
     align-items: center;
@@ -150,7 +162,7 @@
     border-bottom: 1px solid var(--md_theme_dark_onBackground);
     background-color:transparent;
     width: 100%;
-    color: var(--md_theme_dark_onBackground);
+    color: var(--md_theme_light_onError);
     font-size: var(--text_h);
     padding: 0.2rem;
     margin-bottom: 0.6;
@@ -161,28 +173,32 @@
     margin-top: 0.8rem;
     margin-right: 0.5rem;
   }
-
   input:focus{
     border: none;
     border-bottom: 1px solid var(--md_theme_dark_primary);
     outline: none;
   }
-  main div{
-    position: absolute;
-    bottom: 10px;
-    width: 95%;
+
+  .container-btn{
     display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 5%;
-}
-.btn-container{
-   display: flex;
-   justify-content: space-between;
-}
-.cancel{
-   background-color: var(--md_theme_dark_surface);
-   color: var(--md_theme_dark_onSurface);
+    justify-content: space-between;
+  }
+  .btn-cancelar{
+    background-color: var(--md_theme_dark_surface);
+    color: var(--md_theme_dark_onSurface);
+    border-radius: 10px;
+    border: 1px solid var(--md_theme_dark_onSurface);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: var(--text_s);
+    padding-top: 0.2rem;
+    width: 30%;
+    height: 2.5rem;
+  }
+
+  .accept{
+   background-color: var(--md_theme_dark_primary);
+   color: var(--md_theme_dark_onPrimary);
    border-radius: 10px;
    border: 1px solid var(--md_theme_dark_onSurface);
    font-family: Arial, Helvetica, sans-serif;
@@ -191,21 +207,16 @@
    padding-top: 0.2rem;
    width: 30%;
    height: 2.5rem;
- }
-
- .accept{
-  background-color: var(--md_theme_dark_primary);
-  color: var(--md_theme_dark_onPrimary);
-  border-radius: 10px;
-  border: 1px solid var(--md_theme_dark_onSurface);
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
-  font-size: var(--text_s);
-  padding-top: 0.2rem;
-  width: 30%;
-  height: 2.5rem;
-  margin-right: 0.5rem;
 }
+/*Btn Sin Maximo de distancia*/
+  .maxDist-btn{
+    margin-top: 2rem;
+    margin-bottom: 7rem;
+  }
+  .maxDist-btn-label{
+    color:var(--md_theme_dark_onSurface); 
+    font-size: var(--text_s);
+  }
   /*Alert Dialog Cancel Account*/
 
   #staticBackdrop{
@@ -311,5 +322,3 @@
      }
 }
   
-  
-    
