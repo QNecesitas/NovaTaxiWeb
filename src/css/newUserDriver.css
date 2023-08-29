@@ -1,0 +1,159 @@
+/*! HTML5 Boilerplate v8.0.0 | MIT License | https://html5boilerplate.com/ */
+
+/* main.css 2.1.0 | MIT License | https://github.com/h5bp/main.css#readme */
+/*
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+
+/* ==========================================================================
+   Colors and dimens from theme (for use it for example: background-color: var(--bs-light);)
+   ========================================================================== */
+   :root {
+    --bs-primary-rgb: 86, 83, 211 !important;
+    --md_theme_light_primary: #B72301 !important;
+    --md_theme_light_onPrimary: #FFFFFF !important;
+    --md_theme_light_primaryContainer: #FFDAD3 !important;
+    --md_theme_light_onPrimaryContainer: #3D0600 !important;
+    --md_theme_light_secondary: #BE0036 !important;
+    --md_theme_light_onSecondary: #FFFFFF !important;
+    --md_theme_light_secondaryContainer: #FFDADA !important;
+    --md_theme_light_onSecondaryContainer: #40000C !important;
+    --md_theme_light_tertiary: #AE2954 !important;
+    --md_theme_light_onTertiary: #FFFFFF !important;
+    --md_theme_light_tertiaryContainer: #FFD9DF !important;
+    --md_theme_light_onTertiaryContainer: #3F0017 !important;
+    --md_theme_light_error: #BA1A1A !important;
+    --md_theme_light_errorContainer: #FFDAD6 !important;
+    --md_theme_light_onError: #FFFFFF !important;
+    --md_theme_light_onErrorContainer: #410002 !important;
+    --md_theme_light_background: #FFFBFF !important;
+    --md_theme_light_onBackground: #201A19 !important;
+    --md_theme_light_surface: #FFFBFF !important;
+    --md_theme_light_onSurface: #201A19 !important;
+    --md_theme_light_surfaceVariant: #F5DDD8 !important;
+    --md_theme_light_onSurfaceVariant: #534340 !important;
+    --md_theme_light_outline: #85736F !important;
+    --md_theme_light_inverseOnSurface: #FBEEEB !important;
+    --md_theme_light_inverseSurface: #362F2D !important;
+    --md_theme_light_inversePrimary: #FFB4A4 !important;
+    --text_s: 14px !important;
+    --text_m: 16px !important;
+    --text_h: 18px !important;
+    --md_theme_dark_primary: #FF6747 !important;
+    --md_theme_dark_onPrimary: #630E00 !important;
+    --md_theme_dark_primaryContainer: #8C1800 !important;
+    --md_theme_dark_onPrimaryContainer: #FFDAD3 !important;
+    --md_theme_dark_secondary: #FFB3B6 !important;
+    --md_theme_dark_onSecondary: #680019 !important;
+    --md_theme_dark_secondaryContainer: #920027 !important;
+    --md_theme_dark_onSecondaryContainer: #FFDADA !important;
+    --md_theme_dark_tertiary: #FD6A86 !important;
+    --md_theme_dark_onTertiary: #660029 !important;
+    --md_theme_dark_tertiaryContainer: #8E093D !important;
+    --md_theme_dark_onTertiaryContainer: #FFD9DF !important;
+    --md_theme_dark_error: #FF8E80 !important;
+    --md_theme_dark_errorContainer: #93000A !important;
+    --md_theme_dark_onError: #690005 !important;
+    --md_theme_dark_onErrorContainer: #FFDAD6 !important;
+    --md_theme_dark_background: #201A19 !important;
+    --md_theme_dark_onBackground: #EDE0DD !important;
+    --md_theme_dark_surface: #201A19 !important;
+    --md_theme_dark_onSurface: #EDE0DD !important;
+    --md_theme_dark_surfaceVariant: #534340 !important;
+    --md_theme_dark_onSurfaceVariant: #D8C2BD !important;
+    --md_theme_dark_outline: #A08C88 !important;
+    --md_theme_dark_inverseOnSurface: #201A19 !important;
+    --md_theme_dark_inverseSurface: #EDE0DD !important;
+    --md_theme_dark_inversePrimary: #B72301 !important;
+  }
+  
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  html {
+    font-size: 62.5%;
+  }
+  
+  main {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--md_theme_dark_background);
+  }
+  .select-map {
+    position: absolute;
+    width: 80%;
+    top: 5%;
+    left: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+  }
+  
+  .select-map button {
+    background-color: var(--md_theme_dark_errorContainer);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: var(--text_s);
+    color: var(--md_theme_dark_secondary);
+    border: none;
+    border-radius: 20px;
+    width: 40%;
+    padding: 1.8rem 1rem;
+  }
+  .ubication {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.2rem;
+  }
+  
+  .ubication img{
+    width: 2.2rem;
+    height: 2.2rem;
+  }
+  
+  .button-circle {
+    position: absolute;
+    width: 35%;
+    bottom: 5%;
+    right: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .button-circle button {
+    background-color: var(--md_theme_dark_tertiaryContainer);
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    border: none;
+    padding:0.5rem;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .button-circle button img {
+    display: flex;
+    width: 100%;
+    height: 100%;
+  }
+
+  .setting {
+    margin-right: 20%;  
+  }
+
+
+  @media only screen and (max-width: 600px) {
+    .select-map button {
+      width: 70%;
+      padding: 1.8rem 1rem;
+    }
+} 
