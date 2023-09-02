@@ -76,7 +76,7 @@
 }
 
 html {
-
+  font-size: 62.5%;
 }
 
 main {
@@ -106,7 +106,7 @@ main {
   border: none;
   border-radius: 20px;
   width: 40%;
-  padding: 4px;
+  padding: 1.8rem 1rem;
 }
 
 .ubication {
@@ -114,29 +114,44 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 1.2rem;
 }
 
 .ubication img{
-  width: 40px;
-  height: 40px;
+  width: 2.2rem;
+  height: 2.2rem;
 }
-
+/** ghost button CANCELAR**/
+.btn-cancelar{
+  margin-right: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  gap: 1.2rem;
+  visibility: hidden;
+}  
+.btn-cancelar img{
+  width: 2.2rem;
+  height: 2.2rem;
+}
 .destino {
   margin-right: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 1.2rem;
 }
 
 .destino img{
-  width: 40px;
-  height: 40px;
+  width: 2.2rem;
+  height: 2.2rem;
 }
+
 
 
 .button-circle {
   position: absolute;
-  width: 20%;
+  width: 35%;
   bottom: 5%;
   right: 5%;
   display: flex;
@@ -146,11 +161,11 @@ main {
 
 .button-circle button {
   background-color: var(--md_theme_dark_tertiaryContainer);
-  width: 40px;
-  height: 40px;
-  border-radius: 25px;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
   border: none;
-  padding:5px;
+  padding:0.5rem;
   align-items: center;
   justify-content: center;
 }
@@ -160,10 +175,82 @@ main {
   width: 100%;
   height: 100%;
 }
+/**ghost spinner**/
+.spinner{
+  color: var(--md_theme_dark_onErrorContainer);
+  background-color: var(--md_theme_dark_tertiaryContainer);
+  margin-right: 20%;
+  width: 4rem;
+  height:4rem;
+  border-radius: 50%;
+  padding: 0,5rem;display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+}
 
 .setting {
   margin-right: 20%;
 
+}
+/**Taxi cards**/
+.container-card-taxi{
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  position: relative;
+  top: -18rem;
+  visibility: hidden;
+}
+.card-taxi{
+  flex: 0 0 30rem;
+  margin-right: 2rem;
+  margin-left: 1rem;
+  background-color: var(--md_theme_light_onError);
+  display: flex;
+  align-items: center;
+  width: 23%;
+  border-radius: 0.8rem;
+  padding: 0 0.4rem;
+  box-shadow: 0.2rem 0.2rem 1rem  var(--md_theme_dark_background) ;
+}
+.card-taxi-img{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2.3rem 0.8rem;
+  background-color: var(--md_theme_light_secondary);
+  border-radius: 0.5rem;
+}
+.card-taxi-img img{
+  width: 5rem;
+  height: 5rem;
+}
+.container-p{
+  margin-left: 0.6rem;
+
+}
+.card-taxi-p{
+  font-size: var(--text_h);
+  font-family:Arial, Helvetica, sans-serif; 
+  font-weight: 600;
+  margin-bottom: 0;
+}
+.card-taxi-p + .card-taxi-p{
+  margin-top: 0;
+}
+.card-taxi-p span{
+  font-weight: 200;
+}
+.container-a{
+  margin-bottom: 0;
+}
+.card-taxi-a{
+  color: var(--md_theme_dark_secondaryContainer);
+  text-decoration: none;
+  font-size: var(--text_h);
+  font-family:Arial, Helvetica, sans-serif; 
+  font-weight: 600;
 }
 
 /*Alert Dialog Ubication desactivada*/
@@ -208,6 +295,7 @@ main {
   font-weight: bold;
 }
 
+
 /*Alert dialog car details*/
 #staticBackdrop1 {
   background-color: var(--md_theme_dark_surfaceVariant);
@@ -242,6 +330,23 @@ main {
 
 
 @media only screen and (max-width: 600px) {
+  .select-map button {
+    width: 70%;
+    padding: 1.8rem 1rem;
+  }
+  .btn-cancelar{
+  position: absolute; 
+  margin-left: 20%;
+  }
+  .button-circle {
+    width: 50%;
+  }
+  .button-circle button{
+    margin-right: 10%;
+  }
+  .spinner{
+    margin-right: 10%;
+  }
 
   #staticBackdrop {
     background-color: var(--md_theme_dark_surfaceVariant);

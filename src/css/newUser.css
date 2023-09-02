@@ -90,7 +90,7 @@
   }
   
   body{
-     background-color: var(--md_theme_dark_background);
+     background-color: var(--md_theme_dark_background) !important;
      height: 100vh;
        }
   header{
@@ -122,20 +122,21 @@
     margin-left: 8px;
   }
   main{
-    padding: 20px;
+    padding: 1rem;
     height: 90%;
     background-image:url('buildings.png');
     background-repeat: no-repeat;
     background-position: bottom;
-    background-size: 100% 60%;
+    background-size: 260% 38%;
   }
   form label{
     display: flex;
     align-items: center;
     justify-content: start;
-    margin-bottom: 1%;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
     width: 100%;
-    height: 15%;
+    height: 20%;
   }
   form figure{
     width: 48px;
@@ -151,12 +152,16 @@
     width: 100%;
     color: var(--md_theme_dark_onBackground);
     font-size: var(--text_h);
-    padding: 10px;
+    padding: 0.2rem;
+    margin-bottom: 0.6;
   }
   form label p{
     color: var(--md_theme_dark_onBackground);
     font-size: var(--text_h);
+    margin-top: 0.8rem;
+    margin-right: 0.5rem;
   }
+
   input:focus{
     border: none;
     border-bottom: 1px solid var(--md_theme_dark_primary);
@@ -171,31 +176,36 @@
     justify-content: center;
     height: 5%;
 }
-  .cancel{
-   margin-right: 50%;
-   margin-left: 5%;
+.btn-container{
+   display: flex;
+   justify-content: space-between;
+}
+.cancel{
    background-color: var(--md_theme_dark_surface);
    color: var(--md_theme_dark_onSurface);
    border-radius: 10px;
    border: 1px solid var(--md_theme_dark_onSurface);
-   width: 25%;
-   height: 80%;
    font-family: Arial, Helvetica, sans-serif;
    font-weight: bold;
    font-size: var(--text_s);
-  }
-  .accept{
-    margin-right: 5%;
-    background-color: var(--md_theme_dark_primary);
-   color: var(--md_theme_dark_onPrimary);
-   border-radius: 10px;
-   border: 1px solid var(--md_theme_dark_onSurface);
-   width: 25%;
-   height: 80%;
-   font-family: Arial, Helvetica, sans-serif;
-   font-weight: bold;
-   font-size: var(--text_s);
-  }
+   padding-top: 0.2rem;
+   width: 30%;
+   height: 2.5rem;
+ }
+
+ .accept{
+  background-color: var(--md_theme_dark_primary);
+  color: var(--md_theme_dark_onPrimary);
+  border-radius: 10px;
+  border: 1px solid var(--md_theme_dark_onSurface);
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: var(--text_s);
+  padding-top: 0.2rem;
+  width: 30%;
+  height: 2.5rem;
+  margin-right: 0.5rem;
+}
   /*Alert Dialog Cancel Account*/
 
   #staticBackdrop{

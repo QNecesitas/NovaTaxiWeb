@@ -4,7 +4,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Acerca de Desarrolladores</title>
+  <title>Admin</title>
   <meta name="description" content="Descripci&oacute;n acerca de los dearrolladores de la aplicación NovaTaxi">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -17,7 +17,8 @@
   <link rel="apple-touch-icon" href="icon.png">
   <!-- Place favicon.ico in the root directory -->
 
-  <link rel="stylesheet" href="css/about_dev.css">
+  <link rel="stylesheet" href="./css/admin.css">
+  <link rel="stylesheet" href="./css/bootstrap.css">
 
   <meta name="theme-color" content="#fafafa">
 </head>
@@ -27,10 +28,78 @@
 
 
   <!-- Add your site or application content here -->
-  <p class="prueba">Hello world! This is HTML5 Boilerplate.</p>
 
 
+  <header>
+    <figure>
+        <img src="./img/arrow_back_FILL1_wght400_GRAD0_opsz48.svg" alt="">
+    </figure>
+    <h2 class="h2-header">Administraci&oacute;n</h2>
+    <button class="money-header"> <img src="./img/price_change_white_24dp.svg" alt=""> </button>
+    <button id="btn-search"> <img src="./img/search_white_24dp.svg" alt=""></button>
+    <form id="form-search" action="">
+      <input type="search" placeholder="Buscar">
+    </form>
+    <button id="btn-cerrar" ><img src="./img/clear_black_24dp.svg" alt=""></button>
+  </header>
 
+    <!--codigo prueba html 2secciones-->
+  <main>
+    <div class="container-btns">
+        <button id="boton-conductores">Conductores</button>
+        <button id="boton-viajes">Viajes</button>
+    </div>
+
+    <div id="seccion-conductores" class="seccion container-card-viaje">
+      <div class="card-taxi">
+        <div class="card-taxi-img" >
+          <img src="./img/vector_car.png" alt="">
+        </div>
+        <div>
+          <div class="container-p">
+            <p class="card-taxi-p">Precio del viaje: <span>Cargando</span></p>
+            <p class="card-taxi-p">Distancia: <span>Cargando</span></p>
+          </div>
+          <div class="container-a">
+           <a class="card-taxi-a" href="#">Ver ruta</a>
+           <a class="card-taxi-a" href="#">Hacer ruta</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="./img/more_vert_white_24dp.svg" alt="">
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </div>
+      </div>
+  
+    </div>
+
+    <div id="seccion-viajes" class="seccion">
+      <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              Accordion Item #1
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+<script src="./js/admin.js"></script>
+<script src="./js/bootstrap.js"></script>
 </body>
 
 </html>

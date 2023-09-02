@@ -46,7 +46,7 @@
     --md_theme_dark_primary:#FF6747 !important;
     --md_theme_dark_onPrimary:#630E00 !important;
     --md_theme_dark_primaryContainer:#8C1800 !important;
-    --md_theme_dark_onPrimaryContainer:#FFDAD3 !important; 
+    --md_theme_dark_onPrimaryContainer:#FFDAD3 !important;
     --md_theme_dark_secondary:#FFB3B6 !important;
     --md_theme_dark_onSecondary:#680019 !important;
     --md_theme_dark_secondaryContainer:#920027 !important;
@@ -70,11 +70,11 @@
     --md_theme_dark_inverseSurface:#EDE0DD !important;
     --md_theme_dark_inversePrimary:#B72301 !important;
   }
-  
-  
-  
-  
-  
+
+
+
+
+
   /* ==========================================================================
      Your code for devices with over than 600px (PC)
      ========================================================================== */
@@ -82,17 +82,18 @@
      box-sizing: border-box;
      padding: 0;
      margin: 0;
-  }   
-  
+  }
+
   html {
      font-size: 62,5%;
-  
+
   }
-  
+
   body{
-     background-color: var(--md_theme_dark_background);
+     background-color: var(--md_theme_light_onSurface) !important;
      height: 100vh;
-       }
+    }
+
   header{
     background-color: var(--md_theme_dark_primary);
     color: var(--md_theme_dark_onPrimary);
@@ -101,7 +102,7 @@
     align-items: center;
     justify-content: start;
     height: 10%;
-    
+
   }
   header figure{
     display: flex;
@@ -121,21 +122,33 @@
     width: 85%;
     margin-left: 8px;
   }
+
   main{
-    padding: 20px;
-    height: 90%;
-    background-image:url('buildings.png');
+    position: relative;
+    padding: 1rem;
+    background-image:url('buildings.png') !important;
     background-repeat: no-repeat;
     background-position: bottom;
-    background-size: 100% 60%;
+    background-size: 240% 38%;
   }
+ /* main::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0,0,0.1);
+    z-index: -1;
+  }*/
   form label{
     display: flex;
     align-items: center;
     justify-content: start;
-    margin-bottom: 1%;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
     width: 100%;
-    height: 15%;
+    height: 20%;
   }
   form figure{
     width: 48px;
@@ -149,52 +162,60 @@
     border-bottom: 1px solid var(--md_theme_dark_onBackground);
     background-color:transparent;
     width: 100%;
-    color: var(--md_theme_dark_onBackground);
+    color: var(--md_theme_light_onError);
     font-size: var(--text_h);
-    padding: 10px;
+    padding: 0.2rem;
+    margin-bottom: 0.6;
   }
   form label p{
     color: var(--md_theme_dark_onBackground);
     font-size: var(--text_h);
+    margin-top: 0.8rem;
+    margin-right: 0.5rem;
   }
   input:focus{
     border: none;
     border-bottom: 1px solid var(--md_theme_dark_primary);
     outline: none;
   }
-  main div{
-    position: absolute;
-    bottom: 10px;
-    width: 95%;
+
+  .container-btn{
     display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 5%;
-}
-  .cancel{
-   margin-right: 50%;
-   margin-left: 5%;
-   background-color: var(--md_theme_dark_surface);
-   color: var(--md_theme_dark_onSurface);
-   border-radius: 10px;
-   border: 1px solid var(--md_theme_dark_onSurface);
-   width: 25%;
-   height: 80%;
-   font-family: Arial, Helvetica, sans-serif;
-   font-weight: bold;
-   font-size: var(--text_s);
+    justify-content: space-between;
   }
+  .btn-cancelar{
+    background-color: var(--md_theme_dark_surface);
+    color: var(--md_theme_dark_onSurface);
+    border-radius: 10px;
+    border: 1px solid var(--md_theme_dark_onSurface);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: var(--text_s);
+    padding-top: 0.2rem;
+    width: 30%;
+    height: 2.5rem;
+  }
+
   .accept{
-    margin-right: 5%;
-    background-color: var(--md_theme_dark_primary);
+   background-color: var(--md_theme_dark_primary);
    color: var(--md_theme_dark_onPrimary);
    border-radius: 10px;
    border: 1px solid var(--md_theme_dark_onSurface);
-   width: 25%;
-   height: 80%;
    font-family: Arial, Helvetica, sans-serif;
    font-weight: bold;
    font-size: var(--text_s);
+   padding-top: 0.2rem;
+   width: 30%;
+   height: 2.5rem;
+}
+/*Btn Sin Maximo de distancia*/
+  .maxDist-btn{
+    margin-top: 2rem;
+    margin-bottom: 7rem;
+  }
+  .maxDist-btn-label{
+    color:var(--md_theme_dark_onSurface);
+    font-size: var(--text_s);
   }
   /*Alert Dialog Cancel Account*/
 
@@ -300,6 +321,3 @@
         padding: 10px;
      }
 }
-  
-  
-    

@@ -16,6 +16,7 @@
   <!-- Place favicon.ico in the root directory -->
 
   <link rel="stylesheet" href="css/maphoneUser.css">
+  <link rel="stylesheet" href="./css/bootstrap.css">
   <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
 
   <meta name="theme-color" content="#fafafa">
@@ -26,9 +27,68 @@
         <div id="map"></div>
         <div class="select-map">
             <button class="ubication"><img src="./img/add_location_FILL1_wght400_GRAD0_opsz48.svg" alt=""> Ubicación</button>
+            <!-- ghost button CANCELAR-->
+            <button class="btn-cancelar"><img src="./img/cancel_black_24dp.svg" alt=""> Cancelar espera</button>
             <button class="destino"><img src="./img/location_on_FILL1_wght400_GRAD0_opsz48.svg" alt=""> Destino</button>
         </div>
+
+        <!--card scroll horizontal-->
+       <div class="container-card-taxi"> 
+        <div class="card-taxi">
+          <div class="card-taxi-img" >
+            <img src="./img/vector_car.png" alt="">
+          </div>
+          <div>
+            <div class="container-p">
+              <p class="card-taxi-p">Veh&iacute;culo: <span>Auto b&aacute;sico</span></p>
+              <p class="card-taxi-p">Precio: <span>124 CUP</span></p>
+            </div>
+            <div class="container-a">
+             <a class="card-taxi-a" href="#">M&aacute;s detalles |</a>
+             <a class="card-taxi-a" href="#">Pedir taxi</a>
+            </div>
+          </div>
+        </div>
+        <div class="card-taxi">
+          <div class="card-taxi-img" >
+            <img src="./img/vector_car.png" alt="">
+          </div>
+          <div>
+            <div class="container-p">
+              <p class="card-taxi-p">Veh&iacute;culo: <span>Auto b&aacute;sico</span></p>
+              <p class="card-taxi-p">Precio: <span>124 CUP</span></p>
+            </div>
+            <div class="container-a">
+             <a class="card-taxi-a" href="#">M&aacute;s detalles |</a>
+             <a class="card-taxi-a" href="#">Pedir taxi</a>
+            </div>
+          </div>
+        </div>
+        <div class="card-taxi">
+          <div class="card-taxi-img" >
+            <img src="./img/vector_car.png" alt="">
+          </div>
+          <div>
+            <div class="container-p">
+              <p class="card-taxi-p">Veh&iacute;culo: <span>Auto b&aacute;sico</span></p>
+              <p class="card-taxi-p">Precio: <span>124 CUP</span></p>
+            </div>
+            <div class="container-a">
+             <a class="card-taxi-a" href="#">M&aacute;s detalles |</a>
+             <a class="card-taxi-a" href="#">Pedir taxi</a>
+            </div>
+          </div>
+        </div>
+      </div> 
+
         <div class=" button-circle">
+
+          <!--ghost spinner-->
+          <div class="text-center spinner">
+            <div class="spinner-border" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </div>
             <button class="setting"><img src="./img/settings_FILL1_wght400_GRAD0_opsz48.svg" alt=""></button>
             <button class="gps"><img src="./img/my_location_FILL1_wght400_GRAD0_opsz48.svg" alt=""></button>
         </div>
