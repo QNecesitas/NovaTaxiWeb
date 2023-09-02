@@ -18,8 +18,8 @@ export default class AuxiliaryDataSourceNetwork {
         if (json === "Success") {
           observerState("SUCCESS");
         } else {
-          observerState("ERROR");
           observerResponse(json);
+          observerState("ERROR");
         }
       } else {
         observerState("ERROR");

@@ -10,7 +10,6 @@ export default class ViewModelLoginUser {
 
 
   getIsValidAccount(stateObserve, responseObserver,email, password,) {
-    stateObserve("LOADING");
     this.userDataSource.getUserExist(stateObserve,responseObserver,email,password);
   }
 

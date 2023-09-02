@@ -10,7 +10,7 @@ export default class ViewModelLoginDriver {
 
 
   getIsValidAccount(stateObserve, responseObserver,email, password,) {
-    this.driverDataSource.getUserExist(stateObserve,responseObserver,email,password);
+    this.driverDataSource.getDriverExist(stateObserve,responseObserver,email,password);
   }
 
 

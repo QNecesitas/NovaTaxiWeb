@@ -1,7 +1,12 @@
-import AuxiliaryDataSourceNetwork from "../network/AuxiliaryDataSourceNetwork";
-import DriverDataSourceNetwork from "../network/DriverDataSourceNetwork";
-import PricesDataSourceNetwork from "../network/PricesDataSourceNetwork";
-import TripsDataSourceNetwork from "../network/TripsDataSourceNetwork";
+import AuxiliaryDataSourceNetwork from "../network/AuxiliaryDataSourceNetwork.js";
+import DriverDataSourceNetwork from "../network/DriverDataSourceNetwork.js";
+import PricesDataSourceNetwork from "../network/PricesDataSourceNetwork.js";
+import TripsDataSourceNetwork from "../network/TripsDataSourceNetwork.js";
+import Point from "../model/Point.js";
+import Vehicle from "../model/Vehicle.js";
+import Prices from "../model/Prices.js";
+import UserAccountShared from "../auxiliary/UserAccountShared.js";
+import UserAccountShared from "../auxiliary/UserAccountShared";
 
 export default class ViewModelMapHomeUser {
 
@@ -73,5 +78,163 @@ export default class ViewModelMapHomeUser {
     this.longitudeOrigin = long;
   }
 
+  setLatitudeDestiny(lat){
+    this.latitudeDestiny = lat;
+  }
+
+  setLongitudeDestiny(long){
+    this.longitudeDestiny = long;
+  }
+
+  setPointOrigin(pointAnnotation){
+    this.pointOrigin = pointAnnotation;
+  }
+
+  setPointDestiny(pointAnnotation){
+    this.pointDestiny = pointAnnotation;
+  }
+
+  setIsNecessaryCamera(boolean){
+    this.isNecessaryCamera = boolean;
+  }
+
+  setLatitudeGPS(latitude){
+    this.latitudeGPS = latitude;
+  }
+
+  setLongitudeGPS(longitude){
+    this.longitudeGPS = longitude;
+  }
+
+
+  //Coroutine
+  async startMainCoroutine(stateObserverDriver, responseObserverDriver, stateObserverTrip, responseObserverTrip){
+    while (true){
+      await this.getDriversAll(stateObserverDriver, responseObserverDriver);
+      await new Promise(resolve => setTimeout(resolve, 12000));
+      await this.getTripState(stateObserverTrip, responseObserverTrip);
+    }
+  }
+
+
+
+
+  //Choice car
+  getPrices(distance, stateObserver, responseObserver){
+    this.pricesDataSource.getPricesInformation(stateObserver, responseObserver, 1);
+  }
+
+  makeVehiclesList(prices, distance){
+    this.listVehicles = [];
+
+    //Simple car
+    this.listVehicles.push(
+      Vehicle(
+        "Auto básico",
+        parseInt(prices.priceNormalCar * distance),
+        4,
+        "Vehículo sencillo con alrededor de 4 capacidades, ideal para obtener mejores precios"
+      )
+    );
+
+    //Comfort
+    this.listVehicles.push(
+      Vehicle(
+        "Auto de confort",
+        parseInt(prices.priceComfortCar * distance),
+        4,
+        "Vehículo muy cómodo con alrededor de 4 capacidades y aire acondicionado"
+      )
+    );
+
+    //Familiar
+    this.listVehicles.push(
+      Vehicle(
+        "Auto familiar",
+        parseInt(prices.priceFamiliarCar * distance),
+        8,
+        "Vehículo cómodo con alrededor de 8 capacidades, ideal para el viaje en familia"
+      )
+    );
+
+    //Tricycle
+    this.listVehicles.push(
+      Vehicle(
+        "Triciclo",
+        parseInt(prices.priceTricycle * distance),
+        2,
+        "Vehículo triciclo con alrededor de 2 capacidades, ideal para viajes cortos"
+      )
+    );
+
+    //Bicitaxi
+    this.listVehicles.push(
+      Vehicle(
+        "Bicitaxi",
+        parseInt(prices.priceBiciTaxi * distance),
+        2,
+        "Vehículo con solo 2 capacidades, ideal para viajes cortos y cómodos"
+      )
+    );
+
+    //Motorcycle
+    this.listVehicles.push(
+      Vehicle(
+        "Motor",
+        parseInt(prices.priceMotorcycle * distance),
+        1,
+        "Vehículo con solo 1 capacidad, ideal para viajes rápidos y sin mucho equipaje"
+      )
+    );
+
+
+  }
+
+  getRouteDistance(){
+    <!--TODO-->
+  }
+
+  addTrip(stateObserver, prices, phone, typeCar){
+    this.tripsDataSource.addTrip(
+      stateObserver,
+      "no",
+      UserAccountShared.getUserEmail(),
+      parseInt(prices),
+      this.lastDistance,
+      this.makeDate(),
+      this.latitudeDestiny,
+      this.longitudeDestiny,
+      this.latitudeOrigin,
+      this.longitudeOrigin,
+      phone,
+      typeCar
+    )
+  }
+
+  makeDate(){
+    let allDate;
+    const calendar = new Date();
+    const options = {day: '2-digit', month: '2-digit', year: '2-digit', hour: 'numeric', minute: 'numeric', hour12: true};
+    allDate = calendar.toLocaleString(undefined, options);
+    return allDate;
+  }
+
+  cancelTimeAwait(stateObserver){
+    if(UserAccountShared.getUserEmail() !== null){
+      this.tripsDataSource.deleteTrip(stateObserver, UserAccountShared.getUserEmail());
+    }
+  }
+
+  rateTaxi(stateObserver, rate){
+    this.driverDataSource.rateDriver(stateObserver, rate, UserAccountShared.getLastDriver());
+  }
+
+  getTripState(stateObserver, responseObserver){
+    this.tripsDataSource.fetchStateTrip(stateObserver,responseObserver, UserAccountShared.getUserEmail());
+  }
+
+  getAppVersion(stateObserver, responseObserver){
+    this.auxiliaryDataSource.getVersion(stateObserver, responseObserver);
+  }
 
 }

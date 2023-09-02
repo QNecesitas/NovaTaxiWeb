@@ -163,7 +163,7 @@ form label {
 
 }
 
-form input[type="email"], form input[type="password"], form textarea {
+form input[type="text"], form input[type="password"], form textarea {
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;
@@ -175,18 +175,18 @@ form input[type="email"], form input[type="password"], form textarea {
   font-size: var(--text_m);
 }
 
-form input[type="email"]::placeholder, form input[type="password"]::placeholder, form textarea::placeholder {
+form input[type="text"]::placeholder, form input[type="password"]::placeholder, form textarea::placeholder {
   color: var(--md_theme_dark_onBackground);
 }
 
-form input[type="email"]:focus, form input[type="password"]:focus, form textarea:focus {
+form input[type="text"]:focus, form input[type="password"]:focus, form textarea:focus {
   outline: none;
   color: var(--md_theme_dark_onBackground);
   border-color: var(--md_theme_dark_primary);
   border-radius: 3px;
 }
 
-.modal-body input[type="email"],.modal-body textarea {
+.modal-body input[type="text"],.modal-body textarea {
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;
@@ -300,7 +300,7 @@ form button {
   width: 80%;
 }
 
-.modal-body input[type="email"], .modal-body textarea {
+.modal-body input[type="text"], .modal-body textarea {
   margin-left: 12px;
   width: 100%;
   padding: 10px;
@@ -313,11 +313,11 @@ form button {
   font-size: var(--text_m);
 }
 
-.modal-body input[type="email"]::placeholder, .modal-body textarea::placeholder {
+.modal-body input[type="text"]::placeholder, .modal-body textarea::placeholder {
   color: var(--md_theme_dark_onBackground);
 }
 
-.modal-body input[type="email"]:focus, .modal-body textarea:focus {
+.modal-body input[type="text"]:focus, .modal-body textarea:focus {
   outline: none;
   color: var(--md_theme_dark_onBackground);
   border-color: var(--md_theme_dark_primary);

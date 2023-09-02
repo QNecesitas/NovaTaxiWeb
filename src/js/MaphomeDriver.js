@@ -1,7 +1,7 @@
 import UserAccountShared from './auxiliary/UserAccountShared.js';
 
 
-export default class LoginDriverActivity {
+export default class MaphomeDriver {
 
   constructor() {
 

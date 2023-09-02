@@ -17,14 +17,15 @@ export default class LoginUserActivity{
   constructor(){
 
     //Listeners
-
     document.getElementById("tvForgotPasswClick").onclick = () => {
       this.clickRecover();
     };
 
-    document.getElementById("btnLogIn").onclick = () => {
+    //Listener for btn submit in a form
+    document.getElementById("formLogin").addEventListener('submit', (event) => {
+      event.preventDefault(); //Its for default
       this.clickIntro();
-    };
+    });
 
 
     //Observers
@@ -79,7 +80,6 @@ export default class LoginUserActivity{
           break;
         case "ERROR":
           document.getElementById("progress").style.visibility = "hidden";
-          alert("Se ha producido un error. Compruebe su conexión e intente nuevamente");
           break;
       }
     };
@@ -107,7 +107,7 @@ export default class LoginUserActivity{
         this.showAlertDialogNotConfirmed();
         break;
       case "Aceptado":
-        UserAccountShared.saveUserInfo(emailToSend);
+        this.viewModelLogin.saveUserInfo(this.emailToSend);
         window.open("MaphomeUser.html","_self");
         break;
       case "Bloqueado":
@@ -128,7 +128,7 @@ export default class LoginUserActivity{
 
   liRecoverPassword() {
 
-    document.getElementById("li_recover_accept").onclick = function () {
+    document.getElementById("li_recover_accept").onclick = () => {
       if(document.getElementById("emailRecover").value.length > 0) {
         this.showAlertDialogConfirmEmail(document.getElementById("emailRecover").value)
       }
@@ -141,7 +141,9 @@ export default class LoginUserActivity{
 //======================================Alert Dialogs
   showAlertDialogConfirmEmail(email) {
     let result = confirm("¿Tiene seguridad de enviar su contraseña al correo: "+ email + "?");
-    this.viewModelLogin.sendRecoverPetition(this.stateRecoverObserver,email);
+    if(result) {
+      this.viewModelLogin.sendRecoverPetition(this.stateRecoverObserver, email);
+    }
   }
 
   showAlertDialogEmailSent() {
@@ -149,7 +151,7 @@ export default class LoginUserActivity{
   }
 
   showAlertDialogNotVersion(urlDescarga) {
-    alert("Versión desactualizada. Descargue la nueva versión disponible en: "+ urlDescarga);
+    alert("Versión desactualizada. Descargue la aplicación disponible en: "+ urlDescarga);
   }
 
   showAlertDialogNotConfirmed() {

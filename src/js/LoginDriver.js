@@ -22,9 +22,10 @@ export default class LoginDriverActivity{
       this.clickRecover();
     };
 
-    document.getElementById("btnLogIn").onclick = () => {
+    document.getElementById("formLogin").addEventListener('submit', (event) => {
+      event.preventDefault(); //Its for default
       this.clickIntro();
-    };
+    });
 
 
     //Observers
@@ -32,7 +33,7 @@ export default class LoginDriverActivity{
       this.checkStateAndGo(it);
     };
 
-    this.stateObserver = (it) => {
+    this.stateObserver = (it) =>   {
       switch (it){
         case "LOADING":
           document.getElementById("progress").style.visibility = "visible";
@@ -79,7 +80,6 @@ export default class LoginDriverActivity{
           break;
         case "ERROR":
           document.getElementById("progress").style.visibility = "hidden";
-          alert("Se ha producido un error. Compruebe su conexión e intente nuevamente");
           break;
       }
     };
@@ -107,10 +107,10 @@ export default class LoginDriverActivity{
         this.showAlertDialogNotConfirmed();
         break;
       case "Aceptado":
-        if(emailToSend === "Admin" || emailToSend === "admin"){
+        if(this.emailToSend === "Admin" || this.emailToSend === "admin"){
           window.open("admin.html","_self");
         }else {
-          this.viewModelLogin.saveDriverInfo(emailToSend);
+          this.viewModelLogin.saveDriverInfo(this.emailToSend);
           window.open("MaphomeDriver.html","_self");
         }
         break;
@@ -132,7 +132,7 @@ export default class LoginDriverActivity{
 
   liRecoverPassword() {
 
-    document.getElementById("li_recover_accept").onclick = function () {
+    document.getElementById("li_recover_accept").onclick = () => {
       if(document.getElementById("emailRecover").value.length > 0) {
         this.showAlertDialogConfirmEmail(document.getElementById("emailRecover").value)
       }
@@ -145,7 +145,9 @@ export default class LoginDriverActivity{
 //======================================Alert Dialogs
   showAlertDialogConfirmEmail(email) {
     let result = confirm("¿Tiene seguridad de enviar su contraseña al correo: "+ email + "?");
-    this.viewModelLogin.sendRecoverPetition(this.stateRecoverObserver,email);
+    if(result) {
+      this.viewModelLogin.sendRecoverPetition(this.stateRecoverObserver, email);
+    }
   }
 
   showAlertDialogEmailSent() {
@@ -153,7 +155,7 @@ export default class LoginDriverActivity{
   }
 
   showAlertDialogNotVersion(urlDescarga) {
-    alert("Versión desactualizada. Descargue la nueva versión disponible en: "+ urlDescarga);
+    alert("Versión desactualizada. Descargue la aplicación disponible en: "+ urlDescarga);
   }
 
   showAlertDialogNotConfirmed() {
@@ -169,7 +171,7 @@ export default class LoginDriverActivity{
   }
 
 }
-let loginActivity = new LoginUserActivity();
+let loginActivity = new LoginDriverActivity();
 
 
 
