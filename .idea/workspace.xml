@@ -1,36 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="63ca0d2e-f949-46f3-9471-1cb2000b565d" name="Default" comment="Project starting again for an error">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/img/logo_qnecesitas.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/css/admin.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/css/maphoneDriver.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/img/call_black_24dp.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/img/cancel_black_24dp.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/img/clear_black_24dp.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/img/email_black_24dp.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/img/facebook.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/img/more_vert_white_24dp.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/img/play_arrow_black_24dp.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/img/price_change_white_24dp.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/img/search_white_24dp.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/img/web_black_24dp.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/js/about_dev.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/js/admin.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/js/maphoneDriver.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MaphomeDriver.html" afterPath="$PROJECT_DIR$/src/MaphomeDriver.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MaphomeUser.html" afterPath="$PROJECT_DIR$/src/MaphomeUser.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/about_dev.html" afterPath="$PROJECT_DIR$/src/about_dev.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/admin.html" afterPath="$PROJECT_DIR$/src/admin.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/css/about_dev.css" afterPath="$PROJECT_DIR$/src/css/about_dev.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/css/main.css" afterPath="$PROJECT_DIR$/src/css/main.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/css/maphoneUser.css" afterPath="$PROJECT_DIR$/src/css/maphoneUser.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/css/newDriver.css" afterPath="$PROJECT_DIR$/src/css/newDriver.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/css/newUser.css" afterPath="$PROJECT_DIR$/src/css/newUser.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/index.html" afterPath="$PROJECT_DIR$/src/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/newDriver.html" afterPath="$PROJECT_DIR$/src/newDriver.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/newuser.html" afterPath="$PROJECT_DIR$/src/newuser.html" />
-    </list>
+    <list default="true" id="63ca0d2e-f949-46f3-9471-1cb2000b565d" name="Default" comment="Project starting again for an error" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -46,8 +17,8 @@
       <file leaf-file-name="newDriver.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/css/newDriver.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="546">
-              <caret line="320" column="22" lean-forward="true" selection-start-line="320" selection-start-column="22" selection-end-line="320" selection-end-column="22" />
+            <state relative-caret-position="621">
+              <caret line="323" column="0" lean-forward="true" selection-start-line="323" selection-start-column="0" selection-end-line="323" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -373,7 +344,7 @@
       <workItem from="1693092177157" duration="90000" />
       <workItem from="1693148571716" duration="19109000" />
       <workItem from="1693199069228" duration="6989000" />
-      <workItem from="1693620584400" duration="4964000" />
+      <workItem from="1693620584400" duration="5173000" />
     </task>
     <task id="LOCAL-00001" summary="Project was started">
       <created>1691003060881</created>
@@ -414,7 +385,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="180869000" />
+    <option name="totallyTimeSpent" value="181078000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -872,8 +843,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/css/newDriver.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="320" column="22" lean-forward="true" selection-start-line="320" selection-start-column="22" selection-end-line="320" selection-end-column="22" />
+        <state relative-caret-position="621">
+          <caret line="323" column="0" lean-forward="true" selection-start-line="323" selection-start-column="0" selection-end-line="323" selection-end-column="0" />
           <folding />
         </state>
       </provider>
