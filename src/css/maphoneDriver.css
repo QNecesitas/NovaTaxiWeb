@@ -118,7 +118,74 @@
     width: 2.2rem;
     height: 2.2rem;
   }
-  
+  /**ghost spinner**/
+  .spinner{
+  color: var(--md_theme_dark_onErrorContainer);
+  position: relative;
+  bottom: -50%;
+  visibility: hidden;
+}
+ /*card viaje*/
+ .container-card-viaje{
+    height: 35rem;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    position: relative;
+    top: 40%;
+    visibility: hidden;
+  }
+ .card-taxi{
+  margin-bottom: 1rem;
+  background-color: var(--md_theme_light_inverseSurface);
+  display: flex;
+  align-items: center;
+  width: 29%;
+  padding: 0 0.4rem;
+
+}
+.card-taxi-img{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2.3rem 0.8rem;
+  border-radius: 0.5rem;
+}
+.card-taxi-img img{
+  width: 5rem;
+  height: 5rem;
+}
+.container-p{
+  margin-left: 0.6rem;
+
+}
+.card-taxi-p{
+  font-size: var(--text_s);
+  font-family:Arial, Helvetica, sans-serif; 
+  font-weight: 600;
+  margin-bottom: 0;
+  color: var(--md_theme_dark_inverseSurface);
+}
+.card-taxi-p + .card-taxi-p{
+  margin-top: 0;
+}
+.card-taxi-p span{
+  font-weight: 200;
+}
+.container-a{
+  margin-bottom: 0;
+  margin-left: 10rem;
+
+}
+.card-taxi-a{
+  color: var(--md_theme_dark_error);
+  text-decoration: none;
+  font-size: var(--text_s);
+  font-family:Arial, Helvetica, sans-serif; 
+  font-weight: 600;
+  margin-left: 1.5rem;
+}
+
+
   .button-circle {
     position: absolute;
     width: 35%;
@@ -155,5 +222,8 @@
     .select-map button {
       width: 70%;
       padding: 1.8rem 1rem;
+    }
+    .card-taxi{
+      width: 100%;
     }
 } 

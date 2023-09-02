@@ -1,9 +1,10 @@
-<!DOCTYPE html>
-<html lang="es">
+<!doctype html>
+<html class="no-js" lang="">
+
 <head>
   <meta charset="utf-8">
-  <title>MapHome</title>
-  <meta name="description" content="Mapa principal de NovaTaxi">
+  <title>maphoneDriver</title>
+  <meta name="description" content="Descripci&oacute;n acerca de los dearrolladores de la aplicación NovaTaxi">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <meta property="og:title" content="">
@@ -15,81 +16,167 @@
   <link rel="apple-touch-icon" href="icon.png">
   <!-- Place favicon.ico in the root directory -->
 
-  <link rel="stylesheet" href="css/maphoneUser.css">
+  <link rel="stylesheet" href="css/maphoneDriver.css">
+  <link rel="stylesheet" href="./css/bootstrap.css">
 
   <meta name="theme-color" content="#fafafa">
 </head>
+
 <body>
 
-    <main>
-        <div class="select-map">
-            <button class="ubication"><img src="./img/add_location_FILL1_wght400_GRAD0_opsz48.svg" alt=""> Ubicación</button>
-            <button class="destino"><img src="./img/location_on_FILL1_wght400_GRAD0_opsz48.svg" alt=""> Destino</button>
+  <!-- Add your site or application content here -->
+  <main>
+    <div id="map"></div>
+    <div class="select-map">
+        <button class="ubication"><img src="./img/play_arrow_black_24dp.svg" alt="">Compartir ubicaci&oacute;n</button>
+    </div>
+    <!--ghost spinner-->
+    <div class="text-center spinner">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+    
+    <!--TODO change card icons-->
+    <!--Card viaje-->
+    <div class="container-card-viaje">
+    <div class="card-taxi">
+      <div class="card-taxi-img" >
+        <img src="./img/vector_car.png" alt="">
+      </div>
+      <div>
+        <div class="container-p">
+          <p class="card-taxi-p">Precio del viaje: <span>Cargando</span></p>
+          <p class="card-taxi-p">Distancia: <span>Cargando</span></p>
         </div>
-        <div class=" button-circle">
-            <button class="setting"><img src="./img/settings_FILL1_wght400_GRAD0_opsz48.svg" alt=""></button>
-            <button class="gps"><img src="./img/my_location_FILL1_wght400_GRAD0_opsz48.svg" alt=""></button>
-        </div>
-    </main>
-
-    <!-- Alert Dialog Ubication desactived-->
-    <!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <p class="modal-title fs-5" id="staticBackdropLabel">Ubicación desactivada</p>
-        </div>
-        <div class="modal-body">
-            <p>Vaya a los ajustes y encienda la ubicación</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Aceptar</button>
+        <div class="container-a">
+         <a class="card-taxi-a" href="#">Ver ruta</a>
+         <a class="card-taxi-a" href="#">Hacer ruta</a>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Alert Dialog Car Details-->
-    <!-- Modal -->
-<div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <p class="modal-title fs-5" id="staticBackdropLabel">Detalles</p>
+    <div class="card-taxi">
+      <div class="card-taxi-img" >
+        <img src="./img/vector_car.png" alt="">
+      </div>
+      <div>
+        <div class="container-p">
+          <p class="card-taxi-p">Precio del viaje: <span>Cargando</span></p>
+          <p class="card-taxi-p">Distancia: <span>Cargando</span></p>
         </div>
-        <div class="modal-body">
-            <p>Detalles en dependencia del carro</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Aceptar</button>
+        <div class="container-a">
+         <a class="card-taxi-a" href="#">Ver ruta</a>
+         <a class="card-taxi-a" href="#">Hacer ruta</a>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Alert Dialog Confirm Car-->
-    <!-- Modal -->
-<div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <p class="modal-title fs-5" id="staticBackdropLabel">Confirmar</p>
+    <div class="card-taxi">
+      <div class="card-taxi-img" >
+        <img src="./img/vector_car.png" alt="">
+      </div>
+      <div>
+        <div class="container-p">
+          <p class="card-taxi-p">Precio del viaje: <span>Cargando</span></p>
+          <p class="card-taxi-p">Distancia: <span>Cargando</span></p>
         </div>
-        <div class="modal-body">
-            <p>¿Está seguro de pedir este taxi?</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-primary">Aceptar</button>
+        <div class="container-a">
+         <a class="card-taxi-a" href="#">Ver ruta</a>
+         <a class="card-taxi-a" href="#">Hacer ruta</a>
         </div>
       </div>
     </div>
-  </div>
 
+    <div class="card-taxi">
+      <div class="card-taxi-img" >
+        <img src="./img/vector_car.png" alt="">
+      </div>
+      <div>
+        <div class="container-p">
+          <p class="card-taxi-p">Precio del viaje: <span>Cargando</span></p>
+          <p class="card-taxi-p">Distancia: <span>Cargando</span></p>
+        </div>
+        <div class="container-a">
+         <a class="card-taxi-a" href="#">Ver ruta</a>
+         <a class="card-taxi-a" href="#">Hacer ruta</a>
+        </div>
+      </div>
+    </div>
 
+    <div class="card-taxi">
+      <div class="card-taxi-img" >
+        <img src="./img/vector_car.png" alt="">
+      </div>
+      <div>
+        <div class="container-p">
+          <p class="card-taxi-p">Precio del viaje: <span>Cargando</span></p>
+          <p class="card-taxi-p">Distancia: <span>Cargando</span></p>
+        </div>
+        <div class="container-a">
+         <a class="card-taxi-a" href="#">Ver ruta</a>
+         <a class="card-taxi-a" href="#">Hacer ruta</a>
+        </div>
+      </div>
+    </div>
 
-    <script src="js/MaphomeUser.js"></script>
-   <script src="js/bootstrap.js"></script>
+    <div class="card-taxi">
+      <div class="card-taxi-img" >
+        <img src="./img/vector_car.png" alt="">
+      </div>
+      <div>
+        <div class="container-p">
+          <p class="card-taxi-p">Precio del viaje: <span>Cargando</span></p>
+          <p class="card-taxi-p">Distancia: <span>Cargando</span></p>
+        </div>
+        <div class="container-a">
+         <a class="card-taxi-a" href="#">Ver ruta</a>
+         <a class="card-taxi-a" href="#">Hacer ruta</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-taxi">
+      <div class="card-taxi-img" >
+        <img src="./img/vector_car.png" alt="">
+      </div>
+      <div>
+        <div class="container-p">
+          <p class="card-taxi-p">Precio del viaje: <span>Cargando</span></p>
+          <p class="card-taxi-p">Distancia: <span>Cargando</span></p>
+        </div>
+        <div class="container-a">
+         <a class="card-taxi-a" href="#">Ver ruta</a>
+         <a class="card-taxi-a" href="#">Hacer ruta</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card-taxi">
+      <div class="card-taxi-img" >
+        <img src="./img/vector_car.png" alt="">
+      </div>
+      <div>
+        <div class="container-p">
+          <p class="card-taxi-p">Precio del viaje: <span>Cargando</span></p>
+          <p class="card-taxi-p">Distancia: <span>Cargando</span></p>
+        </div>
+        <div class="container-a">
+         <a class="card-taxi-a" href="#">Ver ruta</a>
+         <a class="card-taxi-a" href="#">Hacer ruta</a>
+        </div>
+      </div>
+    </div>
+
+    </div>
+    <div class=" button-circle">
+        <button class="setting"><img src="./img/settings_FILL1_wght400_GRAD0_opsz48.svg" alt=""></button>
+        <button class="gps"><img src="./img/my_location_FILL1_wght400_GRAD0_opsz48.svg" alt=""></button>
+    </div>
+</main>
+
+  <script src="./js/bootstrap.js"></script>
+  <script src="./js/maphoneDriver.js"></script>
 </body>
+
 </html>
