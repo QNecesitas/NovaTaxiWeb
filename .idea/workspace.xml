@@ -1,23 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="63ca0d2e-f949-46f3-9471-1cb2000b565d" name="Default" comment="Project starting again for an error">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/img/animation_2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/img/animation_3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/img/animation_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/img/dirver_icon_bicitaxi.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/img/dirver_icon_confort.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/img/dirver_icon_familiar.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/img/dirver_icon_motor.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/img/dirver_icon_simple.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/img/dirver_icon_triciclo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/img/end_route.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/img/ic_launcher.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/img/start_route.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/img/user_icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/img/vector_bicitaxi.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/img/vector_familiar.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/img/vector_tricycle.png" />
+    <list default="true" id="63ca0d2e-f949-46f3-9471-1cb2000b565d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -380,7 +364,7 @@
       <workItem from="1693199069228" duration="6989000" />
       <workItem from="1693620584400" duration="5470000" />
       <workItem from="1693752915314" duration="4289000" />
-      <workItem from="1693793910084" duration="1959000" />
+      <workItem from="1693793910084" duration="1988000" />
     </task>
     <task id="LOCAL-00001" summary="Project was started">
       <created>1691003060881</created>
@@ -417,11 +401,18 @@
       <option name="project" value="LOCAL" />
       <updated>1692809782753</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Important images were added">
+      <created>1693803706666</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1693803706666</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="187623000" />
+    <option name="totallyTimeSpent" value="187652000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -490,7 +481,8 @@
     <MESSAGE value="Login was advanced" />
     <MESSAGE value="Login was finished but not probed" />
     <MESSAGE value="Project starting again for an error" />
-    <option name="LAST_COMMIT_MESSAGE" value="Project starting again for an error" />
+    <MESSAGE value="Important images were added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Important images were added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
