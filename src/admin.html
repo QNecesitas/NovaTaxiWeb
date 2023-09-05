@@ -19,6 +19,13 @@
 
   <link rel="stylesheet" href="./css/admin.css">
   <link rel="stylesheet" href="./css/bootstrap.css">
+  <link rel="stylesheet" href="./css/bootstrap-grid.css">
+  <link rel="stylesheet" href="./css/bootstrap-grid.rtl.css">
+  <link rel="stylesheet" href="./css/bootstrap-reboot.css">
+  <link rel="stylesheet" href="./css/bootstrap-utilities.css">
+  <link rel="stylesheet" href="./css/bootstrap-reboot.rtl.css">
+  <link rel="stylesheet" href="./css/bootstrap-utilities.rtl.css">
+  <link rel="stylesheet" href="./css/bootstrap.rtl.css">
 
   <meta name="theme-color" content="#fafafa">
 </head>
@@ -51,55 +58,66 @@
     </div>
 
     <div id="seccion-conductores" class="seccion container-card-viaje">
-      <div class="card-taxi">
-        <div class="card-taxi-img" >
+      <div class="card-conductores">
+        <div class="card-conductores-img" >
           <img src="./img/vector_car.png" alt="">
         </div>
+
         <div>
           <div class="container-p">
-            <p class="card-taxi-p">Precio del viaje: <span>Cargando</span></p>
-            <p class="card-taxi-p">Distancia: <span>Cargando</span></p>
-          </div>
-          <div class="container-a">
-           <a class="card-taxi-a" href="#">Ver ruta</a>
-           <a class="card-taxi-a" href="#">Hacer ruta</a>
+            <p class="card-conductores-p">Nombre: <span>Leandro</span></p>
+            <p class="card-conductores-p">Tel&eacute;fono: <span>54011887</span></p>
           </div>
         </div>
+
+        <button class="btn-acept">Aceptado</button>
+
         <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <button class="btn-secondary btn-drop" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             <img src="./img/more_vert_white_24dp.svg" alt="">
           </button>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="dropdown-item" href="#">Detalles</a></li>
+            <li><a class="dropdown-item" href="#">Aceptar</a></li>
+            <li><a class="dropdown-item" href="#">Bloquear </a></li>
+            <li><a class="dropdown-item" href="#">Eliminar </a></li>
+            <li><a class="dropdown-item" href="#">Saldo </a></li>
           </ul>
         </div>
       </div>
   
     </div>
 
+    <!--Seccion viajes-->
     <div id="seccion-viajes" class="seccion">
-      <div class="accordion" id="accordionExample">
-        <div class="accordion-item">
-          <h2 class="accordion-header">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              Accordion Item #1
-            </button>
-          </h2>
-          <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-              <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-            </div>
+      
+        <div class=" ">
+          <button id="btn-aux-accordion" ><img src="./img/expand_more_white_24dp.svg" alt=""></button>
+          <div class="ac-p">
+            <p class="card-conductores-p">Fecha: <span>2023-12-21 15:43:21</span></p>
+            <p class="card-conductores-p">Distancia recorrida: <span>0.3km</span></p>
+            <p class="card-conductores-p">Precio total: <span>35.0 CUP</span></p>
           </div>
         </div>
 
-      </div>
+        <div class="ac-body ac-p">
+            <p class="card-conductores-p">Chofer: <span>Nombre del chofer</span></p>
+            <p class="card-conductores-p">Correo Electr&oacute;nico: <span>carlos@gmail.com</span></p>
+            <p class="card-conductores-p">Cliente: <span>Pedro</span></p>
+            <p class="card-conductores-p">Correo Electr&oacute;nico: <span>carlos@gmail.com</span></p>
+            <p class="card-conductores-p">Precio del viaje: <span>35 CUP</span></p>
+            <p class="card-conductores-p">Tiempo de espera: <span>2 min</span></p>
+            <p class="card-conductores-p">Precio de espera: <span>0 CUP</span></p>
+            <p class="card-conductores-p">Chapa: <span>chapa</span></p>
+        </div>
     </div>
   </main>
 
 <script src="./js/admin.js"></script>
 <script src="./js/bootstrap.js"></script>
+<script src="./js/bootstrap.bundle.js"></script>
+<script src="./js/bootstrap.esm.js"></script>
+
 </body>
 
 </html>
