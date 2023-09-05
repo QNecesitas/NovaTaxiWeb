@@ -100,12 +100,25 @@
       align-items: center;
       justify-content: start;  
     }
+    header figure{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    header img{
+      display: flex;
+      align-items: center;
+      margin: 0.7rem 0 0 0.2rem;
+      width: 1.8rem;
+      height: 1.8rem;
+    }
     header h2{
       display: flex;
       align-items: center;
       justify-content: start;
       width: 85%;
-      margin: 1.2rem auto 1.2rem 1rem;
+      margin: 0.7rem auto 0.7rem 0.5rem;
+      font-size: var(--text_h);
     }
     main{
       background-color: var(--md_theme_dark_primary);

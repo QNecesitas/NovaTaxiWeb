@@ -100,8 +100,7 @@
     display: flex;
     align-items: center;
     justify-content: start;
-    height: 10%;
-    
+    padding: 0.6rem 0; 
   }
   header figure{
     display: flex;
@@ -113,6 +112,8 @@
     display: flex;
     align-items: center;
     justify-content: start;
+    width: 2rem;
+    height: 2rem;
   }
   header h4{
     display: flex;
@@ -137,33 +138,32 @@
   }
   .gps{
     background-color: var(--md_theme_dark_tertiaryContainer);
-    width: 50px;
-    height: 50px;
-    border-radius: 25px;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 2.5rem;
     border: none;
-    margin-right: 20%;
-  }
-  .gps img{
+    margin-right: 2.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
   }
-
   .select-ubic{
     background-color: var(--md_theme_dark_errorContainer);
     font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
-    font-size: var(--text_s);
+    font-weight: 600;
+    font-size: var(--text_m);
     color: var(--md_theme_dark_secondary);
     border: none;
     border-radius: 20px;
-    width: 50%;
+    width: 30%;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 0.3rem 0.1rem;
   }
   .select-ubic img{
-    margin-right: 16px;
+    width: 1.6rem;
+    height: 1.6rem;
   }
 
    /*Alert Dialog Ubication desactivada*/
@@ -225,6 +225,9 @@
 
      @media only screen and (max-width: 600px){
 
+      .select-ubic{
+        width:60%;
+      }
         #staticBackdrop{
             background-color: var(--md_theme_dark_surfaceVariant);
             width: 70%;
