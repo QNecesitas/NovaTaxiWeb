@@ -2,17 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="63ca0d2e-f949-46f3-9471-1cb2000b565d" name="Default" comment="Project starting again for an error">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/img/baseline_directions_bike_24.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/img/baseline_drive_eta_24.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/img/incon_mini.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/img/star_gray.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/img/star_light.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MaphomeUser.html" afterPath="$PROJECT_DIR$/src/MaphomeUser.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/css/main.css" afterPath="$PROJECT_DIR$/src/css/main.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/index.html" afterPath="$PROJECT_DIR$/src/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/js/MaphomeUser.js" afterPath="$PROJECT_DIR$/src/js/MaphomeUser.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/js/main.js" afterPath="$PROJECT_DIR$/src/js/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/js/network/UserDataSourceNetwork.js" afterPath="$PROJECT_DIR$/src/js/network/UserDataSourceNetwork.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/js/viewModels/ViewModelLoginUser.js" afterPath="$PROJECT_DIR$/src/js/viewModels/ViewModelLoginUser.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/js/viewModels/ViewModelMapHomeUser.js" afterPath="$PROJECT_DIR$/src/js/viewModels/ViewModelMapHomeUser.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -293,7 +286,7 @@
       <scroll-view-position x="0" y="0" />
     </layout>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="950" />
     <option name="width" value="976" />
     <option name="height" value="1030" />
@@ -325,6 +318,12 @@
               <item name="NovaTaxiWeb" type="b2602c69:ProjectViewProjectNode" />
               <item name="NovaTaxiWeb" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NovaTaxiWeb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NovaTaxiWeb" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="img" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="NovaTaxiWeb" type="b2602c69:ProjectViewProjectNode" />
@@ -446,7 +445,7 @@
       <workItem from="1693199069228" duration="6989000" />
       <workItem from="1693620584400" duration="5173000" />
       <workItem from="1693886793732" duration="1471000" />
-      <workItem from="1693889543001" duration="22388000" />
+      <workItem from="1693889543001" duration="22806000" />
     </task>
     <task id="LOCAL-00001" summary="Project was started">
       <created>1691003060881</created>
@@ -487,7 +486,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="207690000" />
+    <option name="totallyTimeSpent" value="208108000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -499,11 +498,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="950" y="0" width="976" height="1030" extended-state="1" />
-    <editor active="true" />
+    <frame x="-11" y="-11" width="1942" height="1042" extended-state="6" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15702918" sideWeight="0.5061947" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.40587595" sideWeight="0.49380532" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19787799" sideWeight="0.49380532" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297491" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297619" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32971016" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
