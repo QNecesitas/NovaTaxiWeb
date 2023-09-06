@@ -54,7 +54,6 @@ export default class NewUser{
   createAccount(){
     let input= document.getElementById("name").value.trim();
     let word = input.split(" ");
-    console.log(word.length);
     if(document.getElementById("name").value.trim().length >0 && word.length>=3 && document.getElementById("email").value.trim().length>0 && document.getElementById("number").value.trim().length>0 && document.getElementById("password").value.trim().length>0 && document.getElementById("confirm-password").value.trim().length>0 && document.getElementById("password").value == document.getElementById("confirm-password").value){
       let result = confirm("¿Estás seguro de guardar estos datos?");
       if(result){

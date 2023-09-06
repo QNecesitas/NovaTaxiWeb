@@ -16,39 +16,45 @@
   <!-- Place favicon.ico in the root directory -->
 
   <link rel="stylesheet" href="css/settingUser.css">
+  <link rel="stylesheet" href="css/bootstrap.css">
 
   <meta name="theme-color" content="#fafafa">
 </head>
 <body>
     <header>
             <figure>
-                <img src="./img/arrow_back_FILL1_wght400_GRAD0_opsz48.svg" alt="">
+                <img src="./img/arrow_back_FILL1_wght400_GRAD0_opsz48.svg" alt="" id="back">
             </figure>
             <h2>Ajustes</h2>
+            <div class="spinner-border text-danger" role="status" id="progress">
+              <span class="visually-hidden">
+                Cargando ...
+              </span>
+              </div>
     </header>
     <main>
         <div class="edit">
             <p>Editar informacion de usuario</p>
-            <form action="">
+            <form id="formEditAccount" action="">
                 <label class="password" for="password">
-                    <input type="password" id="password" placeholder="Contraseña" >
+                    <input type="password" id="password" placeholder="Contraseña" required>
                 </label>
                 <label for="confirm-password">
-                    <input type="password" id="confirm-password" placeholder="Confirmar contraseña" >
+                    <input type="password" id="confirm-password" placeholder="Confirmar contraseña" required>
                 </label>
                 <label class="phone" for="phone">
-                    <input type="number" id="phone" placeholder="Número de teléfono" >
+                    <input type="number" id="phone" placeholder="Número de teléfono" required>
                 </label>
                 <button type="submit">ACTUALIZAR</button>
             </form>
         </div>
         <div class="information">
             <p class="title">Información</p>
-            <div>
+            <div id="aboutUs">
             <p>Acerca de nosotros</p>
             <img src="./img/arrow_forward_FILL1_wght400_GRAD0_opsz48.svg" alt="">
             </div>
-            <div>
+            <div id="aboutDev">
                 <p>Acerca de los desarrolladores</p>
                 <img src="./img/arrow_forward_FILL1_wght400_GRAD0_opsz48.svg" alt="">
             </div>
@@ -60,7 +66,7 @@
         </div>
         <div class="configuration">
             <p class="title">Configuración de cuenta</p>
-            <div>
+            <div id="signOf">
             <p>Cerrar sesión</p>
             <img src="./img/arrow_forward_FILL1_wght400_GRAD0_opsz48.svg" alt="">
             </div>
@@ -72,63 +78,10 @@
 
         </div>
     </main>
-    <!-- Alert Dialog Actualizar Account-->
-    <!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <p class="modal-title fs-5" id="staticBackdropLabel">Actualizar cuenta</p>
-        </div>
-        <div class="modal-body">
-            <p>¿Estás seguro de actualizar los datos de tu cuenta?</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCELAR</button>
-          <button type="button" class="btn btn-primary">ACEPTAR</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Alert Dialog Close session-->
-    <!-- Modal -->
-<div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <p class="modal-title fs-5" id="staticBackdropLabel">Cerrar sesión</p>
-        </div>
-        <div class="modal-body">
-            <p>¿Estás seguro de cerrar su sesión?</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCELAR</button>
-          <button type="button" class="btn btn-primary">ACEPTAR</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Alert Dialog Delete Account-->
-    <!-- Modal -->
-<div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <p class="modal-title fs-5" id="staticBackdropLabel">Eliminar cuenta </p>
-        </div>
-        <div class="modal-body">
-            <p>¿Estás seguro de eliminar la cuenta?</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCELAR</button>
-          <button type="button" class="btn btn-primary">ACEPTAR</button>
-        </div>
-      </div>
-    </div>
-  </div>
+   
 
 
-    <script src="js/main.js"></script>
     <script src="js/bootstrap.js"></script>
+    <script type="module" src="js/UserSettings.js"></script>
  </body>
  </html>
