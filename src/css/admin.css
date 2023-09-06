@@ -135,7 +135,7 @@
   #btn-cerrar{
     display: none;
   }
-/*codigo prueba html 2secciones*/
+/* html 2secciones*/
 
 .seccion {
     display: none; /* Oculta todas las secciones de forma predeterminada */
@@ -149,58 +149,95 @@
     scroll-behavior: smooth;
     position: relative;
     top: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
- .card-taxi{
+ .card-conductores{
   margin-bottom: 1rem;
   background-color: var(--md_theme_light_inverseSurface);
   display: flex;
   align-items: center;
-  width: 29%;
+  width: 26%;
   padding: 0 0.4rem;
-
+  height: 6rem;
+  border-radius: 0.3rem;
 }
-.card-taxi-img{
+.card-conductores-img{
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 2.3rem 0.8rem;
   border-radius: 0.5rem;
+  background-color: var(--md_theme_light_inversePrimary);
 }
-.card-taxi-img img{
-  width: 5rem;
-  height: 5rem;
+.card-conductores-img img{
+  width: 3rem;
+  height: 3rem;
 }
 .container-p{
   margin-left: 0.6rem;
-
 }
-.card-taxi-p{
+.card-conductores-p{
   font-size: var(--text_s);
   font-family:Arial, Helvetica, sans-serif; 
   font-weight: 600;
   margin-bottom: 0;
   color: var(--md_theme_dark_inverseSurface);
 }
-.card-taxi-p + .card-taxi-p{
-  margin-top: 0;
+.card-conductores-p + .card-conductores-p{
+  margin-top: 1rem;
 }
-.card-taxi-p span{
+.card-conductores-p span{
   font-weight: 200;
 }
-.container-a{
-  margin-bottom: 0;
-  margin-left: 10rem;
 
+.btn-drop{
+  background-color: initial;
+  border: none;
+  margin-left: 6rem;
+  position: absolute;
+  margin-top: 0.8rem;
 }
-.card-taxi-a{
-  color: var(--md_theme_dark_error);
-  text-decoration: none;
+.dropdown-item{
+  display: flex !important;
+}
+.btn-acept{
+  background-color: var(--md_theme_light_inversePrimary);
+  border: none;
+  margin-left: 16rem;
+  position: absolute;
+  margin-bottom: 2.5rem;
   font-size: var(--text_s);
-  font-family:Arial, Helvetica, sans-serif; 
-  font-weight: 600;
+  border-radius: 0.4rem;
+  padding: 0.1rem;
+}
+/*estilo acordeon*/
+#seccion-viajes{
+margin: 0 auto;
+background-color: var(--md_theme_light_inverseSurface);
+width: 26%;
+padding: 0 0 1rem 0;
+border-radius: 0.3rem;
+overflow-y: auto;
+scroll-behavior: smooth;
+}
+#btn-aux-accordion{
+  border: none;
+  background-color: initial;
+  margin-left: 20rem;
+}
+.ac-p{
+  margin-left: 1rem;
+}
+.ac-p p{
+  margin-top: 0 !important;
+}
+.ac-body{
+  display: none;
+  margin-left: 1rem;
 }
 
-  
 /*doble section btn */
 .container-btns{
     display: flex;
@@ -216,7 +253,7 @@
     background-color: initial;
     color: var(--md_theme_dark_inverseSurface);
 }
-.container-btns button:hover{
+.container-btns button:focus{
     color: var(--md_theme_dark_primary);
     border-bottom: var(--md_theme_dark_primary) 0.18rem solid;
 }
@@ -224,5 +261,11 @@
 
 
 @media only screen and (max-width: 600px){
-
+  .card-conductores{
+    margin: 0 auto;
+    width: 94%;
+  }
+  #seccion-viajes{
+    width: 94%;
+    }
 }

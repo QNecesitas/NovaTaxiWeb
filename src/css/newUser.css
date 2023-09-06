@@ -99,27 +99,27 @@
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
     align-items: center;
-    justify-content: start;
-    height: 10%;
-    
+    justify-content: start;  
   }
   header figure{
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 10%;
   }
   header img{
     display: flex;
     align-items: center;
-    justify-content: start;
+    margin: 0.7rem 0.2rem 0 0.2rem;
+    width: 1.8rem;
+    height: 1.8rem;
   }
   header h2{
     display: flex;
     align-items: center;
     justify-content: start;
     width: 85%;
-    margin-left: 8px;
+    font-size: var(--text_h);
+    margin-bottom: 0;
   }
   main{
     padding: 1rem;
@@ -129,6 +129,10 @@
     background-position: bottom;
     background-size: 260% 38%;
   }
+  .inp-NombreUsuario{
+   margin-left: 0.5rem;
+  }
+  
   form label{
     display: flex;
     align-items: center;
