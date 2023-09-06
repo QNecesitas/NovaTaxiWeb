@@ -99,20 +99,20 @@
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
     align-items: center;
-    justify-content: start;
-    height: 10%;
-    
+    justify-content: start; 
+    margin-top: 0.03rem;
   }
   header figure{
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 10%;
   }
   header img{
     display: flex;
     align-items: center;
-    justify-content: start;
+    margin: 0.8rem 0 0 0.2rem;
+    width: 1.8rem;
+    height: 1.8rem;
   }
   header h2{
     display: flex;
@@ -129,12 +129,27 @@
     position: relative;
     width: 100%;
     padding: 20px;
+    margin: 0.5rem auto 0.5rem 0.5rem;
+    font-size: var(--text_h);
   }
+
+    main{
+      padding: 1rem;
+      height: 90%;
+      background-image:url('buildings.png');
+      background-repeat: no-repeat;
+      background-position: bottom;
+      background-size: 260% 38%;
+      overflow-y: auto;
+      scroll-behavior: smooth;
+    }
+  
   .edit{
     background-color: var(--md_theme_dark_surfaceVariant);
     border-radius: 5px;
     width: 100%;
     padding: 10px;
+    opacity: 0.8;
   }
   .edit p{
     color: var(--md_theme_dark_onBackground);
@@ -142,6 +157,9 @@
     margin-left: 10px;
     font-size: var(--text_m);
     font-weight: bold;
+  }
+  .p-edit{
+    margin-bottom: 1.5rem;
   }
   .edit form label{
     display: block;
@@ -193,6 +211,7 @@
     width: 100%;
     padding: 10px;
     margin-top: 20px;
+    opacity: 0.9;
   }
   .information .title{
     color: var(--md_theme_dark_onBackground);
@@ -225,6 +244,7 @@
     width: 100%;
     padding: 10px;
     margin-top: 20px;
+    opacity: 0.9;
   }
   .configuration .title{
     color: var(--md_theme_dark_onBackground);

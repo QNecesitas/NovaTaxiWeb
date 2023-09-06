@@ -46,7 +46,7 @@
     --md_theme_dark_primary:#FF6747 !important;
     --md_theme_dark_onPrimary:#630E00 !important;
     --md_theme_dark_primaryContainer:#8C1800 !important;
-    --md_theme_dark_onPrimaryContainer:#FFDAD3 !important; 
+    --md_theme_dark_onPrimaryContainer:#FFDAD3 !important;
     --md_theme_dark_secondary:#FFB3B6 !important;
     --md_theme_dark_onSecondary:#680019 !important;
     --md_theme_dark_secondaryContainer:#920027 !important;
@@ -78,155 +78,95 @@
   /* ==========================================================================
      Your code for devices with over than 600px (PC)
      ========================================================================== */
-  *{
-     box-sizing: border-box;
-     padding: 0;
-     margin: 0;
-  }   
-  
-  html {
-     font-size: 62,5%;
-  
-  }
-  
-  body{
-     background-color: var(--md_theme_dark_background) !important;
-     height: 100vh;
-       }
-  header{
-    background-color: var(--md_theme_dark_primary);
-    color: var(--md_theme_dark_onPrimary);
-    font-family: Arial, Helvetica, sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: start;  
-  }
-  header figure{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  header img{
-    display: flex;
-    align-items: center;
-    margin: 0.7rem 0.2rem 0 0.2rem;
-    width: 1.8rem;
-    height: 1.8rem;
-  }
-  header h2{
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    width: 85%;
-    font-size: var(--text_h);
-    margin-bottom: 0;
-  }
-  header div{
-   visibility: hidden;
-   margin-right: 20px ;
-  }
-  main{
-    padding: 1rem;
-    height: 90%;
-    background-image:url('buildings.png');
-    background-repeat: no-repeat;
-    background-position: bottom;
-    background-size: 260% 38%;
-    display: flex;
-    flex-direction: column;
-  }
-  .inp-NombreUsuario{
-   margin-left: 0.5rem;
-  }
-  
-  form label{
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    margin-bottom: 0.5rem;
-    margin-top: 1rem;
-    width: 100%;
-    height: 20%;
-    flex-grow: 1;
-  }
-  form figure{
-    width: 48px;
-    height: 48px;
-    background-color: var(--md_theme_dark_onBackground);
-    border-radius: 23px;
 
-  }
-  input{
-    border: none;
-    border-bottom: 1px solid var(--md_theme_dark_onBackground);
-    background-color:transparent;
-    width: 100%;
-    color: var(--md_theme_dark_onBackground);
-    font-size: var(--text_h);
-    padding: 0.2rem;
-    margin-bottom: 0.6;
-  }
+     *{
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+     }   
+     
+     html {
+        font-size: 62,5%;
+     
+     }
+     
+     body{
+        background-color: var(--md_theme_dark_background) !important;
+        height: 100vh;
+          }
+     header{
+       background-color: var(--md_theme_dark_primary);
+       color: var(--md_theme_light_surface);
+       font-family: Arial, Helvetica, sans-serif;
+       display: flex;
+       align-items: center;
+       justify-content: start;
+       height: 10%;
+       
+     }
+     header figure{
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       margin-left: 1rem;
+       margin-top: 0.5rem;
+     }
+     header img{
+       display: flex;
+       align-items: center;
+       justify-content: center;
+     }
+     header h2{
+       display: flex;
+       align-items: center;
+       justify-content: start;
+       margin-left: 0.8rem;
+     }
+     main{
+       padding: 1rem;
+       height: 90%;
+       background-image:url('buildings.png');
+       background-repeat: no-repeat;
+       background-position: bottom;
+       background-size: 260% 38%;
+     }
 
-  form label p{
-    color: var(--md_theme_dark_onBackground);
-    font-size: var(--text_h);
-    margin-top: 0.8rem;
-    margin-right: 0.5rem;
-  }
 
-  input:focus{
-    border: none;
-    border-bottom: 1px solid var(--md_theme_dark_primary);
-    outline: none;
-  }
-  main form{
-    display: flex;
-    flex-direction: column;
-  }
-  main div{
-   
-    width: 95%;
-    display: flex;
-    align-items: end;
-    justify-content: end;
-    flex-grow: 1;
-}
-.btn-container{
-   display: flex;
-   justify-content: space-between;
-}
-.btn-container .buttonCancel{
-   background-color: var(--md_theme_dark_surface);
-   color: var(--md_theme_dark_onSurface);
-   border-radius: 10px;
-   border: 1px solid var(--md_theme_dark_onSurface);
-   font-family: Arial, Helvetica, sans-serif;
-   font-weight: bold;
-   font-size: var(--text_s);
-   padding-top: 0.2rem;
-   width: 30%;
-   height: 2.5rem;
- }
+     .tarifas{
+        display: flex;
+        justify-content: space-between;
+        color: var(--md_theme_light_surface);
+        border-bottom: var(--md_theme_dark_inverseSurface) 0.1rem solid;
+        margin-top: 0.8rem;
+     }
 
- .btn-container .buttonAccept{
-  background-color: var(--md_theme_dark_primary);
-  color: var(--md_theme_dark_onPrimary);
-  border-radius: 10px;
-  border: 1px solid var(--md_theme_dark_onSurface);
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
-  font-size: var(--text_s);
-  padding-top: 0.2rem;
-  width: 30%;
-  height: 2.5rem;
-  margin-right: 0.5rem;
-}
+     .tarifas button{
+        background-color: var(--md_theme_light_onSurfaceVariant);
+        border: none;
+        border-radius: 0.3rem;
+        height: 2rem;
+        width: 2rem;
+     }
+
+
+
+  /* ==========================================================================
+     End of your code for devices with over than 600px (PC)
+     ========================================================================== */
   
-
- @media only screen and (max-width: 600px){
-
-   
-}
   
   
-    
+  
+  /* ==========================================================================
+     Your code for devices with less than 600px (Mobile)
+     ========================================================================== */
+  @media only screen and (max-width: 600px) {
+  
+  
+  
+  
+  }
+  /* ==========================================================================
+     End of your code for devices with less than 600px (Mobile)
+     ========================================================================== */
+  

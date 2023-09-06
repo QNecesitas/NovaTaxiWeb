@@ -6,7 +6,6 @@ import Point from "../model/Point.js";
 import Vehicle from "../model/Vehicle.js";
 import Prices from "../model/Prices.js";
 import UserAccountShared from "../auxiliary/UserAccountShared.js";
-import UserAccountShared from "../auxiliary/UserAccountShared";
 
 export default class ViewModelMapHomeUser {
 
@@ -25,9 +24,9 @@ export default class ViewModelMapHomeUser {
   isNecessaryCamera;
 
   auxiliaryDataSource = new AuxiliaryDataSourceNetwork();
-  driverDataSource = DriverDataSourceNetwork();
-  pricesDataSource = PricesDataSourceNetwork();
-  tripsDataSource = TripsDataSourceNetwork();
+  driverDataSource = new DriverDataSourceNetwork();
+  pricesDataSource = new PricesDataSourceNetwork();
+  tripsDataSource = new TripsDataSourceNetwork();
 
 
   //Get drivers
@@ -191,7 +190,7 @@ export default class ViewModelMapHomeUser {
   }
 
   getRouteDistance(){
-    <!--TODO-->
+    //TODO
   }
 
   addTrip(stateObserver, prices, phone, typeCar){
