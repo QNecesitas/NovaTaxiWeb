@@ -127,7 +127,7 @@ export default class UserSettings{
   deleteUsers(stateObserve){
     let result= confirm("¿Estás seguro de eliminar la cuenta?");
     if(result){
-        this.viewModel.deleteUsers(stateObserve,this.listUser.email);
+        this.viewModel.deleteUsers(stateObserve,UserAccountShared.getUserEmail());
         window.open("loginUser.html","_self");
         UserAccountShared.setUserEmail(null);
     }
