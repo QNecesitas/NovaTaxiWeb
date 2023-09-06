@@ -141,6 +141,10 @@ export default class UserDataSourceNetwork {
   }
 
 
+
+
+
+
   sendRecoverPetition(stateObserver, email) {
     //Init and url base
     const hxr = new XMLHttpRequest();

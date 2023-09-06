@@ -21,8 +21,8 @@ export default class ViewModelLoginUser {
 
 
 
-  sendRecoverPetition(email) {
-    this.userDataSource.sendRecoverPetition(email);
+  sendRecoverPetition(stateObserve,email) {
+    this.userDataSource.sendRecoverPetition(stateObserve, email);
   }
 
 
