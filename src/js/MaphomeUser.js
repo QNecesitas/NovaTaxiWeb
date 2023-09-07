@@ -13,6 +13,8 @@ export default class MaphomeUser {
   tripStateObserver;
   stateVersionObserver;
   versionResponseObserver;
+  stateDriverObserver;
+  stateTripObserver;
 
 
   constructor() {
@@ -44,6 +46,34 @@ export default class MaphomeUser {
     this.listDriverObserver = (it) => {
       this.viewModelMapHome.listDrivers = it;
       this.updateDriversPositionInMap();
+    };
+
+    this.stateDriverObserver = (it) => {
+      switch (it){
+        case "LOADING":
+
+          break;
+        case "SUCCESS":
+
+          break;
+        case "ERROR":
+
+          break;
+      }
+    };
+
+    this.stateTripObserver = (it) => {
+      switch (it){
+        case "LOADING":
+
+          break;
+        case "SUCCESS":
+
+          break;
+        case "ERROR":
+
+          break;
+      }
     };
 
     this.statePricesObserver = (it) => {
@@ -115,7 +145,7 @@ export default class MaphomeUser {
           break;
         case "SUCCESS":
           document.getElementById("progress").style.visibility = "hidden";
-          alert("Valorado con éxito");
+          this.showToast("Valorado con éxito");
           break;
         case "ERROR":
           document.getElementById("progress").style.visibility = "hidden";
@@ -153,9 +183,47 @@ export default class MaphomeUser {
 
     //Listeners
     document.getElementById("realTimeBtn").onclick= () =>{
-      this.viewModelMapHome.isNecessaryCamera(true);
-      this.getLocationRealTime();
+      if(navigator.geolocation) {
+        this.viewModelMapHome.isNecessaryCamera(true);
+        this.getLocationRealTime();
+      }else{
+        this.showAlertDialogNotLocationSettings();
+      }
     };
+
+    document.getElementById("settings").onclick = () => {
+      window.open("SettingUser.html","_self");
+    };
+
+    document.getElementById("ubication").onclick = () => {
+      if(navigator.geolocation){
+        if(this.viewModelMapHome.latitudeGPS !== null && this.viewModelMapHome.longitudeGPS !== null){
+          this.viewModelMapHome.getAppVersion(this.stateVersionObserver,this.versionResponseObserver);
+        }else{
+          this.showToast("La aplicaci&oacute;n no ha encontrado su ubicaci&oacute;n a&uacute;n");
+        }
+      }else{
+        this.showAlertDialogNotLocationSettings();
+      }
+    };
+
+    document.getElementById("destino").onclick = () => {
+      if(navigator.geolocation){
+        if(this.viewModelMapHome.latitudeGPS !== null && this.viewModelMapHome.longitudeGPS !== null){
+          this.viewModelMapHome.getAppVersion(this.stateVersionObserver,this.versionResponseObserver);
+        }else{
+          this.showToast("La aplicaci&oacute;n no ha encontrado su ubicaci&oacute;n a&uacute;n");
+        }
+      }else{
+        this.showAlertDialogNotLocationSettings();
+      }
+    };
+
+
+    this.viewModelMapHome.setIsNecessaryCamera(true);
+    this.getLocationRealtime();
+    this.viewModelMapHome.startMainCoroutine(this.stateDriverObserver,this.listDriverObserver,this.stateTripObserver,this.tripStateObserver)
+    this.checkInitialSharedInformation();
   }
 
 
@@ -266,6 +334,13 @@ export default class MaphomeUser {
     }
   }
 
+  showToast(string){
+    const toastEl=document.getElementById("toast");
+    let toast=new bootstrap.Toast(toastEl);
+    let p=document.getElementById("toast_text");
+    p.innerHTML=string;
+    toast.show();
+  }
 
 
 
