@@ -16,6 +16,7 @@
   <!-- Place favicon.ico in the root directory -->
 
   <link rel="stylesheet" href="css/putMap.css">
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
 
   <meta name="theme-color" content="#fafafa">
 </head>
@@ -24,12 +25,13 @@
             <figure>
                 <img src="./img/arrow_back_FILL1_wght400_GRAD0_opsz48.svg" alt="">
             </figure>
-            <h4>Mantenga presionado en el mapa para seleccionar una ubicación</h4>
+            <h4>Seleccione en el mapa para seleccionar una ubicación</h4>
     </header>
     <main>
+      <div id="map"></div>
         <div class="option">
-            <button class="gps"><img src="./img/my_location_FILL1_wght400_GRAD0_opsz48.svg" alt=""></button>
-            <button class="select-ubic"><img src="./img/location_on_FILL1_wght400_GRAD0_opsz48.svg" alt="">Seleccionar localización</button>
+            <button class="gps" id="gps"><img src="./img/my_location_FILL1_wght400_GRAD0_opsz48.svg" alt=""></button>
+            <button class="select-ubic" id="select-ubic"><img src="./img/location_on_FILL1_wght400_GRAD0_opsz48.svg" alt="">Seleccionar localización</button>
         </div>
     </main>
 
@@ -71,7 +73,8 @@
   </div>
 
 
-    <script src="js/main.js"></script>
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
+  <script type="module" src="js/PutMapUser.js"></script>
     <script src="js/bootstrap.js"></script>
  </body>
  </html>
