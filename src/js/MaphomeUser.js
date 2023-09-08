@@ -25,7 +25,7 @@ export default class MaphomeUser {
     map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/ronnynp/cljbmkjqs00gt01qrb2y3bgxj',
-      center: [lastPointSelected.longitude,lastPointSelected.longitude],
+      center: [lastPointSelected.longitude,lastPointSelected.latitude],
       zoom: 16.5, // starting zoom,
       pitch: 70.0
     });
