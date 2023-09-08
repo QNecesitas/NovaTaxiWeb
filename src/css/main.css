@@ -213,9 +213,6 @@ textarea {
     text-decoration: underline;
   }
 
-  a[href]::after {
-    content: " (" attr(href) ")";
-  }
 
   abbr[title]::after {
     content: " (" attr(title) ")";
@@ -225,10 +222,6 @@ textarea {
    * Don't show links that are fragment identifiers,
    * or use the `javascript:` pseudo protocol
    */
-  a[href^="#"]::after,
-  a[href^="javascript:"]::after {
-    content: "";
-  }
 
   pre {
     white-space: pre-wrap !important;
@@ -327,7 +320,7 @@ textarea {
     --md_theme_dark_inverseSurface: #EDE0DD !important;
     --md_theme_dark_inversePrimary: #B72301 !important;
   }
-  
+
   /* ==========================================================================
      Your code for devices with over than 600px (PC)
      ========================================================================== */
@@ -336,16 +329,16 @@ textarea {
     padding: 0;
     margin: 0;
   }
-  
+
   /*to use the unit of measure rem*/
   html {
-    font-size: 62.5%; 
+    font-size: 62.5%;
   }
-  
+
   body {
     background-color: var(--md_theme_light_primary) !important;
   }
-  
+
   .main {
     position: relative;
     height: 100vh;
@@ -381,10 +374,15 @@ textarea {
     color: var(--md_theme_dark_primary);
     border: 1px solid var(--md_theme_dark_primary);
   }
+
+  .btn-entrar strong{
+    font-size: var(--text_m);
+    color: white;
+  }
   /* ==========================================================================
      End of your code for devices with over than 600px (PC)
      ========================================================================== */
-  
+
   /* ==========================================================================
      Your code for devices with less than 600px (Mobile)
      ========================================================================== */
@@ -393,8 +391,7 @@ textarea {
       width: 80%;
     }
   }
-  
+
   /* ==========================================================================
      End of your code for devices with less than 600px (Mobile)
      ========================================================================== */
-  

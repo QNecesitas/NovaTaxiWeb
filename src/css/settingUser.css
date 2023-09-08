@@ -90,7 +90,7 @@
   }
   
   body{
-     background-color: var(--md_theme_dark_background) !important;
+     background-color: var(--md_theme_dark_background)!important;
      height: 100vh;
        }
   header{
@@ -119,6 +119,16 @@
     align-items: center;
     justify-content: start;
     width: 85%;
+    margin-left: 8px;
+  }
+  header div{
+    visibility: hidden;
+    margin-right: 20px ;
+  }
+  main{
+    position: relative;
+    width: 100%;
+    padding: 20px;
     margin: 0.5rem auto 0.5rem 0.5rem;
     font-size: var(--text_h);
   }
@@ -259,98 +269,10 @@
   #delete{
     border: none;
   }
-  .arrow-forw{
-    height: 1.8rem;
-    width: 1.8rem;
-  }
-  /*Alert Dialog Actualizar Account*/
-  #staticBackdrop{
-    background-color: var(--md_theme_dark_surfaceVariant);
-    width: 40%;
-    position: absolute;
-    top: 40%;
-    left: 30%;
-    padding: 10px;
-    visibility: hidden;
- }
- .modal-header p{
-    color: var(--md_theme_dark_onBackground);
-    font-size: var(--text_m);
-    margin-bottom: 10px;
-    font-weight: bold;
-    font-family: Arial, Helvetica, sans-serif;
- }
- .modal-body p{
-    color: var(--md_theme_dark_onBackground);
-    font-size: var(--text_s);
-    margin-bottom: 10px;
-    font-family: Arial, Helvetica, sans-serif;
- }
- .modal-footer{
-    display: flex;
-    align-items: end;
-    justify-content: end;
-    }
-    .modal-footer button{
-       background-color: var(--md_theme_dark_surfaceVariant);
-       margin-right: 10px;
-       border: none;
-       color: var(--md_theme_dark_primary);
-       font-size: var(--text_s);
-       font-family: Arial, Helvetica, sans-serif;
-       font-weight: bold;
-    }
-
-    /*Alert dialog Close Session*/
-    #staticBackdrop1{
-        background-color: var(--md_theme_dark_surfaceVariant);
-        width: 40%;
-        position: absolute;
-        top: 40%;
-        left: 30%;
-        padding: 10px;
-        visibility: hidden;
-    }
-    /*Alert dialog Delete Account*/
-    #staticBackdrop2{
-        background-color: var(--md_theme_dark_surfaceVariant);
-        width: 40%;
-        position: absolute;
-        top: 40%;
-        left: 30%;
-        padding: 10px;
-        visibility: hidden;
-    }
 
     @media only screen and (max-width: 600px){
 
-        #staticBackdrop{
-            background-color: var(--md_theme_dark_surfaceVariant);
-            width: 70%;
-            position: absolute;
-            top: 40%;
-            left: 15%;
-            padding: 10px;
-            visibility: hidden;
-         }
-         #staticBackdrop1{
-            background-color: var(--md_theme_dark_surfaceVariant);
-            width: 70%;
-            position: absolute;
-            top: 40%;
-            left: 15%;
-            padding: 10px;
-            visibility: hidden;
-         }
-         #staticBackdrop2{
-            background-color: var(--md_theme_dark_surfaceVariant);
-            width: 70%;
-            position: absolute;
-            top: 40%;
-            left: 15%;
-            padding: 10px;
-            visibility: hidden;
-         }
+        
     }
   
   

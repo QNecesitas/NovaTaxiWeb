@@ -33,7 +33,7 @@
         </div>
 
         <!--card scroll horizontal-->
-       <div class="container-card-taxi"> 
+       <div class="container-card-taxi" id="container-card-taxi">
         <div class="card-taxi">
           <div class="card-taxi-img" >
             <img src="./img/vector_car.png" alt="">
@@ -44,8 +44,8 @@
               <p class="card-taxi-p">Precio: <span>124 CUP</span></p>
             </div>
             <div class="container-a">
-             <a class="card-taxi-a" href="#">M&aacute;s detalles |</a>
-             <a class="card-taxi-a" href="#">Pedir taxi</a>
+             <a class="card-taxi-a" href="">M&aacute;s detalles |</a>
+             <a class="card-taxi-a" href="">Pedir taxi</a>
             </div>
           </div>
         </div>
@@ -79,18 +79,18 @@
             </div>
           </div>
         </div>
-      </div> 
+      </div>
 
         <div class=" button-circle">
 
           <!--ghost spinner-->
-          <div class="text-center spinner">
+          <div class="text-center spinner" id="progress">
             <div class="spinner-border" role="status">
               <span class="visually-hidden">Loading...</span>
             </div>
           </div>
-            <button class="setting"><img src="./img/settings_FILL1_wght400_GRAD0_opsz48.svg" alt=""></button>
-            <button class="gps"><img src="./img/my_location_FILL1_wght400_GRAD0_opsz48.svg" alt=""></button>
+            <button id="settings" class="setting"><img src="./img/settings_FILL1_wght400_GRAD0_opsz48.svg" alt=""></button>
+            <button class="gps" id="realTimeBtn"><img src="./img/my_location_FILL1_wght400_GRAD0_opsz48.svg" alt=""></button>
         </div>
     </main>
 
@@ -150,9 +150,24 @@
   </div>
 
 
+    <!--Toast-->
+    <div class="toast align-items-center text-bg-primary border-0" role="alert" aria-live="assertive"
+         aria-atomic="true" id="toast">
+      <div class="d-flex">
+        <div class="toast-body" id="toast_text">
+          Contenido
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+    </div>
 
-    <script src="js/MaphomeUser.js"></script>
+
+
+    <script type="module" src="js/MaphomeUser.js"></script>
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
-   <script src="js/bootstrap.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/bootstrap.bundle.js"></script>
+
+
 </body>
 </html>
