@@ -16,25 +16,48 @@
   <!-- Place favicon.ico in the root directory -->
 
   <link rel="stylesheet" href="css/infoDriver.css">
+  <link rel="stylesheet" href="css/bootstrap.css">
 
   <meta name="theme-color" content="#fafafa">
 </head>
 <body>
     <header>
             <figure>
-                <img src="./img/arrow_back_FILL1_wght400_GRAD0_opsz48.svg" alt="">
+                <img src="./img/arrow_back_FILL1_wght400_GRAD0_opsz48.svg" alt="" id="back">
             </figure>
             <h2>Sobre el conductor</h2>
+            <div class="spinner-border text-danger" role="status" id="progress">
+                <span class="visually-hidden">
+                  Cargando ...
+                </span>
+                </div>
     </header>
     <main>
         <div class="container">
             <figure>
-                <img src="./img/vector_car.png" alt="">
+                <img  id="typeCar" src="./img/vector_car.png" alt="">
             </figure>
             <div class="container-1">
                 <div class="container-name">
                     <p id="nombreS">Nombre:</p>
                     <p id="nombre">Nombre</p>
+                </div>
+                <div class="container-rating">
+                    <figure >
+                        <img id="star1" src="./img/star_gray.png" alt="">
+                    </figure>
+                    <figure >
+                        <img id="star2" src="./img/star_gray.png" alt="">
+                    </figure>
+                    <figure >
+                        <img id="star3" src="./img/star_gray.png" alt="">
+                    </figure>
+                    <figure >
+                        <img id="star4" src="./img/star_gray.png" alt="">
+                    </figure>
+                    <figure >
+                        <img id="star5" src="./img/star_gray.png" alt="">
+                    </figure>
                 </div>
             </div>
         </div>
@@ -44,15 +67,19 @@
         </div>
         <div class="container-typeCar">
             <p id="typeCarS">Tipo de carro:</p>
-            <p id="typeCar">Tipo</p>
+            <p id="typeCarp">Tipo</p>
         </div>
         <div class="container-cant">
             <p id="cantS">Cantidad de asientos:</p>
             <p id="cant">Cantidad</p>
         </div>
+        <div class="container-chapa">
+            <p id="chapaS">Chapa:</p>
+            <p id="chapa">Chapa</p>
+        </div>
     </main>
 
-    <script src="js/main.js"></script>
    <script src="js/bootstrap.js"></script>
+   <script type="module" src="js/infoDriver.js"></script>
 </body>
 </html>

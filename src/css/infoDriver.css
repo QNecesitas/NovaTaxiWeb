@@ -90,7 +90,7 @@
      }
      
      body{
-        background-color: var(--md_theme_dark_background);
+        background-color: var(--md_theme_dark_background)!important;
         height: 100vh;
           }
      header{
@@ -112,8 +112,8 @@
      header img{
        display: flex;
        align-items: center;
-       justify-content: start;
      }
+
      header h2{
        display: flex;
        align-items: center;
@@ -121,6 +121,10 @@
        width: 85%;
        margin-left: 8px;
      }
+     header div{
+      visibility: hidden;
+      margin-right: 20px ;
+    }
   main{
     padding: 20px;
     height: 90%;
@@ -149,12 +153,27 @@
     justify-content: center;
   }
   .container-1{
-    width: 100%;
+    width: 70%;
     height: 80px;
     margin-left: 10%;
     display: flex;
     align-items: flex-start;
     justify-content: start;
+    flex-direction: column;
+  }
+  .container-rating{
+    display: flex;
+    flex-grow: 1;
+    width: 100%;
+    margin-top: 8px;
+    margin-bottom: 4px;
+  }
+  .container-rating figure{
+    background-color: transparent;
+  }
+  .container-rating figure img{
+    width: 40px;
+    height: 40px;
   }
   .container-name{
     width: 100%;
@@ -165,8 +184,10 @@
     justify-content: start;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     border: 0.5px solid #0000;
-    padding: 10px;
+    padding:4px;
     border-radius: 3px;
+    opacity: 0.9;
+    flex-grow: 1;
   }
   #nombreS{
     font-family: Arial, Helvetica, sans-serif;
@@ -183,11 +204,12 @@
     display: flex;
     align-items: center;
     justify-content: start;
-    margin-top: 8px;
+    margin-top: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     border: 0.5px solid #0000;
-    padding: 10px;
+    padding: 4px;
     border-radius: 3px;
+    opacity: 0.9;
   }
   #phoneS{
     font-family: Arial, Helvetica, sans-serif;
@@ -207,14 +229,15 @@
     margin-top: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     border: 0.5px solid #0000;
-    padding: 10px;
+    padding: 4px;
     border-radius: 3px;
+    opacity: 0.9;
   }
   #typeCarS{
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
   }
-  #typeCar{
+  #typeCarp{
     margin-left: 8px;
     font-family: Arial, Helvetica, sans-serif;
   }
@@ -228,14 +251,38 @@
     margin-top: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     border: 0.5px solid #0000;
-    padding: 10px;
+    padding: 4px;
     border-radius: 3px;
+    opacity: 0.9;
   }
   #cantS{
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
   }
   #cant{
+    margin-left: 8px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .container-chapa{
+    width: 100%;
+    color: var(--md_theme_dark_onPrimaryContainer);
+    background-color: var(--md_theme_dark_background);
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    margin-top: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border: 0.5px solid #0000;
+    padding: 4px;
+    border-radius: 3px;
+    opacity: 0.9;
+  }
+  #chapaS{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+  }
+  #chapa{
     margin-left: 8px;
     font-family: Arial, Helvetica, sans-serif;
   }
