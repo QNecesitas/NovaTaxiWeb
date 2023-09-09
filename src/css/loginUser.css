@@ -79,6 +79,7 @@
 }
 
 html {
+  font-size: 62.5%;
 }
 
 body {
@@ -263,8 +264,6 @@ form button {
 #liRecover {
   width: 40%;
   top: 40%;
-  left: 30%;
-  padding: 10px;
 }
 
 #liRecover p {
@@ -281,15 +280,18 @@ form button {
 }
 
 .modal-content {
-  background-color: var(--md_theme_dark_surfaceVariant) !important;
-  width: 100%;
+  background-color: var(--md_theme_dark_background) !important;
+  padding: 1rem;
 }
 
-.modal-body figure {
+.modal-body img {
   display: flex;
   align-items: center;
-  margin: 0!important;
   filter: brightness(0) invert(1);
+  width: 4.2rem;
+  height: 4.2rem;
+  margin-left: 3rem;
+  margin-top: 1rem;
 }
 
 .modal-body form{
@@ -297,7 +299,8 @@ form button {
 }
 
 .modal-body label {
-  width: 80%;
+  width: 90%;
+  margin-left: 1rem;
 }
 
 .modal-body input[type="text"], .modal-body textarea {
@@ -323,7 +326,18 @@ form button {
   border-color: var(--md_theme_dark_primary);
   border-radius: 3px;
 }
-
+.inp-email{
+  width: 100%;
+  padding: 20px;
+  padding-left: 40px;
+  margin-bottom: 10px;
+  background-color:transparent;
+  border: 1px solid var(--md_theme_dark_onBackground);
+  color: var(--md_theme_dark_onBackground);
+  border-radius: 3px;
+  height: 50px;
+  font-size: var(--text_m);
+}
 .modal-footer {
   display: flex;
   align-items: end;
@@ -331,7 +345,7 @@ form button {
 }
 
 .modal-footer button{
-  background-color: var(--md_theme_dark_surfaceVariant);
+  background-color: var(--md_theme_dark_background);
   margin-right: 30px;
   border: none;
   color: var(--md_theme_dark_onBackground);
@@ -343,7 +357,7 @@ form button {
   background-color: var(--md_theme_dark_onBackground);
   margin-right: 30px;
   border: none;
-  color: var(--md_theme_dark_onBackground);
+  color: var(--md_theme_dark_background);
   font-size: var(--text_s);
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -382,11 +396,10 @@ form button {
   }
 
   #liRecover {
-    width: 70%;
+    width: 100%;
     position: absolute;
     top: 40%;
-    left: 15%;
-    padding: 10px;
+    padding: 0.1rem;
   }
 
   .imagen {

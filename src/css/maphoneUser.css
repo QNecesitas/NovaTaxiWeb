@@ -325,10 +325,103 @@ main {
 }
 
 
+/*modal accept travel*/
+.modal-travel{
+ position: absolute;
+ top: 10%;
+ left: 30%;
+ visibility: hidden;
+}
+.card-taxi{
+background-color: var(--md_theme_light_onSurfaceVariant);
+display: flex;
+align-items: center;
+width: 100%;
+padding: 0 0.4rem;
+margin-left: 0;
+}
+.card-taxi-img{
+display: flex;
+align-items: center;
+justify-content: center;
+margin: 2.3rem 0.8rem;
+border-radius: 0.5rem;
+background-color: var(--md_theme_light_inversePrimary);
+}
+.card-taxi-img img{
+width: 5rem;
+height: 5rem;
+}
+.container-p{
+margin-left: 0.6rem;
 
+}
+.card-taxi-p{
+font-size: var(--text_s);
+font-family:Arial, Helvetica, sans-serif; 
+font-weight: 600;
+margin-bottom: 0;
+color: var(--md_theme_dark_inverseSurface);
+}
 
+.container-a{
+margin-bottom: 0;
+margin-left: 8rem;
 
+}
+.container-a span{
+  margin-left: 1rem;
+  color: currentColor;
+}
 
+.card-taxi-a{
+color: var(--md_theme_light_inversePrimary);
+text-decoration: none;
+font-size: var(--text_s);
+font-family:Arial, Helvetica, sans-serif; 
+font-weight: 600;
+margin-left: 1rem;
+}
+/*model star*/
+#staticBackdrop3{
+  background-color: var(--md_theme_dark_surfaceVariant);
+  width: 100%;
+  position: absolute;
+  top: 40%;
+  padding: 10px;
+  visibility: hidden;
+}
+.modal-header2 p {
+  color: var(--md_theme_dark_onBackground);
+  font-size: var(--text_m);
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn-star-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 1rem;
+}
+.btn-star{
+border: none;
+background-color: initial;
+}
+.btn-star img{
+  height: 3rem;
+  width: 3rem;
+}
+.space{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+}
 @media only screen and (max-width: 600px) {
   .select-map button {
     width: 70%;
@@ -376,5 +469,18 @@ main {
     left: 15%;
     padding: 10px;
     visibility: hidden;
+  }
+  /*MODAL TRAVEL*/
+  .modal-travel{
+    width: 100%;
+    left: 0;
+  }
+  .card-taxi{
+  background-color: var(--md_theme_light_onSurfaceVariant);
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0 0.4rem;
+  margin-left: 0;
   }
 }

@@ -148,18 +148,51 @@
       </div>
     </div>
   </div>
+<!-- Button trigger modal -->
 
-
-    <!--Toast-->
-    <div class="toast align-items-center text-bg-primary border-0" role="alert" aria-live="assertive"
-         aria-atomic="true" id="toast">
-      <div class="d-flex">
-        <div class="toast-body" id="toast_text">
-          Contenido
+  <!--Modal accept travel-->
+  <div class="modal modal-travel"  tabindex="-1" >
+    <div class="modal-dialog">
+        <div class="modal-body">
+          <div class="card-taxi">
+            <div class="card-taxi-img" >
+              <img src="./img/baseline_drive_eta_24.png" alt="">
+            </div>
+            <div>
+              <div class="container-p">
+                <p class="card-taxi-p">Su viaje ha sido Aceptado </p>
+              </div>
+              <div class="container-a">
+               <a class="card-taxi-a" href="#">Ver conductor <span>|</span></a>
+               <a class="card-taxi-a" href="#">Ir al viaje</a>
+              </div>
+            </div>
+          </div>
         </div>
-        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+  </div>
+ <!--model calificar-->
+  <div class="modal fade" id="staticBackdrop3" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header2">
+          <p class="modal-title fs-5" id="staticBackdropLabel">Valora su &uacute;ltimo viaje</p>
+        </div>
+        <div class="modal-body btn-star-container">
+            <button class="btn-star"><img src="./img/star_gray.png" alt=""></button>
+            <button class="btn-star"><img src="./img/star_gray.png" alt=""></button>
+            <button class="btn-star"><img src="./img/star_gray.png" alt=""></button>
+            <button class="btn-star"><img src="./img/star_gray.png" alt=""></button>
+            <button class="btn-star"><img src="./img/star_gray.png" alt=""></button>
+        </div>
+        <div class="modal-footer space">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Valorar</button>
+        </div>
       </div>
     </div>
+  </div>
+
 
 
 
