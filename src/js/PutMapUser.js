@@ -3,7 +3,7 @@ import UserAccountShared from './auxiliary/UserAccountShared.js';
 export default class PutMapUser{
 
     constructor(){
-      let map; // Variable para el mapa de Mapbox
+
       let marker; // Variable para el marcador
       let geolocate; // Variable para la capa de ubicación en tiempo real
       let lastLocationGps;
@@ -45,10 +45,10 @@ export default class PutMapUser{
                 const newCoordinates = customMarker.getLngLat();
                 console.log('Nuevas coordenadas del marcador:', newCoordinates);
             });
-         
+
         });
 
-    
+
 
     document.getElementById("gps").addEventListener("click",()=>{
       // Eliminar el marcador anterior si existe
@@ -91,7 +91,7 @@ export default class PutMapUser{
     });
 
     // Iniciar la geolocalización
-    geolocate.trigger()
+    geolocate.trigger();
     });
 
     document.getElementById("select-ubic").addEventListener("click",()=>{
@@ -99,8 +99,9 @@ export default class PutMapUser{
     });
 
 
-    
-  } 
+
+  }
+
   addLocation(lastLocationGps,lastLocationPoint){
     if(lastLocationPoint == null){
       if(lastLocationGps == null){
@@ -108,13 +109,13 @@ export default class PutMapUser{
       }else{
         let result=confirm("¿Desea escoger su ubicación actual?");
          if(result){
-          sessionStorage.setItem('lastLocation', JSON.stringify(lastLocationGps));
-          window.open("MaphomeUser.html","_self");
+           let resultLocation = JSON.stringify(lastLocationGps);
+          window.postMessage({resultLocation}, "MaphomeUser.html");
          }
       }
     }else{
-      sessionStorage.setItem('lastLocation', JSON.stringify(lastLocationPoint));
-      window.open("MaphomeUser.html","_self");
+      let resultLocation = JSON.stringify(lastLocationPoint);
+      window.postMessage({resultLocation}, "MaphomeUser.html");
     }
 
   }
