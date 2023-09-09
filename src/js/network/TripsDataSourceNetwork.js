@@ -276,4 +276,28 @@ export default class TripsDataSourceNetwork {
     hxr.send();
   }
 
+  fetchRoute(responseObserver, latitude, longitude){
+    //Init and url base
+    const hxr = new XMLHttpRequest();
+    hxr.open('GET', "https:api.mapbox.com/directions/v5/{mapbox/driving}/{"+longitude+"},{"+latitude+"}");
+
+    //OnLoad
+    hxr.onload = function () {
+      if (hxr.status === 200) {
+        let json = JSON.parse(hxr.responseText);
+        responseObserver(json);
+      } else {
+
+      }
+    };
+
+    //OnError
+    hxr.onerror = function () {
+    };
+
+
+    //Finally send the request
+    hxr.send();
+  }
+
 }

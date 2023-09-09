@@ -1,5 +1,7 @@
 import UserAccountShared from './auxiliary/UserAccountShared.js';
 import ViewModelMapHomeUser from './viewModels/ViewModelMapHomeUser.js';
+import User from "./model/User";
+import Point from "./model/Point";
 
 export default class MaphomeUser {
 
@@ -15,6 +17,12 @@ export default class MaphomeUser {
   versionResponseObserver;
   stateDriverObserver;
   stateTripObserver;
+  markerGPStoAnnotation;
+  markerAnimation;
+  markerDrivers;
+  markerTripOrigin;
+  markerTripDestiny;
+  routeObserver;
 
 
   constructor() {
@@ -25,7 +33,7 @@ export default class MaphomeUser {
     map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/ronnynp/cljbmkjqs00gt01qrb2y3bgxj',
-      center: [lastPointSelected.longitude,lastPointSelected.longitude],
+      center: [lastPointSelected.longitude,lastPointSelected.latitude],
       zoom: 16.5, // starting zoom,
       pitch: 70.0
     });
@@ -270,6 +278,287 @@ export default class MaphomeUser {
     }
   }
 
+  click_details(vehicle){
+    this.showAlertDialogCarDetails(vehicle.type,vehicle.details);
+  }
+
+  click_order(vehicle){
+    this.showAlertDialogConfirmCar(vehicle);
+  }
+
+
+
+
+  //Init
+  checkInitialSharedInformation(){
+    if(UserAccountShared.getIsRatingInAwait()){
+      this.rateTheDriver();
+      UserAccountShared.setIsRatingInAwait(false);
+    }
+
+    let lastTimeInMills = UserAccountShared.getLastPetition();
+    let actualTimeInMills = Date.now();
+
+    if(lastTimeInMills > 0){
+      if((actualTimeInMills - lastTimeInMills) < 600000){
+        this.showAlertLLAwaitSelect(600000 - (actualTimeInMills - lastTimeInMills));
+      }
+    }
+
+  }
+
+  rateTheDriver(){
+    this.liRateDriver();
+  }
+
+  showAlertDialogNotVersion(url){
+    alert("Versión desactualizada. Descargue la versión android disponible en: "+url);
+  }
+
+
+
+
+  //Location
+  getLocationRealTime(){
+    let marker; // Variable para el marcador
+    let geolocate; // Variable para la capa de ubicación en tiempo real
+    let lastLocationGps;
+    let lastLocationPoint;
+
+    if (marker) {
+      marker.remove();
+    }
+
+    // Configurar la capa de ubicación en tiempo real
+    geolocate = new mapboxgl.GeolocateControl({
+      positionOptions: {
+        enableHighAccuracy: true // Habilitar alta precisión
+      },
+      trackUserLocation: true, // Rastrear la ubicación en tiempo real
+      showUserLocation: true, // Mostrar la ubicación del usuario en el mapa
+      showAccuracyCircle: true // Mostrar círculo de precisión
+    });
+    let context = this;
+
+    map.addControl(geolocate);
+
+    // Escuchar el evento 'geolocate' para manejar actualizaciones de ubicación
+    geolocate.on('geolocate', function(e) {
+      // Obtener las coordenadas de la ubicación
+      const latitudeGps = e.coords.latitude;
+      const longitudeGps = e.coords.longitude;
+      context.viewModelMapHome.latitudeGPS = latitudeGps;
+      context.viewModelMapHome.longitudeGPS = longitudeGps;
+
+      lastLocationGps={latitude:latitudeGps, longitude:longitudeGps};
+
+      if(context.viewModelMapHome.isNecessaryCamera === true){
+        context.viewCameraInPoint(latitudeGps, longitudeGps);
+        context.setIsNecessaryCamera(false);
+      }
+
+      UserAccountShared.setLastLocation(new Point(longitudeGps,latitudeGps));
+
+      // Crear un marcador personalizado (puedes cambiar el icono y estilo según tus necesidades)
+      if (!marker) {
+        marker = new mapboxgl.Marker({
+          color: 'blue', // Color del marcador
+          draggable: true, // Permite arrastrar el marcador
+        })
+          .setLngLat([longitudeGps, latitudeGps]) // Establecer la ubicación del marcador
+          .addTo(map); // Agregar marcador al mapa
+      } else {
+        // Actualizar la posición del marcador en el mapa
+        marker.setLngLat([longitudeGps, latitudeGps]);
+      }
+    });
+
+    // Iniciar la geolocalización
+    geolocate.trigger();
+  }
+
+  getUserOrigin(){
+    let context = this;
+    window.addEventListener("message",(event) => {
+      if(event.origin !== "Putmap.html"){
+        return;
+      }
+
+      let resultLocation = event.data.resultLocation;
+      if(resultLocation){
+        const lastLocationGPS = JSON.parse(resultLocation);
+        context.locationOriginAccept(lastLocationGPS.latitude,lastLocationGPS.longitude );
+      }else{
+        alert("Ha ocurrido un error");
+      }
+    });
+    window.open("PutmapUser.html","_blank");
+  }
+
+  getUserDestination(){
+    let context = this;
+    window.addEventListener("message",(event) => {
+      if(event.origin !== "Putmap.html"){
+        return;
+      }
+
+      let resultLocation = event.data.resultLocation;
+      if(resultLocation){
+        const lastLocationGPS = JSON.parse(resultLocation);
+        context.locationDestinyAccept(lastLocationGPS.latitude,lastLocationGPS.longitude );
+      }else{
+        alert("Ha ocurrido un error");
+      }
+    });
+    window.open("PutmapUser.html","_blank");
+  }
+
+
+
+
+  //Send location
+  locationOriginAccept(putMap_originLat,putMap_originLong){
+
+    this.addAnnotationsTripToMap(new Point(putMap_originLong,putMap_originLat),"../img/start_route.png");
+    this.viewModelMapHome.setLatitudeClient(putMap_originLat);
+    this.viewModelMapHome.setLongitudeClient(putMap_originLong);
+    if(this.viewModelMapHome.latitudeDestiny !== null && this.viewModelMapHome.longitudeDestiny !== null){
+      this.fetchARoute();
+    }
+  }
+
+  locationDestinyAccept(putMap_destinyLat,putMap_destinyLong){
+    this.addAnnotationsTripToMap(new Point(putMap_destinyLong,putMap_destinyLat),"../img/end_route.png");
+    this.viewModelMapHome.setLatitudeDestiny(putMap_destinyLat);
+    this.viewModelMapHome.setLongitudeDestiny(putMap_destinyLong);
+    if(this.viewModelMapHome.latitudeOrigin !== null && this.viewModelMapHome.longitudeOrigin !== null){
+      this.fetchARoute();
+    }
+  }
+
+
+
+
+  //AlertDialogs
+  showAlertDialogNotLocationSettings(){
+    alert("Ubicación desactivada. Vaya a los ajustes y encienda la ubicación ");
+  }
+
+  showAlertDialogCarDetails(vehicleType, vehicleDetails) {
+    alert("Vehículo: "+vehicleType + "\n" + vehicleDetails);
+  }
+
+  showAlertDialogConfirmCar(vehicle){
+    let result = confirm("¿Está seguro de pedir este taxi?");
+    if(result){
+      this.viewModelMapHome.addTrip(this.stateAddTripObserver,vehicle.price,"no",vehicle.type);
+    }
+  }
+
+  liDriverAccept(trip){
+    //TODO
+  }
+
+  showToast(string){
+    const toastEl=document.getElementById("toast");
+    let toast=new bootstrap.Toast(toastEl);
+    let p=document.getElementById("toast_text");
+    p.innerHTML=string;
+    toast.show();
+  }
+
+
+
+
+  //Methods Maps
+  addAnnotationGPSToMap(point, imgUrl){
+    if(this.markerGPStoAnnotation){
+      this.markerGPStoAnnotation.remove();
+    }
+
+    let img = document.createElement('img');
+    img.setAttribute("class","marker-gps");
+    img.setAttribute("src",imgUrl);
+
+    this.markerGPStoAnnotation = new mapboxgl.Marker(img)
+      .setLngLat([point.longitude, point.latitude])
+      .addTo(map);
+  }
+
+  addAnnotationDrivers(point, imgUrl){
+    let img = document.createElement('img');
+    img.setAttribute("class","marker-driver");
+    img.setAttribute("src",imgUrl);
+
+    this.markerDrivers = new mapboxgl.Marker(img)
+      .setLngLat([point.longitude, point.latitude])
+      .addTo(map);
+  }
+
+  async addAnnotationAnimation(working){
+    if(this.viewModelMapHome.latitudeGPS !== null){
+      if(this.viewModelMapHome.longitudeGPS !== null){
+        if(working){
+
+          this.viewModelMapHome.activateAnimation = working;
+          let images = ["../img/animation_1","../img/animation_2","../img/animation_3","../img/animation_4","../img/animation_3","../img/animation_2"];
+          var position = 0;
+          this.viewCameraInPoint(this.viewModelMapHome.latitudeGPS,this.viewModelMapHome.longitudeGPS);
+
+          while (this.viewModelMapHome.activateAnimation){
+            position++;
+            if(position === 6) position =0;
+            if(this.markerAnimation)this.markerAnimation.remove();
+
+            let img = document.createElement('img');
+            img.setAttribute("class","marker-driver");
+            img.setAttribute("src",images[position]);
+
+            this.markerGPStoAnnotation = new mapboxgl.Marker(img)
+              .setLngLat([this.viewModelMapHome.longitudeGPS, this.viewModelMapHome.latitudeGPS])
+              .addTo(map);
+
+            await new Promise(resolve => setTimeout(resolve, 500));
+          }
+
+        }else{
+          this.viewModelMapHome.activateAnimation = false;
+          if(this.markerAnimation)this.markerAnimation.remove();
+        }
+      }
+    }
+  }
+
+  viewCameraInPoint(latitudeGps, longitudeGps){
+    const camera = map.getFreeCameraOptions();
+
+    const position = [longitudeGps, latitudeGps];
+    const altitude = 3000;
+
+    camera.position = mapboxgl.MercatorCoordinate.fromLngLat(position, altitude);
+    camera.lookAtPoint([longitudeGps, latitudeGps]);
+
+    map.setFreeCameraOptions(camera);
+  }
+
+  updateDriversPositionInMap(){
+    if(this.markerDrivers){
+      this.markerDrivers.remove();
+    }
+
+    if(this.viewModelMapHome.listDrivers !== null){
+      for(let f=0;f<this.viewModelMapHome.listDrivers.length;f++){
+        if(this.viewModelMapHome.listDrivers[f].longitude !== 0.0 && this.viewModelMapHome.listDrivers[f].latitude !== 0.0){
+          this.addAnnotationDrivers(new Point(
+            this.viewModelMapHome.listDrivers[f].longitude,
+            this.viewModelMapHome.listDrivers[f].latitude
+          ), this.getDriverImg(this.viewModelMapHome.listDrivers[f].typeCar));
+        }
+      }
+    }
+
+  }
+
   getDriverImg(vehicleType){
     switch(vehicleType) {
       case "Auto básico" :
@@ -296,64 +585,54 @@ export default class MaphomeUser {
     }
   }
 
-  click_details(vehicle){
-    this.showAlertDialogCarDetails(vehicle.type,vehicle.details);
-  }
+  addAnnotationsTripToMap(point, imgUrl){
+    let img = document.createElement('img');
+    img.setAttribute("class","marker-driver");
+    img.setAttribute("src",imgUrl);
 
-  click_order(vehicle){
-    this.showAlertDialogConfirmCar(vehicle);
-  }
-
-
-
-
-  locationOriginAccept(putMap_originLat,putMap_originLong){
-
-  }
-
-  locationDestinyAccept(putMap_destinyLat,putMap_destinyLong){
-
-  }
-
-  updateDriversPositionInMap(){
-
-  }
-
-
-
-
-  //AlertDialogs
-  showAlertDialogCarDetails(vehicleType, vehicleDetails) {
-    alert("Vehículo: "+vehicleType + "\n" + vehicleDetails);
-  }
-
-  showAlertDialogConfirmCar(vehicle){
-    let result = confirm("¿Está seguro de pedir este taxi?");
-    if(result){
-      this.viewModelMapHome.addTrip(this.stateAddTripObserver,vehicle.price,"no",vehicle.type);
+    if(imgUrl === "../img/start_route.png"){
+      if(this.markerTripOrigin) this.markerTripOrigin.remove();
+      this.markerTripOrigin = new mapboxgl.Marker(img)
+        .setLngLat([point.longitude, point.latitude])
+        .addTo(map);
+    }else{
+      if(this.markerTripDestiny) this.markerTripDestiny.remove();
+      this.markerTripDestiny = new mapboxgl.Marker(img)
+        .setLngLat([point.longitude, point.latitude])
+        .addTo(map);
     }
   }
 
-  showToast(string){
-    const toastEl=document.getElementById("toast");
-    let toast=new bootstrap.Toast(toastEl);
-    let p=document.getElementById("toast_text");
-    p.innerHTML=string;
-    toast.show();
+
+
+
+  //Route
+  fetchARoute(){
+    this.viewModelMapHome.getRoute(this.routeObserver,)
   }
-
-
 
 
 
   //Await car
-  showAlertLLAwaitSelect(time){
+  async showAlertLLAwaitSelect(time){
     UserAccountShared.setLastPetition(Date.now());
     this.addAnnotationAnimation(true);
     document.getElementById("btn-cancelar").style.visibility = "visible";
     document.getElementById("ubication").style.visibility = "hidden";
     document.getElementById("destino").style.visibility = "hidden";
     document.getElementById("container-card-taxi").style.visibility = "hidden";
+    document.getElementById("btn-cancelar").onclick = () => {
+      this.viewModelMapHome.cancelTimeAwait(this.stateCancelTripObserver)
+    }
+    await new Promise(resolve => setTimeout(resolve, time));
+    this.addAnnotationAnimation(false);
+    document.getElementById("btn-cancelar").style.visibility = "hidden";
+    document.getElementById("ubication").style.visibility = "visible";
+    document.getElementById("destino").style.visibility = "visible";
+    document.getElementById("container-card-taxi").style.visibility = "visible";
+  }
+
+  liRateDriver(){
     //TODO
   }
 
