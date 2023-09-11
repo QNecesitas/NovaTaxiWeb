@@ -276,10 +276,10 @@ export default class TripsDataSourceNetwork {
     hxr.send();
   }
 
-  fetchRoute(responseObserver, latitude, longitude){
+  fetchRoute(responseObserver, latitudeOrigin, longitudeOrigin,latitudeDestiny, longitudeDestiny){
     //Init and url base
     const hxr = new XMLHttpRequest();
-    hxr.open('GET', "https:api.mapbox.com/directions/v5/{mapbox/driving}/{"+longitude+"},{"+latitude+"}");
+    hxr.open('GET', "https:api.mapbox.com/directions/v5/mapbox/driving/"+longitudeOrigin+","+latitudeOrigin+";"+longitudeDestiny+","+latitudeDestiny+"?geometries=geojson&access_token=pk.eyJ1Ijoicm9ubnlucCIsImEiOiJjbGl4YTg3bDgwNHpwM2RucTlwdWFkOXN1In0.MlTnx-myS4E3LJUeh5CVbw");
 
     //OnLoad
     hxr.onload = function () {
