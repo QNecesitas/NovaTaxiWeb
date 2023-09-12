@@ -100,26 +100,23 @@
        display: flex;
        align-items: center;
        justify-content: start;
-       height: 10%;
-       
-     }
-     header figure{
-       display: flex;
-       align-items: center;
-       justify-content: center;
-       width: 10%;
      }
      header img{
        display: flex;
        align-items: center;
+       width: 1.8rem;
+       height: 1.8rem;
+       margin: 0.7rem 0 0.7rem 0.2rem;
      }
+
 
      header h2{
        display: flex;
        align-items: center;
        justify-content: start;
        width: 85%;
-       margin-left: 8px;
+       font-size: var(--text_h);
+       margin: 0.7rem auto 0.7rem 0.5rem;
      }
      header div{
       visibility: hidden;
