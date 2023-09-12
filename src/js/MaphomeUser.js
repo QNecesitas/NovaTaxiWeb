@@ -164,6 +164,7 @@ export default class MaphomeUser {
           document.getElementById("progress").style.visibility = "visible";
           break;
         case "SUCCESS":
+          document.getElementById("progress").style.visibility = "hidden";
           this.getUserDestination();
           break;
         case "ERROR":
@@ -206,9 +207,9 @@ export default class MaphomeUser {
             'line-cap': 'round'
           },
           paint: {
-            'line-color': '#3887be',
+            'line-color': '#0061ff',
             'line-width': 5,
-            'line-opacity': 0.75
+            'line-opacity': 1
           }
         });
       }
@@ -249,6 +250,7 @@ export default class MaphomeUser {
           this.viewModelMapHome.getAppVersion(this.stateVersionObserver,this.versionResponseObserver);
         }else{
           this.showToast("La aplicaci&oacute;n no ha encontrado su ubicaci&oacute;n a&uacute;n");
+          //TODO Esto no funciona
         }
       }else{
         this.showAlertDialogNotLocationSettings();
@@ -409,8 +411,8 @@ export default class MaphomeUser {
     let context = this;
 
     const miCanal = new BroadcastChannel("putmap_channel");
-    miCanal.addEventListener("message", function(event) {
 
+    const eventInstance = function(event) {
       let resultLocation = event.data;
       if(resultLocation){
         const lastLocationGPS = JSON.parse(resultLocation);
@@ -418,7 +420,11 @@ export default class MaphomeUser {
       }else{
         alert("Ha ocurrido un error");
       }
-    });
+
+      miCanal.removeEventListener("message",eventInstance);
+    };
+    miCanal.addEventListener("message", eventInstance);
+    window.sessionStorage.setItem("putMap_func", "putmap_origin");
     window.open("PutmapUser.html","_blank");
   }
 
@@ -426,7 +432,7 @@ export default class MaphomeUser {
     let context = this;
 
     const miCanal = new BroadcastChannel("putmap_channel");
-    miCanal.addEventListener("message", function(event) {
+    const eventInstance = function(event) {
 
       let resultLocation = event.data;
       if(resultLocation){
@@ -436,7 +442,10 @@ export default class MaphomeUser {
         alert("Ha ocurrido un error");
       }
 
-    });
+      miCanal.removeEventListener("message",eventInstance);
+    };
+    miCanal.addEventListener("message", eventInstance);
+    window.sessionStorage.setItem("putMap_func", "putmap_destiny");
     window.open("PutmapUser.html","_blank");
   }
 
@@ -614,19 +623,24 @@ export default class MaphomeUser {
 
   addAnnotationsTripToMap(point, imgUrl){
     let img = document.createElement('img');
-    img.setAttribute("class","marker-driver");
+    img.setAttribute("class","marker-trip");
     img.setAttribute("src",imgUrl);
+    const putMap_func = window.sessionStorage.getItem("putMap_func");
 
     if(imgUrl === "img/start_route.png"){
-      if(this.markerTripOrigin) this.markerTripOrigin.remove();
-      this.markerTripOrigin = new mapboxgl.Marker(img)
-        .setLngLat([point.longitude, point.latitude])
-        .addTo(this.map);
+      if(putMap_func === "putmap_origin") {
+        if (this.markerTripOrigin) this.markerTripOrigin.remove();
+        this.markerTripOrigin = new mapboxgl.Marker(img)
+          .setLngLat([point.longitude, point.latitude])
+          .addTo(this.map);
+      }
     }else{
-      if(this.markerTripDestiny) this.markerTripDestiny.remove();
-      this.markerTripDestiny = new mapboxgl.Marker(img)
-        .setLngLat([point.longitude, point.latitude])
-        .addTo(this.map);
+      if(putMap_func === "putmap_destiny") {
+        if (this.markerTripDestiny) this.markerTripDestiny.remove();
+        this.markerTripDestiny = new mapboxgl.Marker(img)
+          .setLngLat([point.longitude, point.latitude])
+          .addTo(this.map);
+      }
     }
   }
 

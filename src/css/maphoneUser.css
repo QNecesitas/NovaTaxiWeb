@@ -117,6 +117,23 @@ main {
   gap: 1.2rem;
 }
 
+
+.marker-trip{
+  width: 50px;
+  height: 100px;
+}
+
+.marker-driver{
+  width: 50px;
+  height: 100px;
+}
+
+.marker-gps{
+  width: 50px;
+  height: 100px;
+}
+
+
 .ubication img{
   width: 2.2rem;
   height: 2.2rem;
@@ -126,10 +143,10 @@ main {
   margin-right: 15%;
   display: flex;
   align-items: center;
-  justify-content: center; 
+  justify-content: center;
   gap: 1.2rem;
   visibility: hidden;
-}  
+}
 .btn-cancelar img{
   width: 2.2rem;
   height: 2.2rem;
@@ -232,7 +249,7 @@ main {
 }
 .card-taxi-p{
   font-size: var(--text_h);
-  font-family:Arial, Helvetica, sans-serif; 
+  font-family:Arial, Helvetica, sans-serif;
   font-weight: 600;
   margin-bottom: 0;
 }
@@ -249,7 +266,7 @@ main {
   color: var(--md_theme_dark_secondaryContainer);
   text-decoration: none;
   font-size: var(--text_h);
-  font-family:Arial, Helvetica, sans-serif; 
+  font-family:Arial, Helvetica, sans-serif;
   font-weight: 600;
 }
 
@@ -358,7 +375,7 @@ margin-left: 0.6rem;
 }
 .card-taxi-p{
 font-size: var(--text_s);
-font-family:Arial, Helvetica, sans-serif; 
+font-family:Arial, Helvetica, sans-serif;
 font-weight: 600;
 margin-bottom: 0;
 color: var(--md_theme_dark_inverseSurface);
@@ -378,7 +395,7 @@ margin-left: 8rem;
 color: var(--md_theme_light_inversePrimary);
 text-decoration: none;
 font-size: var(--text_s);
-font-family:Arial, Helvetica, sans-serif; 
+font-family:Arial, Helvetica, sans-serif;
 font-weight: 600;
 margin-left: 1rem;
 }
@@ -428,7 +445,7 @@ background-color: initial;
     padding: 1.8rem 1rem;
   }
   .btn-cancelar{
-  position: absolute; 
+  position: absolute;
   margin-left: 20%;
   }
   .button-circle {
