@@ -236,8 +236,8 @@ export default class ViewModelMapHomeUser {
     this.auxiliaryDataSource.getVersion(stateObserver, responseObserver);
   }
 
-  getRoute(responseObserver, latitude, longitude){
-    this.tripsDataSource.fetchRoute(responseObserver, latitude, longitude);
+  getRoute(responseObserver, latitudeOrigin, longitudeOrigin, latitudeDestiny, longitudeDestiny){
+    this.tripsDataSource.fetchRoute(responseObserver, latitudeOrigin, longitudeOrigin, latitudeDestiny, longitudeDestiny);
   }
 
 }

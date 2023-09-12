@@ -1,10 +1,11 @@
 import UserAccountShared from './auxiliary/UserAccountShared.js';
 import ViewModelMapHomeUser from './viewModels/ViewModelMapHomeUser.js';
-import User from "./model/User";
-import Point from "./model/Point";
+import User from "./model/User.js";
+import Point from "./model/Point.js";
 
 export default class MaphomeUser {
 
+  map;
   viewModelMapHome = new ViewModelMapHomeUser();
   listDriverObserver;
   statePricesObserver;
@@ -26,29 +27,18 @@ export default class MaphomeUser {
 
 
   constructor() {
+    let context = this;
 
     //Map
     let lastPointSelected = UserAccountShared.getLastLocation();
     mapboxgl.accessToken = 'pk.eyJ1Ijoicm9ubnlucCIsImEiOiJjbGl4YTg3bDgwNHpwM2RucTlwdWFkOXN1In0.MlTnx-myS4E3LJUeh5CVbw';
-    map = new mapboxgl.Map({
+    this.map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/ronnynp/cljbmkjqs00gt01qrb2y3bgxj',
       center: [lastPointSelected.longitude,lastPointSelected.latitude],
       zoom: 16.5, // starting zoom,
       pitch: 70.0
     });
-
-    //Results launchers
-    let putMap_originLat=window.sessionStorage.getItem("putMap_originLat");
-    let putMap_originLong=window.sessionStorage.getItem("putMap_originLong");
-    let putMap_destinyLat=window.sessionStorage.getItem("putMap_destinyLat");
-    let putMap_destinyLong=window.sessionStorage.getItem("putMap_destinyLong");
-    if(putMap_originLat !== null && putMap_originLong !==null){
-      this.locationOriginAccept(putMap_originLat, putMap_originLong)
-    }
-    if(putMap_destinyLat !== null && putMap_destinyLong !==null){
-      this.locationDestinyAccept(putMap_destinyLat, putMap_destinyLong)
-    }
 
     //Observers
     this.listDriverObserver = (it) => {
@@ -174,6 +164,7 @@ export default class MaphomeUser {
           document.getElementById("progress").style.visibility = "visible";
           break;
         case "SUCCESS":
+          document.getElementById("progress").style.visibility = "hidden";
           this.getUserDestination();
           break;
         case "ERROR":
@@ -185,6 +176,44 @@ export default class MaphomeUser {
 
     this.versionResponseObserver = (it) => {
       this.showAlertDialogNotVersion(it);
+    };
+
+    this.routeObserver = (it) =>    {
+      const data = it.routes[0];
+      const route = data.geometry.coordinates;
+      const geojson = {
+        type: 'Feature',
+        properties: {},
+        geometry: {
+          type: 'LineString',
+          coordinates: route
+        }
+      };
+      // if the route already exists on the map, we'll reset it using setData
+      if (context.map.getSource('route')) {
+        context.map.getSource('route').setData(geojson);
+      }
+      // otherwise, we'll make a new request
+      else {
+        context.map.addLayer({
+          id: 'route',
+          type: 'line',
+          source: {
+            type: 'geojson',
+            data: geojson
+          },
+          layout: {
+            'line-join': 'round',
+            'line-cap': 'round'
+          },
+          paint: {
+            'line-color': '#0061ff',
+            'line-width': 5,
+            'line-opacity': 1
+          }
+        });
+      }
+
     };
 
 
@@ -206,7 +235,7 @@ export default class MaphomeUser {
     document.getElementById("ubication").onclick = () => {
       if(navigator.geolocation){
         if(this.viewModelMapHome.latitudeGPS !== null && this.viewModelMapHome.longitudeGPS !== null){
-          this.viewModelMapHome.getAppVersion(this.stateVersionObserver,this.versionResponseObserver);
+          this.getUserOrigin();
         }else{
           this.showToast("La aplicaci&oacute;n no ha encontrado su ubicaci&oacute;n a&uacute;n");
         }
@@ -221,6 +250,7 @@ export default class MaphomeUser {
           this.viewModelMapHome.getAppVersion(this.stateVersionObserver,this.versionResponseObserver);
         }else{
           this.showToast("La aplicaci&oacute;n no ha encontrado su ubicaci&oacute;n a&uacute;n");
+          //TODO Esto no funciona
         }
       }else{
         this.showAlertDialogNotLocationSettings();
@@ -229,7 +259,7 @@ export default class MaphomeUser {
 
 
     this.viewModelMapHome.setIsNecessaryCamera(true);
-    this.getLocationRealtime();
+    this.getLocationRealTime();
     this.viewModelMapHome.startMainCoroutine(this.stateDriverObserver,this.listDriverObserver,this.stateTripObserver,this.tripStateObserver)
     this.checkInitialSharedInformation();
   }
@@ -324,6 +354,7 @@ export default class MaphomeUser {
     let geolocate; // Variable para la capa de ubicación en tiempo real
     let lastLocationGps;
     let lastLocationPoint;
+    let context = this;
 
     if (marker) {
       marker.remove();
@@ -338,9 +369,8 @@ export default class MaphomeUser {
       showUserLocation: true, // Mostrar la ubicación del usuario en el mapa
       showAccuracyCircle: true // Mostrar círculo de precisión
     });
-    let context = this;
 
-    map.addControl(geolocate);
+    this.map.addControl(geolocate);
 
     // Escuchar el evento 'geolocate' para manejar actualizaciones de ubicación
     geolocate.on('geolocate', function(e) {
@@ -354,7 +384,7 @@ export default class MaphomeUser {
 
       if(context.viewModelMapHome.isNecessaryCamera === true){
         context.viewCameraInPoint(latitudeGps, longitudeGps);
-        context.setIsNecessaryCamera(false);
+        context.viewModelMapHome.setIsNecessaryCamera(false);
       }
 
       UserAccountShared.setLastLocation(new Point(longitudeGps,latitudeGps));
@@ -366,7 +396,7 @@ export default class MaphomeUser {
           draggable: true, // Permite arrastrar el marcador
         })
           .setLngLat([longitudeGps, latitudeGps]) // Establecer la ubicación del marcador
-          .addTo(map); // Agregar marcador al mapa
+          .addTo(context.map); // Agregar marcador al mapa
       } else {
         // Actualizar la posición del marcador en el mapa
         marker.setLngLat([longitudeGps, latitudeGps]);
@@ -379,37 +409,43 @@ export default class MaphomeUser {
 
   getUserOrigin(){
     let context = this;
-    window.addEventListener("message",(event) => {
-      if(event.origin !== "Putmap.html"){
-        return;
-      }
 
-      let resultLocation = event.data.resultLocation;
+    const miCanal = new BroadcastChannel("putmap_channel");
+
+    const eventInstance = function(event) {
+      let resultLocation = event.data;
       if(resultLocation){
         const lastLocationGPS = JSON.parse(resultLocation);
         context.locationOriginAccept(lastLocationGPS.latitude,lastLocationGPS.longitude );
       }else{
         alert("Ha ocurrido un error");
       }
-    });
+
+      miCanal.removeEventListener("message",eventInstance);
+    };
+    miCanal.addEventListener("message", eventInstance);
+    window.sessionStorage.setItem("putMap_func", "putmap_origin");
     window.open("PutmapUser.html","_blank");
   }
 
   getUserDestination(){
     let context = this;
-    window.addEventListener("message",(event) => {
-      if(event.origin !== "Putmap.html"){
-        return;
-      }
 
-      let resultLocation = event.data.resultLocation;
+    const miCanal = new BroadcastChannel("putmap_channel");
+    const eventInstance = function(event) {
+
+      let resultLocation = event.data;
       if(resultLocation){
         const lastLocationGPS = JSON.parse(resultLocation);
         context.locationDestinyAccept(lastLocationGPS.latitude,lastLocationGPS.longitude );
       }else{
         alert("Ha ocurrido un error");
       }
-    });
+
+      miCanal.removeEventListener("message",eventInstance);
+    };
+    miCanal.addEventListener("message", eventInstance);
+    window.sessionStorage.setItem("putMap_func", "putmap_destiny");
     window.open("PutmapUser.html","_blank");
   }
 
@@ -419,7 +455,7 @@ export default class MaphomeUser {
   //Send location
   locationOriginAccept(putMap_originLat,putMap_originLong){
 
-    this.addAnnotationsTripToMap(new Point(putMap_originLong,putMap_originLat),"../img/start_route.png");
+    this.addAnnotationsTripToMap(new Point(putMap_originLong,putMap_originLat),"img/start_route.png");
     this.viewModelMapHome.setLatitudeClient(putMap_originLat);
     this.viewModelMapHome.setLongitudeClient(putMap_originLong);
     if(this.viewModelMapHome.latitudeDestiny !== null && this.viewModelMapHome.longitudeDestiny !== null){
@@ -428,7 +464,7 @@ export default class MaphomeUser {
   }
 
   locationDestinyAccept(putMap_destinyLat,putMap_destinyLong){
-    this.addAnnotationsTripToMap(new Point(putMap_destinyLong,putMap_destinyLat),"../img/end_route.png");
+    this.addAnnotationsTripToMap(new Point(putMap_destinyLong,putMap_destinyLat),"img/end_route.png");
     this.viewModelMapHome.setLatitudeDestiny(putMap_destinyLat);
     this.viewModelMapHome.setLongitudeDestiny(putMap_destinyLong);
     if(this.viewModelMapHome.latitudeOrigin !== null && this.viewModelMapHome.longitudeOrigin !== null){
@@ -482,7 +518,7 @@ export default class MaphomeUser {
 
     this.markerGPStoAnnotation = new mapboxgl.Marker(img)
       .setLngLat([point.longitude, point.latitude])
-      .addTo(map);
+      .addTo(this.map);
   }
 
   addAnnotationDrivers(point, imgUrl){
@@ -492,7 +528,7 @@ export default class MaphomeUser {
 
     this.markerDrivers = new mapboxgl.Marker(img)
       .setLngLat([point.longitude, point.latitude])
-      .addTo(map);
+      .addTo(this.map);
   }
 
   async addAnnotationAnimation(working){
@@ -501,7 +537,7 @@ export default class MaphomeUser {
         if(working){
 
           this.viewModelMapHome.activateAnimation = working;
-          let images = ["../img/animation_1","../img/animation_2","../img/animation_3","../img/animation_4","../img/animation_3","../img/animation_2"];
+          let images = ["img/animation_1","img/animation_2","img/animation_3","img/animation_4","img/animation_3","img/animation_2"];
           var position = 0;
           this.viewCameraInPoint(this.viewModelMapHome.latitudeGPS,this.viewModelMapHome.longitudeGPS);
 
@@ -516,7 +552,7 @@ export default class MaphomeUser {
 
             this.markerGPStoAnnotation = new mapboxgl.Marker(img)
               .setLngLat([this.viewModelMapHome.longitudeGPS, this.viewModelMapHome.latitudeGPS])
-              .addTo(map);
+              .addTo(this.map);
 
             await new Promise(resolve => setTimeout(resolve, 500));
           }
@@ -530,7 +566,7 @@ export default class MaphomeUser {
   }
 
   viewCameraInPoint(latitudeGps, longitudeGps){
-    const camera = map.getFreeCameraOptions();
+    const camera = this.map.getFreeCameraOptions();
 
     const position = [longitudeGps, latitudeGps];
     const altitude = 3000;
@@ -538,7 +574,7 @@ export default class MaphomeUser {
     camera.position = mapboxgl.MercatorCoordinate.fromLngLat(position, altitude);
     camera.lookAtPoint([longitudeGps, latitudeGps]);
 
-    map.setFreeCameraOptions(camera);
+    this.map.setFreeCameraOptions(camera);
   }
 
   updateDriversPositionInMap(){
@@ -562,44 +598,49 @@ export default class MaphomeUser {
   getDriverImg(vehicleType){
     switch(vehicleType) {
       case "Auto básico" :
-        return "./img/baseline_drive_eta_24.png";
+        return "img/baseline_drive_eta_24.png";
         break;
       case "Auto de confort" :
-        return "./img/vector_car.png";
+        return "img/vector_car.png";
         break;
       case "Auto familiar" :
-        return "./img/vector_familiar.png";
+        return "img/vector_familiar.png";
         break;
       case "Triciclo" :
-        return "./img/vector_tricycle.png";
+        return "img/vector_tricycle.png";
         break;
       case "Motor" :
-        return "./img/baseline_directions_bike_24.png";
+        return "img/baseline_directions_bike_24.png";
         break;
       case "Bicitaxi" :
-        return "./img/vector_bicitaxi.png";
+        return "img/vector_bicitaxi.png";
         break;
       default :
-        return "./img/baseline_drive_eta_24.png";
+        return "img/baseline_drive_eta_24.png";
         break;
     }
   }
 
   addAnnotationsTripToMap(point, imgUrl){
     let img = document.createElement('img');
-    img.setAttribute("class","marker-driver");
+    img.setAttribute("class","marker-trip");
     img.setAttribute("src",imgUrl);
+    const putMap_func = window.sessionStorage.getItem("putMap_func");
 
-    if(imgUrl === "../img/start_route.png"){
-      if(this.markerTripOrigin) this.markerTripOrigin.remove();
-      this.markerTripOrigin = new mapboxgl.Marker(img)
-        .setLngLat([point.longitude, point.latitude])
-        .addTo(map);
+    if(imgUrl === "img/start_route.png"){
+      if(putMap_func === "putmap_origin") {
+        if (this.markerTripOrigin) this.markerTripOrigin.remove();
+        this.markerTripOrigin = new mapboxgl.Marker(img)
+          .setLngLat([point.longitude, point.latitude])
+          .addTo(this.map);
+      }
     }else{
-      if(this.markerTripDestiny) this.markerTripDestiny.remove();
-      this.markerTripDestiny = new mapboxgl.Marker(img)
-        .setLngLat([point.longitude, point.latitude])
-        .addTo(map);
+      if(putMap_func === "putmap_destiny") {
+        if (this.markerTripDestiny) this.markerTripDestiny.remove();
+        this.markerTripDestiny = new mapboxgl.Marker(img)
+          .setLngLat([point.longitude, point.latitude])
+          .addTo(this.map);
+      }
     }
   }
 
@@ -608,7 +649,7 @@ export default class MaphomeUser {
 
   //Route
   fetchARoute(){
-    this.viewModelMapHome.getRoute(this.routeObserver,)
+    this.viewModelMapHome.getRoute(this.routeObserver,this.viewModelMapHome.latitudeOrigin,this.viewModelMapHome.longitudeOrigin,this.viewModelMapHome.latitudeDestiny,this.viewModelMapHome.longitudeDestiny)
   }
 
 

@@ -22,7 +22,7 @@ export default class UserSettings{
         document.getElementById("confirm-password").setAttribute('value',this.listUser.password);
         document.getElementById("phone").setAttribute('value',this.listUser.phone);
     };
-    
+
     this.stateObserver = (it) =>{
         switch(it){
             case "LOADING":
@@ -34,7 +34,7 @@ export default class UserSettings{
             case "ERROR":
                 alert("Se ha producido un error. Compruebe su conexión e intente nuevamente");
                 document.getElementById("progress").style.visibility = "hidden";
-                break;        
+                break;
         }
     };
 
@@ -50,7 +50,7 @@ export default class UserSettings{
             case "ERROR":
                 alert("Se ha producido un error. Compruebe su conexión e intente nuevamente");
                 document.getElementById("progress").style.visibility = "hidden";
-                break; 
+                break;
         }
     };
 
@@ -60,7 +60,7 @@ export default class UserSettings{
     }else{
         this.viewModel.getUserInformationAll(this.stateObserver,this.responseObserver,UserAccountShared.getUserEmail());
     }
-    
+
 
     //Accept Edit Account
     //Listener for btn submit in a form
@@ -74,14 +74,14 @@ export default class UserSettings{
         event.preventDefault(); //Its for default
         window.open("about_us.html","_self");
       });
-    
+
     //About Dev
     document.getElementById("aboutDev").addEventListener('click', (event) => {
         event.preventDefault(); //Its for default
         window.open("about_dev.html","_self");
       });
-    
-    //Sign Of  
+
+    //Sign Of
     document.getElementById("signOf").addEventListener('click', (event) => {
         event.preventDefault(); //Its for default
         this.signOf();
@@ -96,8 +96,8 @@ export default class UserSettings{
       document.getElementById("back").addEventListener('click',(event)=>{
         event.preventDefault();
         window.open("MapHomeUser.html","_self")
-      });  
-    
+      });
+
   }
 
   editAccount(){
