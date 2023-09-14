@@ -26,6 +26,11 @@
                 <img src="./img/arrow_back_white_24dp.svg" alt="">
             </figure>
             <h2>Editar conductor</h2>
+            <div class="spinner-border text-danger" role="status" id="progress">
+                <span class="visually-hidden">
+                  Cargando ...
+                </span>
+                </div>
     </header>
     <main>
         <div class="edit">
@@ -36,14 +41,14 @@
                 <fieldset>
                     <legend>Nombre y Apellidos</legend>
                     <label class="" for="">
-                        <input class="fondo-input" type="" id="name" placeholder="" >
+                        <input class="fondo-input" type="" id="name" placeholder="" required>
                     </label>
                 </fieldset>
               </div>
               <fieldset class="width-fieldset">
                 <legend>Correo Electr&oacute;nico</legend>
                 <label class="" for="">
-                    <input class="" type="" id="email" placeholder="user@google.com" >
+                    <input class="" type="" id="email" placeholder="user@google.com" required>
                 </label>
               </fieldset>
              <div  class="container-name">
@@ -51,20 +56,20 @@
                     <fieldset>
                         <legend>N&uacute;mero de tel&eacute;fono</legend>
                         <label class="" for="">
-                            <input class="" type="" id="phone" placeholder="" >
+                            <input class="" type="" id="phone" placeholder="" required>
                         </label>
                     </fieldset>
              </div>
              <fieldset>
                 <legend>Tipo de carro</legend>
                 <label class="" for="">
-                    <input class="" type="" id="typeCar" placeholder="" >
+                    <input class="" type="" id="typeCar" placeholder="" required readonly>
                 </label>
             </fieldset>
             <fieldset>
                 <legend>Cantidad de asientos</legend>
                 <label class="" for="">
-                    <input class="" type="number" id="cantSeat" placeholder="" >
+                    <input class="" type="number" id="cantSeat" placeholder="" required>
                 </label>
             </fieldset>
 
@@ -82,19 +87,19 @@
             <fieldset>
                 <legend>N&uacute;mero de chapa</legend>
                 <label class="" for="">
-                    <input class="" type="number" id="" placeholder="" >
+                    <input class="" type="number" id="numberPlate" placeholder="" required>
                 </label>
             </fieldset>
             <fieldset>
                 <legend>Contraseña</legend>
                 <label class="" for="">
-                    <input class="" type="password" id="password" placeholder="" >
+                    <input class="" type="password" id="password" placeholder="" required>
                 </label>
             </fieldset>
             <fieldset>
                 <legend>Confirmar contraseña</legend>
                 <label class="" for="">
-                    <input class="" type=password" id="confirm-password" placeholder="" >
+                    <input class="" type="password" id="confirm-password" placeholder="" required>
                 </label>
             </fieldset>
             <button type="submit">ACTUALIZAR</button>
@@ -102,7 +107,7 @@
         </div>
         <div class="saldo ">
             <p class="title">Saldo en cuenta</p>
-            <p>Saldo: <span>867.7 CUP</span></p>
+            <p>Saldo: <span id="balance">867.7 CUP</span></p>
             <div >
                <p> Recargar </p>
                 <img class="arrow-forw" src="./img/arrow_forward_FILL1_wght400_GRAD0_opsz48.svg" alt="">
@@ -174,7 +179,7 @@
       </div>
 
 
-    <script src="js/settingDriver.js"></script>
+    <script type="module" src="js/settingDriver.js"></script>
     <script src="js/bootstrap.js"></script>
  </body>
  </html>

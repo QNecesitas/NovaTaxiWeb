@@ -122,6 +122,10 @@
     margin: 0.5rem auto 0.5rem 0.5rem;
     font-size: var(--text_h);
   }
+  header div{
+    visibility: hidden;
+    margin-right: 20px ;
+   }
 
     main{
       padding: 1rem;
