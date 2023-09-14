@@ -68,17 +68,17 @@
     --md_theme_dark_inverseSurface: #EDE0DD !important;
     --md_theme_dark_inversePrimary: #B72301 !important;
   }
-  
+
   * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
   }
-  
+
   html {
     font-size: 62.5%;
   }
-  
+
   main {
     position: relative;
     width: 100%;
@@ -93,9 +93,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-  
+
   }
-  
+
   .select-map button {
     background-color: var(--md_theme_dark_errorContainer);
     font-family: Arial, Helvetica, sans-serif;
@@ -113,7 +113,7 @@
     justify-content: center;
     gap: 1.2rem;
   }
-  
+
   .ubication img{
     width: 2.2rem;
     height: 2.2rem;
@@ -160,7 +160,7 @@
 }
 .card-taxi-p{
   font-size: var(--text_s);
-  font-family:Arial, Helvetica, sans-serif; 
+  font-family:Arial, Helvetica, sans-serif;
   font-weight: 600;
   margin-bottom: 0;
   color: var(--md_theme_dark_inverseSurface);
@@ -180,7 +180,7 @@
   color: var(--md_theme_dark_error);
   text-decoration: none;
   font-size: var(--text_s);
-  font-family:Arial, Helvetica, sans-serif; 
+  font-family:Arial, Helvetica, sans-serif;
   font-weight: 600;
   margin-left: 1.5rem;
 }
@@ -206,15 +206,19 @@
     align-items: center;
     justify-content: center;
   }
-  
+
   .button-circle button img {
     display: flex;
     width: 100%;
     height: 100%;
   }
 
+  #iconBtnShare{
+    content: url("../img/play_arrow_black_24dp.svg");
+  }
+
   .setting {
-    margin-right: 20%;  
+    margin-right: 20%;
   }
 
 
@@ -226,4 +230,4 @@
     .card-taxi{
       width: 100%;
     }
-} 
+}

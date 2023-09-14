@@ -103,16 +103,16 @@ export default class PutMapUser {
   }
 
   addLocation(lastLocationGps, lastLocationPoint) {
-    if (lastLocationPoint == null) {
-      if (lastLocationGps == null) {
-        alert("No ha añadido su posición");
-      } else {
+    if (!lastLocationPoint) {
+      if (!lastLocationGps) {
         let result = confirm("¿Desea escoger su ubicación actual?");
         if (result) {
           let resultLocation = JSON.stringify(lastLocationGps);
           const miCanal = new BroadcastChannel("putmap_channel");
           miCanal.postMessage(resultLocation);
           window.close();
+      } else {
+          alert("No ha añadido su posición");
         }
       }
     } else {
