@@ -95,7 +95,7 @@
        }
   header{
     background-color: var(--md_theme_dark_primary);
-    color: var(--md_theme_light_surface);
+    color: var(--md_theme_dark_inverseOnSurface);
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
     align-items: center;
@@ -158,8 +158,7 @@
   .img-car{
     height: 3rem;
     width: 3rem;
-    background-color: var(--md_theme_dark_tertiaryContainer);
-    margin-top: 0.8rem;
+    background-color: var(--md_theme_light_inversePrimary);
     margin-left: 2.5rem;
     border-radius: 0.2rem;
     margin-right: 2rem;
@@ -170,36 +169,17 @@
     flex-direction: column;
     margin: 0 auto;
   }
-  fieldset{
-    padding: 2px ; ;
-    border: 1px solid var(--md_theme_light_outline) !important;
-    border-radius: 4px;
-    height: 3.8rem;
-    padding-left: 1rem;
-    margin-bottom: 0.5rem !important;
-  }
-
-  legend{
-    margin-left: 1rem;
-    font-size: var(--text_s);
-    font-weight:lighter;
-  }
-  input{
-    border: none;
-    background-color: initial;
-    margin-left: 1rem !important;
-  }
   .fondo-input{
    background-color:transparent;
    border: none;
    color: var(--md_theme_dark_onBackground);
    font-size: var(--text_m);
-   background-image: url(../img/person_white_24dp.svg);
+   background-image: url(../img/person_white_24dp.svg) !important;
    background-repeat: no-repeat;
-   height: 2rem;
+   background-position: left;
+  background-size: 30px 30px;
   }
   .edit button{
-  
     background-color: var(--md_theme_dark_inversePrimary);
     color: var(--md_theme_light_onTertiary);
     border-radius: 10px;
@@ -215,6 +195,25 @@
     border-color: var(--md_theme_dark_primary);
     border-radius: 3px;
  }
+ .edit form label{
+  display: block;
+  margin-bottom: 5px;
+}
+.edit form label input{
+  width: 100%;
+ padding: 20px;
+ padding-left: 40px;
+ margin-bottom: 10px;
+ background-color:transparent;
+ border: 1px solid var(--md_theme_dark_onBackground);
+ color: var(--md_theme_dark_onBackground);
+ border-radius: 3px;
+ height: 50px;
+ font-size: var(--text_m);
+}
+
+
+
  /*Btn Sin Maximo de distancia*/
  .maxDist-btn{
   margin-top: 1rem;
@@ -325,10 +324,10 @@
     top: 10%;
     left: 30%;
     padding: 10px;
-    visibility: hidden;
     height: 40rem;
     overflow-y: auto;
     scroll-behavior: smooth;
+    visibility: hidden;
  }
  .modal-header{
   display: flex;
@@ -351,20 +350,7 @@
     margin-bottom: 10px;
     font-family: Arial, Helvetica, sans-serif;
  }
- .modal-footer{
-    display: flex;
-    align-items: end;
-    justify-content: end;
-    }
-    .modal-footer button{
-       background-color: var(--md_theme_dark_surfaceVariant);
-       margin-right: 10px;
-       border: none;
-       color: var(--md_theme_dark_primary);
-       font-size: var(--text_s);
-       font-family: Arial, Helvetica, sans-serif;
-       font-weight: bold;
-    }
+
     @media only screen and (max-width: 600px){
       #staticBackdrop{
         width: 90%;
