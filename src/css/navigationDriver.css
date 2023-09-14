@@ -92,21 +92,22 @@
   bottom: 5%;
   right:10%;
   display: flex;
-  align-items: center;
+  align-items: center;+++++++++++++++++++++++++++++++++++++++
   justify-content: center;
   gap: 1.2rem;
 }
 .button-circle button{
   background-color: var(--md_theme_dark_tertiaryContainer);
-  width: 50px;
-  height: 50px;
-  border-radius: 25px;
+  padding: 0.2rem;
+  border-radius: 2.5rem;
   border: none;
 }
 .button-circle button img{
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
 }
 /*hidden elements*/
 
