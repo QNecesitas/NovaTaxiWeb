@@ -23,7 +23,7 @@
 <body>
     <header>
             <figure>
-                <img src="./img/arrow_back_white_24dp.svg" alt="">
+                <img src="./img/arrow_back_FILL1_wght400_GRAD0_opsz48.svg" alt="">
             </figure>
             <h2>Editar conductor</h2>
     </header>
@@ -32,71 +32,45 @@
             <p class="p-edit">Editar informacion del conductor</p>
             <form id="formEditAccount" action="">
               <div class="container-name">
-                <img class="img-car" src="./img/vector_car.png" alt="">
-                <fieldset>
-                    <legend>Nombre y Apellidos</legend>
-                    <label class="" for="">
-                        <input class="fondo-input" type="" id="name" placeholder="" >
-                    </label>
-                </fieldset>
-              </div>
-              <fieldset class="width-fieldset">
-                <legend>Correo Electr&oacute;nico</legend>
+                <img class="img-car" src="./img/baseline_drive_eta_24.png" alt="">
+
                 <label class="" for="">
-                    <input class="" type="" id="email" placeholder="user@google.com" >
+                    <input class="fondo-input" type="" id="name" placeholder="Nombre y Apellidos" required>
                 </label>
-              </fieldset>
+              </div>
+              <label class="" for="">
+                <input type="email" id="email" placeholder="Correo Electr&oacute;nico" required>
+              </label>
              <div  class="container-name">
                     <p class="num-phone">+53</p>
-                    <fieldset>
-                        <legend>N&uacute;mero de tel&eacute;fono</legend>
-                        <label class="" for="">
-                            <input class="" type="" id="phone" placeholder="" >
-                        </label>
-                    </fieldset>
+                    <label class="phone" for="phone">
+                        <input type="number" id="phone" placeholder="Número de teléfono" required>
+                    </label>
              </div>
-             <fieldset>
-                <legend>Tipo de carro</legend>
-                <label class="" for="">
-                    <input class="" type="" id="typeCar" placeholder="" >
-                </label>
-            </fieldset>
-            <fieldset>
-                <legend>Cantidad de asientos</legend>
-                <label class="" for="">
-                    <input class="" type="number" id="cantSeat" placeholder="" >
-                </label>
-            </fieldset>
+            <label class="" for="">
+                <input type="text" id="typeCar" placeholder="Tipo de carro" required>
+            </label>
+            <label class="" for="">
+                <input type="number" id="cantSeat" placeholder="Cantidad de asientos" required>
+            </label>
 
             <div class="form-check form-switch maxDist-btn">
                 <input class="form-check-input" type="checkbox" role="switch" id="btnMaxDist flexSwitchCheckDefault">
                 <label class=" maxDist-btn-label form-check-label" for="flexSwitchCheckDefault">Sin M&aacute;ximo de distancia</label>
             </div>
 
-            <fieldset id="max-dist-visi">
-                <legend>Distancia m&aacute;xima</legend>
-                <label class="" for="">
-                    <input class="" type="number" id="distMax" placeholder="" >
-                </label>
-            </fieldset>
-            <fieldset>
-                <legend>N&uacute;mero de chapa</legend>
-                <label class="" for="">
-                    <input class="" type="number" id="" placeholder="" >
-                </label>
-            </fieldset>
-            <fieldset>
-                <legend>Contraseña</legend>
-                <label class="" for="">
-                    <input class="" type="password" id="password" placeholder="" >
-                </label>
-            </fieldset>
-            <fieldset>
-                <legend>Confirmar contraseña</legend>
-                <label class="" for="">
-                    <input class="" type=password" id="confirm-password" placeholder="" >
-                </label>
-            </fieldset>
+            <label class="" for="">
+                <input type="number" id="distMax" placeholder="Distancia m&aacute;xima" required>
+            </label>
+            <label class="" for="">
+                <input type="number" id="PlateNumber" placeholder="N&uacute;mero de chapa" required>
+            </label>
+            <label class="password" for="password">
+                <input type="password" id="password" placeholder="Contraseña" required>
+            </label>
+            <label for="confirm-password">
+                <input type="password" id="confirm-password" placeholder="Confirmar contraseña" required>
+            </label>
             <button type="submit">ACTUALIZAR</button>
             </form>
         </div>
@@ -140,16 +114,16 @@
 
         
         <!--model Term and Cond-->
-    <div class="modal fade" id="staticBackdrop termcond" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="staticBackdrop" class="termcond" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
               <p class="modal-title fs-5" id="staticBackdropLabel">T&eacute;rminos y condiciones</p>
               <button id="btn-close-TC"><img src="./img/clear_white_24dp.svg" alt=""></button>
-            </div>
+            </div> 
             <div class="modal-body">
                 <p>Licencia
-                    La aplicación de Ya En Casa está bajo el uso de la licencia Creative Commons.
+                    La aplicación de NovaTaxi está bajo el uso de la licencia Creative Commons.
                     ¿Cómo funcionan las Licencias Creative Commons?
                     Las licencias Creative Commons se basan en el derecho de autor, con lo cual la obra sigue perteneciendo al dominio privativo, pero con excepciones y limitaciones que son elegidas y explícitas por el autor de la obra. Un autor, que desea otorgar algunos permisos sobre su trabajo, para que terceros puedan copiarlo, o modificarlo sin problemas de copyright, puede licenciar su obra bajo una licencia CC y de esa forma explicitar su voluntad de que la obra circule sin restricciones legales.
                     Esta licencia contiene: Reconocimiento-NoComercial-SinDerivadas 4.0 Internacional (CC BY-NC-ND 4.0).
@@ -166,8 +140,6 @@
                             Información de terceros:
                             El contenido es brindado por NovaTaxi, los creadores no nos responsabilizamos de dicho contenido.No nos responsabilizamos por los datos dados por el usuario que no se correspondan con ubicación, correo electrónico, número de teléfono y nombre. Está aplicación no comparte datos con terceros.                           
                     </p>
-            </div>
-            <div class="modal-footer">
             </div>
           </div>
         </div>
