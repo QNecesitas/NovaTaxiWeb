@@ -122,6 +122,10 @@
     width: 85%;
     margin-left: 8px;
   }
+  header div{
+    visibility: hidden;
+    margin-right: 20px ;
+   }
 
   main{
     position: relative;
@@ -150,12 +154,15 @@
     width: 100%;
     height: 20%;
   }
-  form figure{
-    width: 48px;
-    height: 48px;
-    background-color: var(--md_theme_dark_onBackground);
-    border-radius: 23px;
-
+  .img-car{
+    height: 4rem;
+    width: 4rem;
+    background-color: var(--md_theme_dark_error);
+    margin-top: 0.8rem;
+    margin-left: 2.5rem;
+    border-radius: 0.2rem;
+    margin-right: 2rem;
+    margin-bottom: 0.5rem;
   }
   input{
     border: none;
@@ -210,12 +217,22 @@
 }
 /*Btn Sin Maximo de distancia*/
   .maxDist-btn{
-    margin-top: 2rem;
-    margin-bottom: 7rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 20px;
+  }
+  .form-check-input{
+    width: 1rem;
+    height: 1rem;
   }
   .maxDist-btn-label{
     color:var(--md_theme_dark_onSurface);
     font-size: var(--text_s);
+    margin-left: 1rem;
+    margin-top: 2rem;
   }
   /*Alert Dialog Cancel Account*/
 
@@ -284,6 +301,62 @@
     left: 30%;
     padding: 10px;
     visibility: hidden;
+ }
+ /*Recycler*/
+ .container-recycler{
+  width: 100%;
+  position: absolute;
+  display: block;
+  bottom: 0%;
+  background-color: var(--md_theme_light_onSurface);
+  height: 50%;
+  scroll-behavior: smooth;
+  visibility: hidden;
+ }
+ .container-recycler img{
+  width: 50px;
+  height: 50px;
+  margin-bottom: 0px;
+ }
+ .cv-typeCar{
+  width: 100%;
+  display: block;
+  background-color: var(--md_theme_dark_surfaceVariant);
+  margin-bottom: 10px;
+ }
+ .container-typeCar{
+  width: 100%;
+  display: inline-flex;
+ }
+ #typeCar{
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  color: var(--md_theme_dark_onSurface);
+  margin-bottom: 0px;
+ }
+ .cantSeat{
+  display: inline-flex;
+ }
+ .cantSeat p{
+   font-family: Arial, Helvetica, sans-serif;
+   font-weight: bold;
+   margin-right: 5px;
+   color: var(--md_theme_dark_onSurface);
+   margin-bottom: 0px;
+ }
+ .button-select{
+  display: inline-flex;
+  justify-content: flex-end;
+  margin-left: 10px;
+  width: 100%;
+ }
+ .button-select p{
+  font-family: Arial, Helvetica, sans-serif;
+   font-weight: bold;
+   margin-right: 20px;
+   color: var(--md_theme_dark_error);
+   margin-bottom: 5px;
+
  }
 
  @media only screen and (max-width: 600px){
