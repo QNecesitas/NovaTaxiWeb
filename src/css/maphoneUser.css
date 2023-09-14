@@ -119,18 +119,18 @@ main {
 
 
 .marker-trip{
-  width: 50px;
-  height: 100px;
+  width: 40px;
+  height: 80px;
 }
 
 .marker-driver{
   width: 50px;
-  height: 100px;
+  height: 80px;
 }
 
 .marker-gps{
-  width: 50px;
-  height: 100px;
+  width: 40px;
+  height: 80px;
 }
 
 
@@ -213,10 +213,10 @@ main {
 /**Taxi cards**/
 .container-card-taxi{
   display: flex;
-  overflow-x: auto;
+  overflow: auto;
   scroll-behavior: smooth;
   position: relative;
-  top: -18rem;
+  top: -11rem;
   visibility: hidden;
 }
 .card-taxi{

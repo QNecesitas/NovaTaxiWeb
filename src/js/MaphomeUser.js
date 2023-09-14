@@ -90,8 +90,8 @@ export default class MaphomeUser {
     };
 
     this.listVehicleObserver = (it) => {
-      this.viewModelMapHome.listVehicles = it;
-      this.updateRecyclerInfo(it);
+      this.viewModelMapHome.listVehicles = this.viewModelMapHome.makeVehiclesList(it);
+      this.updateRecyclerInfo(this.viewModelMapHome.makeVehiclesList(it));
     };
 
     this.stateAddTripObserver = (it) => {
@@ -143,7 +143,7 @@ export default class MaphomeUser {
           break;
         case "SUCCESS":
           document.getElementById("progress").style.visibility = "hidden";
-          this.showToast("Valorado con éxito");
+          alert("Valorado con éxito");
           break;
         case "ERROR":
           document.getElementById("progress").style.visibility = "hidden";
@@ -178,9 +178,10 @@ export default class MaphomeUser {
       this.showAlertDialogNotVersion(it);
     };
 
-    this.routeObserver = (it) =>    {
+    this.routeObserver = (it) => {
       const data = it.routes[0];
       const route = data.geometry.coordinates;
+      const tripActualDistance = data.distance;
       const geojson = {
         type: 'Feature',
         properties: {},
@@ -214,6 +215,12 @@ export default class MaphomeUser {
         });
       }
 
+      //App logic
+      document.getElementById("progress").style.visibility = "hidden";
+      document.getElementById("container-card-taxi").style.visibility = "visible";
+      this.viewCameraInPoint(this.viewModelMapHome.latitudeDestiny,this.viewModelMapHome.longitudeDestiny);
+      this.viewModelMapHome.getPrices(tripActualDistance,this.statePricesObserver,this.listVehicleObserver);
+
     };
 
 
@@ -234,10 +241,10 @@ export default class MaphomeUser {
 
     document.getElementById("ubication").onclick = () => {
       if(navigator.geolocation){
-        if(this.viewModelMapHome.latitudeGPS !== null && this.viewModelMapHome.longitudeGPS !== null){
+        if(this.viewModelMapHome.latitudeGPS && this.viewModelMapHome.longitudeGPS){
           this.getUserOrigin();
         }else{
-          this.showToast("La aplicaci&oacute;n no ha encontrado su ubicaci&oacute;n a&uacute;n");
+          alert("La aplicación no ha encontrado su ubicación aún");
         }
       }else{
         this.showAlertDialogNotLocationSettings();
@@ -246,10 +253,10 @@ export default class MaphomeUser {
 
     document.getElementById("destino").onclick = () => {
       if(navigator.geolocation){
-        if(this.viewModelMapHome.latitudeGPS !== null && this.viewModelMapHome.longitudeGPS !== null){
+        if(this.viewModelMapHome.latitudeGPS && this.viewModelMapHome.longitudeGPS){
           this.viewModelMapHome.getAppVersion(this.stateVersionObserver,this.versionResponseObserver);
         }else{
-          this.showToast("La aplicaci&oacute;n no ha encontrado su ubicaci&oacute;n a&uacute;n");
+          alert("La aplicaci&oacute;n no ha encontrado su ubicaci&oacute;n a&uacute;n");
           //TODO Esto no funciona
         }
       }else{
@@ -283,7 +290,6 @@ export default class MaphomeUser {
         let divContainerA = document.createElement("div");divContainerA.setAttribute("class","container-a");
         let aDetails = document.createElement("a");aDetails.setAttribute("class","card-taxi-a");aDetails.setAttribute("href","");
         let aOrder = document.createElement("a");aOrder.setAttribute("class","card-taxi-a");aOrder.setAttribute("href","");
-
         divCardTaxiImg.appendChild(imgCardTaxiImg);
         divContainerP.appendChild(pTypeCar);
         divContainerP.appendChild(pPriceCar);
@@ -380,6 +386,7 @@ export default class MaphomeUser {
       context.viewModelMapHome.latitudeGPS = latitudeGps;
       context.viewModelMapHome.longitudeGPS = longitudeGps;
 
+
       lastLocationGps={latitude:latitudeGps, longitude:longitudeGps};
 
       if(context.viewModelMapHome.isNecessaryCamera === true){
@@ -389,18 +396,7 @@ export default class MaphomeUser {
 
       UserAccountShared.setLastLocation(new Point(longitudeGps,latitudeGps));
 
-      // Crear un marcador personalizado (puedes cambiar el icono y estilo según tus necesidades)
-      if (!marker) {
-        marker = new mapboxgl.Marker({
-          color: 'blue', // Color del marcador
-          draggable: true, // Permite arrastrar el marcador
-        })
-          .setLngLat([longitudeGps, latitudeGps]) // Establecer la ubicación del marcador
-          .addTo(context.map); // Agregar marcador al mapa
-      } else {
-        // Actualizar la posición del marcador en el mapa
-        marker.setLngLat([longitudeGps, latitudeGps]);
-      }
+      context.addAnnotationGPSToMap(new Point(longitudeGps, latitudeGps));
     });
 
     // Iniciar la geolocalización
@@ -458,7 +454,7 @@ export default class MaphomeUser {
     this.addAnnotationsTripToMap(new Point(putMap_originLong,putMap_originLat),"img/start_route.png");
     this.viewModelMapHome.setLatitudeClient(putMap_originLat);
     this.viewModelMapHome.setLongitudeClient(putMap_originLong);
-    if(this.viewModelMapHome.latitudeDestiny !== null && this.viewModelMapHome.longitudeDestiny !== null){
+    if(this.viewModelMapHome.latitudeDestiny && this.viewModelMapHome.longitudeDestiny){
       this.fetchARoute();
     }
   }
@@ -467,7 +463,7 @@ export default class MaphomeUser {
     this.addAnnotationsTripToMap(new Point(putMap_destinyLong,putMap_destinyLat),"img/end_route.png");
     this.viewModelMapHome.setLatitudeDestiny(putMap_destinyLat);
     this.viewModelMapHome.setLongitudeDestiny(putMap_destinyLong);
-    if(this.viewModelMapHome.latitudeOrigin !== null && this.viewModelMapHome.longitudeOrigin !== null){
+    if(this.viewModelMapHome.latitudeOrigin && this.viewModelMapHome.longitudeOrigin){
       this.fetchARoute();
     }
   }
@@ -495,30 +491,25 @@ export default class MaphomeUser {
     //TODO
   }
 
-  showToast(string){
-    const toastEl=document.getElementById("toast");
-    let toast=new bootstrap.Toast(toastEl);
-    let p=document.getElementById("toast_text");
-    p.innerHTML=string;
-    toast.show();
-  }
-
 
 
 
   //Methods Maps
-  addAnnotationGPSToMap(point, imgUrl){
-    if(this.markerGPStoAnnotation){
-      this.markerGPStoAnnotation.remove();
+  addAnnotationGPSToMap(point) {
+    const longitudeGps  = point.longitude;
+    const latitudeGPS = point.latitude;
+
+    if (!this.markerGPStoAnnotation) {
+      this.markerGPStoAnnotation = new mapboxgl.Marker({
+        color: 'red', // Color del marcador
+        draggable: true, // Permite arrastrar el marcador
+      })
+        .setLngLat([longitudeGps, latitudeGps]) // Establecer la ubicación del marcador
+        .addTo(this.map); // Agregar marcador al mapa
+    } else {
+      // Actualizar la posición del marcador en el mapa
+      this.markerGPStoAnnotation.setLngLat([longitudeGps, latitudeGps]);
     }
-
-    let img = document.createElement('img');
-    img.setAttribute("class","marker-gps");
-    img.setAttribute("src",imgUrl);
-
-    this.markerGPStoAnnotation = new mapboxgl.Marker(img)
-      .setLngLat([point.longitude, point.latitude])
-      .addTo(this.map);
   }
 
   addAnnotationDrivers(point, imgUrl){
@@ -532,8 +523,8 @@ export default class MaphomeUser {
   }
 
   async addAnnotationAnimation(working){
-    if(this.viewModelMapHome.latitudeGPS !== null){
-      if(this.viewModelMapHome.longitudeGPS !== null){
+    if(this.viewModelMapHome.latitudeGPS){
+      if(this.viewModelMapHome.longitudeGPS){
         if(working){
 
           this.viewModelMapHome.activateAnimation = working;
@@ -582,13 +573,13 @@ export default class MaphomeUser {
       this.markerDrivers.remove();
     }
 
-    if(this.viewModelMapHome.listDrivers !== null){
+    if(this.viewModelMapHome.listDrivers){
       for(let f=0;f<this.viewModelMapHome.listDrivers.length;f++){
         if(this.viewModelMapHome.listDrivers[f].longitude !== 0.0 && this.viewModelMapHome.listDrivers[f].latitude !== 0.0){
           this.addAnnotationDrivers(new Point(
             this.viewModelMapHome.listDrivers[f].longitude,
             this.viewModelMapHome.listDrivers[f].latitude
-          ), this.getDriverImg(this.viewModelMapHome.listDrivers[f].typeCar));
+          ), this.getDriverMarkerImg(this.viewModelMapHome.listDrivers[f].typeCar));
         }
       }
     }
@@ -621,6 +612,32 @@ export default class MaphomeUser {
     }
   }
 
+  getDriverMarkerImg(vehicleType){
+    switch(vehicleType) {
+      case "Auto básico" :
+        return "img/dirver_icon_simple.png";
+        break;
+      case "Auto de confort" :
+        return "img/dirver_icon_confort.png";
+        break;
+      case "Auto familiar" :
+        return "img/dirver_icon_familiar.png";
+        break;
+      case "Triciclo" :
+        return "img/dirver_icon_triciclo.png";
+        break;
+      case "Motor" :
+        return "img/dirver_icon_motorb.png";
+        break;
+      case "Bicitaxi" :
+        return "img/dirver_icon_bicitaxi.png";
+        break;
+      default :
+        return "img/dirver_icon_simple.png";
+        break;
+    }
+  }
+
   addAnnotationsTripToMap(point, imgUrl){
     let img = document.createElement('img');
     img.setAttribute("class","marker-trip");
@@ -649,7 +666,8 @@ export default class MaphomeUser {
 
   //Route
   fetchARoute(){
-    this.viewModelMapHome.getRoute(this.routeObserver,this.viewModelMapHome.latitudeOrigin,this.viewModelMapHome.longitudeOrigin,this.viewModelMapHome.latitudeDestiny,this.viewModelMapHome.longitudeDestiny)
+    this.viewModelMapHome.getRoute(this.routeObserver,this.viewModelMapHome.latitudeOrigin,this.viewModelMapHome.longitudeOrigin,this.viewModelMapHome.latitudeDestiny,this.viewModelMapHome.longitudeDestiny);
+    document.getElementById("progress").style.visibility = "visible";
   }
 
 
@@ -664,7 +682,7 @@ export default class MaphomeUser {
     document.getElementById("container-card-taxi").style.visibility = "hidden";
     document.getElementById("btn-cancelar").onclick = () => {
       this.viewModelMapHome.cancelTimeAwait(this.stateCancelTripObserver)
-    }
+    };
     await new Promise(resolve => setTimeout(resolve, time));
     this.addAnnotationAnimation(false);
     document.getElementById("btn-cancelar").style.visibility = "hidden";

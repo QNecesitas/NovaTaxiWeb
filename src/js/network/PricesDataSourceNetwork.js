@@ -27,7 +27,6 @@ export default class PricesDataSourceNetwork {
         let json = JSON.parse(hxr.responseText);
         stateObserver("SUCCESS");
         responseObserver(json);
-        //TODO In a case there are a method makeVehicleList
       } else {
         stateObserver("ERROR");
       }

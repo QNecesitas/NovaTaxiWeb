@@ -46,7 +46,7 @@
     --md_theme_dark_primary:#FF6747 !important;
     --md_theme_dark_onPrimary:#630E00 !important;
     --md_theme_dark_primaryContainer:#8C1800 !important;
-    --md_theme_dark_onPrimaryContainer:#FFDAD3 !important; 
+    --md_theme_dark_onPrimaryContainer:#FFDAD3 !important;
     --md_theme_dark_secondary:#FFB3B6 !important;
     --md_theme_dark_onSecondary:#680019 !important;
     --md_theme_dark_secondaryContainer:#920027 !important;
@@ -99,6 +99,8 @@
 .button-circle button{
   background-color: var(--md_theme_dark_tertiaryContainer);
   padding: 0.2rem;
+  width: 50px;
+  height: 50px;
   border-radius: 2.5rem;
   border: none;
 }
@@ -108,6 +110,95 @@
   justify-content: center;
   width: 2.5rem;
   height: 2.5rem;
+}
+/*Alert Dialog Ubication desactivada*/
+#staticBackdrop{
+    background-color: var(--md_theme_dark_surfaceVariant);
+    width: 40%;
+    position: absolute;
+    top: 40%;
+    left: 30%;
+    padding: 10px;
+    visibility: hidden;
+ }
+ #staticBackdropDos{
+  background-color: var(--md_theme_dark_surfaceVariant);
+  width: 40%;
+  position: absolute;
+  top: 40%;
+  left: 30%;
+  padding: 10px;
+  visibility: hidden;
+}
+ .modal-header p{
+    color: var(--md_theme_dark_onBackground);
+    font-size: var(--text_m);
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+ }
+ .modal-body p{
+    color: var(--md_theme_dark_onBackground);
+    font-size: var(--text_s);
+    margin-bottom: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+ }
+ .modal-footer{
+    display: flex;
+    align-items: end;
+    justify-content: end;
+    }
+    .modal-footer button{
+       background-color: var(--md_theme_dark_surfaceVariant);
+       margin-right: 10px;
+       border: none;
+       color: var(--md_theme_dark_primary);
+       font-size: var(--text_s);
+       font-family: Arial, Helvetica, sans-serif;
+       font-weight: bold;
+    }
+
+    .pModal{
+      font-weight: 600;
+    }
+    .pModal span{
+      font-weight: 200;
+    }
+    .foot-travel{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .btn-modalTravel{
+      background-color: var(--md_theme_dark_primary);
+      color: var(--md_theme_dark_onError) ;
+      padding: 0.5rem 1rem;
+      margin: 0 ;
+      border-radius: 1rem;
+      border: none;
+    }
+
+.hidden-container{
+  position: absolute;
+  top: 2rem;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--md_theme_dark_background);
+  padding: 0.5rem;
+  margin: 0 1rem;
+  visibility: hidden;
+}
+
+@media only screen and (max-width: 600px){
+
+        #staticBackdrop{
+            width: 70%;
+            left: 15%;
+         }
+         #staticBackdropDos{
+          width: 70%;
+          left: 15%;
+       }
 }
 /*hidden elements*/
 
@@ -132,9 +223,4 @@
     margin: 0 0.4rem 0.5rem 8rem;
     font-weight: 600;
     color: var(--md_theme_dark_primary);
-}
-
-@media only screen and (max-width: 600px){
-
-    
 }

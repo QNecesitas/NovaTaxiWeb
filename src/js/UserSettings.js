@@ -55,7 +55,7 @@ export default class UserSettings{
     };
 
     //get User Information
-    if(UserAccountShared.getUserEmail()==null){
+    if(UserAccountShared.getUserEmail()){
         window.open("loginUser.html","_self");
     }else{
         this.viewModel.getUserInformationAll(this.stateObserver,this.responseObserver,UserAccountShared.getUserEmail());

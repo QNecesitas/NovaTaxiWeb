@@ -128,7 +128,7 @@ export default class ViewModelMapHomeUser {
 
     //Simple car
     this.listVehicles.push(
-      Vehicle(
+      new Vehicle(
         "Auto básico",
         parseInt(prices.priceNormalCar * distance),
         4,
@@ -138,7 +138,7 @@ export default class ViewModelMapHomeUser {
 
     //Comfort
     this.listVehicles.push(
-      Vehicle(
+      new Vehicle(
         "Auto de confort",
         parseInt(prices.priceComfortCar * distance),
         4,
@@ -148,7 +148,7 @@ export default class ViewModelMapHomeUser {
 
     //Familiar
     this.listVehicles.push(
-      Vehicle(
+      new Vehicle(
         "Auto familiar",
         parseInt(prices.priceFamiliarCar * distance),
         8,
@@ -158,7 +158,7 @@ export default class ViewModelMapHomeUser {
 
     //Tricycle
     this.listVehicles.push(
-      Vehicle(
+      new Vehicle(
         "Triciclo",
         parseInt(prices.priceTricycle * distance),
         2,
@@ -168,7 +168,7 @@ export default class ViewModelMapHomeUser {
 
     //Bicitaxi
     this.listVehicles.push(
-      Vehicle(
+      new Vehicle(
         "Bicitaxi",
         parseInt(prices.priceBiciTaxi * distance),
         2,
@@ -178,7 +178,7 @@ export default class ViewModelMapHomeUser {
 
     //Motorcycle
     this.listVehicles.push(
-      Vehicle(
+      new Vehicle(
         "Motor",
         parseInt(prices.priceMotorcycle * distance),
         1,
