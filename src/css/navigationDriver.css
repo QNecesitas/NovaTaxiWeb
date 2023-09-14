@@ -46,7 +46,7 @@
     --md_theme_dark_primary:#FF6747 !important;
     --md_theme_dark_onPrimary:#630E00 !important;
     --md_theme_dark_primaryContainer:#8C1800 !important;
-    --md_theme_dark_onPrimaryContainer:#FFDAD3 !important; 
+    --md_theme_dark_onPrimaryContainer:#FFDAD3 !important;
     --md_theme_dark_secondary:#FFB3B6 !important;
     --md_theme_dark_onSecondary:#680019 !important;
     --md_theme_dark_secondaryContainer:#920027 !important;
@@ -90,22 +90,26 @@
   position: absolute;
   width: 20%;
   bottom: 5%;
-  right:5%;
+  right:10%;
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 1.2rem;
 }
 .button-circle button{
   background-color: var(--md_theme_dark_tertiaryContainer);
+  padding: 0.2rem;
   width: 50px;
   height: 50px;
-  border-radius: 25px;
+  border-radius: 2.5rem;
   border: none;
 }
 .button-circle button img{
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
 }
 /*Alert Dialog Ubication desactivada*/
 #staticBackdrop{
@@ -174,6 +178,17 @@
       border: none;
     }
 
+.hidden-container{
+  position: absolute;
+  top: 2rem;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--md_theme_dark_background);
+  padding: 0.5rem;
+  margin: 0 1rem;
+  visibility: hidden;
+}
+
 @media only screen and (max-width: 600px){
 
         #staticBackdrop{
@@ -184,4 +199,28 @@
           width: 70%;
           left: 15%;
        }
+}
+/*hidden elements*/
+
+.hidden-container{
+  position: absolute;
+  top: 2rem;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--md_theme_dark_background);
+  padding: 0.5rem;
+  margin: 0 1rem;
+  visibility: hidden;
+}
+.hidden-container p{
+    color: var(--md_theme_light_onSecondary);
+    font-size: var(--text_s);
+    line-height: 1;
+}
+.hidden-container button{
+    border: none;
+    background-color: initial;
+    margin: 0 0.4rem 0.5rem 8rem;
+    font-weight: 600;
+    color: var(--md_theme_dark_primary);
 }

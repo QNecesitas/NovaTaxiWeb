@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Navegación</title>
+  <meta name="description" content="Mapa de Navegación de NovaTaxi">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel="stylesheet" href="css/navigationDriver.css">
+  <link rel="stylesheet" href="./css/bootstrap.css">
+
+  <meta name="theme-color" content="#fafafa">
+</head>
+<body>
+    <main>
+        <div class=" button-circle">
+            <!--change first-->
+            <button class="gps"><img src="./img/front_hand_FILL1_wght400_GRAD0_opsz24White.svg" alt=""></button>
+            <button class="gps"><img src="./img/my_location_FILL1_wght400_GRAD0_opsz48.svg" alt=""></button>
+        </div>
+    </main>
+
+    <!--Hidden Elements-->
+        <section class="hidden-container" id="wait">
+            <p>Se encuentra cerca del origen marcado por el cliente. Selecione el bot&oacute;n debajo cuando est&eacute; en el lugar a la espera. Al activar el bot&oacute;n avisaremos al cliente que usted ha llegado.</p>
+            <button><img src="./img/front_hand_FILL1_wght400_GRAD0_opsz24White.svg" alt=""> Ya estoy a la espera </button>
+        </section>
+
+        <section class="hidden-container" id="continuos">
+            <p>Selecione el bot&oacute;n de abajo para continuar el viaje cuando haya terminado la espera por el cliente.</p>
+            <button><img src="./img/play_arrow_red_24dp.svg" alt=""> El cliente ha llegado</button>
+        </section>
+
+        <section class="hidden-container" id="endTravel">
+            <p>Se encuentra cerca del destino marcado por el cliente. Seleccine el bot&oacute;n debajo cuando haya finalizado el viaje.</p>
+            <button><img src="./img/mode_of_travel_FILL0_wght400_GRAD0_opsz24.svg" alt=""> Finaliz&oacute; el viaje</button>
+        </section>
+ 
+
+
+
+    <script src="js/navigationDriver.js"></script>
+   <script src="js/bootstrap.js"></script>
+</body>
+</html>

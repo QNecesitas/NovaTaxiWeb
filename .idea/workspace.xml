@@ -2,8 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="63ca0d2e-f949-46f3-9471-1cb2000b565d" name="Default" comment="Project starting again for an error">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/NaviationDriver.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/img/front_hand_FILL0_wght400_GRAD0_opsz24.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/img/front_hand_FILL1_wght400_GRAD0_opsz24White.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/img/mode_of_travel_FILL0_wght400_GRAD0_opsz24.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/img/notifications_active_FILL0_wght400_GRAD0_opsz24.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/img/notifications_active_FILL1_wght400_GRAD0_opsz24red.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/img/play_arrow_red_24dp.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/js/navigationDriver.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/js/network/PricesDataSourceNetwork.js" afterPath="$PROJECT_DIR$/src/js/network/PricesDataSourceNetwork.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SettingUser.html" afterPath="$PROJECT_DIR$/src/SettingUser.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/css/navigationDriver.css" afterPath="$PROJECT_DIR$/src/css/navigationDriver.css" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -166,7 +175,7 @@
       <scroll-view-position x="0" y="0" />
     </layout>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-10" />
     <option name="width" value="980" />
     <option name="height" value="1030" />
@@ -306,7 +315,7 @@
       <workItem from="1694119639875" duration="770000" />
       <workItem from="1694124907803" duration="23671000" />
       <workItem from="1694296613485" duration="66191000" />
-      <workItem from="1694721564396" duration="605000" />
+      <workItem from="1694721564396" duration="900000" />
     </task>
     <task id="LOCAL-00001" summary="Project was started">
       <created>1691003060881</created>
@@ -347,7 +356,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="303618000" />
+    <option name="totallyTimeSpent" value="303913000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -359,7 +368,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-11" y="-11" width="1942" height="1042" extended-state="7" />
+    <frame x="-11" y="-11" width="1942" height="1042" extended-state="6" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15702918" sideWeight="0.5061947" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17931035" sideWeight="0.49380532" order="0" side_tool="false" content_ui="combo" />
@@ -660,13 +669,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/NavigationDriver.js">
+    <entry file="file://$PROJECT_DIR$/src/js/navigationDriver.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
