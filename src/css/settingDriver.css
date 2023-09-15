@@ -218,10 +218,20 @@
  .maxDist-btn{
   margin-top: 1rem;
   margin-bottom: 1rem;
+  align-items: center;
+  display: flex;
+  justify-content: start;
+  height: 20px;
+}
+.form-check-input{
+  width: 1rem;
+  height: 1rem;
 }
 .maxDist-btn-label{
   color:var(--md_theme_dark_onSurface);
   font-size: var(--text_s);
+  margin-left: 0.5rem;
+  margin-top: 0.3rem;
 }
 .saldo{
     background-color: var(--md_theme_dark_surfaceVariant);

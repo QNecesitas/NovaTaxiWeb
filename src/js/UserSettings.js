@@ -7,6 +7,7 @@ export default class UserSettings{
     responseObserver;
     stateObserver;
     stateOperationObserver;
+    stateDeleteObserver;
     listUser;
 
     viewModel= new ViewModelUserSetting();
@@ -54,8 +55,25 @@ export default class UserSettings{
         }
     };
 
+    this.stateDeleteObserver = (it) =>{
+      switch(it){
+          case "LOADING":
+              document.getElementById("progress").style.visibility = "visible";
+              break;
+          case "SUCCESS":
+              document.getElementById("progress").style.visibility = "hidden";
+              alert("Operación realizada con éxito");
+              window.open("loginUser.html","_self");
+              break;
+          case "ERROR":
+              alert("Se ha producido un error. Compruebe su conexión e intente nuevamente");
+              document.getElementById("progress").style.visibility = "hidden";
+              break;
+      }
+  };
+
     //get User Information
-    if(UserAccountShared.getUserEmail()){
+    if(UserAccountShared.getUserEmail()==null){
         window.open("loginUser.html","_self");
     }else{
         this.viewModel.getUserInformationAll(this.stateObserver,this.responseObserver,UserAccountShared.getUserEmail());
@@ -90,12 +108,20 @@ export default class UserSettings{
     //Delete Account
     document.getElementById("delete").addEventListener('click', (event) => {
         event.preventDefault(); //Its for default
-        this.deleteUsers(this.stateOperationObserver);
+        this.deleteUsers(this.stateDeleteObserver);
       });
 
       document.getElementById("back").addEventListener('click',(event)=>{
         event.preventDefault();
-        window.open("MapHomeUser.html","_self")
+        window.open("MaphomeUser.html","_self")
+      });
+
+      document.getElementById("condition").addEventListener('click',()=>{
+        document.getElementById("staticBackdrop").style.visibility="visible";
+      });
+  
+      document.getElementById("btn-close-TC").addEventListener('click',()=>{
+        document.getElementById("staticBackdrop").style.visibility="hidden";
       });
 
   }
@@ -128,7 +154,6 @@ export default class UserSettings{
     let result= confirm("¿Estás seguro de eliminar la cuenta?");
     if(result){
         this.viewModel.deleteUsers(stateObserve,UserAccountShared.getUserEmail());
-        window.open("loginUser.html","_self");
         UserAccountShared.setUserEmail(null);
     }
   }

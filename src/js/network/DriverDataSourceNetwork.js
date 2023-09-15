@@ -10,11 +10,11 @@ export default class DriverDataSourceNetwork {
   getDriverAllInformationURL = Constants.PHP_FILES + "FetchDriverAllInformation.php";
   sendRecoverPetitionDriverURL = Constants.PHP_FILES + "SendRecoverPetitionDriver.php";
   addDriverInformationURL = Constants.PHP_FILES + "AddDriverInformation.php";
-  updateDriverLocationURL = Constants.PHP_TOKEN + "UpdateDriverLocation.php";
-  updateDriverBalanceURL = Constants.PHP_TOKEN + "UpdateDriverBalance.php";
-  updateStateURL = Constants.PHP_TOKEN + "UpdateState.php";
-  deleteDriverURL = Constants.PHP_TOKEN + "DeleteDriver.php";
-  updateDriverInformationURL = Constants.PHP_TOKEN + "UpdateDriverInformation.php";
+  updateDriverLocationURL = Constants.PHP_FILES + "UpdateDriverLocation.php";
+  updateDriverBalanceURL = Constants.PHP_FILES + "UpdateDriverBalance.php";
+  updateStateURL = Constants.PHP_FILES + "UpdateState.php";
+  deleteDriverURL = Constants.PHP_FILES + "DeleteDriver.php";
+  updateDriverInformationURL = Constants.PHP_FILES + "UpdateDriverInformation.php";
 
 
 
