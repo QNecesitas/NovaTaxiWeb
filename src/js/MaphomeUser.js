@@ -256,7 +256,7 @@ export default class MaphomeUser {
         if(this.viewModelMapHome.latitudeGPS && this.viewModelMapHome.longitudeGPS){
           this.viewModelMapHome.getAppVersion(this.stateVersionObserver,this.versionResponseObserver);
         }else{
-          alert("La aplicaci&oacute;n no ha encontrado su ubicaci&oacute;n a&uacute;n");
+          alert("La aplicación no ha encontrado su ubicación aún");
           //TODO Esto no funciona
         }
       }else{
