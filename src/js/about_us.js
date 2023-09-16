@@ -1,8 +1,8 @@
-export default class AboutDev{
+export default class AboutUs{
     constructor(){
         document.getElementById("back").addEventListener("click",()=>{
             history.back();
         });
     }
 }
-let aboutDev = new AboutDev();
+let aboutDev = new AboutUs();
