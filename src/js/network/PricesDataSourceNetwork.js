@@ -15,7 +15,7 @@ export default class PricesDataSourceNetwork {
 
 
 
-  getPricesInformation(stateObserver, responseObserver, id) {
+  getPricesInformation(stateObserver, responseObserver, id, distance) {
     //Init and url base
     const hxr = new XMLHttpRequest();
     hxr.open('GET', this.getPricesInformationURL+"?token="+Constants.PHP_TOKEN+"&id="+id);
@@ -26,7 +26,7 @@ export default class PricesDataSourceNetwork {
       if (hxr.status === 200) {
         let json = JSON.parse(hxr.responseText);
         stateObserver("SUCCESS");
-        responseObserver(json);
+        responseObserver(json, distance);
       } else {
         stateObserver("ERROR");
       }

@@ -1,4 +1,4 @@
-export default class RoutesTools{
+export default class Notifications{
 
   static notify(bodyNotification){
     if("Notification" in window){

@@ -6,6 +6,7 @@ export default class DriverSetting{
     responseObserver;
     stateObserver;
     stateOperationObserver;
+    stateDeleteObserver;
     listDriver;
 
     viewModel= new ViewModelDriverSetting();
@@ -24,17 +25,16 @@ export default class DriverSetting{
         document.getElementById('name').setAttribute('value',this.listDriver.name);
         document.getElementById('phone').setAttribute('value',this.listDriver.phone);
         document.getElementById('typeCar').setAttribute('value',this.listDriver.typeCar);
-        document.getElementById('maxDist').setAttribute('value',this.listDriver.maxDist);
+        document.getElementById('distMax').setAttribute('value',this.listDriver.maxDist);
         document.getElementById('cantSeat').setAttribute('value',this.listDriver.cantSeat);
         document.getElementById('numberPlate').setAttribute('value',this.listDriver.numberPlate);
-        document.getElementById("confirm-password").setAttribute('value',this.listUser.password);
+        document.getElementById("confirm-password").setAttribute('value',this.listDriver.password);
 
-        //revisar
-        format = new Intl.NumberFormat('en', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
-        money = (`${format.format(viewModel.listDriver.value?.[0]?.balance)} + 'CUP'`);
-        input.tvMoney.textContent = money;
-        // end revisar
-        getPhoto();
+        
+         let balance= this.listDriver.balance;
+         let decimal= balance.toFixed(1);
+        document.getElementById("balance").innerHTML=decimal;
+        this.getPhoto(this.listDriver.typeCar);
        }; 
        this.stateObserver = (it) =>{
         switch(it){
@@ -67,11 +67,28 @@ export default class DriverSetting{
         }
       };
 
+      this.stateDeleteObserver = (it) =>{
+        switch(it){
+            case "LOADING":
+                document.getElementById("progress").style.visibility = "visible";
+                break;
+            case "SUCCESS":
+                document.getElementById("progress").style.visibility = "hidden";
+                alert("Operación realizada con éxito");
+                window.open("loginDriver.html","_self");
+                break;
+            case "ERROR":
+                alert("Se ha producido un error. Compruebe su conexión e intente nuevamente");
+                document.getElementById("progress").style.visibility = "hidden";
+                break; 
+        }
+      };
+
       //get Driver Information
-      if(DriverAccountShared.getUserEmail()==null){
+      if(DriverAccountShared.getDriverEmail()==null){
         window.open("loginDriver.html","_self");
         }else{
-         this.viewModel.getDriverInformationAll(this.stateObserver,this.responseObserver,DriverAccountShared.getUserEmail());
+         this.viewModel.getDriverInformationAll(this.stateObserver,this.responseObserver,DriverAccountShared.getDriverEmail());
       }
 
       var email = document.getElementById("email");
@@ -85,17 +102,14 @@ export default class DriverSetting{
       });
 
       //BTN max Dist
-      const btnMaxDist = document.querySelector('#btnMaxDist');
-      const MaxDistVisi = document.querySelector('#max-dist-visi');
-
-      btnMaxDist.addEventListener('change', (_, isChecked) => {
-      if (isChecked) {
-        MaxDistVisi.style.visibility = 'hidden';
-        MaxDistVisi.value = '0';
-    } else {
-        MaxDistVisi.style.visibility = 'visible';
-  }
-});
+      //Listener
+      document.getElementById("flexSwitchCheckDefault").addEventListener("change",()=>{
+        if(document.getElementById("flexSwitchCheckDefault").checked){
+            document.getElementById("distMax").style.display = "none";
+          }else{
+            document.getElementById("distMax").style.display = "flex";
+          }
+      });
 
       //About Us
     document.getElementById("aboutUs").addEventListener('click', (event) => {
@@ -118,13 +132,32 @@ export default class DriverSetting{
     //Delete Account
     document.getElementById("delete").addEventListener('click', (event) => {
         event.preventDefault(); //Its for default
-        this.deleteDrivers(this.stateOperationObserver);
+        this.deleteDrivers(this.stateDeleteObserver);
       });
-    }
+
+    document.getElementById("condition").addEventListener('click',()=>{
+      document.getElementById("staticBackdrop").style.visibility="visible";
+    });
+
+    document.getElementById("btn-close-TC").addEventListener('click',()=>{
+      document.getElementById("staticBackdrop").style.visibility="hidden";
+    });
+
+    document.getElementById("recargar").addEventListener('click',()=>{
+      alert("En próximas versiones...");
+    });
+
+    document.getElementById("back").addEventListener('click',()=>{
+      window.open("MaphomeDriver.html","_self");
+    });
+
+
+
+  }
   
 
-    getPhoto() {
-    switch(this.listDriver.typeCar){
+    getPhoto(typeCar) {
+    switch(typeCar){
         case "Auto básico":
             document.getElementById("typeCar").src='./img/baseline_drive_eta_24.png';
             break;
@@ -146,19 +179,32 @@ export default class DriverSetting{
     }
   }
   editAccount(){
-    if(document.querySelector('#email').value.trim().length>0 && document.querySelector('#password').value.trim().length>0 && document.querySelector('#name').value.trim().length>0 && document.querySelector('#phone').value.trim().length>0 && document.querySelector('#typeCar').value.trim().length>0 && document.querySelector('#maxDist').value.trim().length>0 && document.querySelector('#cantSeat').value.trim().length>0 && document.querySelector('#numberPlate').value.trim().length>0 && document.getElementById("confirm-password").value.trim().length > 0 && document.getElementById("password").value == document.getElementById("confirm-password").value){
-        let email =DriverAccountShared.getDriverEmail();
-        this.showAlertConfirm(this.stateOperationObserver,email,document.getElementById("password").value), document.querySelector('#name').value, document.getElementById("phone").value,document.querySelector('#typeCar').value,document.querySelector('#maxDist').value, document.querySelector('#cantSeat').value,document.querySelector('#numberPlate');
-        imageFile === "no" ? 0 : 1;
-    }
+    let input= document.getElementById("name").value.trim();
+    let word = input.split(" ");
+    let email =DriverAccountShared.getDriverEmail();
+    if(document.getElementById("email").value.trim().length>0 && word.length>=3 && document.getElementById("password").value.trim().length>0 && document.getElementById("name").value.trim().length>0 && document.getElementById("phone").value.trim().length>0 && document.getElementById("typeCar").value.trim().length>0 && document.getElementById("cantSeat").value.trim().length>0 && document.getElementById("numberPlate").value.trim().length>0 && document.getElementById("confirm-password").value.trim().length > 0 && document.getElementById("password").value == document.getElementById("confirm-password").value){
+      if(!document.getElementById("flexSwitchCheckDefault").checked){
+        if(document.getElementById("distMax").value.trim().length>0){
+          this.showAlertConfirm(this.stateOperationObserver,email,document.getElementById("password").value, document.getElementById("name").value, document.getElementById("phone").value,document.getElementById("typeCar").value,document.getElementById("cantSeat").value,document.getElementById("numberPlate").value);
+    }else{
+          alert("Existe algún dato incorrecto. Por favor revise.");
+      }
+      }
     else{
-        alert("Existe algún dato incorrecto. Por favor revise.");
+      this.showAlertConfirm(this.stateOperationObserver,email,document.getElementById("password").value, document.getElementById("name").value, document.getElementById("phone").value,document.getElementById("typeCar").value,document.getElementById("cantSeat").value,document.getElementById("numberPlate").value);
     }
+  }else{
+    alert("Existe algún dato incorrecto. Por favor revise.");
   }
-  showAlertConfirm(stateObserve,email,password,name, phone, typeCar, maxDist, cantSeat, numberPlate){
+}
+  showAlertConfirm(stateObserve,email,password,name, phone, typeCar, cantSeat, numberPlate){
+    let maxDist=0;
+        if(!document.getElementById("flexSwitchCheckDefault").checked){
+            maxDist=document.getElementById("distMax").value;
+        }
     let result=confirm("¿Estás seguro de actualizar los datos de tu cuenta?");
     if(result){
-        this.viewModel.updateDriver(stateObserve,email,password, name, phone, typeCar, maxDist, cantSeat, numberPlate);
+        this.viewModel.updateDriver(stateObserve,email,password, name, phone, typeCar, maxDist,'0', cantSeat, numberPlate,'no');
     }
   }
   signOf(){
@@ -172,23 +218,12 @@ export default class DriverSetting{
   deleteDrivers(stateObserve){
     let result= confirm("¿Estás seguro de eliminar la cuenta?");
     if(result){
-        this.viewModel.deleteDrivers(stateObserve,DriverAccountShared.getDriverEmail());
-        window.open("loginDriver.html","_self");
+        this.viewModel.deleteDriver(stateObserve,DriverAccountShared.getDriverEmail());
         DriverAccountShared.setDriverEmail(null);
     }
   }
 
-   /*var condition=document.querySelector('#condition');
-   var termCond=document.querySelector('#termcond');
-   var btnCloseTC=document.querySelector('#btn-close-TC');
-
-  condition.addEventListener('click', function(){
-    termCond.style.visibility = 'visible'; 
-  });
-  btnCloseTC.addEventListener('click',function(){
-    termCond.style.visibility = 'hidden';
-  });*/
-  
+   
 }
 
 

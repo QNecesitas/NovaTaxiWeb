@@ -86,6 +86,10 @@ main {
   background-color: var(--md_theme_dark_background);
 }
 
+.spinner div{
+  color: black!important;
+}
+
 .select-map {
   position: absolute;
   width: 80%;
@@ -133,6 +137,11 @@ main {
   height: 80px;
 }
 
+.marker-animation{
+  width: 80px;
+  height: 80px;
+}
+
 
 .ubication img{
   width: 2.2rem;
@@ -167,19 +176,26 @@ main {
 
 
 .button-circle {
-  position: absolute;
-  width: 35%;
-  bottom: 5%;
-  right: 5%;
+  position: fixed;
+  bottom: 40px;
+  right: 80px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
+}
+
+
+
+.mapboxgl-ctrl-group{
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
 }
 
 .button-circle button {
-  background-color: var(--md_theme_dark_tertiaryContainer);
-  width: 4rem;
-  height: 4rem;
+  background-color: white;
+  width: 3rem;
+  height: 3rem;
   border-radius: 50%;
   border: none;
   padding:0.5rem;
@@ -191,14 +207,15 @@ main {
   display: flex;
   width: 100%;
   height: 100%;
+  filter: brightness(0.0);
 }
 /**ghost spinner**/
 .spinner{
-  color: var(--md_theme_dark_onErrorContainer);
-  background-color: var(--md_theme_dark_tertiaryContainer);
-  margin-right: 20%;
-  width: 4rem;
-  height:4rem;
+  color: black;
+  background-color: white;
+  margin-right:40px;
+  width: 3rem;
+  height:3rem;
   border-radius: 50%;
   padding: 0,5rem;display: flex;
   align-items: center;
@@ -206,8 +223,10 @@ main {
   visibility: hidden;
 }
 
+
+
 .setting {
-  margin-right: 20%;
+  margin-right: 40px;
 
 }
 /**Taxi cards**/
@@ -235,7 +254,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 2.3rem 0.8rem;
+  margin: 2.3rem 3rem;
   background-color: var(--md_theme_light_secondary);
   border-radius: 0.5rem;
 }
@@ -260,6 +279,7 @@ main {
   font-weight: 200;
 }
 .container-a{
+  margin-top: 8px;
   margin-bottom: 0;
 }
 .card-taxi-a{
@@ -347,7 +367,6 @@ main {
  position: absolute;
  top: 10%;
  left: 30%;
- visibility: hidden;
 }
 .card-taxi{
 background-color: var(--md_theme_light_onSurfaceVariant);
@@ -361,7 +380,7 @@ margin-left: 0;
 display: flex;
 align-items: center;
 justify-content: center;
-margin: 2.3rem 0.8rem;
+margin: 2.3rem 3rem;
 border-radius: 0.5rem;
 background-color: var(--md_theme_light_inversePrimary);
 }
@@ -382,8 +401,8 @@ color: var(--md_theme_dark_inverseSurface);
 }
 
 .container-a{
-margin-bottom: 0;
-margin-left: 8rem;
+  margin-top: 8px;
+  margin-bottom: 0;
 
 }
 .container-a span{
@@ -448,14 +467,9 @@ background-color: initial;
   position: absolute;
   margin-left: 20%;
   }
-  .button-circle {
-    width: 50%;
-  }
-  .button-circle button{
-    margin-right: 10%;
-  }
+
   .spinner{
-    margin-right: 10%;
+    margin-right: 40px;
   }
 
   #staticBackdrop {

@@ -23,9 +23,14 @@
 <body>
     <header>
             <figure>
-                <img src="./img/arrow_back_FILL1_wght400_GRAD0_opsz48.svg" alt="">
+                <img src="./img/arrow_back_FILL1_wght400_GRAD0_opsz48.svg" alt="" id="back">
             </figure>
             <h2>Editar conductor</h2>
+            <div class="spinner-border text-danger" role="status" id="progress">
+                <span class="visually-hidden">
+                  Cargando ...
+                </span>
+                </div>
     </header>
     <main>
         <div class="edit">
@@ -34,11 +39,11 @@
               <div class="container-name">
                 <img class="img-car" src="./img/baseline_drive_eta_24.png" alt="">
 
-                <label class="" for="">
+                <label class="" for="name">
                     <input class="fondo-input" type="" id="name" placeholder="Nombre y Apellidos" required>
                 </label>
               </div>
-              <label class="" for="">
+              <label class="" for="email">
                 <input type="email" id="email" placeholder="Correo Electr&oacute;nico" required>
               </label>
              <div  class="container-name">
@@ -47,23 +52,23 @@
                         <input type="number" id="phone" placeholder="Número de teléfono" required>
                     </label>
              </div>
-            <label class="" for="">
-                <input type="text" id="typeCar" placeholder="Tipo de carro" required>
+            <label class="" for="typeCar">
+                <input type="text" id="typeCar" placeholder="Tipo de carro" required readonly>
             </label>
-            <label class="" for="">
+            <label class="" for="cantSeat">
                 <input type="number" id="cantSeat" placeholder="Cantidad de asientos" required>
             </label>
 
             <div class="form-check form-switch maxDist-btn">
-                <input class="form-check-input" type="checkbox" role="switch" id="btnMaxDist flexSwitchCheckDefault">
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
                 <label class=" maxDist-btn-label form-check-label" for="flexSwitchCheckDefault">Sin M&aacute;ximo de distancia</label>
             </div>
 
-            <label class="" for="">
-                <input type="number" id="distMax" placeholder="Distancia m&aacute;xima" required>
+            <label class="" for="distMax">
+                <input type="number" id="distMax" placeholder="Distancia m&aacute;xima" >
             </label>
-            <label class="" for="">
-                <input type="number" id="PlateNumber" placeholder="N&uacute;mero de chapa" required>
+            <label class="" for="numberPlate">
+                <input type="text" id="numberPlate" placeholder="N&uacute;mero de chapa" required>
             </label>
             <label class="password" for="password">
                 <input type="password" id="password" placeholder="Contraseña" required>
@@ -76,8 +81,8 @@
         </div>
         <div class="saldo ">
             <p class="title">Saldo en cuenta</p>
-            <p>Saldo: <span>867.7 CUP</span></p>
-            <div >
+            <p>Saldo: <span id="balance">Saldo</span></p>
+            <div id="recargar">
                <p> Recargar </p>
                 <img class="arrow-forw" src="./img/arrow_forward_FILL1_wght400_GRAD0_opsz48.svg" alt="">
             </div>
@@ -146,7 +151,7 @@
       </div>
 
 
-    <script src="js/settingDriver.js"></script>
+    <script type="module" src="js/settingDriver.js"></script>
     <script src="js/bootstrap.js"></script>
  </body>
  </html>
