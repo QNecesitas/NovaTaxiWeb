@@ -2,6 +2,7 @@ import UserAccountShared from './auxiliary/UserAccountShared.js';
 import ViewModelMapHomeUser from './viewModels/ViewModelMapHomeUser.js';
 import User from "./model/User.js";
 import Point from "./model/Point.js";
+import RoutesTools from "./auxiliary/RoutesTools.js";
 
 export default class MaphomeUser {
 
@@ -13,7 +14,7 @@ export default class MaphomeUser {
   stateAddTripObserver;
   stateCancelTripObserver;
   stateRateObserver;
-  tripStateObserver;
+  tripResponseObserver;
   stateVersionObserver;
   versionResponseObserver;
   stateDriverObserver;
@@ -24,10 +25,13 @@ export default class MaphomeUser {
   markerTripOrigin;
   markerTripDestiny;
   routeObserver;
-
+  responsePricesObserver;
+  liModalTravel;
+  liModalRate;
 
   constructor() {
     let context = this;
+    this.liDriverAccept();
 
     //Map
     let lastPointSelected = UserAccountShared.getLastLocation();
@@ -90,8 +94,7 @@ export default class MaphomeUser {
     };
 
     this.listVehicleObserver = (it) => {
-      this.viewModelMapHome.listVehicles = this.viewModelMapHome.makeVehiclesList(it);
-      this.updateRecyclerInfo(this.viewModelMapHome.makeVehiclesList(it));
+      this.updateRecyclerInfo(it);
     };
 
     this.stateAddTripObserver = (it) => {
@@ -152,7 +155,7 @@ export default class MaphomeUser {
       }
     };
 
-    this.tripStateObserver = (it) => {
+    this.tripResponseObserver = (it) => {
       if(it.state === "Aceptado"){
         this.liDriverAccept(it);
       }
@@ -176,6 +179,10 @@ export default class MaphomeUser {
 
     this.versionResponseObserver = (it) => {
       this.showAlertDialogNotVersion(it);
+    };
+
+    this.responsePricesObserver = (it, distance) => {
+      this.viewModelMapHome.makeVehiclesList(it[0],distance,this.listVehicleObserver);
     };
 
     this.routeObserver = (it) => {
@@ -219,21 +226,13 @@ export default class MaphomeUser {
       document.getElementById("progress").style.visibility = "hidden";
       document.getElementById("container-card-taxi").style.visibility = "visible";
       this.viewCameraInPoint(this.viewModelMapHome.latitudeDestiny,this.viewModelMapHome.longitudeDestiny);
-      this.viewModelMapHome.getPrices(tripActualDistance,this.statePricesObserver,this.listVehicleObserver);
+      this.viewModelMapHome.getPrices(tripActualDistance,this.statePricesObserver,this.responsePricesObserver);
 
     };
 
 
 
     //Listeners
-    document.getElementById("realTimeBtn").onclick= () =>{
-      if(navigator.geolocation) {
-        this.viewModelMapHome.isNecessaryCamera(true);
-        this.getLocationRealTime();
-      }else{
-        this.showAlertDialogNotLocationSettings();
-      }
-    };
 
     document.getElementById("settings").onclick = () => {
       window.open("SettingUser.html","_self");
@@ -257,7 +256,6 @@ export default class MaphomeUser {
           this.viewModelMapHome.getAppVersion(this.stateVersionObserver,this.versionResponseObserver);
         }else{
           alert("La aplicación no ha encontrado su ubicación aún");
-          //TODO Esto no funciona
         }
       }else{
         this.showAlertDialogNotLocationSettings();
@@ -267,7 +265,7 @@ export default class MaphomeUser {
 
     this.viewModelMapHome.setIsNecessaryCamera(true);
     this.getLocationRealTime();
-    this.viewModelMapHome.startMainCoroutine(this.stateDriverObserver,this.listDriverObserver,this.stateTripObserver,this.tripStateObserver)
+    this.viewModelMapHome.startMainCoroutine(this.stateDriverObserver,this.listDriverObserver,this.stateTripObserver,this.tripResponseObserver);
     this.checkInitialSharedInformation();
   }
 
@@ -280,16 +278,16 @@ export default class MaphomeUser {
       for(let f=0;f<json_it.length;f++){
 
         let divCardTaxi=document.createElement("div");divCardTaxi.setAttribute("class","card-taxi");
-        let driverImg = this.getDriverImg(json_it[0].type);
+        let driverImg = this.getDriverImg(json_it[f].type);
         let divCardTaxiImg=document.createElement("div");divCardTaxiImg.setAttribute("class","card-taxi-img");
         let imgCardTaxiImg=document.createElement("img");imgCardTaxiImg.setAttribute("src",driverImg);divCardTaxi.setAttribute("alt","imagen de taxi");
         let divIndividual = document.createElement("div");
         let divContainerP = document.createElement("div");divContainerP.setAttribute("class","container-p");
-        let pTypeCar = document.createElement("p");pTypeCar.setAttribute("class","card-taxi-p");pTypeCar.innerHTML = "Veh&iacute;culo: "+ json_it[0].type;
-        let pPriceCar = document.createElement("p");pPriceCar.setAttribute("class","card-taxi-p");pPriceCar.innerHTML = "Precio: "+ json_it[0].price;
+        let pTypeCar = document.createElement("p");pTypeCar.setAttribute("class","card-taxi-p");pTypeCar.innerHTML = "Veh&iacute;culo: "+ json_it[f].type;
+        let pPriceCar = document.createElement("p");pPriceCar.setAttribute("class","card-taxi-p");pPriceCar.innerHTML = "Precio: "+ json_it[f].price +" CUP";
         let divContainerA = document.createElement("div");divContainerA.setAttribute("class","container-a");
-        let aDetails = document.createElement("a");aDetails.setAttribute("class","card-taxi-a");aDetails.setAttribute("href","");
-        let aOrder = document.createElement("a");aOrder.setAttribute("class","card-taxi-a");aOrder.setAttribute("href","");
+        let aDetails = document.createElement("a");aDetails.setAttribute("class","card-taxi-a");aDetails.innerHTML = "M&aacute;s detalles";
+        let aOrder = document.createElement("a");aOrder.setAttribute("class","card-taxi-a");aOrder.innerHTML = "Pedir Taxi";
         divCardTaxiImg.appendChild(imgCardTaxiImg);
         divContainerP.appendChild(pTypeCar);
         divContainerP.appendChild(pPriceCar);
@@ -488,7 +486,36 @@ export default class MaphomeUser {
   }
 
   liDriverAccept(trip){
-    //TODO
+    if(!this.liModalTravel) {
+      this.liModalTravel = new bootstrap.Modal(document.getElementById('modal-travel'), {
+        backdrop: 'static',
+        keyboard: false
+      });
+      this.liModalTravel.show();
+
+      document.getElementById("testClose").onclick = () =>{
+        alert("Hi");
+      };
+
+      this.liModalTravel._element.addEventListener('click', function(event) {
+
+        if (event.target.id === "liShowDriver"){
+          this.liModalTravel = null;
+          this.liModalTravel.hide();
+          window.sessionStorage.setItem("emailSelected", trip.fk_driver);
+          window.open("InfoDriver.html", "_self");
+        }
+
+        if (event.target.id === "liGoTravel"){
+          this.liModalTravel = null;
+          this.liModalTravel.hide();
+          RoutesTools.navigationTripDriver = trip;
+          this.showAlertLLAwaitSelect(0);
+          window.open("NavigationUser.html", "_self");
+        }
+
+      });
+    }
   }
 
 
@@ -497,7 +524,7 @@ export default class MaphomeUser {
   //Methods Maps
   addAnnotationGPSToMap(point) {
     const longitudeGps  = point.longitude;
-    const latitudeGPS = point.latitude;
+    const latitudeGps = point.latitude;
 
     if (!this.markerGPStoAnnotation) {
       this.markerGPStoAnnotation = new mapboxgl.Marker({
@@ -528,7 +555,7 @@ export default class MaphomeUser {
         if(working){
 
           this.viewModelMapHome.activateAnimation = working;
-          let images = ["img/animation_1","img/animation_2","img/animation_3","img/animation_4","img/animation_3","img/animation_2"];
+          let images = ["img/animation_1.png","img/animation_2.png","img/animation_3.png","img/animation_4.png","img/animation_3.png","img/animation_2.png"];
           var position = 0;
           this.viewCameraInPoint(this.viewModelMapHome.latitudeGPS,this.viewModelMapHome.longitudeGPS);
 
@@ -538,10 +565,10 @@ export default class MaphomeUser {
             if(this.markerAnimation)this.markerAnimation.remove();
 
             let img = document.createElement('img');
-            img.setAttribute("class","marker-driver");
+            img.setAttribute("class","marker-animation");
             img.setAttribute("src",images[position]);
 
-            this.markerGPStoAnnotation = new mapboxgl.Marker(img)
+            this.markerAnimation = new mapboxgl.Marker(img)
               .setLngLat([this.viewModelMapHome.longitudeGPS, this.viewModelMapHome.latitudeGPS])
               .addTo(this.map);
 
@@ -689,10 +716,90 @@ export default class MaphomeUser {
     document.getElementById("ubication").style.visibility = "visible";
     document.getElementById("destino").style.visibility = "visible";
     document.getElementById("container-card-taxi").style.visibility = "visible";
+    this.markerAnimation.remove();
   }
 
   liRateDriver(){
-    //TODO
+    if(!this.liModalRate) {
+      var star1 = 0;
+      var star2 = 0;
+      var star3 = 0;
+      var star4 = 0;
+      var star5 = 0;
+
+      this.liModalRate = new bootstrap.Modal(document.getElementById('modal-rate'), {
+        backdrop: 'static',
+        keyboard: false
+      });
+      this.liModalRate.show();
+
+      this.liModalRate._element.addEventListener('click', function(event) {
+
+        if (event.target.id === "liCancel"){
+          this.liModalRate = null;
+          this.liModalRate.hide();
+        }
+
+        if (event.target.id === "liAccept"){
+          this.liModalRate = null;
+          this.liModalRate.hide();
+          const rate = star1 + star2 + star3 + star4 + star5;
+          this.viewModelMapHome.rateTaxi(this.stateRateObserver, rate);
+        }
+
+        if (event.target.id === "btnStar1"){
+          if (star1 === 0) {
+            document.getElementById("btnStar1").style.content = "img/star_light.png";
+            star1 = 1;
+          } else {
+            document.getElementById("btnStar1").style.content = "img/star_gray.png";
+            star1 = 0;
+          }
+        }
+
+        if (event.target.id === "btnStar2"){
+          if (star2 === 0) {
+            document.getElementById("btnStar2").style.content = "img/star_light.png";
+            star2 = 1;
+          } else {
+            document.getElementById("btnStar2").style.content = "img/star_gray.png";
+            star2 = 0;
+          }
+        }
+
+        if (event.target.id === "btnStar3"){
+          if (star3 === 0) {
+            document.getElementById("btnStar3").style.content = "img/star_light.png";
+            star3 = 1;
+          } else {
+            document.getElementById("btnStar3").style.content = "img/star_gray.png";
+            star3 = 0;
+          }
+        }
+
+        if (event.target.id === "btnStar4"){
+          if (star4 === 0) {
+            document.getElementById("btnStar4").style.content = "img/star_light.png";
+            star4 = 1;
+          } else {
+            document.getElementById("btnStar4").style.content = "img/star_gray.png";
+            star4 = 0;
+          }
+        }
+
+        if (event.target.id === "btnStar5"){
+          if (star5 === 0) {
+            document.getElementById("btnStar5").style.content = "img/star_light.png";
+            star5 = 1;
+          } else {
+            document.getElementById("btnStar5").style.content = "img/star_gray.png";
+            star5 = 0;
+          }
+        }
+
+      });
+
+    }
   }
 
 
