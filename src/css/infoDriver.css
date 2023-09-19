@@ -118,17 +118,17 @@
        font-size: var(--text_h);
        margin: 0.7rem auto 0.7rem 0.5rem;
      }
-     header div{
+     header div{ 
       visibility: hidden;
-      margin-right: 20px ;
-    }
+      margin-right: 20px;
+    } 
   main{
     padding: 20px;
     height: 90%;
     background-image:url('buildings.png');
     background-repeat: no-repeat;
     background-position: bottom;
-    background-size: 100% 60%;
+    background-size: 260% 38%;;
   }
   .container{
     display: flex;

@@ -234,7 +234,7 @@ export default class MaphomeUser {
         this.showAlertDialogNotLocationSettings();
       }
     };
-
+ 
     document.getElementById("settings").onclick = () => {
       window.open("SettingUser.html","_self");
     };
