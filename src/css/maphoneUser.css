@@ -217,7 +217,7 @@ main {
   width: 3rem;
   height:3rem;
   border-radius: 50%;
-  padding: 0,5rem;display: flex;
+  padding: 0.5rem;display: flex;
   align-items: center;
   justify-content: center;
   visibility: hidden;

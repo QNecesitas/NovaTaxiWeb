@@ -189,6 +189,23 @@
   visibility: hidden;
 }
 
+
+.marker-trip{
+  width: 40px;
+  height: 80px;
+}
+
+.marker-driver{
+  width: 50px;
+  height: 80px;
+}
+
+.marker-gps{
+  width: 40px;
+  height: 80px;
+}
+
+
 @media only screen and (max-width: 600px){
 
         #staticBackdrop{

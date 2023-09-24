@@ -192,10 +192,6 @@ export default class ViewModelMapHomeUser {
 
   }
 
-  getRouteDistance(){
-    //TODO
-  }
-
   addTrip(stateObserver, prices, phone, typeCar){
     this.tripsDataSource.addTrip(
       stateObserver,

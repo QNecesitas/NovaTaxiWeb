@@ -46,11 +46,11 @@ export default class ViewModelMapHomeDriver {
 
 
   //Main routine
-  async startMainCoroutine(stateDriver, responseDriver, stateDriverLocation){
+  async startMainCoroutine(stateDriver, responseDriver, stateDriverLocation, stateAllTripObserver, responseAllTripObserver){
     while(true){
       this.getNearDrivers(stateDriver, responseDriver);
       if(this.isSharedLocation){
-        this.getAllTrips();
+        this.getAllTrips(stateAllTripObserver,responseAllTripObserver);
         this.updateDriverLocation(stateDriverLocation);
       }
       await new Promise(resolve => setTimeout(resolve, 15000));

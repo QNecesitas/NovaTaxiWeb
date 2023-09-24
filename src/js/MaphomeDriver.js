@@ -115,14 +115,6 @@ export default class MaphomeDriver {
 
 
     //Listeners
-    document.getElementById("gps").onclick = () => {
-      if(navigator.geolocation) {
-        this.viewModel.isNecessaryCamera(true);
-        this.getLocationRealtime();
-      }else{
-        this.showAlertDialogNotLocationSettings();
-      }
-    };
 
     document.getElementById("ubication").onclick = () => {
       if(this.viewModel.latitudeGPS && this.viewModel.longitudeGPS){
@@ -136,23 +128,24 @@ export default class MaphomeDriver {
         }else{
           this.sendNotification("La aplicación está compartiendo su ubicación en tiempo real");
           this.viewModel.getAllTrips(this.stateDriverUpdateLocation,this.listTripObserver);
-          //TODO Cambiar el icon por el de stop
-          document.getElementById("iconBtnShare").style.content = 'url("../img/play_arrow_black_24dp.svg")';
-          document.getElementById("ubication").innerHTML = "No compartir ubicaci&oacute;n;";
+          document.getElementById("iconBtnShare").style.content = 'url("stop_circle_FILL0_wght400_GRAD0_opsz24.svg")';
+          document.getElementById("ubication").innerHTML = "No compartir ubicaci&oacute;n";
           this.viewModel.setIsShare(true);
         }
+      }else{
+        alert("Su posición es aún desconocida");
       }
     };
 
-    document.getElementById("setting").onclick = () => {
+    document.getElementById("settings").onclick = () => {
       window.open("settingDriver.html", "_self");
     };
 
 
     //Start search
     this.viewModel.setIsNecessaryCamera(true);
-    this.getLocationRealtime();
-    this.viewModel.startMainCoroutine(this.stateDriverSearch,this.listDriverObserver,this.stateDriverUpdateLocation);
+    this.getLocationRealTime();
+    this.viewModel.startMainCoroutine(this.stateDriverSearch,this.listDriverObserver,this.stateDriverUpdateLocation,this.stateDriverUpdateLocation,this.listTripObserver);
   }
 
 
@@ -230,7 +223,7 @@ export default class MaphomeDriver {
         color: 'red', // Color del marcador
         draggable: true, // Permite arrastrar el marcador
       })
-        .setLngLat([longitudeGps, latitudeGps]) // Establecer la ubicación del marcador
+        .setLngLat([this.viewModel.longitudeGps, this.viewModel.longitudeGPS]) // Establecer la ubicación del marcador
         .addTo(this.map); // Agregar marcador al mapa
     } else {
       // Actualizar la posición del marcador en el mapa
