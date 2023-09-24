@@ -264,6 +264,7 @@ form button {
 #liRecover {
   width: 40%;
   top: 40%;
+  visibility: hidden;
 }
 
 #liRecover p {

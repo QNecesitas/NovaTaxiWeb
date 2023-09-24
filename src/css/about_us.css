@@ -99,6 +99,7 @@
       display: flex;
       align-items: center;
       justify-content: start;  
+      height: 7vh;
     }
     header figure{
       display: flex;
@@ -119,6 +120,7 @@
       width: 85%;
       margin: 0.7rem auto 0.7rem 0.5rem;
       font-size: var(--text_h);
+      font-weight: 400;
     }
     main{
       background-color: var(--md_theme_dark_primary);

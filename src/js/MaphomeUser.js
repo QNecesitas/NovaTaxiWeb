@@ -232,6 +232,14 @@ export default class MaphomeUser {
 
 
     //Listeners
+    document.getElementById("realTimeBtn").onclick= () =>{
+      if(navigator.geolocation) {
+        this.viewModelMapHome.isNecessaryCamera(true);
+        this.getLocationRealTime();
+      }else{
+        this.showAlertDialogNotLocationSettings();
+      }
+    };
 
     document.getElementById("settings").onclick = () => {
       window.open("SettingUser.html","_self");

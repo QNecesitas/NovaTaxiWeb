@@ -17,6 +17,9 @@
 
   <link rel="stylesheet" href="css/newUser.css">
   <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="./css/bootstrap.rtl.css">
+  <link rel="stylesheet" href="./css/bootstrap-reboot.rtl.css">
+  <link rel="stylesheet" href="./css/bootstrap-reboot.css">
 
   <meta name="theme-color" content="#fafafa">
 </head>
@@ -27,9 +30,6 @@
             </figure>
             <h2>Crear Cuenta</h2>
             <div class="spinner-border text-danger" role="status" id="progress">
-              <span class="visually-hidden">
-                Cargando ...
-              </span>
               </div>
     </header>
     <main>
@@ -38,7 +38,7 @@
                 <figure>
                     <img src="./img/account_circle_FILL1_wght400_GRAD0_opsz48.svg" alt="">
                 </figure>
-                <input type="text" id="name" placeholder="Nombre y apellidos" required autocomplete="name">
+                <input type="text" id="name" class="inp-NombreUsuario" placeholder="Nombre y apellidos" required autocomplete="name">
             </label>
             <label for="email">
                 <input type="email" id="email" placeholder="Correo electrónico" autocomplete="email" required>
