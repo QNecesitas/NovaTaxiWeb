@@ -32,7 +32,6 @@ export default class MaphomeUser {
   constructor() {
     let context = this;
     this.liDriverAccept();
-    this.liRateDriver();
 
     //Map
     let lastPointSelected = UserAccountShared.getLastLocation();

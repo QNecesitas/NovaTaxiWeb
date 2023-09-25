@@ -17,7 +17,10 @@
 
   <link rel="stylesheet" href="css/maphomeDriver.css">
   <link rel="stylesheet" href="./css/bootstrap.css">
-  <link rel="stylesheet" href="./css/bootstrap-grid.css">
+  <link rel="stylesheet" href="./css/bootstrap.rtl.css">
+  <link rel="stylesheet" href="./css/bootstrap-reboot.rtl.css">
+  <link rel="stylesheet" href="./css/bootstrap-reboot.css">
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
 
   <meta name="theme-color" content="#fafafa">
 </head>
@@ -29,12 +32,6 @@
     <div id="map"></div>
     <div class="select-map">
         <button class="ubication" id="ubication"><img id="iconBtnShare" src="./img/play_arrow_black_24dp.svg" alt="">Compartir ubicaci&oacute;n</button>
-    </div>
-    <!--ghost spinner-->
-    <div class="text-center spinner">
-      <div class="spinner-border" role="status">
-        <span class="visually-hidden">Loading...</span>
-      </div>
     </div>
 
 
@@ -170,18 +167,25 @@
 
     </div>
     <div class=" button-circle">
-        <button class="setting" id="setting"><img src="./img/settings_FILL1_wght400_GRAD0_opsz48.svg" alt=""></button>
-        <button class="gps" id="gps"><img src="./img/my_location_FILL1_wght400_GRAD0_opsz48.svg" alt=""></button>
+
+      <!--ghost spinner-->
+      <div class="text-center spinner" id="progress">
+        <div class="spinner-border text-light" role="status">
+          <span class="visually-hidden">Cargando...</span>
+        </div>
+      </div>
+      <button id="settings" class="setting"><img src="./img/settings_FILL1_wght400_GRAD0_opsz48.svg" alt=""></button>
     </div>
 </main>
 
 
 
- 
-  <script src="./js/bootstrap.js"></script>
-  <script src="./js/bootstrap.bundle.js"></script>
-  <script src="js/bootstrap.esm.js"></script>
-  <script src="./js/MaphomeDriver.js"></script>
+  <script type="module" src="js/MaphomeDriver.js"></script>
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="js/bootstrap.bundle.js"></script>
+
+
 </body>
 
 </html>

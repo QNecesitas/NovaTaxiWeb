@@ -1,3 +1,4 @@
+import Point from "../model/Point.js";
 export default class DriverAccountShared{
 
 
@@ -30,13 +31,18 @@ export default class DriverAccountShared{
 
   static getLastLocation() {
     let latitude = this.getCookie("lastLatitudeDriver");
-    let longitude = this.getCookie("lastLongitudeDriver");
-    return (
-      {
-        longitude,
-        latitude
-      }
-    )
+    let longitude = this.getCookie("lastLongitudDriver");
+    if(latitude === null || longitude === null){
+
+      return new Point(
+        "-76.2593",
+        "20.886953"
+      )
+
+    }else{
+      return new Point(longitude, latitude)
+    }
+
   }
 
 
