@@ -141,4 +141,8 @@ export default class ViewModelNavigationDriver {
     return degrees * (Math.PI / 180);
   }
 
+  getRoute(responseObserver, latitudeOrigin, longitudeOrigin, latitudeDestiny, longitudeDestiny){
+    this.tripsDataSource.fetchRoute(responseObserver, latitudeOrigin, longitudeOrigin, latitudeDestiny, longitudeDestiny);
+  }
+
 }
