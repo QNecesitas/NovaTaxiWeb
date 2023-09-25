@@ -17,8 +17,6 @@
 
   <link rel="stylesheet" href="css/maphoneUser.css">
   <link rel="stylesheet" href="./css/bootstrap.css">
-  <link rel="stylesheet" href="./css/bootstrap.rtl.css">
-  <link rel="stylesheet" href="./css/bootstrap-reboot.rtl.css">
   <link rel="stylesheet" href="./css/bootstrap-reboot.css">
   <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
 
@@ -63,57 +61,138 @@
             </div>
           </div>
             <button id="settings" class="setting"><img src="./img/settings_FILL1_wght400_GRAD0_opsz48.svg" alt=""></button>
+            <button class="gps" id="realTimeBtn"><img src="./img/my_location_FILL1_wght400_GRAD0_opsz48.svg" alt=""></button>
         </div>
     </main>
 
-
-
-    <!--Modal accept travel-->
-    <div class="modal modal-travel"  tabindex="-1" id="modal-travel" >
+    <!-- Alert Dialog Ubication desactived-->
+    <!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-body">
-          <div class="card-taxi">
-            <div class="card-taxi-img" >
-              <img src="./img/baseline_drive_eta_24.png" alt="">
-            </div>
-            <div>
-              <div class="container-p">
-                <p class="card-taxi-p">Su viaje ha sido Aceptado </p>
-              </div>
-              <div class="container-a">
-               <a class="card-taxi-a" id="liShowDriver">Ver conductor <span>|</span></a>
-               <a class="card-taxi-a" id="liGoTravel">Ir al viaje</a>
-              </div>
-            </div>
-          </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <p class="modal-title fs-5" id="staticBackdropLabel">Ubicación desactivada</p>
         </div>
-      <div class="modal-footer">
-        <button type="button" id="testClose" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <div class="modal-body">
+            <p>Vaya a los ajustes y encienda la ubicación</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Aceptar</button>
+        </div>
       </div>
     </div>
   </div>
-    <!--model calificar-->
-    <div class="modal fade" id="modal-rate" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+
+  <!-- Alert Dialog Car Details-->
+    <!-- Modal -->
+<div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <p class="modal-title fs-5" id="staticBackdropLabel">Detalles</p>
+        </div>
+        <div class="modal-body">
+            <p>Detalles en dependencia del carro</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Aceptar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Alert Dialog Confirm Car-->
+    <!-- Modal -->
+<div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <p class="modal-title fs-5" id="staticBackdropLabel">Confirmar</p>
+        </div>
+        <div class="modal-body">
+            <p>¿Está seguro de pedir este taxi?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary">Aceptar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+        
+<!--modal Star
+  <div class="modal fade modal-rate" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header2">
           <p class="modal-title fs-5" id="staticBackdropLabel">Valora su &uacute;ltimo viaje</p>
         </div>
         <div class="modal-body btn-star-container">
+          <button class="btn-star" id="btnStar1"><img src="./img/star_gray.png" alt=""></button>
+          <button class="btn-star" id="btnStar2"><img src="./img/star_gray.png" alt=""></button>
+          <button class="btn-star" id="btnStar3"><img src="./img/star_gray.png" alt=""></button>
+          <button class="btn-star" id="btnStar4"><img src="./img/star_gray.png" alt=""></button>
+          <button class="btn-star" id="btnStar5"><img src="./img/star_gray.png" alt=""></button>
+      </div>
+      <div class="modal-footer space">
+        <button type="button" id="liCancel" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" id="liAccept" class="btn btn-secondary" data-bs-dismiss="modal">Valorar</button>
+      </div>
+      </div>
+    </div>
+  </div> -->
+  <div class="modal fade modal-rate" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+          <div class="modal-body btn-star-container">
             <button class="btn-star" id="btnStar1"><img src="./img/star_gray.png" alt=""></button>
             <button class="btn-star" id="btnStar2"><img src="./img/star_gray.png" alt=""></button>
             <button class="btn-star" id="btnStar3"><img src="./img/star_gray.png" alt=""></button>
             <button class="btn-star" id="btnStar4"><img src="./img/star_gray.png" alt=""></button>
             <button class="btn-star" id="btnStar5"><img src="./img/star_gray.png" alt=""></button>
         </div>
-        <div class="modal-footer space">
-          <button type="button" class="btn btn-secondary" id="liCancel" data-bs-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-secondary" id="liRate" data-bs-dismiss="modal">Valorar</button>
+        <div class="container-a">
+          <button class="btn btn-secondary" id="prueba">Cancelar</button>
+          <a class="card-taxi-a" id="btn-sc" href="#">Ir al viaje</a>
+         </div>
+      </div>
+    </div>
+  </div>
+<!-- Button trigger modal 
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button> -->
+
+<!-- Modal Accept Travel -->
+<div class="modal fade modal-travel" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="card-taxi">
+          <div class="card-taxi-img" >
+            <img src="./img/baseline_drive_eta_24.png" alt="">
+          </div>
+          <div>
+            <div class="container-p">
+              <p class="card-taxi-p">Su viaje ha sido Aceptado </p>
+            </div>
+            <div class="container-a">
+             <a class="card-taxi-a" id="btn-acep"  href="#">Ver conductor <span>|</span></a>
+             <a class="card-taxi-a" id="btn-sc" href="#">Ir al viaje</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 
 
 

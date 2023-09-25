@@ -419,13 +419,13 @@ font-weight: 600;
 margin-left: 1rem;
 }
 /*model star*/
-#staticBackdrop3{
+.modal-rate{
   background-color: var(--md_theme_dark_surfaceVariant);
   width: 100%;
   position: absolute;
   top: 40%;
   padding: 10px;
-  visibility: hidden;
+ /* visibility: hidden;*/
 }
 .modal-header2 p {
   color: var(--md_theme_dark_onBackground);

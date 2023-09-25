@@ -32,6 +32,7 @@ export default class MaphomeUser {
   constructor() {
     let context = this;
     this.liDriverAccept();
+    this.liRateDriver();
 
     //Map
     let lastPointSelected = UserAccountShared.getLastLocation();
@@ -320,6 +321,8 @@ export default class MaphomeUser {
     }
   }
 
+  
+
   click_details(vehicle){
     this.showAlertDialogCarDetails(vehicle.type,vehicle.details);
   }
@@ -452,7 +455,7 @@ export default class MaphomeUser {
   }
 
 
-
+  
 
   //Send location
   locationOriginAccept(putMap_originLat,putMap_originLong){
@@ -495,14 +498,17 @@ export default class MaphomeUser {
 
   liDriverAccept(trip){
     if(!this.liModalTravel) {
-      this.liModalTravel = new bootstrap.Modal(document.getElementById('modal-travel'), {
+      this.liModalTravel = new bootstrap.Modal(document.querySelector('.modal-travel'), {
         backdrop: 'static',
         keyboard: false
       });
       this.liModalTravel.show();
-
-      document.getElementById("testClose").onclick = () =>{
+ 
+      document.getElementById("btn-acep").onclick = () =>{
         alert("Hi");
+      };
+      document.getElementById("btn-sc").onclick = () =>{
+        alert("Holaaa");
       };
 
       this.liModalTravel._element.addEventListener('click', function(event) {
@@ -726,7 +732,13 @@ export default class MaphomeUser {
     document.getElementById("container-card-taxi").style.visibility = "visible";
     this.markerAnimation.remove();
   }
-
+  //showmodalprueba(){
+   // this.showmodalprueba = new bootstrap.Modal(document.getElementById('modal-travel'), {
+  //    backdrop: 'static',
+   //   keyboard: false
+   // });
+   // this.showmodalprueba.show();
+  //}
   liRateDriver(){
     if(!this.liModalRate) {
       var star1 = 0;
@@ -735,18 +747,26 @@ export default class MaphomeUser {
       var star4 = 0;
       var star5 = 0;
 
-      this.liModalRate = new bootstrap.Modal(document.getElementById('modal-rate'), {
+      this.liModalRate = new bootstrap.Modal(document.querySelector('.modal-rate'), {
         backdrop: 'static',
         keyboard: false
       });
       this.liModalRate.show();
-
+      
+     /* document.getElementById("prueba").onclick = () =>{
+        alert("yelouuuuuuu");
+      };
+*/
       this.liModalRate._element.addEventListener('click', function(event) {
 
-        if (event.target.id === "liCancel"){
-          this.liModalRate = null;
-          this.liModalRate.hide();
+        if (event.target.id === "prueba"){
+          this.liModalRate = null; 
+         // this.liModalRate.hide();
+          console.log('holaaaaa')
+          document.querySelector('.modal-rate').style.visibility="hidden";
         }
+
+0
 
         if (event.target.id === "liAccept"){
           this.liModalRate = null;
@@ -813,3 +833,5 @@ export default class MaphomeUser {
 
 }
 let mapHomeUser = new MaphomeUser();
+
+
