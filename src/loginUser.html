@@ -62,7 +62,7 @@
     </form>
 
     <p class="crear_cuenta">¿No posee cuenta?<a type="button" id="tvSignUp" href="newuser.html">Crear Cuenta</a></p>
-    <p class="recuperar">¿Olvidó su contraseña?  <a href="" id="tvForgotPasswClick" type="button">
+    <p class="recuperar">¿Olvidó su contraseña?  <a href="" id="tvForgotPasswClick" type="button" data-bs-toggle="modal" data-bs-target="#liRecover">
       Recuperar</a></p>
 
   </div>
@@ -89,7 +89,7 @@
             </form>
           </div>
           <div class="modal-footer">
-            <button type="button" id="li_recover_cancel" class="btn btn-secondary close">Cancelar</button>
+            <button type="button" id="li_recover_cancel" class="btn btn-secondary close" data-bs-dismiss="modal">Cancelar</button>
             <button id="li_recover_accept" type="submit" class="btn btn-secondary" form="form_li">Aceptar
             </button>
           </div>

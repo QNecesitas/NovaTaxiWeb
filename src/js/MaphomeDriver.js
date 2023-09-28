@@ -115,23 +115,23 @@ export default class MaphomeDriver {
 
 
     //Listeners
-
+    
     document.getElementById("ubication").onclick = () => {
-      if(this.viewModel.latitudeGPS && this.viewModel.longitudeGPS){
+      if(this.viewModel.latitudeGps && this.viewModel.longitudeGps){
         if(this.viewModel.isSharedLocation){
           this.sendNotification("La aplicación está dejando de compartir su ubicación en tiempo real");
-          document.getElementById("iconBtnShare").style.content = 'url("../img/play_arrow_black_24dp.svg")';
-          document.getElementById("ubication").innerHTML = "Compartir ubicaci&oacute;n;";
+          document.getElementById("iconBtnShare").style.content = "url('img/play_arrow_black_24dp.svg')";
+          document.getElementById("ubication").innerHTML = "Compartir ubicaci&oacute;n";
           this.viewModel.setIsShare(false);
           document.getElementById("container-card-viaje").style.visibility = "hidden";
           this.viewModel.updateDriverLocationStop(this.stateDriverUpdateLocation);
         }else{
           this.sendNotification("La aplicación está compartiendo su ubicación en tiempo real");
           this.viewModel.getAllTrips(this.stateDriverUpdateLocation,this.listTripObserver);
-          document.getElementById("iconBtnShare").style.content = 'url("stop_circle_FILL0_wght400_GRAD0_opsz24.svg")';
+          document.getElementById("iconBtnShare").style.content = "url('img/stop_circle_FILL0_wght400_GRAD0_opsz24.svg')";
           document.getElementById("ubication").innerHTML = "No compartir ubicaci&oacute;n";
           this.viewModel.setIsShare(true);
-        }
+        } 
       }else{
         alert("Su posición es aún desconocida");
       }
@@ -179,8 +179,8 @@ export default class MaphomeDriver {
       // Obtener las coordenadas de la ubicación
       const latitudeGps = e.coords.latitude;
       const longitudeGps = e.coords.longitude;
-      context.viewModel.latitudeGPS = latitudeGps;
-      context.viewModel.longitudeGPS = longitudeGps;
+      context.viewModel.latitudeGps = latitudeGps;
+      context.viewModel.longitudeGps = longitudeGps;
 
       lastLocationGps={latitude:latitudeGps, longitude:longitudeGps};
 
@@ -216,14 +216,14 @@ export default class MaphomeDriver {
 
   addAnnotationGPSToMap(point) {
     const longitudeGps  = point.longitude;
-    const latitudeGPS = point.latitude;
+    const latitudeGps = point.latitude;
 
     if (!this.markerGPStoAnnotation) {
       this.markerGPStoAnnotation = new mapboxgl.Marker({
         color: 'red', // Color del marcador
         draggable: true, // Permite arrastrar el marcador
       })
-        .setLngLat([this.viewModel.longitudeGps, this.viewModel.longitudeGPS]) // Establecer la ubicación del marcador
+        .setLngLat([this.viewModel.longitudeGps, this.viewModel.latitudeGps]) // Establecer la ubicación del marcador
         .addTo(this.map); // Agregar marcador al mapa
     } else {
       // Actualizar la posición del marcador en el mapa

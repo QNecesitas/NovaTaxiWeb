@@ -18,6 +18,11 @@
   <link rel="stylesheet" href="css/loginUser.css">
 
   <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/bootstrap.rtl.css">
+  <link rel="stylesheet" href="css/bootstrap-utilities.css">
+  <link rel="stylesheet" href="css/bootstrap-utilities.rtl.css">
+  <link rel="stylesheet" href="css/bootstrap-reboot.css">
+  <link rel="stylesheet" href="css/bootstrap-reboot.rtl.css">
 
   <meta name="theme-color" content="#fafafa">
 </head>
@@ -54,7 +59,7 @@
 
     </form>
 
-    <p class="crear_cuenta">¿No posee cuenta?<a type="button" id="tvSignUp" href="newuser.html">Crear Cuenta</a></p>
+    <p class="crear_cuenta">¿No posee cuenta?<a type="button" id="tvSignUp" href="newDriver.html">Crear Cuenta</a></p>
     <p class="recuperar">¿Olvidó su contraseña?  <a href="" id="tvForgotPasswClick" type="button" data-bs-toggle="modal" data-bs-target="#liRecover">
       Recuperar</a></p>
 
@@ -66,8 +71,8 @@
        <!--************************Recovery account******************-->
 
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+     <!-- Modal -->
+     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -82,13 +87,14 @@
             </form>
           </div>
           <div class="modal-footer">
-            <button type="button" id="li_recover_cancel" class="btn btn-secondary close">Cancelar</button>
+            <button type="button" id="li_recover_cancel" class="btn btn-secondary close" data-bs-dismiss="modal">Cancelar</button>
             <button id="li_recover_accept" type="submit" class="btn btn-secondary" form="form_li">Aceptar
             </button>
           </div>
         </div>
       </div>
     </div>
+
 
 
     <!--==========================================================================

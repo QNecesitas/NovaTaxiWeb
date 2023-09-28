@@ -14,8 +14,8 @@ export default class ViewModelMapHomeDriver {
 
   isNecessaryCamera;
   listDriver;
-  latitudeGPS;
-  longitudeGPS;
+  latitudeGps;
+  longitudeGps;
   isSharedLocation;
   listTrip;
   lastTripSelected;
@@ -31,11 +31,11 @@ export default class ViewModelMapHomeDriver {
   }
 
   setLatitudeGPS(latitude){
-    this.latitudeGPS = latitude;
+    this.latitudeGps = latitude;
   }
 
   setLongitudeGPS(longitude){
-    this.longitudeGPS = longitude;
+    this.longitudeGps = longitude;
   }
 
   setLastTripSelected(lastTripSelected){
@@ -62,11 +62,11 @@ export default class ViewModelMapHomeDriver {
   }
 
   filterDriver(listDriverObserver,alDriver){
-    if(this.latitudeGPS && this.longitudeGPS){
+    if(this.latitudeGps && this.longitudeGps){
       let alResult = alDriver.filter(it =>
         20 > this.calculateDist(
-          this.latitudeGPS,
-          this.longitudeGPS,
+          this.latitudeGps,
+          this.longitudeGps,
           it.latitude,
           it.longitude
         ));
@@ -96,13 +96,13 @@ export default class ViewModelMapHomeDriver {
   }
 
   updateDriverLocation(stateObserver){
-    if(this.latitudeGPS && this.longitudeGPS){
+    if(this.latitudeGps && this.longitudeGps){
       if(DriverAccountShared.getDriverEmail()){
         this.driverDataSource.updateDriverLocation(
           stateObserver,
           DriverAccountShared.getDriverEmail(),
-          this.latitudeGPS,
-          this.longitudeGPS
+          this.latitudeGps,
+          this.longitudeGps
         );
       }
     }
