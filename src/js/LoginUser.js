@@ -15,10 +15,11 @@ export default class LoginUserActivity{
 
   //OnCreate
   constructor(){
+    var context=this;
 
     //Listeners
     document.getElementById("tvForgotPasswClick").onclick = () => {
-      this.clickRecover();
+      context.clickRecover();
     };
 
     //Listener for btn submit in a form
@@ -126,16 +127,19 @@ export default class LoginUserActivity{
     this.liRecoverPassword()
   }
 
-  liRecoverPassword() {
 
+
+  liRecoverPassword(){
+    const myModal = new bootstrap.Modal('#exampleModal', {
+      keyboard: false
+    });
+    myModal.show();
     document.getElementById("li_recover_accept").onclick = () => {
       if(document.getElementById("emailRecover").value.length > 0) {
         this.showAlertDialogConfirmEmail(document.getElementById("emailRecover").value)
       }
     };
-
   }
-
 
 
 //======================================Alert Dialogs

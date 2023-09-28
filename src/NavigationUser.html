@@ -45,14 +45,18 @@
   </div>
 
   <!--modal travel-->
-  <div class="modal fade" id="staticBackdropDos" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button>
+  <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-      <div class="modal-content">
+      <div class="modal-content staticBackdropDos">
         <div class="modal-header">
           <p class="modal-title fs-5" id="staticBackdropLabel">Viaje finalizado</p>
         </div>
         <div class="modal-body">
-            <p class="pModal">Conductor: <span>Cargando</span></p>
+          <p class="pModal">Conductor: <span>Cargando</span></p>
             <p class="pModal">Chapa: <span>Cargando</span></p>
             <p class="pModal">Cliente: <span>Cargando</span></p>
             <p class="pModal" >Distancia: <span>Cargando</span></p>
@@ -63,14 +67,18 @@
             <p class="pModal">Tipo de veh&iacute;culo: <span>Cargando</span></p>
             <p class="pModal">Precio Total: <span>Cargando</span></p>
         </div>
-        <div class="foot-travel">
+        <div class="modal-footer">
           <button type="button" class="btn btn-secondary btn-modalTravel" data-bs-dismiss="modal">Aceptar</button>
         </div>
       </div>
     </div>
   </div>
 
-
+<!--Hidden Elements-->
+<section class="hidden-container" id="wait">
+  <p>Su taxi ha llegado y est&aacute;  la espera. Por Favor no demore en abordar el veh&iacute;culo, recuerde que hay un impuesto aplicado a partir de cierto tiempo de espera</p>
+  <button><img src="./img/front_hand_FILL1_wght400_GRAD0_opsz24White.svg" alt=""> Revisar Impuestos </button>
+</section>
 
     <script src="js/NavigationUser.js"></script>
    <script src="js/bootstrap.js"></script>

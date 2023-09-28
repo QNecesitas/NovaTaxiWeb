@@ -31,7 +31,6 @@ export default class MaphomeUser {
 
   constructor() {
     let context = this;
-    this.liDriverAccept();
 
     //Map
     let lastPointSelected = UserAccountShared.getLastLocation();
@@ -233,15 +232,7 @@ export default class MaphomeUser {
 
 
     //Listeners
-    document.getElementById("realTimeBtn").onclick= () =>{
-      if(navigator.geolocation) {
-        this.viewModelMapHome.isNecessaryCamera(true);
-        this.getLocationRealTime();
-      }else{
-        this.showAlertDialogNotLocationSettings();
-      }
-    };
-
+    
     document.getElementById("settings").onclick = () => {
       window.open("SettingUser.html","_self");
     };
@@ -320,7 +311,7 @@ export default class MaphomeUser {
     }
   }
 
-  
+
 
   click_details(vehicle){
     this.showAlertDialogCarDetails(vehicle.type,vehicle.details);
@@ -454,7 +445,7 @@ export default class MaphomeUser {
   }
 
 
-  
+
 
   //Send location
   locationOriginAccept(putMap_originLat,putMap_originLong){
@@ -497,33 +488,31 @@ export default class MaphomeUser {
 
   liDriverAccept(trip){
     if(!this.liModalTravel) {
-      this.liModalTravel = new bootstrap.Modal(document.querySelector('.modal-travel'), {
-        backdrop: 'static',
+      this.liModalTravel =new bootstrap.Modal('#exampleModal', {
         keyboard: false
-      });
+        });
+
       this.liModalTravel.show();
- 
+
       document.getElementById("btn-acep").onclick = () =>{
         alert("Hi");
       };
       document.getElementById("btn-sc").onclick = () =>{
         alert("Holaaa");
       };
+      var context=this;
+      context.liModalTravel._element.addEventListener('click', function(event) {
 
-      this.liModalTravel._element.addEventListener('click', function(event) {
-
-        if (event.target.id === "liShowDriver"){
-          this.liModalTravel = null;
-          this.liModalTravel.hide();
+        if (event.target.id === "btn-acep"){
+          context.liModalTravel.hide();
           window.sessionStorage.setItem("emailSelected", trip.fk_driver);
           window.open("InfoDriver.html", "_self");
         }
 
-        if (event.target.id === "liGoTravel"){
-          this.liModalTravel = null;
-          this.liModalTravel.hide();
+        if (event.target.id === "btn-sc"){
+          context.liModalTravel.hide();
           RoutesTools.navigationTripDriver = trip;
-          this.showAlertLLAwaitSelect(0);
+          context.showAlertLLAwaitSelect(0);
           window.open("NavigationUser.html", "_self");
         }
 
@@ -731,13 +720,7 @@ export default class MaphomeUser {
     document.getElementById("container-card-taxi").style.visibility = "visible";
     this.markerAnimation.remove();
   }
-  //showmodalprueba(){
-   // this.showmodalprueba = new bootstrap.Modal(document.getElementById('modal-travel'), {
-  //    backdrop: 'static',
-   //   keyboard: false
-   // });
-   // this.showmodalprueba.show();
-  //}
+
   liRateDriver(){
     if(!this.liModalRate) {
       var star1 = 0;
@@ -746,81 +729,80 @@ export default class MaphomeUser {
       var star4 = 0;
       var star5 = 0;
 
-      this.liModalRate = new bootstrap.Modal(document.querySelector('.modal-rate'), {
-        backdrop: 'static',
+      this.liModalRate =new bootstrap.Modal('#exampleModal2', {
         keyboard: false
-      });
+        });
+
       this.liModalRate.show();
       
-     /* document.getElementById("prueba").onclick = () =>{
-        alert("yelouuuuuuu");
-      };
-*/
-      this.liModalRate._element.addEventListener('click', function(event) {
+      const context = this;
+      var cont=0;
+      context.liModalRate._element.addEventListener('click', function(event) {
 
-        if (event.target.id === "prueba"){
-          this.liModalRate = null; 
-         // this.liModalRate.hide();
-          console.log('holaaaaa')
-          document.querySelector('.modal-rate').style.visibility="hidden";
-        }
-
-0
 
         if (event.target.id === "liAccept"){
-          this.liModalRate = null;
-          this.liModalRate.hide();
+          context.liModalRate.hide();
           const rate = star1 + star2 + star3 + star4 + star5;
-          this.viewModelMapHome.rateTaxi(this.stateRateObserver, rate);
+          context.viewModelMapHome.rateTaxi(context.stateRateObserver, rate);
         }
 
         if (event.target.id === "btnStar1"){
           if (star1 === 0) {
-            document.getElementById("btnStar1").style.content = "img/star_light.png";
+            document.getElementById("btnStar1").style.content= "url('img/star_light.png')";
             star1 = 1;
+            cont ++;
           } else {
             document.getElementById("btnStar1").style.content = "img/star_gray.png";
             star1 = 0;
+            cont --;
           }
         }
 
         if (event.target.id === "btnStar2"){
           if (star2 === 0) {
-            document.getElementById("btnStar2").style.content = "img/star_light.png";
+            document.getElementById("btnStar2").style.content= "url('img/star_light.png')";
             star2 = 1;
+            cont ++;
           } else {
             document.getElementById("btnStar2").style.content = "img/star_gray.png";
             star2 = 0;
+            cont --;
           }
         }
 
         if (event.target.id === "btnStar3"){
           if (star3 === 0) {
-            document.getElementById("btnStar3").style.content = "img/star_light.png";
+            document.getElementById("btnStar3").style.content= "url('img/star_light.png')";
             star3 = 1;
+            cont ++;
           } else {
             document.getElementById("btnStar3").style.content = "img/star_gray.png";
             star3 = 0;
+            cont --;
           }
         }
 
         if (event.target.id === "btnStar4"){
           if (star4 === 0) {
-            document.getElementById("btnStar4").style.content = "img/star_light.png";
+            document.getElementById("btnStar4").style.content= "url('img/star_light.png')";
             star4 = 1;
+            cont ++;
           } else {
             document.getElementById("btnStar4").style.content = "img/star_gray.png";
             star4 = 0;
+            cont --;
           }
         }
 
         if (event.target.id === "btnStar5"){
           if (star5 === 0) {
-            document.getElementById("btnStar5").style.content = "img/star_light.png";
-            star5 = 1;
+           document.getElementById("btnStar5").style.content= "url('img/star_light.png')";
+           star5 = 1;
+           cont ++;
           } else {
             document.getElementById("btnStar5").style.content = "img/star_gray.png";
             star5 = 0;
+            cont --;
           }
         }
 

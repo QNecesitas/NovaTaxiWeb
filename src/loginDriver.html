@@ -67,14 +67,14 @@
 
 
     <!-- Modal -->
-    <div class="modal fade" id="liRecover" tabindex="-1" aria-labelledby="liModalLabel" aria-hidden="false">
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
             <p class="modal-title fs-5" id="liModalLabel">Enviaremos su contraseña al correo que introduzca</p>
           </div>
           <div class="modal-body">
-              <img src="./img/email_white_24dp.svg" alt="">
+            <img src="./img/email_white_24dp.svg" alt="">
             <form action="" id="form_li">
               <label for="email">
                 <input class="inp-email" type="email" id="emailRecover" placeholder="Correo electrónico" autocomplete="email" required>
@@ -82,9 +82,8 @@
             </form>
           </div>
           <div class="modal-footer">
-            <button id="li_recover_cancel" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar
-            </button>
-            <button id="li_recover_accept" type="submit" class="btn btn-primary" form="form_li">Aceptar
+            <button type="button" id="li_recover_cancel" class="btn btn-secondary close">Cancelar</button>
+            <button id="li_recover_accept" type="submit" class="btn btn-secondary" form="form_li">Aceptar
             </button>
           </div>
         </div>

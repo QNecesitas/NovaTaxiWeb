@@ -16,6 +16,7 @@ export default class NavigationDriver {
 
 
   constructor(){
+    this.liFinishedTrip();
 
     //Map
     let lastPointSelected = DriverAccountShared.getLastLocation();
@@ -100,8 +101,15 @@ export default class NavigationDriver {
 
   }
 
+  liFinishedTrip(){
+    const myModal = new bootstrap.Modal('#exampleModal', {
+      keyboard: false
+    });
+    myModal.show();
+  }
 
   //Init
+  // TODO Me falto poner un numerp
   addRoutePoints(){
     if(RoutesTools.navigationTripDriver) {
       let pointOrigin = Point(RoutesTools.navigationTripDriver.longOri,RoutesTools.navigationTripDriver.latOri);
@@ -145,7 +153,8 @@ export default class NavigationDriver {
     }
   }
 
-
+  
+  
 
 
 }

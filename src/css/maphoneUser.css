@@ -235,7 +235,7 @@ main {
   overflow: auto;
   scroll-behavior: smooth;
   position: relative;
-  top: -11rem;
+  top: -12rem;
   visibility: hidden;
 }
 .card-taxi{
@@ -363,10 +363,8 @@ main {
 
 
 /*modal accept travel*/
-.modal-travel{
- position: absolute;
- top: 10%;
- left: 30%;
+.modal-body{
+  border-radius: 0 !important;
 }
 .card-taxi{
 background-color: var(--md_theme_light_onSurfaceVariant);
@@ -375,6 +373,7 @@ align-items: center;
 width: 100%;
 padding: 0 0.4rem;
 margin-left: 0;
+  height: 7rem;
 }
 .card-taxi-img{
 display: flex;
@@ -390,7 +389,6 @@ height: 5rem;
 }
 .container-p{
 margin-left: 0.6rem;
-
 }
 .card-taxi-p{
 font-size: var(--text_s);
@@ -403,29 +401,28 @@ color: var(--md_theme_dark_inverseSurface);
 .container-a{
   margin-top: 8px;
   margin-bottom: 0;
-
+  display: flex;
 }
-.container-a span{
+.horizontal-line{
+  color:  var(--md_theme_light_inversePrimary) !important;
+  margin-top: 1rem;
   margin-left: 1rem;
-  color: currentColor;
 }
 
 .card-taxi-a{
+background-color:initial;
 color: var(--md_theme_light_inversePrimary);
 text-decoration: none;
 font-size: var(--text_s);
 font-family:Arial, Helvetica, sans-serif;
 font-weight: 600;
 margin-left: 1rem;
+border:none;
+
 }
 /*model star*/
-.modal-rate{
-  background-color: var(--md_theme_dark_surfaceVariant);
-  width: 100%;
-  position: absolute;
-  top: 40%;
-  padding: 10px;
- /* visibility: hidden;*/
+.liRateDriver{
+  background-color: var(--md_theme_light_onSurfaceVariant) !important;
 }
 .modal-header2 p {
   color: var(--md_theme_dark_onBackground);
@@ -445,18 +442,29 @@ margin-left: 1rem;
   margin-bottom: 1rem;
 }
 .btn-star{
-border: none;
-background-color: initial;
+height: 3rem;
+width: 3rem;
 }
-.btn-star img{
-  height: 3rem;
-  width: 3rem;
+#btnStar1{
+  content: url("../img/star_gray.png");
+}
+#btnStar2{
+  content: url("../img/star_gray.png");
+}
+#btnStar3{
+  content: url("../img/star_gray.png");
+}
+#btnStar4{
+  content: url("../img/star_gray.png");
+}
+#btnStar5{
+  content: url("../img/star_gray.png");
 }
 .space{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 3rem;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 8rem;
 }
 @media only screen and (max-width: 600px) {
   .select-map button {

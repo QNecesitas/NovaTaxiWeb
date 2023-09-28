@@ -130,14 +130,16 @@ export default class LoginDriverActivity{
     this.liRecoverPassword()
   }
 
-  liRecoverPassword() {
-
+  liRecoverPassword(){
+    const myModal = new bootstrap.Modal('#exampleModal', {
+      keyboard: false
+    });
+    myModal.show();
     document.getElementById("li_recover_accept").onclick = () => {
       if(document.getElementById("emailRecover").value.length > 0) {
         this.showAlertDialogConfirmEmail(document.getElementById("emailRecover").value)
       }
     };
-
   }
 
 

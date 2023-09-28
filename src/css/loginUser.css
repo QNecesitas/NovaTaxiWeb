@@ -261,14 +261,16 @@ form button {
   font-size: var(--text_s);
 }
 
-#liRecover {
+/*#liRecover {
   width: 40%;
   top: 40%;
   visibility: hidden;
 }
 
-#liRecover p {
-  color: var(--md_theme_dark_onBackground);
+*/
+
+.modal-title{
+  color: var(--md_theme_dark_onBackground) !important;
   font-size: var(--text_s);
   margin-bottom: 10px;
   font-weight: bold;
