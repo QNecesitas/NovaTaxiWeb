@@ -94,34 +94,32 @@
      height: 100vh;
     }
 
-  header{
-    background-color: var(--md_theme_dark_primary);
-    color: var(--md_theme_dark_onPrimary);
-    font-family: Arial, Helvetica, sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    height: 10%;
-
-  }
-  header figure{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 10%;
-  }
-  header img{
-    display: flex;
-    align-items: center;
-    justify-content: start;
-  }
-  header h2{
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    width: 85%;
-    margin-left: 8px;
-  }
+    header{
+      background-color: var(--md_theme_dark_primary);
+      color: var(--md_theme_dark_onPrimary);
+      font-family: Arial, Helvetica, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: start;  
+      height: 7vh;
+    }
+    header img{
+      display: flex;
+      align-items: center;
+      margin: 0 0.6rem 0 0.6rem;
+      width: 1.8rem;
+      height: 1.8rem;
+    }
+    header h2{
+      display: flex;
+      align-items: center;
+      justify-content: start;
+      width: 85%;
+      font-size: var(--text_h);
+      margin-bottom: 0;
+      font-weight: 400;
+  
+    }
   header div{
     visibility: hidden;
     margin-right: 20px ;
@@ -129,11 +127,14 @@
 
   main{
     position: relative;
+    height: 93vh;
     padding: 1rem;
     background-image:url('buildings.png') !important;
     background-repeat: no-repeat;
     background-position: bottom;
     background-size: 240% 38%;
+    overflow-y: auto;
+    scroll-behavior: smooth;
   }
  /* main::before{
     content: "";
@@ -306,20 +307,27 @@
  .container-recycler{
   width: 100%;
   position: absolute;
-  display: block;
+  display: flex;
   bottom: 0%;
   background-color: var(--md_theme_light_onSurface);
   height: 50%;
+  left: 0;
+  right: 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
   scroll-behavior: smooth;
   visibility: hidden;
  }
+
  .container-recycler img{
   width: 50px;
   height: 50px;
   margin-bottom: 0px;
  }
  .cv-typeCar{
-  width: 100%;
+  width: 90%;
   display: block;
   background-color: var(--md_theme_dark_surfaceVariant);
   margin-bottom: 10px;
@@ -358,7 +366,7 @@
    margin-bottom: 5px;
 
  }
-
+ 
  @media only screen and (max-width: 600px){
 
     #staticBackdrop{

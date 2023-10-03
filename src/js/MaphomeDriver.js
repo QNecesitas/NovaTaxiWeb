@@ -115,13 +115,13 @@ export default class MaphomeDriver {
 
 
     //Listeners
-    
-    document.getElementById("ubication").onclick = () => {
+     
+    document.getElementById("ubication").onclick = ()=> {
       if(this.viewModel.latitudeGps && this.viewModel.longitudeGps){
         if(this.viewModel.isSharedLocation){
           this.sendNotification("La aplicación está dejando de compartir su ubicación en tiempo real");
-          document.getElementById("iconBtnShare").style.content = "url('img/play_arrow_black_24dp.svg')";
-          document.getElementById("ubication").innerHTML = "Compartir ubicaci&oacute;n";
+          document.querySelector("#iconBtnShare").style.content = "url('img/play_arrow_black_24dp.svg')";
+          document.getElementById("txt-ubication").innerHTML = "Compartir ubicaci&oacute;n";
           this.viewModel.setIsShare(false);
           document.getElementById("container-card-viaje").style.visibility = "hidden";
           this.viewModel.updateDriverLocationStop(this.stateDriverUpdateLocation);
@@ -129,7 +129,7 @@ export default class MaphomeDriver {
           this.sendNotification("La aplicación está compartiendo su ubicación en tiempo real");
           this.viewModel.getAllTrips(this.stateDriverUpdateLocation,this.listTripObserver);
           document.getElementById("iconBtnShare").style.content = "url('img/stop_circle_FILL0_wght400_GRAD0_opsz24.svg')";
-          document.getElementById("ubication").innerHTML = "No compartir ubicaci&oacute;n";
+          document.getElementById("txt-ubication").innerHTML = "No compartir ubicaci&oacute;n";
           this.viewModel.setIsShare(true);
         } 
       }else{
@@ -287,10 +287,10 @@ export default class MaphomeDriver {
 
   updateRecyclerInfo(json_it) {
     if (json_it.length > 0) {
-      document.getElementById("container-card-taxi").style.visibility = "visible";
+      document.getElementById("container-card-viaje").style.visibility = "visible";
 
       for (let f = 0; f < json_it.length; f++) {
-
+       
         let divCardTaxi = document.createElement("div");
         divCardTaxi.setAttribute("class", "card-taxi");
         let driverImg = this.getDriverImg(json_it[0].type);
@@ -334,7 +334,7 @@ export default class MaphomeDriver {
         aOrder.addEventListener("click", () => this.click_order(json_it[f]));
 
 
-        document.getElementById("container-card-taxi").appendChild(divCardTaxi);
+        document.getElementById("container-card-viaje").appendChild(divCardTaxi);
 
       }
     }
@@ -407,7 +407,7 @@ export default class MaphomeDriver {
       this.viewModel.acceptTrips(this.stateAcceptTripsObserver, trip);
     }
   }
-
+ 
   showAlertDialogAlreadyAccepted(){
     alert("Acaba de ser aceptado este recorrido por otro conductor");
   }

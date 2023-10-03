@@ -58,7 +58,7 @@ export default class newDriver{
         window.open("loginDriver.html","_self");
       });
       
-    }
+    } 
     //Recycler
     rvTypeCar(lista){
         document.getElementById("container-recycler").innerHTML="";

@@ -84,7 +84,9 @@ html {
 
 body {
   background-color: var(--md_theme_dark_background) !important;
+  overflow: hidden;
 }
+
 
 main {
   position: relative;

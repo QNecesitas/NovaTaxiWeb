@@ -361,6 +361,69 @@
     font-family: Arial, Helvetica, sans-serif;
  }
 
+ /*Recycler*/
+ .container-recycler{
+  width: 100%;
+  position: absolute;
+  display: flex;
+  bottom: 0%;
+  background-color: var(--md_theme_light_onSurface);
+  height: 50%;
+  left: 0;
+  right: 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  visibility: hidden;
+ }
+ .container-recycler img{
+  width: 50px;
+  height: 50px;
+  margin-bottom: 0px;
+  margin-top: 1rem;
+ }
+ .cv-typeCar{
+  width: 90%;
+  display: block;
+  background-color: var(--md_theme_dark_surfaceVariant);
+  margin-bottom: 10px;
+ }
+ .container-typeCar{
+  width: 100%;
+  display: inline-flex;
+ }
+ #typeCar{
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  color: var(--md_theme_dark_onSurface);
+  margin-bottom: 0px;
+ }
+ .cantSeat{
+  display: inline-flex;
+ }
+ .cantSeat p{
+   font-family: Arial, Helvetica, sans-serif;
+   font-weight: bold;
+   margin-right: 5px;
+   color: var(--md_theme_dark_onSurface);
+   margin-bottom: 0px;
+ }
+ .button-select{
+  display: inline-flex;
+  justify-content: flex-end;
+  margin-left: 10px;
+  width: 100%;
+ }
+ .button-select p{
+  font-family: Arial, Helvetica, sans-serif;
+   font-weight: bold;
+   margin-right: 20px;
+   color: var(--md_theme_dark_error);
+   margin-bottom: 5px;
+
+ }
     @media only screen and (max-width: 600px){
       #staticBackdrop{
         width: 90%;

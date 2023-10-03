@@ -108,7 +108,7 @@ export default class LoginDriverActivity{
         break;
       case "Aceptado":
         if(this.emailToSend === "Admin" || this.emailToSend === "admin"){
-          window.open("admin.html","_self");
+         // window.open("admin.html","_self");
         }else {
           this.viewModelLogin.saveDriverInfo(this.emailToSend);
           window.open("MaphomeDriver.html","_self");
