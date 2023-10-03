@@ -15,7 +15,7 @@ export default class PricesDataSourceNetwork {
 
 
 
-  getPricesInformation(stateObserver, responseObserver, id, distance) {
+  getPricesInformationDriver(stateObserver, responseObserver, id, distance) {
     //Init and url base
     const hxr = new XMLHttpRequest();
     hxr.open('GET', this.getPricesInformationURL+"?token="+Constants.PHP_TOKEN+"&id="+id);
@@ -27,6 +27,34 @@ export default class PricesDataSourceNetwork {
         let json = JSON.parse(hxr.responseText);
         stateObserver("SUCCESS");
         responseObserver(json, distance);
+      } else {
+        stateObserver("ERROR");
+      }
+    };
+
+    //OnError
+    hxr.onerror = function () {
+      stateObserver("ERROR");
+
+    };
+
+
+    //Finally send the request
+    hxr.send();
+  }
+
+  getPricesInformationUser(stateObserver, responseObserver, id) {
+    //Init and url base
+    const hxr = new XMLHttpRequest();
+    hxr.open('GET', this.getPricesInformationURL+"?token="+Constants.PHP_TOKEN+"&id="+id);
+
+    //OnLoad
+    stateObserver("LOADING");
+    hxr.onload = function () {
+      if (hxr.status === 200) {
+        let json = JSON.parse(hxr.responseText);
+        stateObserver("SUCCESS");
+        responseObserver(json);
       } else {
         stateObserver("ERROR");
       }

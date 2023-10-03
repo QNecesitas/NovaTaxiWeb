@@ -122,7 +122,7 @@ export default class ViewModelMapHomeUser {
   getPrices(distanceMeters, stateObserver, responseObserver){
     let distanceKilometers = distanceMeters/1000;
     this.lastDistance = distanceKilometers;
-    this.pricesDataSource.getPricesInformation(stateObserver, responseObserver, 1,distanceKilometers);
+    this.pricesDataSource.getPricesInformationDriver(stateObserver, responseObserver, 1,distanceKilometers);
   }
 
   makeVehiclesList(prices, distance,listVehicleObserver){

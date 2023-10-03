@@ -46,7 +46,7 @@
     --md_theme_dark_primary:#FF6747 !important;
     --md_theme_dark_onPrimary:#630E00 !important;
     --md_theme_dark_primaryContainer:#8C1800 !important;
-    --md_theme_dark_onPrimaryContainer:#FFDAD3 !important; 
+    --md_theme_dark_onPrimaryContainer:#FFDAD3 !important;
     --md_theme_dark_secondary:#FFB3B6 !important;
     --md_theme_dark_onSecondary:#680019 !important;
     --md_theme_dark_secondaryContainer:#920027 !important;
@@ -107,6 +107,23 @@
   align-items: center;
   justify-content: center;
 }
+
+.marker-trip{
+  width: 40px;
+  height: 80px;
+}
+
+.marker-driver{
+  width: 50px;
+  height: 80px;
+}
+
+.marker-gps{
+  width: 40px;
+  height: 80px;
+}
+
+
 /*Alert Dialog Ubication desactivada*/
 #staticBackdrop{
     background-color: var(--md_theme_dark_surfaceVariant);

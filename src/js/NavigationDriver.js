@@ -7,10 +7,11 @@ import ViewModelNavigationDriver from "./viewModels/ViewModelNavigationDriver.js
 export default class NavigationDriver {
 
 
-  routeObserver;
+  routeObserverStep1;
+  routeObserverStep2;
   map;
   markerGps;
-  markerTripDestiny
+  markerTripDestiny;
   markerGPStoAnnotation;
   markerTripOrigin;
   viewModel = new ViewModelNavigationDriver();
@@ -22,7 +23,7 @@ export default class NavigationDriver {
 
 
   constructor(){
-    this.liFinishedTrip();
+    const context = this;
 
     //Map
     let lastPointSelected = DriverAccountShared.getLastLocation();
@@ -83,7 +84,7 @@ export default class NavigationDriver {
       }
     };
 
-    this.routeObserver = (it) => {
+    this.routeObserverStep1 = (it) => {
       const data = it.routes[0];
       const route = data.geometry.coordinates;
       const tripActualDistance = data.distance;
@@ -122,9 +123,48 @@ export default class NavigationDriver {
 
       //App logic
       document.getElementById("progress").style.visibility = "hidden";
-      document.getElementById("container-card-taxi").style.visibility = "visible";
-      this.viewCameraInPoint(this.viewModelMapHome.latitudeDestiny,this.viewModelMapHome.longitudeDestiny);
-      this.viewModelMapHome.getPrices(tripActualDistance,this.statePricesObserver,this.responsePricesObserver);
+
+    };
+
+    this.routeObserverStep2 = (it) => {
+      const data = it.routes[0];
+      const route = data.geometry.coordinates;
+      const tripActualDistance = data.distance;
+      const geojson = {
+        type: 'Feature',
+        properties: {},
+        geometry: {
+          type: 'LineString',
+          coordinates: route
+        }
+      };
+      // if the route already exists on the map, we'll reset it using setData
+      if (context.map.getSource('route')) {
+        context.map.getSource('route').setData(geojson);
+      }
+      // otherwise, we'll make a new request
+      else {
+        context.map.addLayer({
+          id: 'route',
+          type: 'line',
+          source: {
+            type: 'geojson',
+            data: geojson
+          },
+          layout: {
+            'line-join': 'round',
+            'line-cap': 'round'
+          },
+          paint: {
+            'line-color': '#0061ff',
+            'line-width': 5,
+            'line-opacity': 1
+          }
+        });
+      }
+
+      //App logic
+      document.getElementById("progress").style.visibility = "hidden";
 
     };
 
@@ -349,17 +389,70 @@ export default class NavigationDriver {
 
 
   //Route state
-  //TODO crear los cl con avisos
+  //TODO crear los cl con avisos y colocar su id en la sig func
   showNearAwaitOptions(open){
+    if(open){
+      document.getElementById("clAwait").style.visibility = "visible";
+      document.getElementById("llBtnAwait").onclick = () =>{
+        this.viewModel.setTimeInMillsStart(Date.now());
+        this.viewModel.setStatusRouteToInAwait(this.stateRouteObserver);
+      }
+    }else{
+      document.getElementById("clAwait").style.visibility = "hidden";
+    }
+  }
+
+  showInAwaitOptions(open){
+    if(open){
+      document.getElementById("clPastAwait").style.visibility = "visible";
+      document.getElementById("llBtnPastAwait").onclick = () =>{
+        this.viewModel.setTimeInMillsEnd(Date.now());
+        this.viewModel.setStatusRouteToInTravel(this.stateRouteObserver);
+      }
+    }else{
+      document.getElementById("clPastAwait").style.visibility = "hidden";
+    }
+  }
+
+  showNearFinishOptions(open){
+    if(open){
+      document.getElementById("clFinished").style.visibility = "visible";
+      document.getElementById("llBtnFinished").onclick = () =>{
+        this.viewModel.setStatusRouteToFinished(this.stateRouteObserver);
+      }
+    }else{
+      document.getElementById("clFinished").style.visibility = "hidden";
+    }
+  }
+
+  //TODO Nohemi work
+  liFinishedTrip(trip){
 
   }
 
 
+
   //Route
-  //TODO por terminar y el observer tambien
   fetchARoute(trip){
-    this.viewModel.getRoute(this.routeObserver,trip.latOri,trip.longOri,trip.latDest, trip.longDest);
+    const originPoint = new Point(trip.longOri, trip.latOri);
+    const destPoint = new Point(trip.longDest, trip.latDest);
+    const driverPoint =  new Point(this.viewModel.longitudeGPS, this.viewModel);
+
+    if(this.viewModel.stateRoute === "STARTING" || this.viewModel.stateRoute === "NEAR_AWAITING"){
+      this.setRouteOptions2Step(originPoint, destPoint, driverPoint)
+    }
+    if(this.viewModel.stateRoute === "PAST_AWAITING" || this.viewModel.stateRoute === "NEAR_FINISHING"){
+      this.setRouteOptions1Step(destPoint, driverPoint)
+    }
     document.getElementById("progress").style.visibility = "visible";
+  }
+
+  setRouteOptions1Step(destP, driverP){
+    this.viewModel.getRoute(this.routeObserverStep1,driverP.latitude,driverP.longitude,destP.latitude, destP.longitude);
+  }
+
+  setRouteOptions2Step(originP, destP, driverP){
+    this.viewModel.getRouteTriple(this.routeObserverStep2,driverP.latitude,driverP.longitude, originP.latitude, originP.longitude, destP.latitude, destP.longitude);
   }
 
 
