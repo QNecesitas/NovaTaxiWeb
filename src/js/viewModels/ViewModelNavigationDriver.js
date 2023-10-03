@@ -145,4 +145,11 @@ export default class ViewModelNavigationDriver {
     this.tripsDataSource.fetchRoute(responseObserver, latitudeOrigin, longitudeOrigin, latitudeDestiny, longitudeDestiny);
   }
 
+  getRouteTriple(responseObserver,latitudeDriver, longitudeDriver, latitudeOrigin, longitudeOrigin, latitudeDestiny, longitudeDestiny){
+    this.tripsDataSource.fetchRouteTriple(responseObserver,latitudeDriver, longitudeDriver, latitudeOrigin, longitudeOrigin, latitudeDestiny, longitudeDestiny);
+  }
+
+
+
 }
+

@@ -300,4 +300,28 @@ export default class TripsDataSourceNetwork {
     hxr.send();
   }
 
+  fetchRouteTriple(responseObserver,latitudeDriver, longitudeDriver, latitudeOrigin, longitudeOrigin,latitudeDestiny, longitudeDestiny){
+    //Init and url base
+    const hxr = new XMLHttpRequest();
+    hxr.open('GET', "https://api.mapbox.com/directions/v5/mapbox/driving/"+latitudeDriver+","+longitudeDriver+";"+longitudeOrigin+","+latitudeOrigin+";"+longitudeDestiny+","+latitudeDestiny+"?geometries=geojson&access_token=pk.eyJ1Ijoicm9ubnlucCIsImEiOiJjbGl4YTg3bDgwNHpwM2RucTlwdWFkOXN1In0.MlTnx-myS4E3LJUeh5CVbw");
+
+    //OnLoad
+    hxr.onload = function () {
+      if (hxr.status === 200) {
+        let json = JSON.parse(hxr.responseText);
+        responseObserver(json);
+      } else {
+
+      }
+    };
+
+    //OnError
+    hxr.onerror = function () {
+    };
+
+
+    //Finally send the request
+    hxr.send();
+  }
+
 }
