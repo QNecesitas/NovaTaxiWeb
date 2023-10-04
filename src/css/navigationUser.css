@@ -86,27 +86,12 @@
     height: 100vh;
     background-color: var(--md_theme_dark_background);
   }
-.button-circle{
-  position: absolute;
-  width: 20%;
-  bottom: 5%;
-  right:5%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.button-circle button{
-  background-color: var(--md_theme_dark_tertiaryContainer);
-  width: 50px;
-  height: 50px;
-  border-radius: 25px;
-  border: none;
-}
-.button-circle button img{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+
+  .mapboxgl-ctrl-group{
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+  }
 
 .marker-trip{
   width: 40px;
@@ -194,24 +179,38 @@
 
 .hidden-container{
   position: absolute;
-  top: 2rem;
   display: flex;
   flex-direction: column;
   background-color: var(--md_theme_dark_background);
   padding: 0.5rem;
-  margin: 0 1rem;
+  top: 0rem;
+  visibility: hidden;
 }
 .hidden-container p{
     color: var(--md_theme_light_onSecondary);
     font-size: var(--text_s);
     line-height: 1;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-bottom: 0.5rem;
 }
 .hidden-container button{
     border: none;
     background-color: initial;
-    margin: 0 0.4rem 0.5rem 8rem;
+    margin: 0 2rem 0.5rem 8rem;
     font-weight: 600;
     color: var(--md_theme_dark_primary);
+    display: flex;
+    justify-content: end;
+}
+.hidden-container button img{
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
+#map{
+  width: 100%;
+  height: 100%;
 }
 
 

@@ -1,7 +1,7 @@
 import UserAccountShared from './auxiliary/UserAccountShared.js';
 import RoutesTools from "./auxiliary/RoutesTools.js";
 import Point from "./model/Point.js";
-import ViewModelNavigationUser from "./viewModels/ViewModelNavigationUSer.js";
+import ViewModelNavigationUser from "./viewModels/ViewModelNavigationUser.js";
 
 
 export default class NavigationUser {
