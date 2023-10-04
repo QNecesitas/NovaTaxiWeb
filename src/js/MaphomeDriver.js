@@ -72,6 +72,7 @@ export default class MaphomeDriver {
     };
 
     this.routeObserver = (it) => {
+      alert(JSON.stringify(it));
       const data = it.routes[0];
       const route = data.geometry.coordinates;
       const tripActualDistance = data.distance;
@@ -161,7 +162,6 @@ export default class MaphomeDriver {
     if (marker) {
       marker.remove();
     }
-
     // Configurar la capa de ubicación en tiempo real
     geolocate = new mapboxgl.GeolocateControl({
       positionOptions: {
@@ -251,7 +251,7 @@ export default class MaphomeDriver {
         if(this.viewModel.listDrivers[f].longitude !== 0.0 && this.viewModelMapHome.listDrivers[f].latitude !== 0.0){
           this.addAnnotationDrivers(new Point(
             this.viewModel.listDrivers[f].longitude,
-            this.viewModel.listDrivers[f].latitude
+            this.sviewModel.listDrivers[f].latitude
           ), this.getDriverMarkerImg(this.viewModel.listDrivers[f].typeCar));
         }
       }
@@ -263,8 +263,9 @@ export default class MaphomeDriver {
 
 
   //Route
-  fetchARoute(){
-    this.viewModel.getRoute(this.routeObserver,this.viewModel.latitudeOrigin,this.viewModelMapHome.longitudeOrigin,this.viewModel.latitudeDestiny,this.viewModel.longitudeDestiny);
+  fetchARoute(trip){
+
+    this.viewModel.getRoute(this.routeObserver,trip.latOri,trip.longOri,trip.latDest,trip.longDest);
     document.getElementById("progress").style.visibility = "visible";
   }
 
@@ -288,50 +289,60 @@ export default class MaphomeDriver {
   updateRecyclerInfo(json_it) {
     if (json_it.length > 0) {
       document.getElementById("container-card-viaje").style.visibility = "visible";
-
+      document.getElementById("container-card-viaje").innerHTML="";
       for (let f = 0; f < json_it.length; f++) {
        
         let divCardTaxi = document.createElement("div");
         divCardTaxi.setAttribute("class", "card-taxi");
-        let driverImg = this.getDriverImg(json_it[0].type);
-        let divCardTaxiImg = document.createElement("div");
-        divCardTaxiImg.setAttribute("class", "card-taxi-img");
-        let imgCardTaxiImg = document.createElement("img");
-        imgCardTaxiImg.setAttribute("src", driverImg);
+
+        let divCardRouteImg = document.createElement("div");
+        divCardRouteImg.setAttribute("class", "card-taxi-img");
+        let imgRouteTaxiImg = document.createElement("img");
+        imgRouteTaxiImg.setAttribute("src", "./img/route_FILL1_wght400_GRAD0_opsz24.svg");
         divCardTaxi.setAttribute("alt", "imagen de taxi");
-        let divIndividual = document.createElement("div");
+
+        let divIndividual= document.createElement("div");
+
         let divContainerP = document.createElement("div");
         divContainerP.setAttribute("class", "container-p");
-        let pTypeCar = document.createElement("p");
-        pTypeCar.setAttribute("class", "card-taxi-p");
-        pTypeCar.innerHTML = "Veh&iacute;culo: " + json_it[0].type;
-        let pPriceCar = document.createElement("p");
-        pPriceCar.setAttribute("class", "card-taxi-p");
-        pPriceCar.innerHTML = "Precio: " + json_it[0].price;
+        let pPrice = document.createElement("p");
+        pPrice.setAttribute("class", "card-taxi-p");
+        pPrice.innerHTML = "Precio del viaje: " + json_it[0].travelPrice;
+        
+        let pDistCar = document.createElement("p");
+        pDistCar.setAttribute("class", "card-taxi-p");
+        pDistCar.innerHTML = "Distancia: " + json_it[0].distance;
+
         let divContainerA = document.createElement("div");
         divContainerA.setAttribute("class", "container-a");
-        let aDetails = document.createElement("a");
-        aDetails.setAttribute("class", "card-taxi-a");
-        aDetails.setAttribute("href", "");
-        let aOrder = document.createElement("a");
-        aOrder.setAttribute("class", "card-taxi-a");
-        aOrder.setAttribute("href", "");
-        divCardTaxiImg.appendChild(imgCardTaxiImg);
-        divContainerP.appendChild(pTypeCar);
-        divContainerP.appendChild(pPriceCar);
-        divContainerA.appendChild(aDetails);
-        divContainerA.appendChild(aOrder);
+        let aRoute = document.createElement("a");
+        aRoute.setAttribute("class", "card-taxi-a");
+        aRoute.setAttribute("href", "");
+        aRoute.innerHTML = "Ver ruta";
+
+        let aDoRoute = document.createElement("a");
+        aDoRoute.setAttribute("class", "card-taxi-a");
+        aDoRoute.setAttribute("href", "");
+        aDoRoute.innerHTML= "Hacer ruta";
+
+
+        divCardRouteImg.appendChild(imgRouteTaxiImg);
+        divContainerP.appendChild(pPrice);
+        divContainerP.appendChild(pDistCar);
+        divContainerA.appendChild(aRoute);
+        divContainerA.appendChild(aDoRoute);
 
         divIndividual.appendChild(divContainerP);
         divIndividual.appendChild(divContainerA);
 
-        divCardTaxi.appendChild(divCardTaxiImg);
+        divCardTaxi.appendChild(divCardRouteImg);
         divCardTaxi.appendChild(divIndividual);
 
 
-        divCardTaxi.appendChild(divCardTaxiImg);
-        aDetails.addEventListener("click", () => this.click_details(json_it[f]));
-        aOrder.addEventListener("click", () => this.click_order(json_it[f]));
+        aDoRoute.addEventListener("click", () => this.showAlertDialogAcceptRoute(json_it[f]));
+        aRoute.addEventListener("click", () => {
+          this.fetchARoute(json_it[f])
+        });
 
 
         document.getElementById("container-card-viaje").appendChild(divCardTaxi);
@@ -339,6 +350,8 @@ export default class MaphomeDriver {
       }
     }
   }
+
+
   getDriverImg(vehicleType){
     switch(vehicleType) {
       case "Auto básico" :
