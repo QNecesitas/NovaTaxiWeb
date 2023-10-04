@@ -495,10 +495,8 @@ export default class MaphomeUser {
       this.liModalTravel.show();
 
       document.getElementById("btn-acep").onclick = () =>{
-        alert("Hi");
       };
       document.getElementById("btn-sc").onclick = () =>{
-        alert("Holaaa");
       };
       var context=this;
       context.liModalTravel._element.addEventListener('click', function(event) {

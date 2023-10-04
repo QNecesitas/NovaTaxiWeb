@@ -51,7 +51,7 @@ export default class PutMapUser {
     });
 
 
-    document.getElementById("gps").addEventListener("click", () => {
+    
       // Eliminar el marcador anterior si existe
       if (marker) {
         marker.remove();
@@ -93,10 +93,13 @@ export default class PutMapUser {
 
       // Iniciar la geolocalización
       geolocate.trigger();
-    });
 
     document.getElementById("select-ubic").addEventListener("click", () => {
       this.addLocation(lastLocationGps, lastLocationPoint);
+    });
+
+    document.getElementById("back").addEventListener('click',()=>{
+      window.open("MaphomeUser.html","_self");
     });
 
 
@@ -105,14 +108,14 @@ export default class PutMapUser {
   addLocation(lastLocationGps, lastLocationPoint) {
     if (!lastLocationPoint) {
       if (!lastLocationGps) {
+        alert("No ha añadido su posición");
+      } else {
         let result = confirm("¿Desea escoger su ubicación actual?");
         if (result) {
           let resultLocation = JSON.stringify(lastLocationGps);
           const miCanal = new BroadcastChannel("putmap_channel");
           miCanal.postMessage(resultLocation);
           window.close();
-      } else {
-          alert("No ha añadido su posición");
         }
       }
     } else {

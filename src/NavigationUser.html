@@ -16,14 +16,20 @@
   <!-- Place favicon.ico in the root directory -->
 
   <link rel="stylesheet" href="css/navigationUser.css">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/bootstrap.rtl.css">
+  <link rel="stylesheet" href="css/bootstrap-utilities.css">
+  <link rel="stylesheet" href="css/bootstrap-utilities.rtl.css">
+  <link rel="stylesheet" href="css/bootstrap-reboot.css">
+  <link rel="stylesheet" href="css/bootstrap-reboot.rtl.css">
+
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
 
   <meta name="theme-color" content="#fafafa">
 </head>
 <body>
     <main>
-        <div class=" button-circle">
-            <button class="gps"><img src="./img/my_location_FILL1_wght400_GRAD0_opsz48.svg" alt=""></button>
-        </div>
+      <div id="map"></div>
     </main>
 
     <!-- Alert Dialog Ubication desactived-->
@@ -77,10 +83,12 @@
 <!--Hidden Elements-->
 <section class="hidden-container" id="wait">
   <p>Su taxi ha llegado y est&aacute;  la espera. Por Favor no demore en abordar el veh&iacute;culo, recuerde que hay un impuesto aplicado a partir de cierto tiempo de espera</p>
-  <button><img src="./img/front_hand_FILL1_wght400_GRAD0_opsz24White.svg" alt=""> Revisar Impuestos </button>
+  <button><img src="./img/monetization_on_FILL1_wght400_GRAD0_opsz48.svg" alt=""> Revisar Impuestos </button>
 </section>
 
-    <script src="js/NavigationUser.js"></script>
+    <script type="module" src="js/NavigationUser.js"></script>
    <script src="js/bootstrap.js"></script>
+   <script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
+   <script src="js/bootstrap.bundle.js"></script>
 </body>
 </html>
