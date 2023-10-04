@@ -2,19 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="63ca0d2e-f949-46f3-9471-1cb2000b565d" name="Default" comment="Conflicts were fixed">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/js/viewModels/ViewModelNavigationUser.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/webServers.xml" afterPath="$PROJECT_DIR$/.idea/webServers.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/NavigationDriver.html" afterPath="$PROJECT_DIR$/src/NavigationDriver.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/css/navigationUser.css" afterPath="$PROJECT_DIR$/src/css/navigationUser.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/js/NavigationDriver.js" afterPath="$PROJECT_DIR$/src/js/NavigationDriver.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/js/NavigationUser.js" afterPath="$PROJECT_DIR$/src/js/NavigationUser.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/js/network/PricesDataSourceNetwork.js" afterPath="$PROJECT_DIR$/src/js/network/PricesDataSourceNetwork.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/js/network/TripsDataSourceNetwork.js" afterPath="$PROJECT_DIR$/src/js/network/TripsDataSourceNetwork.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/js/newDriver.js" afterPath="$PROJECT_DIR$/src/js/newDriver.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/js/settingDriver.js" afterPath="$PROJECT_DIR$/src/js/settingDriver.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/js/viewModels/ViewModelMapHomeUser.js" afterPath="$PROJECT_DIR$/src/js/viewModels/ViewModelMapHomeUser.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/js/viewModels/ViewModelNavigationDriver.js" afterPath="$PROJECT_DIR$/src/js/viewModels/ViewModelNavigationDriver.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/NavigationUser.html" afterPath="$PROJECT_DIR$/src/NavigationUser.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -26,6 +15,30 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
+      <file leaf-file-name="ViewModelMapHomeDriver.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/js/viewModels/ViewModelMapHomeDriver.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="288">
+              <caret line="47" column="13" lean-forward="false" selection-start-line="47" selection-start-column="13" selection-end-line="47" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MaphomeDriver.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/js/MaphomeDriver.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="266">
+              <caret line="278" column="12" lean-forward="false" selection-start-line="278" selection-start-column="12" selection-end-line="278" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -36,9 +49,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>setIsNecessaryCamera</find>
-      <find>window</find>
-      <find>window.add</find>
       <find>img/</find>
       <find>#</find>
       <find>spinn</find>
@@ -66,6 +76,9 @@
       <find>spinner</find>
       <find>start</find>
       <find>Start</find>
+      <find>&lt;main</find>
+      <find>&lt;/main</find>
+      <find>route</find>
     </findStrings>
     <replaceStrings>
       <replace>--</replace>
@@ -137,13 +150,11 @@
         <option value="$PROJECT_DIR$/src/js/newDriver.js" />
         <option value="$PROJECT_DIR$/src/js/PutMapUser.js" />
         <option value="$PROJECT_DIR$/src/NavigationDriver.html" />
-        <option value="$PROJECT_DIR$/src/NavigationUser.html" />
         <option value="$PROJECT_DIR$/src/js/network/DriverDataSourceNetwork.js" />
         <option value="$PROJECT_DIR$/src/css/maphomeDriver.css" />
         <option value="$PROJECT_DIR$/src/MaphomeDriver.html" />
         <option value="$PROJECT_DIR$/src/js/network/TripsDataSourceNetwork.js" />
         <option value="$PROJECT_DIR$/src/js/viewModels/ViewModelMapHomeDriver.js" />
-        <option value="$PROJECT_DIR$/src/js/MaphomeDriver.js" />
         <option value="$PROJECT_DIR$/src/js/network/PricesDataSourceNetwork.js" />
         <option value="$PROJECT_DIR$/src/js/auxiliary/Notifications.js" />
         <option value="$PROJECT_DIR$/src/js/viewModels/ViewModelMapHomeUser.js" />
@@ -153,8 +164,10 @@
         <option value="$PROJECT_DIR$/src/loginUser.html" />
         <option value="$PROJECT_DIR$/src/js/MaphomeUser.js" />
         <option value="$PROJECT_DIR$/src/css/maphoneUser.css" />
-        <option value="$PROJECT_DIR$/src/MaphomeUser.html" />
         <option value="$PROJECT_DIR$/src/js/LoginUser.js" />
+        <option value="$PROJECT_DIR$/src/MaphomeUser.html" />
+        <option value="$PROJECT_DIR$/src/NavigationUser.html" />
+        <option value="$PROJECT_DIR$/src/js/MaphomeDriver.js" />
       </list>
     </option>
   </component>
@@ -180,10 +193,10 @@
     <dismissed value="$PROJECT_DIR$/package.json" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="980" />
-    <option name="height" value="788" />
+    <option name="x" value="-7" />
+    <option name="y" value="-7" />
+    <option name="width" value="1295" />
+    <option name="height" value="695" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -201,7 +214,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -209,11 +222,29 @@
               <item name="NovaTaxiWeb" type="b2602c69:ProjectViewProjectNode" />
               <item name="NovaTaxiWeb" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="NovaTaxiWeb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NovaTaxiWeb" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NovaTaxiWeb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NovaTaxiWeb" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NovaTaxiWeb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NovaTaxiWeb" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="viewModels" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -331,7 +362,9 @@
       <workItem from="1695734821465" duration="5271000" />
       <workItem from="1695777671582" duration="1243000" />
       <workItem from="1695782757322" duration="910000" />
-      <workItem from="1696299865577" duration="9000" />
+      <workItem from="1696299865577" duration="539000" />
+      <workItem from="1696305686264" duration="779000" />
+      <workItem from="1696388326646" duration="4790000" />
     </task>
     <task id="LOCAL-00001" summary="Project was started">
       <created>1691003060881</created>
@@ -372,7 +405,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="366613000" />
+    <option name="totallyTimeSpent" value="372712000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -385,14 +418,15 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="-11" width="1942" height="1042" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15702918" sideWeight="0.5061947" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.09549072" sideWeight="0.49380532" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43289125" sideWeight="0.49380532" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3256579" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297619" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32735962" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32738096" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297619" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -451,13 +485,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/js/auxiliary/UserAccountShared.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
-          <caret line="38" column="19" lean-forward="false" selection-start-line="38" selection-start-column="19" selection-end-line="38" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/img/start_route.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -587,20 +614,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/NavigationUser.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/NavigationUser.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="509">
-          <caret line="74" column="34" lean-forward="false" selection-start-line="74" selection-start-column="34" selection-end-line="74" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/css/maphomeDriver.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="353">
@@ -608,24 +621,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/viewModels/ViewModelMapHomeDriver.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="709">
-          <caret line="125" column="36" lean-forward="false" selection-start-line="125" selection-start-column="36" selection-end-line="125" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/js/network/DriverDataSourceNetwork.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="55" column="13" lean-forward="false" selection-start-line="55" selection-start-column="13" selection-end-line="55" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/MaphomeDriver.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="401" column="0" lean-forward="false" selection-start-line="401" selection-start-column="0" selection-end-line="401" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -761,24 +760,157 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MaphomeUser.html">
+    <entry file="file://$PROJECT_DIR$/src/js/LoginUser.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="543">
-          <caret line="121" column="0" lean-forward="false" selection-start-line="121" selection-start-column="0" selection-end-line="121" selection-end-column="0" />
+        <state relative-caret-position="119">
+          <caret line="17" column="2" lean-forward="false" selection-start-line="17" selection-start-column="2" selection-end-line="17" selection-end-column="2" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/js/MaphomeUser.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="771" column="85" lean-forward="false" selection-start-line="771" selection-start-column="85" selection-end-line="771" selection-end-column="85" />
+        <state relative-caret-position="-575">
+          <caret line="771" column="0" lean-forward="true" selection-start-line="771" selection-start-column="0" selection-end-line="771" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/LoginUser.js">
+    <entry file="file://$PROJECT_DIR$/src/js/viewModels/ViewModelNavigationUser.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="17" column="2" lean-forward="false" selection-start-line="17" selection-start-column="2" selection-end-line="17" selection-end-column="2" />
+        <state relative-caret-position="150">
+          <caret line="6" column="28" lean-forward="true" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#76#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/NavigationUser.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="7" lean-forward="true" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
+          <folding>
+            <element signature="e#0#65#0" expanded="false" />
+            <element signature="e#817#1041#0" expanded="false" />
+            <element signature="e#1120#1433#0" expanded="false" />
+            <element signature="e#1360#1427#0" expanded="false" />
+            <element signature="e#1474#2079#0" expanded="false" />
+            <element signature="e#1482#2073#0" expanded="false" />
+            <element signature="e#1509#1669#0" expanded="false" />
+            <element signature="e#1678#1908#0" expanded="false" />
+            <element signature="e#1781#1891#0" expanded="false" />
+            <element signature="e#1917#2065#0" expanded="false" />
+            <element signature="e#1975#2048#0" expanded="false" />
+            <element signature="e#2122#2498#0" expanded="false" />
+            <element signature="e#2136#2392#0" expanded="false" />
+            <element signature="e#2163#2280#0" expanded="false" />
+            <element signature="e#2284#2384#0" expanded="false" />
+            <element signature="e#2396#2492#0" expanded="false" />
+            <element signature="e#2625#3679#0" expanded="false" />
+            <element signature="e#2777#2924#0" expanded="false" />
+            <element signature="e#2846#2916#0" expanded="false" />
+            <element signature="e#3046#3112#0" expanded="false" />
+            <element signature="e#3169#3582#0" expanded="false" />
+            <element signature="e#3200#3572#0" expanded="false" />
+            <element signature="e#3267#3335#0" expanded="false" />
+            <element signature="e#3355#3434#0" expanded="false" />
+            <element signature="e#3453#3562#0" expanded="false" />
+            <element signature="e#3720#4774#0" expanded="false" />
+            <element signature="e#3872#4019#0" expanded="false" />
+            <element signature="e#3941#4011#0" expanded="false" />
+            <element signature="e#4141#4207#0" expanded="false" />
+            <element signature="e#4264#4677#0" expanded="false" />
+            <element signature="e#4295#4667#0" expanded="false" />
+            <element signature="e#4362#4430#0" expanded="false" />
+            <element signature="e#4450#4529#0" expanded="false" />
+            <element signature="e#4548#4657#0" expanded="false" />
+            <element signature="e#4816#4824#0" expanded="false" />
+            <element signature="e#4946#5034#0" expanded="false" />
+            <element signature="e#5100#5221#0" expanded="false" />
+            <element signature="e#5288#5789#0" expanded="false" />
+            <element signature="e#5328#5785#0" expanded="false" />
+            <element signature="e#5464#5546#0" expanded="false" />
+            <element signature="e#5693#5778#0" expanded="false" />
+            <element signature="e#6112#6247#0" expanded="false" />
+            <element signature="e#6376#6789#0" expanded="false" />
+            <element signature="e#6413#6442#0" expanded="false" />
+            <element signature="e#6488#6549#0" expanded="false" />
+            <element signature="e#6594#6785#0" expanded="false" />
+            <element signature="e#6662#6777#0" expanded="false" />
+            <element signature="e#6700#6769#0" expanded="false" />
+            <element signature="e#6814#8318#0" expanded="false" />
+            <element signature="e#7023#7061#0" expanded="false" />
+            <element signature="e#7163#7476#0" expanded="false" />
+            <element signature="e#7188#7258#0" expanded="false" />
+            <element signature="e#7639#8252#0" expanded="false" />
+            <element signature="e#7986#8091#0" expanded="false" />
+            <element signature="e#8378#8464#0" expanded="false" />
+            <element signature="e#8516#9102#0" expanded="false" />
+            <element signature="e#8639#8956#0" expanded="false" />
+            <element signature="e#8696#8807#0" expanded="false" />
+            <element signature="e#8962#9098#0" expanded="false" />
+            <element signature="e#9141#9401#0" expanded="false" />
+            <element signature="e#9449#9764#0" expanded="false" />
+            <element signature="e#9793#10420#0" expanded="false" />
+            <element signature="e#9799#10416#0" expanded="false" />
+            <element signature="e#9827#9910#0" expanded="false" />
+            <element signature="e#9917#9993#0" expanded="false" />
+            <element signature="e#10000#10079#0" expanded="false" />
+            <element signature="e#10086#10160#0" expanded="false" />
+            <element signature="e#10167#10250#0" expanded="false" />
+            <element signature="e#10257#10331#0" expanded="false" />
+            <element signature="e#10338#10410#0" expanded="false" />
+            <element signature="e#10462#11056#0" expanded="false" />
+            <element signature="e#10631#10838#0" expanded="false" />
+            <element signature="e#10842#11052#0" expanded="false" />
+            <element signature="e#11089#11711#0" expanded="false" />
+            <element signature="e#11394#11470#0" expanded="false" />
+            <element signature="e#11574#11637#0" expanded="false" />
+            <element signature="e#11751#11877#0" expanded="false" />
+            <element signature="e#11926#12096#0" expanded="false" />
+            <element signature="e#12102#12115#0" expanded="false" />
+            <element signature="e#12164#12498#0" expanded="false" />
+            <element signature="e#12178#12413#0" expanded="false" />
+            <element signature="e#12310#12407#0" expanded="false" />
+            <element signature="e#12417#12494#0" expanded="false" />
+            <element signature="e#12560#12648#0" expanded="false" />
+            <element signature="e#12680#12721#0" expanded="false" />
+            <element signature="e#12766#12772#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/NavigationUser.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4">
+          <caret line="63" column="41" lean-forward="true" selection-start-line="63" selection-start-column="41" selection-end-line="63" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MaphomeUser.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="674">
+          <caret line="128" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="131" selection-end-column="0" />
+          <folding>
+            <element signature="e#3983#3991#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/viewModels/ViewModelMapHomeDriver.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="47" column="13" lean-forward="false" selection-start-line="47" selection-start-column="13" selection-end-line="47" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/MaphomeDriver.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="278" column="12" lean-forward="false" selection-start-line="278" selection-start-column="12" selection-end-line="278" selection-end-column="12" />
+          <folding />
         </state>
       </provider>
     </entry>
