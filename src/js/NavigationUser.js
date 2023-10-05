@@ -20,6 +20,7 @@ export default class NavigationUser {
   routeObserverStep1;
   routeObserverStep2;
   statePricesObserver;
+  
 
 
   constructor(){
@@ -34,12 +35,15 @@ export default class NavigationUser {
     });
     let context = this;
 
+    let routeToolsAux=sessionStorage.getItem('TripUser');
+    RoutesTools.navigationTripUser=JSON.parse(routeToolsAux);
+
 
     //Observers
     this.driverObserver = (it) => {
       this.viewModel.setLatitudeDriver(it.latitude);
       this.viewModel.setLongitudeDriver(it.longitude);
-      this.addAnnotationDrivers(new Point(it.longitude, it.latitude),getDriverIcon(it));
+      this.addAnnotationDrivers(new Point(it.longitude, it.latitude),this.getDriverMarkerImg(it));
       if(RoutesTools.navigationTripUser) {
         this.fetchARoute(RoutesTools.navigationTripUser);
       }
@@ -179,7 +183,7 @@ export default class NavigationUser {
     }
     this.addRoutePoints();
     if(RoutesTools.navigationTripUser){
-      this.viewCameraInPoint(Point(RoutesTools.navigationTripUser.longOri,RoutesTools.navigationTripUser.latOri))
+      this.viewCameraInPoint(RoutesTools.navigationTripUser.latOri,RoutesTools.navigationTripUser.longOri);
     }
     this.startMainRoutine();
 
@@ -381,15 +385,13 @@ export default class NavigationUser {
   fetchARoute(trip){
     const originPoint = new Point(trip.longOri, trip.latOri);
     const destPoint = new Point(trip.longDest, trip.latDest);
-    const driverPoint =  new Point(this.viewModel.longitudeGPS, this.viewModel);
+    const driverPoint =  new Point(this.viewModel.longitudeDriver, this.viewModel.latitudeDriver);
 
-    if(this.viewModel.stateRoute === "STARTING" || this.viewModel.stateRoute === "NEAR_AWAITING"){
-      this.setRouteOptions2Step(originPoint, destPoint, driverPoint)
+    if(this.viewModel.actualTrip=="Espera por cliente" || this.viewModel.actualTrip=="En viaje"){
+      this.setRouteOptions1Step(destPoint,driverPoint);
+    }else{
+      this.setRouteOptions2Step(originPoint,destPoint,driverPoint);
     }
-    if(this.viewModel.stateRoute === "PAST_AWAITING" || this.viewModel.stateRoute === "NEAR_FINISHING"){
-      this.setRouteOptions1Step(destPoint, driverPoint)
-    }
-    document.getElementById("progress").style.visibility = "visible";
   }
 
   setRouteOptions1Step(destP, driverP){
@@ -398,6 +400,32 @@ export default class NavigationUser {
 
   setRouteOptions2Step(originP, destP, driverP){
     this.viewModel.getRouteTriple(this.routeObserverStep2,driverP.latitude,driverP.longitude, originP.latitude, originP.longitude, destP.latitude, destP.longitude);
+  }
+
+  getDriverMarkerImg(vehicleType){
+    switch(vehicleType) {
+      case "Auto básico" :
+        return "img/dirver_icon_simple.png";
+        break;
+      case "Auto de confort" :
+        return "img/dirver_icon_confort.png";
+        break;
+      case "Auto familiar" :
+        return "img/dirver_icon_familiar.png";
+        break;
+      case "Triciclo" :
+        return "img/dirver_icon_triciclo.png";
+        break;
+      case "Motor" :
+        return "img/dirver_icon_motorb.png";
+        break;
+      case "Bicitaxi" :
+        return "img/dirver_icon_bicitaxi.png";
+        break;
+      default :
+        return "img/dirver_icon_simple.png";
+        break;
+    }
   }
 
 

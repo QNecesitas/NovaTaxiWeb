@@ -509,7 +509,8 @@ export default class MaphomeUser {
 
         if (event.target.id === "btn-sc"){
           context.liModalTravel.hide();
-          RoutesTools.navigationTripDriver = trip;
+          RoutesTools.navigationTripUser = trip;
+          sessionStorage.setItem('TripUser',JSON.stringify(RoutesTools.navigationTripUser));
           context.showAlertLLAwaitSelect(0);
           window.open("NavigationUser.html", "_self");
         }
