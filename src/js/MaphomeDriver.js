@@ -45,8 +45,9 @@ export default class MaphomeDriver {
     };
 
     this.stateAcceptTripsObserver = (it) => {
+      alert(it);
       switch (it) {
-        case "Success":
+        case "SUCCESS":
           RoutesTools.navigationTripDriver = this.viewModel.lastTripSelected;
           window.open("NavigationDriver.html", "_self");
           break;
@@ -315,14 +316,13 @@ export default class MaphomeDriver {
 
         let divContainerA = document.createElement("div");
         divContainerA.setAttribute("class", "container-a");
-        let aRoute = document.createElement("a");
+
+        let aRoute = document.createElement("p");
         aRoute.setAttribute("class", "card-taxi-a");
-        aRoute.setAttribute("href", "");
         aRoute.innerHTML = "Ver ruta";
 
-        let aDoRoute = document.createElement("a");
+        let aDoRoute = document.createElement("p");
         aDoRoute.setAttribute("class", "card-taxi-a");
-        aDoRoute.setAttribute("href", "");
         aDoRoute.innerHTML= "Hacer ruta";
 
 
@@ -339,7 +339,9 @@ export default class MaphomeDriver {
         divCardTaxi.appendChild(divIndividual);
 
 
-        aDoRoute.addEventListener("click", () => this.showAlertDialogAcceptRoute(json_it[f]));
+        aDoRoute.addEventListener("click", () =>{
+          this.showAlertDialogAcceptRoute(json_it[f]);
+        });
         aRoute.addEventListener("click", () => {
           this.fetchARoute(json_it[f])
         });
@@ -417,7 +419,8 @@ export default class MaphomeDriver {
     if(result){
       RoutesTools.navigationTripDriver = trip;
       this.viewModel.setLastTripSelected(trip);
-      this.viewModel.acceptTrips(this.stateAcceptTripsObserver, trip);
+      alert("hola soy un sennor alert");
+     this.viewModel.acceptTrips(this.stateAcceptTripsObserver, trip);
     }
   }
  
