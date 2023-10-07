@@ -30,7 +30,7 @@ export default class MaphomeDriver {
       zoom: 16.5, // starting zoom,
       pitch: 70.0
     });
-
+   
 
     //Observer
     this.listDriverObserver = (it) => {
@@ -45,7 +45,6 @@ export default class MaphomeDriver {
     };
 
     this.stateAcceptTripsObserver = (it) => {
-      alert(it);
       switch (it) {
         case "SUCCESS":
           RoutesTools.navigationTripDriver = this.viewModel.lastTripSelected;
@@ -73,7 +72,6 @@ export default class MaphomeDriver {
     };
 
     this.routeObserver = (it) => {
-      alert(JSON.stringify(it));
       const data = it.routes[0];
       const route = data.geometry.coordinates;
       const tripActualDistance = data.distance;
@@ -112,6 +110,7 @@ export default class MaphomeDriver {
 
       //App logic
       this.viewCameraInPoint(this.viewModel.latitudeDestiny,this.viewModel.longitudeDestiny);
+      document.getElementById("progress").style.visibility = "hidden";
     };
 
 
@@ -150,6 +149,21 @@ export default class MaphomeDriver {
     this.viewModel.startMainCoroutine(this.stateDriverSearch,this.listDriverObserver,this.stateDriverUpdateLocation,this.stateDriverUpdateLocation,this.listTripObserver);
   }
 
+  //Init
+  addRoutePoints(trip){
+    if(trip){
+      let pointOrigin = new Point(trip.longOri,trip.latOri);
+     
+      if(pointOrigin){
+        this.addAnnotationsTripToMap(pointOrigin,"img/start_route.png");
+      }
+      let pointDestination = new Point(trip.longDest,trip.latDest);
+      if(pointDestination){
+        this.addAnnotationsTripToMap(pointDestination,"img/end_route.png");
+      }
+
+    }
+  }
 
 
   //Location
@@ -261,11 +275,27 @@ export default class MaphomeDriver {
   }
 
 
+  addAnnotationsTripToMap(point, imgUrl){
+    let img = document.createElement('img');
+    img.setAttribute("class","marker-trip");
+    img.setAttribute("src",imgUrl);
 
+    if(imgUrl === "img/start_route.png"){
+      if (this.markerTripOrigin) this.markerTripOrigin.remove();
+      this.markerTripOrigin = new mapboxgl.Marker(img)
+        .setLngLat([point.longitude, point.latitude])
+        .addTo(this.map);
+    }else{
+      if (this.markerTripDestiny) this.markerTripDestiny.remove();
+      this.markerTripDestiny = new mapboxgl.Marker(img)
+        .setLngLat([point.longitude, point.latitude])
+        .addTo(this.map);
+    }
+  }
 
   //Route
   fetchARoute(trip){
-
+    this.addRoutePoints(trip);
     this.viewModel.getRoute(this.routeObserver,trip.latOri,trip.longOri,trip.latDest,trip.longDest);
     document.getElementById("progress").style.visibility = "visible";
   }
@@ -286,7 +316,8 @@ export default class MaphomeDriver {
       });
     }
   }
-
+ 
+  
   updateRecyclerInfo(json_it) {
     if (json_it.length > 0) {
       document.getElementById("container-card-viaje").style.visibility = "visible";
@@ -351,8 +382,7 @@ export default class MaphomeDriver {
 
       }
     }
-  }
-
+  }  
 
   getDriverImg(vehicleType){
     switch(vehicleType) {
@@ -419,8 +449,7 @@ export default class MaphomeDriver {
     if(result){
       RoutesTools.navigationTripDriver = trip;
       this.viewModel.setLastTripSelected(trip);
-      alert("hola soy un sennor alert");
-     this.viewModel.acceptTrips(this.stateAcceptTripsObserver, trip);
+      this.viewModel.acceptTrips(this.stateAcceptTripsObserver, trip);
     }
   }
  
@@ -433,7 +462,7 @@ export default class MaphomeDriver {
   }
 
 
-
+ 
 
 }
 let maphomeDriver = new MaphomeDriver();
