@@ -54,6 +54,7 @@ export default class NavigationUser {
         case "Espera por cliente":
           this.showAwaitOptions(true);
           this.sendNotification("El vehículo ha llegado y está a la espera");
+          document.getElementById("wait").style.visibility="visible"
           break;
         case "En viaje":
           this.showAwaitOptions(false);
@@ -212,10 +213,10 @@ export default class NavigationUser {
     while (true){
       if(RoutesTools.navigationTripUser) {
         this.viewModel.getDriverPosition(this.stateDriverObserver,this.driverObserver, RoutesTools.navigationTripUser.fk_driver);
-        this.fetchARoute(RoutesTools.navigationTripUser);
         if(UserAccountShared.getUserEmail()){
           this.viewModel.fetchStateInTrip(this.stateTripObserver,this.actualTripObserver,UserAccountShared.getUserEmail());
         }
+        this.fetchARoute(RoutesTools.navigationTripUser);
         await new Promise(resolve => setTimeout(resolve, 12000));
       }
     }
@@ -387,7 +388,7 @@ export default class NavigationUser {
     const destPoint = new Point(trip.longDest, trip.latDest);
     const driverPoint =  new Point(this.viewModel.longitudeDriver, this.viewModel.latitudeDriver);
 
-    if(this.viewModel.actualTrip=="Espera por cliente" || this.viewModel.actualTrip=="En viaje"){
+    if(this.viewModel.actualTrip.state=="Espera por cliente" || this.viewModel.actualTrip.state=="En viaje"){
       this.setRouteOptions1Step(destPoint,driverPoint);
     }else{
       this.setRouteOptions2Step(originPoint,destPoint,driverPoint);
