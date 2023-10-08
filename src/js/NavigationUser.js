@@ -20,7 +20,7 @@ export default class NavigationUser {
   routeObserverStep1;
   routeObserverStep2;
   statePricesObserver;
-  
+
 
 
   constructor(){
@@ -387,7 +387,7 @@ export default class NavigationUser {
     const destPoint = new Point(trip.longDest, trip.latDest);
     const driverPoint =  new Point(this.viewModel.longitudeDriver, this.viewModel.latitudeDriver);
 
-    if(this.viewModel.actualTrip=="Espera por cliente" || this.viewModel.actualTrip=="En viaje"){
+    if(this.viewModel.actualTrip==="Espera por cliente" || this.viewModel.actualTrip==="En viaje"){
       this.setRouteOptions1Step(destPoint,driverPoint);
     }else{
       this.setRouteOptions2Step(originPoint,destPoint,driverPoint);
