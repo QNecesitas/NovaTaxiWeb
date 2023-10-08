@@ -443,18 +443,21 @@ export default class NavigationUser {
     document.getElementById("liFinishedTripCond").innerHTML = trip.driverName;
     document.getElementById("liFinishedTripChapa").innerHTML = trip.numberPlate;
     document.getElementById("liFinishedTripClient").innerHTML = trip.clientName;
-    const distance = trip.distance.toFixed(2) + " km";
+    const distance = trip.distance.toFixed(2) + " Km";
     document.getElementById("liFinishedTripDist").innerHTML = distance;
     document.getElementById("liFinishedTripFecha").innerHTML = trip.date;
-
-    <p class="pModal">Tiempo de espera: <span id="liFinishedTripTime">Cargando</span></p>
-    <p class="pModal">Precio por espera: <span id="liFinishedTripAwait">Cargando</span></p>
-    <p class="pModal">Precio del viaje: <span id="liFinishedTripTPrice">Cargando</span></p>
-    <p class="pModal">Tipo de veh&iacute;culo: <span id="liFinishedTripVeh">Cargando</span></p>
-    <p class="pModal">Precio Total: <span id="liFinishedTotalP">Cargando</span></p>
+    const awaitTime = trip.timeAwait + " min";
+    document.getElementById("liFinishedTripTime").innerHTML = awaitTime;
+    const awaitPrice = trip.priceAwait.toFixed(2) + " CUP";
+    document.getElementById("liFinishedTripAwait").innerHTML = awaitPrice;
+    const tripPrice = trip.travelPrice.toFixed(2) + " CUP";
+    document.getElementById("liFinishedTripTPrice").innerHTML = tripPrice;
+    document.getElementById("liFinishedTripVeh").innerHTML = trip.typeCar;
+    const totalPrice = (trip.travelPrice + trip.priceAwait) + " CUP";
+    document.getElementById("liFinishedTotalP").innerHTML = totalPrice;
 
     document.getElementById("liFinishedTripBtn").onclick = () => {
-
+      window.open("MaphomeUser.html","_self");
     };
   }
 

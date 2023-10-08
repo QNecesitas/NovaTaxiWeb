@@ -226,7 +226,7 @@ export default class NavigationDriver {
     }
   }
 
- 
+
 
   //Location
   getLocationRealTime(){
