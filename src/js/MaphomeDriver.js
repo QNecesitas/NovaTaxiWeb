@@ -30,7 +30,7 @@ export default class MaphomeDriver {
       zoom: 16.5, // starting zoom,
       pitch: 70.0
     });
-   
+
 
     //Observer
     this.listDriverObserver = (it) => {
@@ -46,7 +46,7 @@ export default class MaphomeDriver {
 
     this.stateAcceptTripsObserver = (it) => {
       switch (it) {
-        case "SUCCESS":
+        case "Success":
           RoutesTools.navigationTripDriver = this.viewModel.lastTripSelected;
           window.open("NavigationDriver.html", "_self");
           break;
@@ -116,7 +116,7 @@ export default class MaphomeDriver {
 
 
     //Listeners
-     
+
     document.getElementById("ubication").onclick = ()=> {
       if(this.viewModel.latitudeGps && this.viewModel.longitudeGps){
         if(this.viewModel.isSharedLocation){
@@ -132,7 +132,7 @@ export default class MaphomeDriver {
           document.getElementById("iconBtnShare").style.content = "url('img/stop_circle_FILL0_wght400_GRAD0_opsz24.svg')";
           document.getElementById("txt-ubication").innerHTML = "No compartir ubicaci&oacute;n";
           this.viewModel.setIsShare(true);
-        } 
+        }
       }else{
         alert("Su posición es aún desconocida");
       }
@@ -153,7 +153,7 @@ export default class MaphomeDriver {
   addRoutePoints(trip){
     if(trip){
       let pointOrigin = new Point(trip.longOri,trip.latOri);
-     
+
       if(pointOrigin){
         this.addAnnotationsTripToMap(pointOrigin,"img/start_route.png");
       }
@@ -316,14 +316,14 @@ export default class MaphomeDriver {
       });
     }
   }
- 
-  
+
+
   updateRecyclerInfo(json_it) {
     if (json_it.length > 0) {
       document.getElementById("container-card-viaje").style.visibility = "visible";
       document.getElementById("container-card-viaje").innerHTML="";
       for (let f = 0; f < json_it.length; f++) {
-       
+
         let divCardTaxi = document.createElement("div");
         divCardTaxi.setAttribute("class", "card-taxi");
 
@@ -340,7 +340,7 @@ export default class MaphomeDriver {
         let pPrice = document.createElement("p");
         pPrice.setAttribute("class", "card-taxi-p");
         pPrice.innerHTML = "Precio del viaje: " + json_it[0].travelPrice;
-        
+
         let pDistCar = document.createElement("p");
         pDistCar.setAttribute("class", "card-taxi-p");
         pDistCar.innerHTML = "Distancia: " + json_it[0].distance;
@@ -382,7 +382,7 @@ export default class MaphomeDriver {
 
       }
     }
-  }  
+  }
 
   getDriverImg(vehicleType){
     switch(vehicleType) {
@@ -452,7 +452,7 @@ export default class MaphomeDriver {
       this.viewModel.acceptTrips(this.stateAcceptTripsObserver, trip);
     }
   }
- 
+
   showAlertDialogAlreadyAccepted(){
     alert("Acaba de ser aceptado este recorrido por otro conductor");
   }
@@ -462,7 +462,7 @@ export default class MaphomeDriver {
   }
 
 
- 
+
 
 }
 let maphomeDriver = new MaphomeDriver();
