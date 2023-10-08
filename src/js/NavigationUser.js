@@ -343,32 +343,6 @@ export default class NavigationUser {
     this.map.setFreeCameraOptions(camera);
   }
 
-  getDriverImg(vehicleType){
-    switch(vehicleType) {
-      case "Auto básico" :
-        return "img/baseline_drive_eta_24.png";
-        break;
-      case "Auto de confort" :
-        return "img/vector_car.png";
-        break;
-      case "Auto familiar" :
-        return "img/vector_familiar.png";
-        break;
-      case "Triciclo" :
-        return "img/vector_tricycle.png";
-        break;
-      case "Motor" :
-        return "img/baseline_directions_bike_24.png";
-        break;
-      case "Bicitaxi" :
-        return "img/vector_bicitaxi.png";
-        break;
-      default :
-        return "img/baseline_drive_eta_24.png";
-        break;
-    }
-  }
-
   addAnnotationsTripToMap(point, imgUrl){
     let img = document.createElement('img');
     img.setAttribute("class","marker-trip");

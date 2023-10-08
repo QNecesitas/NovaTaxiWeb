@@ -133,9 +133,9 @@ export default class ViewModelMapHomeDriver {
     }
   }
 
-  acceptTrips(stateObserver, trip){
+  acceptTrips(stateObserver,trip){
     if(DriverAccountShared.getDriverEmail()){
-      this.tripsDataSource.acceptTrip(stateObserver, trip);
+      this.tripsDataSource.acceptTrip(stateObserver, DriverAccountShared.getDriverEmail(),trip.fk_user);
     }
   }
 
