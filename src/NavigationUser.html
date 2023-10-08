@@ -23,46 +23,24 @@
   <link rel="stylesheet" href="css/bootstrap-reboot.css">
   <link rel="stylesheet" href="css/bootstrap-reboot.rtl.css">
 
-  <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet'/>
 
   <meta name="theme-color" content="#fafafa">
 </head>
 <body>
 
 
-    <main>
-      <div id="map"></div>
-    </main>
+<main>
+  <div id="map"></div>
+</main>
 
-<!-- Alert Dialog Ubication desactived-->
-<!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+
+<!--Modal trip finished-->
+<div class="modal fade " id="liFinishedTrip" tabindex="-1" aria-labelledby="liFinishedTripLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <p class="modal-title fs-5" id="staticBackdropLabel">Ubicaci&oacute;n desactivada</p>
-      </div>
-      <div class="modal-body">
-        <p>Vaya a los ajustes y encienda la ubicación</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Aceptar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!--modal travel-->
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
-</button>
-<div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content staticBackdropDos">
-      <div class="modal-header">
-        <p class="modal-title fs-5" id="staticBackdropLabel">Viaje finalizado</p>
+        <p class="modal-title fs-5" id="liFinishedTripLabel">Viaje finalizado</p>
       </div>
       <div class="modal-body">
         <p class="pModal">Conductor: <span>Cargando</span></p>
@@ -85,13 +63,15 @@
 
 <!--Hidden Elements-->
 <section class="hidden-container" id="wait">
-  <p>Su taxi ha llegado y est&aacute;  la espera. Por Favor no demore en abordar el veh&iacute;culo, recuerde que hay un impuesto aplicado a partir de cierto tiempo de espera</p>
-  <button id="BtnAwait"><img src="./img/monetization_on_FILL1_wght400_GRAD0_opsz48.svg" alt=""> Revisar Impuestos </button>
+  <p>Su taxi ha llegado y est&aacute; la espera. Por Favor no demore en abordar el veh&iacute;culo, recuerde que hay un
+    impuesto aplicado a partir de cierto tiempo de espera</p>
+  <button id="BtnAwait"><img src="./img/monetization_on_FILL1_wght400_GRAD0_opsz48.svg" alt=""> Revisar Impuestos
+  </button>
 </section>
 
-    <script type="module" src="js/NavigationUser.js"></script>
-   <script src="js/bootstrap.js"></script>
-   <script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
-   <script src="js/bootstrap.bundle.js"></script>
+<script type="module" src="js/NavigationUser.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
+<script src="js/bootstrap.bundle.js"></script>
 </body>
 </html>
