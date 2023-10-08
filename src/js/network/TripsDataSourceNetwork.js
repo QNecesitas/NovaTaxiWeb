@@ -125,6 +125,7 @@ export default class TripsDataSourceNetwork {
     hxr.onload = function () {
       if (hxr.status === 200) {
         let json = JSON.parse(hxr.responseText);
+        //Response
         stateObserver(json);
       } else {
         stateObserver("ERROR");

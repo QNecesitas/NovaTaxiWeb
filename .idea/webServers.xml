@@ -3,7 +3,7 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="a3df255a-fdf4-4543-992d-306b9d7cb0f5" name="deploy" url="http://localhost">
-        <fileTransfer port="0" mountedRoot="D:\src prueba" accessType="MOUNT" />
+        <fileTransfer port="0" mountedRoot="D:\Work_Hard\Projects Documentation\NovaTaxi\Deploy" accessType="MOUNT" />
       </webServer>
     </option>
   </component>
