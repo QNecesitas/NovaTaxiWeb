@@ -425,7 +425,6 @@ export default class NavigationUser {
     }
   }
 
-  //TODO Reparar los id
   showAlertDialogPrices(time, price){
     alert(`Cada ${time} minutos de espera se suman ${price} CUP al precio total`);
   }
@@ -434,9 +433,29 @@ export default class NavigationUser {
     alert("Su viaje ha comenzado");
   }
 
-  //TODO Nohemi work
-  liFinishedTrip(trip){
 
+  liFinishedTrip(trip){
+    const myModal = new bootstrap.Modal('#liFinishedTrip', {
+      keyboard: false
+    });
+    myModal.show();
+
+    document.getElementById("liFinishedTripCond").innerHTML = trip.driverName;
+    document.getElementById("liFinishedTripChapa").innerHTML = trip.numberPlate;
+    document.getElementById("liFinishedTripClient").innerHTML = trip.clientName;
+    const distance = trip.distance.toFixed(2) + " km";
+    document.getElementById("liFinishedTripDist").innerHTML = distance;
+    document.getElementById("liFinishedTripFecha").innerHTML = trip.date;
+
+    <p class="pModal">Tiempo de espera: <span id="liFinishedTripTime">Cargando</span></p>
+    <p class="pModal">Precio por espera: <span id="liFinishedTripAwait">Cargando</span></p>
+    <p class="pModal">Precio del viaje: <span id="liFinishedTripTPrice">Cargando</span></p>
+    <p class="pModal">Tipo de veh&iacute;culo: <span id="liFinishedTripVeh">Cargando</span></p>
+    <p class="pModal">Precio Total: <span id="liFinishedTotalP">Cargando</span></p>
+
+    document.getElementById("liFinishedTripBtn").onclick = () => {
+
+    };
   }
 
 }
