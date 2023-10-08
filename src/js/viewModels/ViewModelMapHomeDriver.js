@@ -140,7 +140,7 @@ export default class ViewModelMapHomeDriver {
   }
 
   getRoute(responseObserver, latitudeOrigin, longitudeOrigin, latitudeDestiny, longitudeDestiny){
-    this.latitudeDestiny=latitudeDestiny;
+this.latitudeDestiny=latitudeDestiny;
     this.longitudeDestiny=longitudeDestiny;
     this.tripsDataSource.fetchRoute(responseObserver, latitudeOrigin, longitudeOrigin, latitudeDestiny, longitudeDestiny);
   }
