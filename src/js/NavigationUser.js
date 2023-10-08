@@ -20,7 +20,7 @@ export default class NavigationUser {
   routeObserverStep1;
   routeObserverStep2;
   statePricesObserver;
-  
+
 
 
   constructor(){
