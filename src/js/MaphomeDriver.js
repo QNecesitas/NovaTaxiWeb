@@ -339,11 +339,11 @@ addAnnotationsTripToMap(point, imgUrl){
         divContainerP.setAttribute("class", "container-p");
         let pPrice = document.createElement("p");
         pPrice.setAttribute("class", "card-taxi-p");
-        pPrice.innerHTML = "Precio del viaje: " + json_it[0].travelPrice;
+        pPrice.innerHTML = "Precio del viaje: " + json_it[0].travelPrice.toFixed(2) + " CUP";
 
         let pDistCar = document.createElement("p");
         pDistCar.setAttribute("class", "card-taxi-p");
-        pDistCar.innerHTML = "Distancia: " + json_it[0].distance;
+        pDistCar.innerHTML = "Distancia: " + json_it[0].distance.toFixed(2) + " Km";
 
         let divContainerA = document.createElement("div");
         divContainerA.setAttribute("class", "container-a");

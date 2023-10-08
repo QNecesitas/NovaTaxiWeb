@@ -84,7 +84,7 @@ main {
   width: 100%;
   height: 100vh;
   background-color: var(--md_theme_dark_background);
-}
+} 
 
 .button-circle {
   position: absolute;
@@ -100,8 +100,6 @@ main {
 .button-circle button {
   background-color: var(--md_theme_light_onPrimary);
   padding: 0.2rem;
-  width: 3rem;
-  height: 3rem;
   border-radius: 2.5rem;
   border: none;
 }
@@ -110,8 +108,6 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
 }
 
 /*Alert Dialog Ubication desactivada*/

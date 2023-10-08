@@ -182,6 +182,7 @@ export default class NavigationDriver {
     this.viewModel.setRouteState("STARTING");
     this.addRoutePoints();
     this.getLocationRealtimeFirstTime();
+    this.getLocationRealTime();
     if(RoutesTools.navigationTripDriver){
       this.viewCameraInPoint(Point(
         RoutesTools.navigationTripDriver.longitude,
@@ -221,8 +222,8 @@ export default class NavigationDriver {
         await this.fetchARoute(RoutesTools.navigationTripDriver);
         await this.viewModel.checkIsNearFromAwaitForClient(RoutesTools.navigationTripDriver);
         await this.viewModel.checkIsNearFromFinished(RoutesTools.navigationTripDriver);
-        await new Promise(resolve => setTimeout(resolve, 12000));
       }
+      await new Promise(resolve => setTimeout(resolve, 12000));
     }
   }
 
