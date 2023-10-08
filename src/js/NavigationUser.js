@@ -34,6 +34,8 @@ export default class NavigationUser {
       pitch: 70.0
     });
     let context = this;
+    let firstTime=true;
+    let finishedTrip=true;
 
     let routeToolsAux=sessionStorage.getItem('TripUser');
     RoutesTools.navigationTripUser=JSON.parse(routeToolsAux);
@@ -50,11 +52,15 @@ export default class NavigationUser {
     };
 
     this.actualTripObserver = (it) => {
+      this.viewModel.actualTrip=it;
       switch (it.state){
         case "Espera por cliente":
           this.showAwaitOptions(true);
-          this.sendNotification("El vehículo ha llegado y está a la espera");
-          document.getElementById("wait").style.visibility="visible"
+          if(firstTime){
+            this.sendNotification("El vehículo ha llegado y está a la espera");
+            firstTime=false;
+          }
+          document.getElementById("wait").style.visibility="visible";
           break;
         case "En viaje":
           this.showAwaitOptions(false);
@@ -64,8 +70,11 @@ export default class NavigationUser {
           }
           break;
         case "Finalizado":
-          if(this.viewModel.actualTrip){
-            this.liFinishedTrip(this.viewModel.actualTrip);
+          if(finishedTrip){
+            if(this.viewModel.actualTrip){
+              this.liFinishedTrip(this.viewModel.actualTrip);
+              finishedTrip=false;
+             }
           }
           break;
       }
@@ -167,8 +176,6 @@ export default class NavigationUser {
         });
       }
 
-      //App logic
-      document.getElementById("progress").style.visibility = "hidden";
 
     };
 
@@ -388,7 +395,7 @@ export default class NavigationUser {
     const destPoint = new Point(trip.longDest, trip.latDest);
     const driverPoint =  new Point(this.viewModel.longitudeDriver, this.viewModel.latitudeDriver);
 
-    if(this.viewModel.actualTrip.state=="Espera por cliente" || this.viewModel.actualTrip.state=="En viaje"){
+    if(trip.state=="Espera por cliente" || trip.state=="En viaje"){
       this.setRouteOptions1Step(destPoint,driverPoint);
     }else{
       this.setRouteOptions2Step(originPoint,destPoint,driverPoint);
@@ -435,12 +442,12 @@ export default class NavigationUser {
   //TODO Reparar los id
   showAwaitOptions(open){
     if(open){
-      document.getElementById("clAwait").style.visibility = "visible";
-      document.getElementById("llBtnAwait").onclick = () =>{
+      document.getElementById("wait").style.visibility = "visible";
+      document.getElementById("BtnAwait").onclick = () =>{
         this.viewModel.fetchPrices(this.statePricesObserver,this.actualPricesObserver);
       }
     }else{
-      document.getElementById("clAwait").style.visibility = "hidden";
+      document.getElementById("wait").style.visibility = "hidden";
     }
   }
 
