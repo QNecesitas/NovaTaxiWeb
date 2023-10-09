@@ -76,7 +76,7 @@
 }
 
 html {
-  font-size: 62, 5%;
+  font-size: 62,5%;
 }
 
 main {
@@ -112,6 +112,11 @@ main {
   justify-content: center;
   width: 2.5rem;
   height: 2.5rem;
+}
+.mapboxgl-ctrl-group{
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
 }
 
 /*Alert Dialog Ubication desactivada*/
