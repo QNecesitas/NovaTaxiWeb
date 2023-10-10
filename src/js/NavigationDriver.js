@@ -19,6 +19,7 @@ export default class NavigationDriver {
   stateUpdateInAwaitObserver;
   stateUpdateInTravelObserver;
   stateUpdateFinishedObserver;
+  driverPosition;
 
 
 
@@ -35,6 +36,13 @@ export default class NavigationDriver {
       zoom: 16.5, // starting zoom,
       pitch: 70.0
     });
+
+    let routeToolsAux=sessionStorage.getItem('TripDriver');
+    RoutesTools.navigationTripDriver=JSON.parse(routeToolsAux);
+    this.driverPosition=sessionStorage.getItem('LocationDriver');
+    this.viewModel.setLatitudeGPS(this.driverPosition.latitude);
+    this.viewModel.setLongitudeGPS(this.driverPosition.longitude);
+
 
 
     this.stateRouteObserver = (it) =>{
@@ -184,10 +192,10 @@ export default class NavigationDriver {
     this.getLocationRealtimeFirstTime();
     this.getLocationRealTime();
     if(RoutesTools.navigationTripDriver){
-      this.viewCameraInPoint(Point(
-        RoutesTools.navigationTripDriver.longitude,
-        RoutesTools.navigationTripDriver.latitude
-      ))
+      this.viewCameraInPoint(
+        RoutesTools.navigationTripDriver.latOri,
+        RoutesTools.navigationTripDriver.longOri
+      )
     }
     this.startMainRoutine();
 
@@ -204,12 +212,12 @@ export default class NavigationDriver {
   // TODO Me falto poner un numerp
   addRoutePoints(){
     if(RoutesTools.navigationTripDriver) {
-      let pointOrigin = Point(RoutesTools.navigationTripDriver.longOri,RoutesTools.navigationTripDriver.latOri);
+      let pointOrigin =  new Point(RoutesTools.navigationTripDriver.longOri,RoutesTools.navigationTripDriver.latOri);
       this.addAnnotationsTripToMap(pointOrigin, "img/start_route.png")
     }
 
     if(RoutesTools.navigationTripDriver) {
-      let pointDest = Point(RoutesTools.navigationTripDriver.longDest,RoutesTools.navigationTripDriver.latDest);
+      let pointDest =  new Point(RoutesTools.navigationTripDriver.longDest,RoutesTools.navigationTripDriver.latDest);
       this.addAnnotationsTripToMap(pointDest, "img/end_route.png")
     }
 
@@ -437,7 +445,7 @@ export default class NavigationDriver {
   fetchARoute(trip){
     const originPoint = new Point(trip.longOri, trip.latOri);
     const destPoint = new Point(trip.longDest, trip.latDest);
-    const driverPoint =  new Point(this.viewModel.longitudeGPS, this.viewModel);
+    const driverPoint =  new Point(this.viewModel.longitudeGps, this.viewModel.latitudeGps);
 
     if(this.viewModel.stateRoute === "STARTING" || this.viewModel.stateRoute === "NEAR_AWAITING"){
       this.setRouteOptions2Step(originPoint, destPoint, driverPoint)
