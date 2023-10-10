@@ -17,6 +17,7 @@ export default class MaphomeDriver {
   markerGPStoAnnotation;
   markerDrivers;
   routeObserver;
+  lastLocationGps;
 
   constructor() {
 
@@ -48,6 +49,8 @@ export default class MaphomeDriver {
       switch (it) {
         case "Success":
           RoutesTools.navigationTripDriver = this.viewModel.lastTripSelected;
+          sessionStorage.setItem('TripDriver',JSON.stringify(RoutesTools.navigationTripDriver));
+          sessionStorage.setItem('LocationDriver',this.lastLocationGps);
           window.open("NavigationDriver.html", "_self");
           break;
         case "Aceptado":
@@ -170,7 +173,6 @@ export default class MaphomeDriver {
   getLocationRealTime(){
     let marker; // Variable para el marcador
     let geolocate; // Variable para la capa de ubicación en tiempo real
-    let lastLocationGps;
     let lastLocationPoint;
     let context = this;
 
@@ -197,7 +199,7 @@ export default class MaphomeDriver {
       context.viewModel.latitudeGps = latitudeGps;
       context.viewModel.longitudeGps = longitudeGps;
 
-      lastLocationGps={latitude:latitudeGps, longitude:longitudeGps};
+      this.lastLocationGps={latitude:latitudeGps, longitude:longitudeGps};
 
       if(context.viewModel.isNecessaryCamera === true){
         context.viewCameraInPoint(latitudeGps, longitudeGps);
