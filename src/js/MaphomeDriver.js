@@ -271,7 +271,7 @@ export default class MaphomeDriver {
         if(this.viewModel.listDrivers[f].longitude !== 0.0 && this.viewModelMapHome.listDrivers[f].latitude !== 0.0){
           this.addAnnotationDrivers(new Point(
             this.viewModel.listDrivers[f].longitude,
-            this.sviewModel.listDrivers[f].latitude
+            this.viewModel.listDrivers[f].latitude
           ), this.getDriverMarkerImg(this.viewModel.listDrivers[f].typeCar));
         }
       }
