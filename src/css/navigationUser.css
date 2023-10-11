@@ -118,6 +118,13 @@ main {
   visibility: hidden;
 }
 
+.staticBackdropDos {
+  background-color: var(--md_theme_dark_surfaceVariant) !important;
+
+  padding: 10px;
+  /* visibility: hidden; */
+}
+
 #staticBackdropDos {
   background-color: var(--md_theme_dark_surfaceVariant);
   width: 40%;
