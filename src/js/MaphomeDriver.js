@@ -50,7 +50,10 @@ export default class MaphomeDriver {
         case "Success":
           RoutesTools.navigationTripDriver = this.viewModel.lastTripSelected;
           sessionStorage.setItem('TripDriver',JSON.stringify(RoutesTools.navigationTripDriver));
-          sessionStorage.setItem('LocationDriver',this.lastLocationGps);
+          sessionStorage.setItem('LocationDriverlatitud',this.viewModel.latitudeGps);
+          sessionStorage.setItem('LocationDriverlongitud',this.viewModel.longitudeGps);
+
+         
           window.open("NavigationDriver.html", "_self");
           break;
         case "Aceptado":
@@ -199,7 +202,7 @@ export default class MaphomeDriver {
       context.viewModel.latitudeGps = latitudeGps;
       context.viewModel.longitudeGps = longitudeGps;
 
-      this.lastLocationGps={latitude:latitudeGps, longitude:longitudeGps};
+     
 
       if(context.viewModel.isNecessaryCamera === true){
         context.viewCameraInPoint(latitudeGps, longitudeGps);

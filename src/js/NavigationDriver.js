@@ -39,9 +39,10 @@ export default class NavigationDriver {
 
     let routeToolsAux=sessionStorage.getItem('TripDriver');
     RoutesTools.navigationTripDriver=JSON.parse(routeToolsAux);
-    this.driverPosition=sessionStorage.getItem('LocationDriver');
-    this.viewModel.setLatitudeGPS(this.driverPosition.latitude);
-    this.viewModel.setLongitudeGPS(this.driverPosition.longitude);
+    this.driverPositionlatitude=sessionStorage.getItem('LocationDriverlatitud');
+    this.driverPositionlongitude=sessionStorage.getItem('LocationDriverlongitud');
+    this.viewModel.setLatitudeGPS(this.driverPositionlatitude);
+    this.viewModel.setLongitudeGPS(this.driverPositionlongitude);
 
 
 
@@ -130,7 +131,6 @@ export default class NavigationDriver {
       }
 
       //App logic
-      document.getElementById("progress").style.visibility = "hidden";
 
     };
 
@@ -172,7 +172,6 @@ export default class NavigationDriver {
       }
 
       //App logic
-      document.getElementById("progress").style.visibility = "hidden";
 
     };
 
@@ -228,7 +227,7 @@ export default class NavigationDriver {
     while (true){
       if(RoutesTools.navigationTripDriver) {
         await this.fetchARoute(RoutesTools.navigationTripDriver);
-        await this.viewModel.checkIsNearFromAwaitForClient(RoutesTools.navigationTripDriver);
+        await this.viewModel.checkIsNearFromAwaitForClient(RoutesTools.navigationTripDriver, this.stateRouteObserver);
         await this.viewModel.checkIsNearFromFinished(RoutesTools.navigationTripDriver);
       }
       await new Promise(resolve => setTimeout(resolve, 12000));
@@ -320,7 +319,7 @@ export default class NavigationDriver {
 
       if(isFirstTime) {
         lastLocationGps = {latitude: latitudeGps, longitude: longitudeGps};
-
+         
         if (isNecessaryCamera) {
           context.viewCameraInPoint(latitudeGps, longitudeGps);
           isNecessaryCamera = false
@@ -331,7 +330,7 @@ export default class NavigationDriver {
           this.fetchARoute(RoutesTools.navigationTripDriver);
         }
 
-        context.addAnnotationGPSToMap(new Point(longitudeGps, latitudeGps));
+        context.addAnnotationDrivers(new Point(longitudeGps, latitudeGps),this.getDriverMarkerImg(RoutesTools.navigationTripDriver.typeCar));
         isFirstTime = false;
       }
     });
@@ -365,6 +364,16 @@ export default class NavigationDriver {
     }
   }
 
+  addAnnotationDrivers(point, imgUrl){
+    let img = document.createElement('img');
+    img.setAttribute("class","marker-driver");
+    img.setAttribute("src",imgUrl);
+
+    this.markerDrivers = new mapboxgl.Marker(img)
+      .setLngLat([point.longitude, point.latitude])
+      .addTo(this.map);
+  }
+
   viewCameraInPoint(latitudeGps, longitudeGps){
     const camera = this.map.getFreeCameraOptions();
 
@@ -395,6 +404,31 @@ export default class NavigationDriver {
     }
   }
 
+  getDriverMarkerImg(vehicleType){
+    switch(vehicleType) {
+      case "Auto básico" :
+        return "img/dirver_icon_simple.png";
+        break;
+      case "Auto de confort" :
+        return "img/dirver_icon_confort.png";
+        break;
+      case "Auto familiar" :
+        return "img/dirver_icon_familiar.png";
+        break;
+      case "Triciclo" :
+        return "img/dirver_icon_triciclo.png";
+        break;
+      case "Motor" :
+        return "img/dirver_icon_motorb.png";
+        break;
+      case "Bicitaxi" :
+        return "img/dirver_icon_bicitaxi.png";
+        break;
+      default :
+        return "img/dirver_icon_simple.png";
+        break;
+    }
+  }
 
 
   //Route state
@@ -453,7 +487,6 @@ export default class NavigationDriver {
     if(this.viewModel.stateRoute === "PAST_AWAITING" || this.viewModel.stateRoute === "NEAR_FINISHING"){
       this.setRouteOptions1Step(destPoint, driverPoint)
     }
-    document.getElementById("progress").style.visibility = "visible";
   }
 
   setRouteOptions1Step(destP, driverP){
