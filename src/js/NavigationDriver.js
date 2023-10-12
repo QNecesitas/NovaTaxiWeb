@@ -62,7 +62,7 @@ export default class NavigationDriver {
           break;
         case "NEAR_FINISHING":
           this.showNearFinishOptions(true);
-          break;;
+          break;
         case "FINISHED":
           this.showNearFinishOptions(false);
           if(this.viewModel.actualTrip){
@@ -178,7 +178,6 @@ export default class NavigationDriver {
 
 
     //Listeners
-    //TODO Real time listener, is only for code
     document.getElementById("stop").onclick = () => {
       this.viewModel.setTimeInMillsStart(Date.now());
       this.showNearFinishOptions(false);
@@ -319,7 +318,7 @@ export default class NavigationDriver {
 
       if(isFirstTime) {
         lastLocationGps = {latitude: latitudeGps, longitude: longitudeGps};
-         
+
         if (isNecessaryCamera) {
           context.viewCameraInPoint(latitudeGps, longitudeGps);
           isNecessaryCamera = false
