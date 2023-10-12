@@ -39,8 +39,9 @@ export default class ViewModelNavigationDriver {
     this.route = route;
   }
 
-  setRouteState(routeState){
+  setRouteState(routeState,stateObserver){
     this.stateRoute = routeState;
+    stateObserver(this.stateRoute);
   }
 
 
@@ -55,7 +56,7 @@ export default class ViewModelNavigationDriver {
           trip.longOri
         );
 
-        if (distance && distance <= 1) {
+        if (distance <= 1) {
           this.stateRoute = "NEAR_AWAITING";
           stateRouteObserver(this.stateRoute);
         }
@@ -70,7 +71,8 @@ export default class ViewModelNavigationDriver {
         stateObserver,
         DriverAccountShared.getDriverEmail(),
         "Espera por cliente",
-        0
+        0,
+        "AWAITING"
         );
     }
   }
@@ -89,8 +91,10 @@ export default class ViewModelNavigationDriver {
           stateObserver,
           DriverAccountShared.getDriverEmail(),
           "En viaje",
-          timeDelay
+          timeDelay,
+          "PAST_AWAITING"
         );
+        this.stateRoute="PAST_AWAITING";
       }
     }
   }
@@ -107,7 +111,7 @@ export default class ViewModelNavigationDriver {
           trip.longDest
         );
 
-        if (distance && distance <= 1) {
+        if (distance <= 1) {
           this.stateRoute = "NEAR_FINISHING";
           stateRouteObserver(this.stateRoute);
         }

@@ -18,7 +18,7 @@ export default class NavigationDriver {
   stateRouteObserver;
   stateUpdateInAwaitObserver;
   stateUpdateInTravelObserver;
-  stateUpdateFinishedObserver;
+  responseUpdateFinishedObserver;
   driverPosition;
 
 
@@ -43,6 +43,7 @@ export default class NavigationDriver {
     this.driverPositionlongitude=sessionStorage.getItem('LocationDriverlongitud');
     this.viewModel.setLatitudeGPS(this.driverPositionlatitude);
     this.viewModel.setLongitudeGPS(this.driverPositionlongitude);
+    this.addAnnotationDrivers(new Point(this.viewModel.longitudeGps, this.viewModel.latitudeGps),this.getDriverMarkerImg(RoutesTools.navigationTripDriver.typeCar));
 
 
 
@@ -65,9 +66,7 @@ export default class NavigationDriver {
           break;;
         case "FINISHED":
           this.showNearFinishOptions(false);
-          if(this.viewModel.actualTrip){
-            this.liFinishedTrip(this.viewModel.actualTrip);
-          }
+          
           break;
       }
     };
@@ -80,17 +79,8 @@ export default class NavigationDriver {
       this.viewModel.setRouteState("PAST_AWAITING");
     };
 
-    this.stateUpdateFinishedObserver = (it) => {
-      switch (it){
-        case "SUCCESS":
-          this.viewModel.setRouteState("FINISHED");
-          break;
-        case "LOADING":
-          break;
-        case "ERROR":
-          alert("Se ha producido un error. Compruebe su conexión e intente nuevamente");
-          break;
-      }
+    this.responseUpdateFinishedObserver = (it) => {
+     this.liFinishedTrip(it)
     };
 
     this.routeObserverStep1 = (it) => {
@@ -186,7 +176,7 @@ export default class NavigationDriver {
     };
 
 
-    this.viewModel.setRouteState("STARTING");
+    this.viewModel.setRouteState("STARTING",this.stateRouteObserver);
     this.addRoutePoints();
     this.getLocationRealtimeFirstTime();
     this.getLocationRealTime();
@@ -228,7 +218,7 @@ export default class NavigationDriver {
       if(RoutesTools.navigationTripDriver) {
         await this.fetchARoute(RoutesTools.navigationTripDriver);
         await this.viewModel.checkIsNearFromAwaitForClient(RoutesTools.navigationTripDriver, this.stateRouteObserver);
-        await this.viewModel.checkIsNearFromFinished(RoutesTools.navigationTripDriver);
+        await this.viewModel.checkIsNearFromFinished(RoutesTools.navigationTripDriver,this.stateRouteObserver);
       }
       await new Promise(resolve => setTimeout(resolve, 12000));
     }
@@ -330,7 +320,7 @@ export default class NavigationDriver {
           this.fetchARoute(RoutesTools.navigationTripDriver);
         }
 
-        context.addAnnotationDrivers(new Point(longitudeGps, latitudeGps),this.getDriverMarkerImg(RoutesTools.navigationTripDriver.typeCar));
+        context.addAnnotationDrivers(new Point(longitudeGps, latitudeGps),context.getDriverMarkerImg(RoutesTools.navigationTripDriver.typeCar));
         isFirstTime = false;
       }
     });
@@ -435,36 +425,36 @@ export default class NavigationDriver {
   //TODO crear los cl con avisos y colocar su id en la sig func
   showNearAwaitOptions(open){
     if(open){
-      document.getElementById("clAwait").style.visibility = "visible";
+      document.getElementById("wait").style.visibility = "visible";
       document.getElementById("llBtnAwait").onclick = () =>{
         this.viewModel.setTimeInMillsStart(Date.now());
         this.viewModel.setStatusRouteToInAwait(this.stateRouteObserver);
       }
     }else{
-      document.getElementById("clAwait").style.visibility = "hidden";
+      document.getElementById("wait").style.visibility = "hidden";
     }
   }
 
   showInAwaitOptions(open){
     if(open){
-      document.getElementById("clPastAwait").style.visibility = "visible";
+      document.getElementById("continuos").style.visibility = "visible";
       document.getElementById("llBtnPastAwait").onclick = () =>{
         this.viewModel.setTimeInMillsEnd(Date.now());
         this.viewModel.setStatusRouteToInTravel(this.stateRouteObserver);
       }
     }else{
-      document.getElementById("clPastAwait").style.visibility = "hidden";
+      document.getElementById("continuos").style.visibility = "hidden";
     }
   }
 
   showNearFinishOptions(open){
     if(open){
-      document.getElementById("clFinished").style.visibility = "visible";
+      document.getElementById("endTravel").style.visibility = "visible";
       document.getElementById("llBtnFinished").onclick = () =>{
-        this.viewModel.setStatusRouteToFinished(this.stateRouteObserver);
+        this.viewModel.setStatusRouteToFinished(this.stateRouteObserver,this.responseUpdateFinishedObserver);
       }
     }else{
-      document.getElementById("clFinished").style.visibility = "hidden";
+      document.getElementById("endTravel").style.visibility = "hidden";
     }
   }
 
@@ -496,6 +486,8 @@ export default class NavigationDriver {
   setRouteOptions2Step(originP, destP, driverP){
     this.viewModel.getRouteTriple(this.routeObserverStep2,driverP.latitude,driverP.longitude, originP.latitude, originP.longitude, destP.latitude, destP.longitude);
   }
+
+  
 
 
 }
