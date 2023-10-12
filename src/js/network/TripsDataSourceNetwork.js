@@ -143,7 +143,7 @@ export default class TripsDataSourceNetwork {
     hxr.send(data);
   }
 
-  updateStateTrip(stateObserver, email, state, delay) {
+  updateStateTrip(stateObserver, email, state, delay,stateIntern) {
     //Init and url base
     const hxr = new XMLHttpRequest();
     hxr.open('POST', this.updateStateTripURL);
@@ -156,10 +156,9 @@ export default class TripsDataSourceNetwork {
     data.append('delay', delay);
 
     //OnLoad
-    stateObserver("LOADING");
     hxr.onload = function () {
       if (hxr.status === 200) {
-        stateObserver("SUCCESS");
+        stateObserver(stateIntern);
       } else {
         stateObserver("ERROR");
 
@@ -187,11 +186,10 @@ export default class TripsDataSourceNetwork {
     data.append('email', email);
 
     //OnLoad
-    stateObserver("LOADING");
     hxr.onload = function () {
       if (hxr.status === 200) {
         let json = JSON.parse(hxr.responseText);
-        stateObserver("SUCCESS");
+        stateObserver("FINISHED");
         responseObserver(json);
       } else {
         stateObserver("ERROR");
