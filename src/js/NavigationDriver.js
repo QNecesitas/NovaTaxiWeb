@@ -457,9 +457,31 @@ export default class NavigationDriver {
     }
   }
 
-  //TODO Nohemi work
   liFinishedTrip(trip){
+    const myModal = new bootstrap.Modal('#liFinishedTrip', {
+      keyboard: false
+    });
+    myModal.show();
 
+    document.getElementById("liFinishedTripCond").innerHTML = trip.driverName;
+    document.getElementById("liFinishedTripChapa").innerHTML = trip.numberPlate;
+    document.getElementById("liFinishedTripClient").innerHTML = trip.clientName;
+    const distance = trip.distance.toFixed(2) + " Km";
+    document.getElementById("liFinishedTripDist").innerHTML = distance;
+    document.getElementById("liFinishedTripFecha").innerHTML = trip.date;
+    const awaitTime = trip.timeAwait + " min";
+    document.getElementById("liFinishedTripTime").innerHTML = awaitTime;
+    const awaitPrice = trip.priceAwait.toFixed(2) + " CUP";
+    document.getElementById("liFinishedTripAwait").innerHTML = awaitPrice;
+    const tripPrice = trip.travelPrice.toFixed(2) + " CUP";
+    document.getElementById("liFinishedTripTPrice").innerHTML = tripPrice;
+    document.getElementById("liFinishedTripVeh").innerHTML = trip.typeCar;
+    const totalPrice = (trip.travelPrice + trip.priceAwait) + " CUP";
+    document.getElementById("liFinishedTotalP").innerHTML = totalPrice;
+
+    document.getElementById("liFinishedTripBtn").onclick = () => {
+      window.open("MaphomeDriver.html","_self");
+    };
   }
 
 

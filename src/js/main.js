@@ -1,28 +1,45 @@
 import UserAccountShared from './auxiliary/UserAccountShared.js';
 import DriverAccountShared from './auxiliary/DriverAccountShared.js';
 
-export default class MainActivity{
+class MainActivity {
+  constructor() {
+    const btnClient = document.getElementById("btnClient");
+    const btnDriver = document.getElementById("btnDriver");
 
+    if (btnClient) {
+      btnClient.addEventListener("click", function () {
+        if (
+          UserAccountShared.getUserEmail() === null ||
+          UserAccountShared.getUserEmail() === ""
+        ) {
+          openPage("loginUser.html");
+        } else {
+          openPage("MaphomeUser.html");
+        }
+      });
+    }
 
-  constructor(){
-    document.getElementById("btnClient").onclick = () =>{
-      if(UserAccountShared.getUserEmail() === null || UserAccountShared.getUserEmail() === ""){
-        window.open("loginUser.html","_self");
-      }else{
-        window.open("MaphomeUser.html","_self");
+    if (btnDriver) {
+      btnDriver.addEventListener("click", function () {
+        if (
+          DriverAccountShared.getDriverEmail() === null ||
+          DriverAccountShared.getDriverEmail() === ""
+        ) {
+          openPage("loginDriver.html");
+        } else {
+          openPage("MaphomeDriver.html");
+        }
+      });
+    }
+
+    function openPage(page) {
+      if (window && window.open) {
+        window.open(page, "_self");
+      } else {
+        window.location.href = page;
       }
-    };
-
-    document.getElementById("btnDriver").onclick = () =>{
-      if(DriverAccountShared.getDriverEmail() === null || DriverAccountShared.getDriverEmail() === ""){
-        window.open("loginDriver.html","_self");
-      }else{
-        window.open("MaphomeDriver.html","_self");
-      }
-    };
-
+    }
   }
-
-
 }
-let mainActivity = new MainActivity();
+
+const mainActivity = new MainActivity();

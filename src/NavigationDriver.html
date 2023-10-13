@@ -41,41 +41,37 @@
 </main>
 
 
-<!--modal travel-->
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
-</button>
-<div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!--Modal trip finished-->
+<div class="modal fade " id="liFinishedTrip" tabindex="-1" aria-labelledby="liFinishedTripLabel" aria-hidden="false">
   <div class="modal-dialog">
     <div class="modal-content staticBackdropDos">
       <div class="modal-header">
-        <p class="modal-title fs-5" id="staticBackdropLabel">Viaje finalizado</p>
+        <p class="modal-title fs-5" id="liFinishedTripLabel">Viaje finalizado</p>
       </div>
       <div class="modal-body">
-        <p class="pModal">Conductor: <span>Cargando</span></p>
-        <p class="pModal">Chapa: <span>Cargando</span></p>
-        <p class="pModal">Cliente: <span>Cargando</span></p>
-        <p class="pModal">Distancia: <span>Cargando</span></p>
-        <p class="pModal">Fecha: <span>Cargando</span></p>
-        <p class="pModal">Tiempo de espera: <span>Cargando</span></p>
-        <p class="pModal">Precio por espera: <span>Cargando</span></p>
-        <p class="pModal">Precio del viaje: <span>Cargando</span></p>
-        <p class="pModal">Tipo de veh&iacute;culo: <span>Cargando</span></p>
-        <p class="pModal">Precio Total: <span>Cargando</span></p>
+        <p class="pModal">Conductor: <span id="liFinishedTripCond">Cargando</span></p>
+        <p class="pModal">Chapa: <span id="liFinishedTripChapa">Cargando</span></p>
+        <p class="pModal">Cliente: <span id="liFinishedTripClient">Cargando</span></p>
+        <p class="pModal">Distancia: <span id="liFinishedTripDist">Cargando</span></p>
+        <p class="pModal">Fecha: <span id="liFinishedTripFecha">Cargando</span></p>
+        <p class="pModal">Tiempo de espera: <span id="liFinishedTripTime">Cargando</span></p>
+        <p class="pModal">Precio por espera: <span id="liFinishedTripAwait">Cargando</span></p>
+        <p class="pModal">Precio del viaje: <span id="liFinishedTripTPrice">Cargando</span></p>
+        <p class="pModal">Tipo de veh&iacute;culo: <span id="liFinishedTripVeh">Cargando</span></p>
+        <p class="pModal">Precio Total: <span id="liFinishedTotalP">Cargando</span></p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary btn-modalTravel" data-bs-dismiss="modal">Aceptar</button>
+        <button type="button" id="liFinishedTripBtn" class="btn btn-secondary btn-modalTravel" type="submit">Aceptar</button>
       </div>
     </div>
   </div>
-</div>
+</div> 
 
 <!--Hidden Elements-->
 <section class="hidden-container" id="wait">
   <p>Se encuentra cerca del origen marcado por el cliente. Selecione el bot&oacute;n debajo cuando est&eacute; en el
     lugar a la espera. Al activar el bot&oacute;n avisaremos al cliente que usted ha llegado.</p>
-  <button id="llBtnAwait"><img src="./img/front_hand_FILL1_wght400_GRAD0_opsz24White.svg" alt=""> Ya estoy a la espera</button>
+  <button id="llBtnAwait"><img src="./img/front_hand_FILL0_wght400_GRAD0_opsz24.svg" alt=""> Ya estoy a la espera</button>
 </section>
 
 <section class="hidden-container" id="continuos">

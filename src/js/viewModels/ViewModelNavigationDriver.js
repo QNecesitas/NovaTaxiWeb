@@ -81,6 +81,7 @@ export default class ViewModelNavigationDriver {
     if(this.timeInMillsStart && this.timeInMillsEnd) {
       let timeDelayMills = this.timeInMillsEnd - this.timeInMillsStart;
       let timeDelay = parseInt(timeDelayMills / 1000 / 60);
+      
       if(RoutesTools.navigationTripDriver !== null){
         RoutesTools.navigationTripDriver.timeAwait = timeDelay;
       }

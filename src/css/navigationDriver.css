@@ -217,12 +217,12 @@ main {
 
 .hidden-container {
   position: absolute;
-  top: 2rem;
+  top: 0;
   display: flex;
   flex-direction: column;
   background-color: var(--md_theme_dark_background);
   padding: 0.5rem;
-  margin: 0 1rem;
+  margin: 0;
 }
 
 .hidden-container p {

@@ -1,6 +1,6 @@
 import Constants from '../auxiliary/Constants.js';
 export default class TripsDataSourceNetwork {
-
+ 
   //URL PhpFiles
   getTripsSmallInformationURL = Constants.PHP_FILES + "FetchTripsSmallInformation.php";
   getFinishedTripsURL = Constants.PHP_FILES + "FetchFinishedTrips.php";
