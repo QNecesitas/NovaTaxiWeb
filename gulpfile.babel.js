@@ -1,29 +1,10 @@
-import fs from 'fs';
-import path from 'path';
+const gulp = require('gulp');
+const babel = require('gulp-babel');
 
-import gulp from 'gulp';
-
-// Load all gulp plugins automatically
-// and attach them to the `plugins` object
-import plugins from 'gulp-load-plugins';
-
-import archiver from 'archiver';
-import glob from 'glob';
-import del from 'del';
-import modernizr from 'modernizr';
-
-import pkg from './package.json';
-import modernizrConfig from './modernizr-config.json';
-
-const dirs = pkg['h5bp-configs'].directories;
-
-// ---------------------------------------------------------------------
-// | Helper tasks                                                      |
-// ---------------------------------------------------------------------
-
-gulp.task('archive:create_archive_dir', (done) => {
-  fs.mkdirSync(path.resolve(dirs.archive), '0755');
-  done();
+gulp.task('js', function () {
+  return gulp.src('src/js/**/*.js')  // Ruta de tus archivos JavaScript fuente
+    .pipe(babel())  // Transpila con Babel u otras operaciones
+    .pipe(gulp.dest('dist/js'));  // Ruta de destino para los archivos transpilados
 });
 
 gulp.task('archive:zip', (done) => {
@@ -128,8 +109,8 @@ gulp.task('modernizr', (done) => {
   // TODO: rework this flow instead of just reacting to the fact that the jQuery step is gone
   if (!fs.existsSync(`${dirs.dist}/js/vendor/`)){
     fs.mkdirSync(`${dirs.dist}/js/vendor/`);
-  } 
-  
+  }
+
   modernizr.build(modernizrConfig, (code) => {
     fs.writeFile(`${dirs.dist}/js/vendor/modernizr-${pkg.devDependencies.modernizr}.min.js`, code, done);
   });
