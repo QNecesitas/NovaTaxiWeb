@@ -66,7 +66,7 @@ export default class NavigationDriver {
           break;
         case "FINISHED":
           this.showNearFinishOptions(false);
-          
+
           break;
       }
     };
@@ -504,11 +504,12 @@ export default class NavigationDriver {
     this.viewModel.getRoute(this.routeObserverStep1,driverP.latitude,driverP.longitude,destP.latitude, destP.longitude);
   }
 
+  
   setRouteOptions2Step(originP, destP, driverP){
     this.viewModel.getRouteTriple(this.routeObserverStep2,driverP.latitude,driverP.longitude, originP.latitude, originP.longitude, destP.latitude, destP.longitude);
   }
 
-  
+
 
 
 }
