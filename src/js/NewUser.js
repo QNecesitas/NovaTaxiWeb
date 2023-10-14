@@ -24,8 +24,8 @@ export default class NewUser{
       event.preventDefault();
       this.showAlertCancel();
     });
-    
-      
+
+
 
     //Observes
     this.stateObserver = (it) =>{
@@ -45,7 +45,7 @@ export default class NewUser{
         case "DUPLICATED":
           document.getElementById("progress").style.visibility = "hidden";
           alert("Ya existe una cuenta creada con ese correo.");
-          break;     
+          break;
 
       }
     };
@@ -97,7 +97,8 @@ export default class NewUser{
       window.open("loginUser.html","_self");
     }
   }
-   showAlertDialogSuccess(email){
+
+  showAlertDialogSuccess(email){
     alert("Le hemos enviado un correo a " + email + " .Por favor confirme su cuenta");
    }
 }
