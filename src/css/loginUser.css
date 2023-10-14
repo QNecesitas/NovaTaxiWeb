@@ -139,9 +139,9 @@ main {
 .contenedor-login {
   background-color: var(--md_theme_dark_background);
   width: 40%;
-  height: 50vh;
+  height: auto;
   position: absolute;
-  top: 40%;
+  top: 38%;
   left: 30%;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   border: 0.5px solid #ffffff;
@@ -388,16 +388,9 @@ form button {
 @media only screen and (max-width: 600px) {
 
   .contenedor-login {
-    background-color: var(--md_theme_dark_background);
     width: 90%;
-    height: 50vh;
-    position: absolute;
-    top: 40%;
     left: 5%;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    border: 0.5px solid #0000;
     padding: 10px;
-
   }
 
   #liRecover {

@@ -52,16 +52,39 @@ export default class NewUser{
   }
 
   createAccount(){
-    let input= document.getElementById("name").value.trim();
-    let word = input.split(" ");
-    if(document.getElementById("name").value.trim().length >0 && word.length>=3 && document.getElementById("email").value.trim().length>0 && document.getElementById("number").value.trim().length>0 && document.getElementById("password").value.trim().length>0 && document.getElementById("confirm-password").value.trim().length>0 && document.getElementById("password").value == document.getElementById("confirm-password").value){
+    if(this.isInformationGood()){
       let result = confirm("¿Estás seguro de guardar estos datos?");
       if(result){
         this.sendInformation();
       }
-    }else{
-      alert("Existe algún dato incorrecto. Por favor revise.");
     }
+  }
+  
+  isInformationGood(){
+    let result=true;
+    let input= document.getElementById("name").value.trim();
+    let word = input.split(" ");
+    if(document.getElementById("name").value.trim().length <=0 || word.length<3){
+      alert("Debe introducir su nombre y sus dos apellidos");
+      result=false;
+    }
+    if(document.getElementById("email").value.trim().length<=0){
+      result=false;
+    }
+    if(document.getElementById("number").value.trim().length<=0){
+      result=false;
+    }
+    if(document.getElementById("password").value.trim().length<=0){
+      result=false;
+    }
+    if(document.getElementById("confirm-password").value.trim().length<=0){
+      result=false;
+    }
+    if(document.getElementById("password").value !== document.getElementById("confirm-password").value){
+      alert("No coinciden las contraseñas");
+      result=false;
+    }
+    return result;
   }
 
   sendInformation(){

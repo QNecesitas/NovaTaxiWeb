@@ -11,8 +11,8 @@ export default class DriverAccountShared{
       }
     }
     return null;
-  }
-
+  } 
+ 
 
   static getDriverEmail() {
     return this.getCookie("driverEmail");

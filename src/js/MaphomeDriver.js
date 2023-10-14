@@ -21,6 +21,10 @@ export default class MaphomeDriver {
 
   constructor() {
 
+    //get User Information
+    if(DriverAccountShared.getDriverEmail()==null){
+      window.open("loginDriver.html","_self");
+   }
     //Map
     let lastPointSelected = DriverAccountShared.getLastLocation();
     mapboxgl.accessToken = 'pk.eyJ1Ijoicm9ubnlucCIsImEiOiJjbGl4YTg3bDgwNHpwM2RucTlwdWFkOXN1In0.MlTnx-myS4E3LJUeh5CVbw';
@@ -113,6 +117,8 @@ export default class MaphomeDriver {
           }
         });
       }
+
+      
 
       //App logic
       this.viewCameraInPoint(this.viewModel.latitudeDestiny,this.viewModel.longitudeDestiny);

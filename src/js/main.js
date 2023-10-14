@@ -1,5 +1,3 @@
-import UserAccountShared from './auxiliary/UserAccountShared.js';
-import DriverAccountShared from './auxiliary/DriverAccountShared.js';
 
 class MainActivity {
   constructor() {

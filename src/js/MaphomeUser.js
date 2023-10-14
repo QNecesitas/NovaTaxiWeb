@@ -32,6 +32,11 @@ export default class MaphomeUser {
   constructor() {
     let context = this;
 
+    //get User Information
+    if(UserAccountShared.getUserEmail()==null){
+      window.open("loginUser.html","_self");
+    }
+
     //Map
     let lastPointSelected = UserAccountShared.getLastLocation();
     mapboxgl.accessToken = 'pk.eyJ1Ijoicm9ubnlucCIsImEiOiJjbGl4YTg3bDgwNHpwM2RucTlwdWFkOXN1In0.MlTnx-myS4E3LJUeh5CVbw';
@@ -220,6 +225,7 @@ export default class MaphomeUser {
           }
         });
       }
+
 
       //App logic
       document.getElementById("progress").style.visibility = "hidden";
