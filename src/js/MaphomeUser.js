@@ -28,6 +28,7 @@ export default class MaphomeUser {
   responsePricesObserver;
   liModalTravel;
   liModalRate;
+  markersList=[];
 
   constructor() {
     let context = this;
@@ -554,6 +555,8 @@ export default class MaphomeUser {
     this.markerDrivers = new mapboxgl.Marker(img)
       .setLngLat([point.longitude, point.latitude])
       .addTo(this.map);
+
+    this.markersList.push(this.markerDrivers);
   }
 
   async addAnnotationAnimation(working){
@@ -603,9 +606,11 @@ export default class MaphomeUser {
   }
 
   updateDriversPositionInMap(){
-    if(this.markerDrivers){
-      this.markerDrivers.remove();
+    
+    for(let e=0; e<this.markersList.length; e++ ){
+      this.markersList[e].remove();
     }
+    this.markersList=[];
 
     if(this.viewModelMapHome.listDrivers){
       for(let f=0;f<this.viewModelMapHome.listDrivers.length;f++){
@@ -819,5 +824,3 @@ export default class MaphomeUser {
 
 }
 let mapHomeUser = new MaphomeUser();
-
-
