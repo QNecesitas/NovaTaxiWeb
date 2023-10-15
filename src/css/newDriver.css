@@ -102,6 +102,9 @@
       align-items: center;
       justify-content: start;  
       height: 7vh;
+      padding-right: 2rem;
+      padding-bottom: 0.5rem;
+      padding-top: 0.5rem;
     }
     header img{
       display: flex;
@@ -122,7 +125,8 @@
     }
   header div{
     visibility: hidden;
-    margin-right: 20px ;
+    width: 1.5rem!important;
+    height: 1.5rem!important;
    }
 
   main{
@@ -306,11 +310,11 @@
  /*Recycler*/
  .container-recycler{
   width: 100%;
-  position: absolute;
+  position: fixed;
   display: flex;
   bottom: 0%;
   background-color: var(--md_theme_light_onSurface);
-  height: 50%;
+  height: 100%;
   left: 0;
   right: 0;
   flex-direction: column;
@@ -319,6 +323,8 @@
   overflow-y: auto;
   scroll-behavior: smooth;
   visibility: hidden;
+  border: 0.5px solid #ffffff;
+  border-radius: 10px;
  }
 
  .container-recycler img{

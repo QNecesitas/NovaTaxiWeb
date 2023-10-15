@@ -160,22 +160,54 @@ export default class newDriver {
     document.getElementById("container-recycler").style.visibility = "hidden";
   }
 
-  createAccount() {
+  createAccount(){
+    if(this.isInformationGood()){
+      let result = confirm("¿Estás seguro de guardar estos datos?");
+      if(result){
+        this.sendInformation();
+      }
+    }
+  }
+
+  isInformationGood() {
+    let result=true;
     let input = document.getElementById("name").value.trim();
     let word = input.split(" ");
-    if (document.getElementById("name").value.trim().length > 0 && word.length >= 3 && document.getElementById("email").value.trim().length > 0 && document.getElementById("number").value.trim().length > 0 && document.getElementById("tipo-carro").value.trim().length > 0 && document.getElementById("cant-asientos").value.trim().length > 0 && document.getElementById("num-chapa").value.trim().length > 0 && document.getElementById("password").value.trim().length > 0 && document.getElementById("confirm-password").value.trim().length > 0 && document.getElementById("password").value == document.getElementById("confirm-password").value) {
-      if (!document.getElementById("flexSwitchCheckDefault").checked) {
-        if (document.getElementById("dist-max").value.trim().length > 0) {
-          this.showAlertConfirm();
-        } else {
-          alert("Existe algún dato incorrecto. Por favor revise.");
-        }
-      } else {
-        this.showAlertConfirm();
-      }
-    } else {
-      alert("Existe algún dato incorrecto. Por favor revise.");
+    if(document.getElementById("name").value.trim().length <=0 || word.length<3){
+      alert("Debe introducir su nombre y sus dos apellidos");
+      result=false;
     }
+    if(document.getElementById("email").value.trim().length<=0){
+      result=false;
+    }
+    if(document.getElementById("number").value.trim().length<=0){
+      result=false;
+    }
+    if(document.getElementById("tipo-carro").value.trim().length<=0){
+      result=false;
+    }
+    if(document.getElementById("cant-asientos").value.trim().length<=0){
+      result=false;
+    }
+    if(document.getElementById("num-chapa").value.trim().length<=0){
+      result=false;
+    }
+    if(document.getElementById("password").value.trim().length<=0){
+      result=false;
+    }
+    if(document.getElementById("confirm-password").value.trim().length<=0){
+      result=false;
+    }
+    if(document.getElementById("password").value !== document.getElementById("confirm-password").value){
+      alert("No coinciden las contraseñas");
+      result=false;
+    }
+    if (!document.getElementById("flexSwitchCheckDefault").checked){
+      if (document.getElementById("dist-max").value.trim().length<=0){
+        result=false
+      }
+    }
+    return result;
   }
 
   showAlertConfirm() {
@@ -185,12 +217,12 @@ export default class newDriver {
     }
   }
 
-  sendInformation(stateObserver) {
+  sendInformation() {
     let maxDist = 0;
     if (!document.getElementById("flexSwitchCheckDefault").checked) {
       maxDist = document.getElementById("dist-max").value
     }
-    this.viewModel.addNewAccountUser(stateObserver, document.getElementById("name").value, document.getElementById("email").value, document.getElementById("number").value, document.getElementById("tipo-carro").value, document.getElementById("cant-asientos").value, maxDist, document.getElementById("password").value, document.getElementById("num-chapa").value, 0, "no");
+    this.viewModel.addNewAccountUser(this.stateObserver, document.getElementById("name").value, document.getElementById("email").value, document.getElementById("number").value, document.getElementById("tipo-carro").value, document.getElementById("cant-asientos").value, maxDist, document.getElementById("password").value, document.getElementById("num-chapa").value, 0, "no");
   }
 
   showAlertDialogSuccess(email) {

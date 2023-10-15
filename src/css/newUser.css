@@ -101,6 +101,9 @@
     align-items: center;
     justify-content: start;  
     height: 7vh;
+    padding-right: 2rem;
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
   }
   header figure{
     display: flex;
@@ -126,7 +129,8 @@
   }
   header div{ 
    visibility: hidden;
-   margin-right: 2rem ;
+   width: 1.5rem!important;
+   height: 1.5rem!important;
   }
   main{
     padding: 1rem;
