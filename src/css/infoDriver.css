@@ -137,19 +137,16 @@
     justify-content: start;
     width: 100%;
   }
-  .container figure{
+  .container img{
     background-color: var(--md_theme_dark_primary);
     border-radius: 5px;
     height: 80px;
-    width: 100px;
-  }
-  figure img{
     width: 80px;
-    height: 80px;
     display: flex;
     align-items: flex-start;
     justify-content: center;
-  }  
+  }
+
   .container-1{
     width: 70%;
     height: 80px;
@@ -166,13 +163,13 @@
     margin-top: 8px;
     margin-bottom: 4px;
   }
-  .container-rating figure{
+  .container-rating img{
     background-color: transparent;
-  }
-  .container-rating figure img{
     width: 40px;
     height: 40px;
+    margin-left: 0.5rem;
   }
+
   .container-name{
     width: 100%;
     color: var(--md_theme_dark_onPrimaryContainer);
