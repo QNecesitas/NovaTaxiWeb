@@ -173,7 +173,7 @@ main {
   height: 2.2rem;
 }
 
-
+ 
 
 .button-circle {
   position: fixed;
@@ -235,7 +235,7 @@ main {
   overflow: auto;
   scroll-behavior: smooth;
   position: relative;
-  top: -12rem;
+  bottom: 4rem;
   visibility: hidden;
 }
 .card-taxi{
