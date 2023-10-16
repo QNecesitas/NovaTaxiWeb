@@ -81,7 +81,7 @@ export default class ViewModelNavigationDriver {
     if(this.timeInMillsStart && this.timeInMillsEnd) {
       let timeDelayMills = this.timeInMillsEnd - this.timeInMillsStart;
       let timeDelay = parseInt(timeDelayMills / 1000 / 60);
-      
+
       if(RoutesTools.navigationTripDriver !== null){
         RoutesTools.navigationTripDriver.timeAwait = timeDelay;
       }
@@ -150,11 +150,26 @@ export default class ViewModelNavigationDriver {
     this.tripsDataSource.fetchRoute(responseObserver, latitudeOrigin, longitudeOrigin, latitudeDestiny, longitudeDestiny);
   }
 
-  getRouteTriple(responseObserver,latitudeDriver, longitudeDriver, latitudeOrigin, longitudeOrigin, latitudeDestiny, longitudeDestiny){   
+  getRouteTriple(responseObserver,latitudeDriver, longitudeDriver, latitudeOrigin, longitudeOrigin, latitudeDestiny, longitudeDestiny){
     this.tripsDataSource.fetchRouteTriple(responseObserver,latitudeDriver, longitudeDriver, latitudeOrigin, longitudeOrigin, latitudeDestiny, longitudeDestiny);
   }
 
 
+  updateDriverLocation(stateObserver){
+    if(this.latitudeGps && this.longitudeGps){
+      if(DriverAccountShared.getDriverEmail()){
+        this.driverDataSource.updateDriverLocation(
+          stateObserver,
+          DriverAccountShared.getDriverEmail(),
+          this.latitudeGps,
+          this.longitudeGps
+        );
+        document.getElementById("alertInfo").style.visibility = "hidden"
+      }
+    }else{
+      document.getElementById("alertInfo").style.visibility = "visible"
+    }
+  }
 
 }
 
