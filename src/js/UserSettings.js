@@ -119,7 +119,7 @@ export default class UserSettings{
       document.getElementById("condition").addEventListener('click',()=>{
         document.getElementById("staticBackdrop").style.visibility="visible";
       });
-  
+
       document.getElementById("btn-close-TC").addEventListener('click',()=>{
         document.getElementById("staticBackdrop").style.visibility="hidden";
       });
@@ -127,13 +127,36 @@ export default class UserSettings{
   }
 
   editAccount(){
-    if(document.getElementById("phone").value.trim().length >0 && document.getElementById("password").value.trim().length > 0 && document.getElementById("confirm-password").value.trim().length > 0 && document.getElementById("password").value == document.getElementById("confirm-password").value){
+    if(this.isInformationGood()){
         let email =UserAccountShared.getUserEmail();
         this.showAlertConfirm(this.stateOperationObserver,email,document.getElementById("phone").value,document.getElementById("password").value);
-    }else{
-        alert("Existe algún dato incorrecto. Por favor revise.");
     }
   }
+
+  isInformationGood(){
+    var result = true;
+
+    if(document.getElementById("phone").value.trim().length <= 0){
+      result = false;
+    }
+
+    if(document.getElementById("password").value.trim().length <= 0 ){
+      result = false;
+    }
+
+    if(document.getElementById("confirm-password").value.trim().length <= 0){
+      result = false;
+    }
+
+    if(document.getElementById("password").value !== document.getElementById("confirm-password").value){
+      result = false
+      alert("Las contraseñas no coinciden");
+    }
+
+    return result;
+  }
+
+
 
   showAlertConfirm(stateObserve,email,phone,password){
     let result=confirm("¿Estás seguro de actualizar los datos de tu cuenta?");

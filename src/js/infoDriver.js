@@ -15,7 +15,11 @@ export default class infoDriver{
   constructor(){
     const emailSelected= sessionStorage.getItem('emailSelected');
 
-    
+    //get User Information
+    if(DriverAccountShared.getDriverEmail()==null){
+      window.open("loginDriver.html","_self");
+    }
+
 
     //Observer
     this.responseObserver = (it)=>{
@@ -85,7 +89,7 @@ export default class infoDriver{
             case "ERROR":
                 alert("Se ha producido un error. Compruebe su conexión e intente nuevamente");
                 document.getElementById("progress").style.visibility = "hidden";
-                break;        
+                break;
         }
     }
 
@@ -94,7 +98,7 @@ export default class infoDriver{
     document.getElementById("back").addEventListener('click',(event)=>{
         event.preventDefault();
         window.history.back();
-      }); 
+      });
   }
 }
 let infoDrivers=new infoDriver();

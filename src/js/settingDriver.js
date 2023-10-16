@@ -162,7 +162,7 @@ export default class DriverSetting {
 
   rvTypeCar(lista){
     document.getElementById("container-recycler").innerHTML="";
-    alert(lista);
+
     if(lista.length > 0){
         document.getElementById("container-recycler").style.visibility = "visible";
 
@@ -242,24 +242,73 @@ getPhoto(typeCar) {
 
 
   editAccount(){
-    let input= document.getElementById("name").value.trim();
-    let word = input.split(" ");
     let email = DriverAccountShared.getDriverEmail();
-    if (document.getElementById("email").value.trim().length > 0 && word.length >= 3 && document.getElementById("password").value.trim().length > 0 && document.getElementById("name").value.trim().length > 0 && document.getElementById("phone").value.trim().length > 0 && document.getElementById("typeCar").value.trim().length > 0 && document.getElementById("cantSeat").value.trim().length > 0 && document.getElementById("numberPlate").value.trim().length > 0 && document.getElementById("confirm-password").value.trim().length > 0 && document.getElementById("password").value == document.getElementById("confirm-password").value) {
+    if (this.isInformationGood()) {
       if (!document.getElementById("flexSwitchCheckDefault").checked) {
         if (document.getElementById("distMax").value.trim().length > 0) {
           this.showAlertConfirm(this.stateOperationObserver, email, document.getElementById("password").value, document.getElementById("name").value, document.getElementById("phone").value, document.getElementById("typeCar").value, document.getElementById("cantSeat").value, document.getElementById("numberPlate").value);
         } else {
-          alert("Existe algún dato incorrecto. Por favor revise.");
+          alert("La distancia máxima no debe estar vacía");
         }
-      }
-      else {
+      }else {
         this.showAlertConfirm(this.stateOperationObserver, email, document.getElementById("password").value, document.getElementById("name").value, document.getElementById("phone").value, document.getElementById("typeCar").value, document.getElementById("cantSeat").value, document.getElementById("numberPlate").value);
       }
-    } else {
-      alert("Existe algún dato incorrecto. Por favor revise.");
     }
   }
+
+  isInformationGood(){
+
+    var result = true;
+    let input= document.getElementById("name").value.trim();
+    let word = input.split(" ");
+
+    if(document.getElementById("email").value.trim().length <= 0){
+      result = false;
+    }
+
+    if(word.length < 3){
+      result = false;
+      alert("Debe colocar nombre y dos apellidos");
+    }
+
+    if(document.getElementById("password").value.trim().length <= 0){
+      result = false
+    }
+
+    if(document.getElementById("name").value.trim().length <= 0){
+      result = false;
+    }
+
+    if(document.getElementById("phone").value.trim().length <= 0){
+      result = false;
+    }
+
+    if(document.getElementById("typeCar").value.trim().length <= 0){
+      result = false;
+    }
+
+    if(document.getElementById("cantSeat").value.trim().length <= 0){
+      result = false;
+    }
+
+    if(document.getElementById("numberPlate").value.trim().length <= 0){
+      result = false;
+    }
+
+    if(document.getElementById("confirm-password").value.trim().length <= 0){
+      result = false;
+    }
+
+    if(document.getElementById("password").value !== document.getElementById("confirm-password").value){
+      result = false
+      alert("Las contraseñas no coinciden");
+    }
+
+    return result;
+
+  }
+
+
 
   showAlertConfirm(stateObserve, email, password, name, phone, typeCar, cantSeat, numberPlate) {
     let maxDist = 0;
