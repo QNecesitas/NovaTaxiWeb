@@ -54,11 +54,6 @@ export default class ViewModelNavigationUser {
   getRouteTriple(responseObserver,latitudeDriver, longitudeDriver, latitudeOrigin, longitudeOrigin, latitudeDestiny, longitudeDestiny){
     this.tripsDataSource.fetchRouteTriple(responseObserver,latitudeDriver, longitudeDriver, latitudeOrigin, longitudeOrigin, latitudeDestiny, longitudeDestiny);
   }
-  
-  //Get drivers
-  getDriversAll(stateObserver, responseObserver){
-    this.driverDataSource.getDriver(stateObserver, responseObserver);
-  }
 
 
 }

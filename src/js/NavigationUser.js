@@ -20,7 +20,6 @@ export default class NavigationUser {
   routeObserverStep1;
   routeObserverStep2;
   statePricesObserver;
-  statePositionDriverAll;
 
 
 
@@ -51,9 +50,6 @@ export default class NavigationUser {
         this.fetchARoute(RoutesTools.navigationTripUser);
       }
     };
-
-    this.statePositionDriverAll = (it) =>{
-    }
 
     this.actualTripObserver = (it) => {
       this.viewModel.actualTrip=it;
@@ -228,7 +224,6 @@ export default class NavigationUser {
           this.viewModel.fetchStateInTrip(this.stateTripObserver,this.actualTripObserver,UserAccountShared.getUserEmail());
         }
         this.fetchARoute(RoutesTools.navigationTripUser);
-        await this.viewModel.getDriversAll(this.stateDriverObserver,this.statePositionDriverAll);
         await new Promise(resolve => setTimeout(resolve, 12000));
       }
     }
@@ -331,6 +326,9 @@ export default class NavigationUser {
     img.setAttribute("class","marker-driver");
     img.setAttribute("src",imgUrl);
 
+    if(this.markerDrivers){
+      this.markerDrivers.remove();
+    }
     this.markerDrivers = new mapboxgl.Marker(img)
       .setLngLat([point.longitude, point.latitude])
       .addTo(this.map);
