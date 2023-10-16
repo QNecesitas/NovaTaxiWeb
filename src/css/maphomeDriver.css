@@ -213,8 +213,8 @@ main {
 
 .container-p {
   margin-left: 0.6rem;
-
 }
+
 
 .card-taxi-p {
   font-size: var(--text_s);
@@ -279,7 +279,7 @@ main {
 .setting {
   margin-right: 20%;
 }
- 
+
 @media only screen and (max-width: 600px) {
   .select-map button {
     width: 70%;

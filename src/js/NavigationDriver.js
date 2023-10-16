@@ -19,7 +19,8 @@ export default class NavigationDriver {
   stateUpdateInAwaitObserver;
   stateUpdateInTravelObserver;
   responseUpdateFinishedObserver;
-  driverPosition;
+  stateDriverLocation;
+
 
 
 
@@ -165,6 +166,9 @@ export default class NavigationDriver {
 
     };
 
+    this.stateDriverLocation = (it) => {
+
+    };
 
 
     //Listeners
@@ -178,7 +182,6 @@ export default class NavigationDriver {
     this.viewModel.setRouteState("STARTING",this.stateRouteObserver);
     this.addRoutePoints();
     this.getLocationRealtimeFirstTime();
-    this.getLocationRealTime();
     if(RoutesTools.navigationTripDriver){
       this.viewCameraInPoint(
         RoutesTools.navigationTripDriver.latOri,
@@ -218,61 +221,13 @@ export default class NavigationDriver {
         await this.fetchARoute(RoutesTools.navigationTripDriver);
         await this.viewModel.checkIsNearFromAwaitForClient(RoutesTools.navigationTripDriver, this.stateRouteObserver);
         await this.viewModel.checkIsNearFromFinished(RoutesTools.navigationTripDriver,this.stateRouteObserver);
+        await this.viewModel.updateDriverLocation(this.stateDriverLocation);
       }
       await new Promise(resolve => setTimeout(resolve, 12000));
     }
   }
 
 
-
-  //Location
-  getLocationRealTime(){
-    let geolocate; // Variable para la capa de ubicación en tiempo real
-    let lastLocationGps;
-    let lastLocationPoint;
-    let context = this;
-    var isNecessaryCamera = true;
-
-    if (this.markerGps) {
-      this.markerGps.remove();
-    }
-
-    // Configurar la capa de ubicación en tiempo real
-    geolocate = new mapboxgl.GeolocateControl({
-      positionOptions: {
-        enableHighAccuracy: true // Habilitar alta precisión
-      },
-      trackUserLocation: true, // Rastrear la ubicación en tiempo real
-      showUserLocation: true, // Mostrar la ubicación del usuario en el mapa
-      showAccuracyCircle: true // Mostrar círculo de precisión
-    });
-
-    this.map.addControl(geolocate);
-
-    // Escuchar el evento 'geolocate' para manejar actualizaciones de ubicación
-    geolocate.on('geolocate', function(e) {
-      // Obtener las coordenadas de la ubicación
-      const latitudeGps = e.coords.latitude;
-      const longitudeGps = e.coords.longitude;
-      context.viewModel.latitudeGPS = latitudeGps;
-      context.viewModel.longitudeGPS = longitudeGps;
-
-
-      lastLocationGps={latitude:latitudeGps, longitude:longitudeGps};
-
-      if(isNecessaryCamera){
-        context.viewCameraInPoint(latitudeGps, longitudeGps);
-        isNecessaryCamera = false
-      }
-
-      DriverAccountShared.setLastLocation(new Point(longitudeGps,latitudeGps));
-
-      context.addAnnotationGPSToMap(new Point(longitudeGps, latitudeGps));
-    });
-
-    // Iniciar la geolocalización
-    geolocate.trigger();
-  }
 
   getLocationRealtimeFirstTime(){
     let geolocate; // Variable para la capa de ubicación en tiempo real
@@ -303,8 +258,8 @@ export default class NavigationDriver {
       // Obtener las coordenadas de la ubicación
       const latitudeGps = e.coords.latitude;
       const longitudeGps = e.coords.longitude;
-      context.viewModel.latitudeGPS = latitudeGps;
-      context.viewModel.longitudeGPS = longitudeGps;
+      context.viewModel.setLatitudeGPS(latitudeGps);
+      context.viewModel.setLongitudeGPS(longitudeGps);
 
       if(isFirstTime) {
         lastLocationGps = {latitude: latitudeGps, longitude: longitudeGps};
@@ -327,6 +282,7 @@ export default class NavigationDriver {
     // Iniciar la geolocalización
     geolocate.trigger();
   }
+
 
 
 
