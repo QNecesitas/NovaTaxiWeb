@@ -364,11 +364,11 @@
  /*Recycler*/
  .container-recycler{
   width: 100%;
-  position: absolute;
+  position: fixed;
   display: flex;
   bottom: 0%;
   background-color: var(--md_theme_light_onSurface);
-  height: 50%;
+  height: 100%;
   left: 0;
   right: 0;
   flex-direction: column;
@@ -377,6 +377,8 @@
   overflow-y: auto;
   scroll-behavior: smooth;
   visibility: hidden;
+  border: 0.5px solid #ffffff;
+  border-radius: 10px;
  }
  .container-recycler img{
   width: 50px;
@@ -432,4 +434,4 @@
      }
     }
   
-  
+   

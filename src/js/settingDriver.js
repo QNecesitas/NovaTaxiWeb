@@ -236,7 +236,7 @@ getPhoto(typeCar) {
   }
   selectTypeCar(vehicle){
     document.getElementById("typeCar").setAttribute('value',vehicle.type);
-    document.getElementById("img-car").src=this.getPhoto(vehicle.type);
+    document.querySelector(".img-car").src=this.getPhoto(vehicle.type);
     document.getElementById("container-recycler").style.visibility="hidden";
   }
 

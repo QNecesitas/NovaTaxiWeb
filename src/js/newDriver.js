@@ -159,7 +159,7 @@ export default class newDriver {
     document.getElementById("img-car").src = this.getDriverImg(vehicle.type)
     document.getElementById("container-recycler").style.visibility = "hidden";
   }
-
+ 
   createAccount(){
     if(this.isInformationGood()){
       let result = confirm("¿Estás seguro de guardar estos datos?");

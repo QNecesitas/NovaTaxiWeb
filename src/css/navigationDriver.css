@@ -85,7 +85,7 @@ main {
   height: 100vh;
   background-color: var(--md_theme_dark_background);
 }
-
+  
 .button-circle {
   position: absolute;
   width: 20%;
@@ -97,12 +97,15 @@ main {
   gap: 1.2rem;
 }
 
+
 #alertInfo{
-  z-index: 5;
+  z-index: 10;
   width: 100%;
   visibility: hidden;
+  background-color: var(--md_theme_dark_background);
+  position: absolute;
+  top: 0;
 }
-
 #alertInfo p{
   width: 100%;
   text-align: center;
@@ -111,6 +114,7 @@ main {
   font-weight: bold;
   font-size: var(--text_m);
 }
+
 
 .button-circle button {
   background-color: var(--md_theme_light_onPrimary);

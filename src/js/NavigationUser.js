@@ -24,7 +24,11 @@ export default class NavigationUser {
 
 
   constructor(){
+   
     let lastPointSelected = UserAccountShared.getLastLocation();
+    if(UserAccountShared.getUserEmail()==null){
+      window.open("MaphomeUser.html","_self");
+    }
     mapboxgl.accessToken = 'pk.eyJ1Ijoicm9ubnlucCIsImEiOiJjbGl4YTg3bDgwNHpwM2RucTlwdWFkOXN1In0.MlTnx-myS4E3LJUeh5CVbw';
     this.map = new mapboxgl.Map({
       container: 'map',

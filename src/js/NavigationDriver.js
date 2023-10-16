@@ -25,8 +25,11 @@ export default class NavigationDriver {
 
 
   constructor(){
+    
     const context = this;
-
+    if(DriverAccountShared.getDriverEmail()==null){
+      window.open("MaphomeDriver.html","_self");
+    }
     //Map
     let lastPointSelected = DriverAccountShared.getLastLocation();
     mapboxgl.accessToken = 'pk.eyJ1Ijoicm9ubnlucCIsImEiOiJjbGl4YTg3bDgwNHpwM2RucTlwdWFkOXN1In0.MlTnx-myS4E3LJUeh5CVbw';

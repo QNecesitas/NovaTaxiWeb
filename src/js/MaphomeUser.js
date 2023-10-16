@@ -36,7 +36,7 @@ export default class MaphomeUser {
     //get User Information
     if(UserAccountShared.getUserEmail()==null){
       window.open("loginUser.html","_self");
-    }
+    } 
 
     //Map
     let lastPointSelected = UserAccountShared.getLastLocation();
