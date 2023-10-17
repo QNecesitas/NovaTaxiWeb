@@ -264,13 +264,12 @@ export default class NavigationDriver {
       context.viewModel.setLatitudeGPS(latitudeGps);
       context.viewModel.setLongitudeGPS(longitudeGps);
 
-      if(isFirstTime) {
         lastLocationGps = {latitude: latitudeGps, longitude: longitudeGps};
 
-        if (isNecessaryCamera) {
+        /*    if (isNecessaryCamera) {
           context.viewCameraInPoint(latitudeGps, longitudeGps);
           isNecessaryCamera = false
-        }
+        } */
 
         DriverAccountShared.setLastLocation(new Point(longitudeGps, latitudeGps));
         if(RoutesTools.navigationTripDriver){
@@ -278,16 +277,11 @@ export default class NavigationDriver {
         }
 
         context.addAnnotationDrivers(new Point(longitudeGps, latitudeGps),context.getDriverMarkerImg(RoutesTools.navigationTripDriver.typeCar));
-        isFirstTime = false;
-      }
     });
 
     // Iniciar la geolocalización
     geolocate.trigger();
   }
-
-
-
 
   //Alert Dialogs
   showAlertDialogNotLocationSettings(){

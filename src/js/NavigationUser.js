@@ -227,9 +227,9 @@ export default class NavigationUser {
         if(UserAccountShared.getUserEmail()){
           this.viewModel.fetchStateInTrip(this.stateTripObserver,this.actualTripObserver,UserAccountShared.getUserEmail());
         }
-        this.fetchARoute(RoutesTools.navigationTripUser);
-        await new Promise(resolve => setTimeout(resolve, 12000));
+        this.fetchARoute(RoutesTools.navigationTripUser);  
       }
+      await new Promise(resolve => setTimeout(resolve, 12000));
     }
   }
 
