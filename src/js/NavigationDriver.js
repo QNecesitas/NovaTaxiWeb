@@ -273,7 +273,7 @@ export default class NavigationDriver {
 
         DriverAccountShared.setLastLocation(new Point(longitudeGps, latitudeGps));
         if(RoutesTools.navigationTripDriver){
-          this.fetchARoute(RoutesTools.navigationTripDriver);
+          context.fetchARoute(RoutesTools.navigationTripDriver);
         }
 
         context.addAnnotationDrivers(new Point(longitudeGps, latitudeGps),context.getDriverMarkerImg(RoutesTools.navigationTripDriver.typeCar));

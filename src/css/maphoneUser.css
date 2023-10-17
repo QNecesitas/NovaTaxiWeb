@@ -177,7 +177,7 @@ main {
 
 .button-circle {
   position: fixed;
-  bottom: 40px;
+  bottom: 4rem;
   right: 80px;
   display: flex;
   align-items: center;
@@ -188,7 +188,7 @@ main {
 
 .mapboxgl-ctrl-group{
   position: fixed;
-  bottom: 40px;
+  bottom: 4rem;
   right: 40px;
 }
 
@@ -223,7 +223,7 @@ main {
   visibility: hidden;
 }
 
-
+ 
 
 .setting {
   margin-right: 40px;
@@ -234,7 +234,7 @@ main {
   display: flex;
   overflow: auto;
   scroll-behavior: smooth;
-  position: relative;
+  position: absolute;
   bottom: 4rem;
   visibility: hidden;
 }
