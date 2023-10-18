@@ -728,7 +728,10 @@ export default class MaphomeUser {
     document.getElementById("ubication").style.visibility = "visible";
     document.getElementById("destino").style.visibility = "visible";
     document.getElementById("container-card-taxi").style.visibility = "visible";
-    this.markerAnimation.remove();
+    if(this.markerAnimation){
+      this.markerAnimation.remove();
+    }
+    
   }
 
   liRateDriver(){
