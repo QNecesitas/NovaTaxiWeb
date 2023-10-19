@@ -29,7 +29,7 @@ export default class NavigationDriver {
     const context = this;
     if(DriverAccountShared.getDriverEmail()==null){
       window.open("MaphomeDriver.html","_self");
-    }
+    } 
     //Map
     let lastPointSelected = DriverAccountShared.getLastLocation();
     mapboxgl.accessToken = 'pk.eyJ1Ijoicm9ubnlucCIsImEiOiJjbGl4YTg3bDgwNHpwM2RucTlwdWFkOXN1In0.MlTnx-myS4E3LJUeh5CVbw';
@@ -240,10 +240,7 @@ export default class NavigationDriver {
     var isNecessaryCamera = true;
     var isFirstTime = true;
 
-    if (this.markerGps) {
-      this.markerGps.remove();
-    }
-
+    
     // Configurar la capa de ubicación en tiempo real
     geolocate = new mapboxgl.GeolocateControl({
       positionOptions: {
@@ -266,6 +263,13 @@ export default class NavigationDriver {
 
         lastLocationGps = {latitude: latitudeGps, longitude: longitudeGps};
 
+        if (context.markerGps) {
+          context.markerGps.remove();
+        }
+        if (context.markerDrivers) {
+          context.markerDrivers.remove();
+        }
+    
         /*    if (isNecessaryCamera) {
           context.viewCameraInPoint(latitudeGps, longitudeGps);
           isNecessaryCamera = false

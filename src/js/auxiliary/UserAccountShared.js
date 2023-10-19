@@ -59,13 +59,13 @@ export default class UserAccountShared{
 
 //Last petition for if is closed the app without ranking
   static setIsRatingInAwait(isRankingAwait) {
-    document.cookie = "isRankingAwait" + isRankingAwait;
+    document.cookie = "isRankingAwait=" + isRankingAwait;
   }
 
   static getIsRatingInAwait() {
     return this.getCookie("isRankingAwait");
   }
-
+ 
 
 //Last driver petition
   static setLastDriver(driver) {
