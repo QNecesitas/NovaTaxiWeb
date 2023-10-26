@@ -28,6 +28,6 @@ if (isiPhone && iOSVersion && iOSVersion < 17) {
     
     document.querySelector('#loading').appendChild(textLoading);
     
-// window.location.href ='https://qnecesitas.nat.cu/NovaTaxi/src/index.html';
+ window.location.href ='https://qnecesitas.nat.cu/NovaTaxi/src/index.html';
 }
 
