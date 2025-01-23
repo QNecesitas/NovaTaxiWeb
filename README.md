@@ -21,6 +21,6 @@ The application does not contain any sensitive information related to the client
 - **Availability**: Set your availability and get notified when customers in your area request a ride.
 
 ## ScreenShots
-<img src="https://github.com/QNecesitas/NovaTaxi/blob/main/ScreenShots/novataxi_2.png">
 <img src="https://github.com/QNecesitas/NovaTaxi/blob/main/ScreenShots/novataxi_3.png">
+<img src="https://github.com/QNecesitas/NovaTaxi/blob/main/ScreenShots/novataxi_2.png">
 <img src="https://github.com/QNecesitas/NovaTaxi/blob/main/ScreenShots/novataxi_1.png">
